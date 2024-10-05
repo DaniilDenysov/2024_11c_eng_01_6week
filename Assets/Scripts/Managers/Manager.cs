@@ -25,7 +25,7 @@ namespace Managers
         {
             if (_sceneContext != null)
             {
-                _sceneContext.Container.BindInstance(this).AsSingle();
+                //_sceneContext.Container.BindInstance(this).AsSingle();
 
                 Debug.Log($"{this.GetType().Name} has been autowired to the SceneContext.");
             }

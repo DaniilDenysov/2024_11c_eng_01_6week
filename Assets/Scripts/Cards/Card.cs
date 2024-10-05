@@ -43,9 +43,11 @@ namespace Cards
             //or use raycast
             if (result != null && result.TryGetComponent(out T action))
             {
-                OnCardActivation(action);
-                Destroy(gameObject); //change to add to the pool
-                return;
+                if (OnCardActivation(action))
+                {
+                    Destroy(gameObject); //change to add to the pool
+                    return;
+                }
             }
 
 
@@ -53,7 +55,7 @@ namespace Cards
             transform.parent = container;
         }
 
-        public abstract void OnCardActivation(T arg1);
+        public abstract bool OnCardActivation(T arg1);
 
     }
 }

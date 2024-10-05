@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Cards
 {
-    public class TurnCard : Card<ITurnAction>
+    public class HarmCard : Card<TilemapPath>
     {
-        public override bool OnCardActivation(ITurnAction arg1)
+        public override bool OnCardActivation(TilemapPath arg1)
         {
-            arg1.OnTurn();
             return true;
         }
     }
