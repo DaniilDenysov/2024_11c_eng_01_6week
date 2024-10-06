@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Validation;
 
 namespace Characters
 {
@@ -15,6 +16,7 @@ namespace Characters
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
         [SerializeField] private GameObject HUD_display;
         [SerializeField] private bool isPaused;
+        [SerializeField] private PathValidator pathValidator;
 
         private void Awake()
         {
@@ -51,7 +53,16 @@ namespace Characters
             if (isPaused) return;
             if (steps > 0)
             {
-                transform.position += directionNormalized;
+                Vector3 nextPosition = transform.position + directionNormalized;
+                if (pathValidator.CanMoveTo(nextPosition,
+                    -new Vector3Int((int)directionNormalized.x, (int)directionNormalized.y, (int)directionNormalized.z)))
+                {
+                    transform.position = nextPosition;
+                }
+                else
+                {
+                    Debug.Log("Unable to move");
+                }
                 steps--;
                 if (steps == 0) EventManager.FireEvent(EventManager.OnTurnEnd);
             }

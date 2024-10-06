@@ -350,21 +350,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2059787713480887721, guid: c720fb15fda097142b7aac2387ba7d05, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3905612773568136513, guid: c720fb15fda097142b7aac2387ba7d05, type: 3}
       propertyPath: m_Name
       value: Human
       objectReference: {fileID: 0}
     - target: {fileID: 3905612773568136513, guid: c720fb15fda097142b7aac2387ba7d05, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8784300134320207708, guid: c720fb15fda097142b7aac2387ba7d05, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.602
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8784300134320207708, guid: c720fb15fda097142b7aac2387ba7d05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.478
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8784300134320207708, guid: c720fb15fda097142b7aac2387ba7d05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1099,7 +1103,7 @@ GameObject:
   - component: {fileID: 762681924}
   - component: {fileID: 762681923}
   m_Layer: 0
-  m_Name: Tiles
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4875,7 +4879,7 @@ GameObject:
   - component: {fileID: 1063159307}
   - component: {fileID: 1063159306}
   m_Layer: 0
-  m_Name: Decals
+  m_Name: Level_Decals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8290,6 +8294,7 @@ MonoBehaviour:
   directionNormalized: {x: 0, y: 0, z: 0}
   HUD_display: {fileID: 935974260}
   isPaused: 0
+  pathValidator: {fileID: 1565776967}
 --- !u!114 &1164625933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8714,6 +8719,7 @@ MonoBehaviour:
   directionNormalized: {x: 0, y: 0, z: 0}
   HUD_display: {fileID: 1290657058}
   isPaused: 0
+  pathValidator: {fileID: 1565776967}
 --- !u!61 &1448741054
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8894,6 +8900,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8264117350394651168, guid: a5766024853fed54094e2826db5ec643, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1565776961}
+    - targetCorrespondingSourceObject: {fileID: 8264117350394651168, guid: a5766024853fed54094e2826db5ec643, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1565776967}
   m_SourcePrefab: {fileID: 100100000, guid: a5766024853fed54094e2826db5ec643, type: 3}
 --- !u!114 &1565776956 stripped
 MonoBehaviour:
@@ -8935,6 +8944,19 @@ MonoBehaviour:
   characters:
   - {fileID: 1164625932}
   - {fileID: 1448741053}
+--- !u!114 &1565776967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003894986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c829ac65394c6c45b85e40eb3b4cc7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walls: {fileID: 1063159307}
 --- !u!1 &1644462030
 GameObject:
   m_ObjectHideFlags: 0
