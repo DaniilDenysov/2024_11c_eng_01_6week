@@ -1,0 +1,4426 @@
+fileFormatVersion: 2
+guid: fdd547948822cf04e8b2fe3df39d5799
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 517
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: decals_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdcbf378e7a13e344b4c758decf87810
+      internalID: 1790165195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_1
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcce8c4061c019f42b96a89342a41f3c
+      internalID: 159075951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_2
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c995a07990d0e7c4981f9aa2e2d5584c
+      internalID: -383523162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_3
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb50576c1d675346b0b80d2fddd3f54
+      internalID: 1292475659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_4
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e96ccc75138094898efbb116e6cb11
+      internalID: -1430613158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_5
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40946e3f3028e814893b2d14a8ea456e
+      internalID: 1635717821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_6
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9990d5ba35f91374fa2d3159015ccf4b
+      internalID: -1476369811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_7
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 200e83f5e9ccf4f4fa4792d06bd97736
+      internalID: 1317655913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_8
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63a20f0e01eff9447b2b3f796d999ae2
+      internalID: -1511426629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_9
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ed00582f459a33489a8cd2d4581124e
+      internalID: 501251635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_10
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c9d4932069f9c4e83c8d278655be4b
+      internalID: 1246708170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_11
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 961b07738e1e7d84a9b4b28d781484b7
+      internalID: 2075133472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_12
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e0e5581e85ca0d429b8df4e13cf9591
+      internalID: -1459191109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_13
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8c7cc19dc3d1c144aa01162111573fd
+      internalID: 30627323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adad3a041dc7f1543aeb93f8c8eeb56a
+      internalID: 684575096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_15
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2ec7ae68287e342a98e8e7a37812e6
+      internalID: -435448065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_16
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b552a58a0f24ab43817d6a27aa30537
+      internalID: 430823552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_17
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8774fd3a49494004cbc4fcff74d610af
+      internalID: 2021767015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_18
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 188d2b9a9493ee54bb2fda986518392a
+      internalID: -1280177067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_19
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d716286479cec4596d75c00af0aee4
+      internalID: -506241693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_20
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dfdd4def61f1b44f828114d8ffcbcfe
+      internalID: 671384557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_21
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fadb123c53f6c484cb294a207f4c135f
+      internalID: 798895245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_22
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bddb74dbe53a92e468a1bae5a26021de
+      internalID: -1536370459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_23
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73e1db81137ce86488747e4b136cee9c
+      internalID: -1978175421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_24
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61ace6a7ff74f141a0548253fd4c1b7
+      internalID: -680460369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_25
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d5f51e964723444b4d25c9a00ca65f
+      internalID: 1668543153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_26
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57080e7fcbebbf24fb29b61bae7e4a4e
+      internalID: 504474804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_27
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aaee8dc87deb094da20be97a8c57491
+      internalID: -621397029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a555c13d4fcfe8f4cb7bb21775c68f65
+      internalID: -678970563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_29
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 305cad265d630464d8fb99f14e09376f
+      internalID: -1104767233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_30
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90be3175cb2549c4a88690b2f0ae7824
+      internalID: -64462532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_31
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07f45f448b3dfcb4fa27d184464f0b25
+      internalID: 1496929791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_32
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5727b54ea83465e43ba5328eab057040
+      internalID: -210110298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_33
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef5c3e0d12c34004194721b5ebbd99a2
+      internalID: 1519257148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_34
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5440ef9260b27584582bc80e0550eea9
+      internalID: -970295146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_35
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e1d547cc37da724fa5bee9d1c71e90b
+      internalID: -402788422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_36
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2452bd6418edb9243b501f31caee2ac1
+      internalID: -1968057456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_37
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a6db8f7467f85c47a2c4723b54a3907
+      internalID: 1103521840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_38
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03ea8e67b40f5a47bbdd4ee4703e3bb
+      internalID: 2114708358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_39
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58508c1b7bbc6c5479c3aed26e0ed935
+      internalID: -1312509261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_40
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c241b83e26f6153419cfd3484c292c9b
+      internalID: -438361041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_41
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed9640cff224014f931eed160d37d7f
+      internalID: -961807395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3898501fb60034390f6d3435b87c74
+      internalID: -1057690154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_43
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5efb4ff9895222d48ad218f2f0f040fa
+      internalID: -696246170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_44
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e45f591ff02fb4c8aa3f88e54732b5
+      internalID: 1960088312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_45
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d952f9fa6438eb41aecca79b9c10e7c
+      internalID: -532089894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_46
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d42e28c8469584a43b48b79107741f2e
+      internalID: 1125671330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_47
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5062ce97f37f6374eba2a46b16e26e3e
+      internalID: 539808537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_48
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5636eb322e05640a71077ba95a5dee
+      internalID: -36786148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_49
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b2d6f0a90c677e44ab3dce34484cbf3
+      internalID: -319267357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_50
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4a4e94a20dfef94e9d387ecc2992bbf
+      internalID: 509909521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_51
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045fe2d2999b5f541ae6a97b6717b9fc
+      internalID: -1581091934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_52
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f58289983c6a1149a1da52927193899
+      internalID: 2038805767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_53
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f02f358052f6d47a4dadb1673c752e
+      internalID: -700809990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_54
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fa85791998cc5c46875808fb4eebb48
+      internalID: -1452194889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_55
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd57a4f577e37b439e7405000cd88fc
+      internalID: 1890110139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fca2a60457575241a15d3df5cb9c06a
+      internalID: -1781044776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_57
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21a449505574b2b48b6af9242a16a594
+      internalID: -964632019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_58
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e47e559a602c4c349b1c81d0844321a2
+      internalID: -464277443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_59
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 882a6e20d9dab604b94fff1bcbb4a7bc
+      internalID: 2134393694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_60
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ada2e2f4253c63245ae840849e64ee2c
+      internalID: -426129976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_61
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a302e08c11add547bbf06569efaba22
+      internalID: 1715827692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_62
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37791d209d0c97448adf81a841445844
+      internalID: -1689732846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_63
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d1bd1bdebf7cc147830342fd8766158
+      internalID: -1948464875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_64
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5d1eba83324084fa103097b800ae9f
+      internalID: -974844604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_65
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffa3c0734406bbf4483b62d84da8c585
+      internalID: -1959784233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_66
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdf0e278106ec5d4b80f345927a09ddd
+      internalID: -140865752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_67
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37db981f4dd090e47808542db2e10cb4
+      internalID: 1483596555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_68
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45edb92ddd7169a46b0fc4e6dfda5cfe
+      internalID: 31409450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_69
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d68ac627524544fb8b839651a586ae
+      internalID: 296873141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8493c3141099a43823fc796bbb58d5
+      internalID: 885503318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_71
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa826dd0d92a9a40a3dd0ff31db5526
+      internalID: -129567153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_72
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ff85f3b3dc0d943999b267a4db5b71
+      internalID: 1341465447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_73
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e21e0be52177fc64ea859b478cfb6b80
+      internalID: 2126120410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_74
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d85f06e53737e40a7f4f208b24b77c
+      internalID: 1623130267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_75
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78eec4465a812b47b4b3229ceb76c4a
+      internalID: -1488732041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_76
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ac9087e0a574b544912835253f544a2
+      internalID: 335116588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_77
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f45bf7b81498d3844b81157de4f563a5
+      internalID: 897208280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_78
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2392ec8e50d4f1e468e7270960089f56
+      internalID: 383324423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_79
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbc8836aca209d74bbdb8a31fb1d6709
+      internalID: -1580567881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_80
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9dc924f001e95b4b985b4c98ae66f27
+      internalID: 762325716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_81
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aeba3dbdeb92a848b127beecb587591
+      internalID: 90557550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_82
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fc6b46e7bb2985478fc823217ced013
+      internalID: -1413425160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_83
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23c895dd25c08c143b155a491b289e98
+      internalID: 1044683006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc5ffcebd1bd314bb7665c5f96df917
+      internalID: 1642064966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_85
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8febe5c5cc48d7b478f38610746e716d
+      internalID: -443960544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_86
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b16d12793dc714d9d75c6d47170d7b
+      internalID: 960809641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_87
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac623faeb8e28ea4da1561a9d1bb4db4
+      internalID: -353549019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_88
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5738ae1ef8f121c469a0e1d6ed6773d0
+      internalID: 216476014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_89
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5efef5daafc3cb4b86ea30c651b169d
+      internalID: 1057335066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_90
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d5bdb0c2d887ad40b7a23bee951acb5
+      internalID: -477163140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_91
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7fac63d78c815b47bf9238fc7145b96
+      internalID: -1346441889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_92
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b0c1fc59e3da74bac5ee876e2d5756
+      internalID: 879302795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_93
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567925bfe73de1f4fabaa1ba6185d328
+      internalID: 552298074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_94
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e16cf263661bbc4e995da1fe07fd391
+      internalID: -449547405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_95
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c44b45d0f10a34c8cd6bfb5583cbb6
+      internalID: -1977787035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_96
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdcbedb415e712344b1bc2566b1b2111
+      internalID: -1535427104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_97
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb283608287eee45ba4dbe28f4b2f3d
+      internalID: 870318390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_98
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e98bdb2100f4e4caa3b03be48f62b5
+      internalID: 952674252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_99
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02c6014a866e8d4498a9f69921543cfd
+      internalID: 1799309759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_100
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35c94267fd91e58448938c0da96eea66
+      internalID: -48296506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_101
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 382a0b8751395ad4db05242a48e19b16
+      internalID: 164383439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_102
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8546b556e8a80074b98f57f548fa5686
+      internalID: -1784724059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_103
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc88247b0a11e044094e19327d1bf3c5
+      internalID: 1749349499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_104
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719290fce5c3a2f45873d3582f423187
+      internalID: 719965974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_105
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9249420d4ca644d4baf511fc8ed8436f
+      internalID: -855592618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_106
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c825be40c40def478262ce725ab70c7
+      internalID: -491364052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_107
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6261ee102fefbac4ab7194112ca6a24e
+      internalID: 1651567388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_108
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7afa1569d811334ab3bd1b8cacf7e25
+      internalID: 727204605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_109
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af98ea61f50eab41ae79daf1dfc3fe1
+      internalID: 263477595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_110
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cc769f8026e11049816f91338b3830b
+      internalID: 1845279702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_111
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be6aa878c22015d4bb617cfaa18ba6d9
+      internalID: 1288076214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_112
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 387e872f6a0e6624693b10919a647c23
+      internalID: -416925706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_113
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e28dab857694e4eb64e62902b9d0e4
+      internalID: 500196938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_114
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbfdc1ec4e25aa3498642fdbb5e4a810
+      internalID: -1224967135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_115
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28851b5865d682d4db93cfe3d67b0ec7
+      internalID: 1455529600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_116
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a55228d057f5a243bac9d57092a22b7
+      internalID: -1363576885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_117
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0366ab9dc9d77f34f9d11ea83cd94843
+      internalID: 498347332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_118
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30ec5770a35afa244a62b7f8f0f8fda3
+      internalID: 1688549814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_119
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aac5c6ce630d4014f837fe91d5ffd9b6
+      internalID: 287824722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_120
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37f4ec9fc421bb641b3aac5716a009f7
+      internalID: 708808695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_121
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d900c29c0ca1e2a4c9041ecb5f94a514
+      internalID: -1067803824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_122
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d40269552ccde6f4bbde3f4cbb4ba90d
+      internalID: 1504158271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_123
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be892eba137c751459eec6366f4c6c2b
+      internalID: 1602599489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_124
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1702330ba20b198439d92d34a3b1780f
+      internalID: -987136286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_125
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6fa218db07b3f42bb0cfe8a720364a
+      internalID: 340241688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_126
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25e7c3eadd36e547ad964845566ff5f
+      internalID: -1814132283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_127
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc9c16510d03ee4a913b46b5c3207de
+      internalID: 1508694006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_128
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928fb127a4fdbc843860057036421572
+      internalID: 1993552755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_129
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4b89971842140b4f9fc03de1d1972ac
+      internalID: 588452878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_130
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9d21554ca148d04080a9b75464ac18a
+      internalID: 1900077790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_131
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8ed80a44732824d870d606f724387e
+      internalID: 1753267119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_132
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da976e4979d992a4ebefcff96295339e
+      internalID: -637092930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_133
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5727f543d9df291499fd92194b6db8fa
+      internalID: -670809579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_134
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb2de811bfad62d4badcaa5d7d590cf9
+      internalID: 645011440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_135
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c43174e6167f2404db46a4fa60f734d1
+      internalID: 922984786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_136
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80004d293be468448b110b3bead9d984
+      internalID: -738372139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_137
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99223f2a96ad8554cbf9c4c2f577df92
+      internalID: 359733215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_138
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795b4fced61ae7643ba0e09eb141c99b
+      internalID: 1062844034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_139
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df92876e98876d3439f7b37518c57219
+      internalID: 825732134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0079d2dcaa2bd0f4d821075755a5ea04
+      internalID: 1820873910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_141
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 780e2275412cb0f40a32267f5e59b049
+      internalID: -1534421598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_142
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a71d46ad39542f64cb88355a56a28912
+      internalID: -1949277128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_143
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f906609e1be16949890734eaece0141
+      internalID: 505212163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_144
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1a8abbed81b7c1419aaa8346235ecef
+      internalID: 1318073305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_145
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2bee03520f1e4f4591c7b95a313ad54
+      internalID: 191730471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_146
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 289d4f5a20e89874aa1755f095b064ba
+      internalID: -1885395277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_147
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04006988f17cc894583a1e13969e283a
+      internalID: -1109567817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_148
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829a22785b2f68e4d84101de04f1c941
+      internalID: -1502090044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_149
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee3bd2098114dbc4ab54cd41f3095c91
+      internalID: -321862237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_150
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0446ff047ec92764ab1346a3e6ea3291
+      internalID: 1698630307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_151
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce48cb077c6ba90499ae1b10f91a9184
+      internalID: -979484367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_152
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d894f43afd783439df49c72d31c86d
+      internalID: -127993803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_153
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91bbed5207475624383dc6b64326fd25
+      internalID: -2068702786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_154
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8678a8b5c20f9149bcad05cff2d8c65
+      internalID: -1277423490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_155
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a643fdcf2c0446944ae0362dc426882b
+      internalID: 1049166072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_156
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe356793133d83a47bb6416f642b8534
+      internalID: 2062318591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_157
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ddc3cc52c6e35c45bc0dde85496be6f
+      internalID: -1201646799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_158
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5809f2409f1e9e04aae2cd2418b1d53f
+      internalID: 95356619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_159
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b72fa9a8a314254ba59799a30b8859a
+      internalID: -1942969383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_160
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8339b755d835b1f408e8765c54cce875
+      internalID: -625011496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_161
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe0e7bed15b552142b224aa53a2e475c
+      internalID: 1979388987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_162
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8501df615d695e44a932b0db57a3d7a
+      internalID: -1042773204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_163
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c9bb69dd37236479c58b79d3695535
+      internalID: 835880086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_164
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b96def2a8b910409f33d00c543a588
+      internalID: 903271057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_165
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9039b9774434c448e0410a80b9632a
+      internalID: 1891522766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_166
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb7ebc6d2f42b5499db441bc2430b01
+      internalID: -1287006761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_167
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a96851238215d4bb68bfa731d39013
+      internalID: -453750908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_168
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad76efa54b3205438d5b45571d127c0
+      internalID: 1690221137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_169
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e66209cad72a754448aa9725c297189a
+      internalID: 350267715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_170
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79ec512daaf2deb4dac2b24f6e507149
+      internalID: 877377222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_171
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da8141d9e2ae0494e8eb880d2d98a1c4
+      internalID: 667527395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_172
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b960f0b74a033d642afe2947188bcde5
+      internalID: -2100293640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_173
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c9e8b9ae7eea9d4b92f7dafd62ba82a
+      internalID: 1838622373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_174
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ee520dc67f3a7409521970ce4d9576
+      internalID: 2000367357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_175
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35450cf8076505b42ab5888083403210
+      internalID: 118611293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_176
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ed87c065ad85a47bca453f09e2f666
+      internalID: 1785683923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_177
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c947bd150b03341be5a416bcaa45db
+      internalID: -521161487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_178
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36fa47c07cd692d44810e86f97a8d2d5
+      internalID: -2045544819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_179
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3147298f73be42458cd51702a00077d
+      internalID: 97296930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_180
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f47532cc61140964d8c726bebcd61df1
+      internalID: -2031034073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_181
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b49b5d2aeffd16641807f3819700136d
+      internalID: 956028597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_182
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db7af9502729fc4a8e799e252cb6290
+      internalID: -2109721336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_183
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e46afd0d091e1941ac4ec8e7a3209d8
+      internalID: -1050823970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_184
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e4b9aa19636d974890d950897259ab4
+      internalID: 335468250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_185
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 029c577251046c34e9a017f8233d0100
+      internalID: 473872337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_186
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c79f11055d192c45bce120889925b6b
+      internalID: -851921153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_187
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2924649beec4a884f8b1adc3a2765840
+      internalID: -103124651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_188
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d24e5fc49ac084caeac27cd81a13b5
+      internalID: 1705008659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_189
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18fa4fff5e154494bbeb687e5afeda44
+      internalID: -177683726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_190
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6bab4ff5d0504c4b8bda7d63a318a09
+      internalID: -510162426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_191
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd87293397c95944bb25e567bdfc1717
+      internalID: -1199561628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_192
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2b8c7a880a5344d8d4020c49386fba
+      internalID: -462094381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_193
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac9c415a75e0de84bbe83ebc21a9e7b2
+      internalID: 1175088432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_194
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561e47a283155404f871616ee649a35d
+      internalID: 2041780012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: decals_195
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 343a589b60aa80546bf3628c5f61c513
+      internalID: -1112054038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      decals_0: 1790165195
+      decals_1: 159075951
+      decals_10: 1246708170
+      decals_100: -48296506
+      decals_101: 164383439
+      decals_102: -1784724059
+      decals_103: 1749349499
+      decals_104: 719965974
+      decals_105: -855592618
+      decals_106: -491364052
+      decals_107: 1651567388
+      decals_108: 727204605
+      decals_109: 263477595
+      decals_11: 2075133472
+      decals_110: 1845279702
+      decals_111: 1288076214
+      decals_112: -416925706
+      decals_113: 500196938
+      decals_114: -1224967135
+      decals_115: 1455529600
+      decals_116: -1363576885
+      decals_117: 498347332
+      decals_118: 1688549814
+      decals_119: 287824722
+      decals_12: -1459191109
+      decals_120: 708808695
+      decals_121: -1067803824
+      decals_122: 1504158271
+      decals_123: 1602599489
+      decals_124: -987136286
+      decals_125: 340241688
+      decals_126: -1814132283
+      decals_127: 1508694006
+      decals_128: 1993552755
+      decals_129: 588452878
+      decals_13: 30627323
+      decals_130: 1900077790
+      decals_131: 1753267119
+      decals_132: -637092930
+      decals_133: -670809579
+      decals_134: 645011440
+      decals_135: 922984786
+      decals_136: -738372139
+      decals_137: 359733215
+      decals_138: 1062844034
+      decals_139: 825732134
+      decals_14: 684575096
+      decals_140: 1820873910
+      decals_141: -1534421598
+      decals_142: -1949277128
+      decals_143: 505212163
+      decals_144: 1318073305
+      decals_145: 191730471
+      decals_146: -1885395277
+      decals_147: -1109567817
+      decals_148: -1502090044
+      decals_149: -321862237
+      decals_15: -435448065
+      decals_150: 1698630307
+      decals_151: -979484367
+      decals_152: -127993803
+      decals_153: -2068702786
+      decals_154: -1277423490
+      decals_155: 1049166072
+      decals_156: 2062318591
+      decals_157: -1201646799
+      decals_158: 95356619
+      decals_159: -1942969383
+      decals_16: 430823552
+      decals_160: -625011496
+      decals_161: 1979388987
+      decals_162: -1042773204
+      decals_163: 835880086
+      decals_164: 903271057
+      decals_165: 1891522766
+      decals_166: -1287006761
+      decals_167: -453750908
+      decals_168: 1690221137
+      decals_169: 350267715
+      decals_17: 2021767015
+      decals_170: 877377222
+      decals_171: 667527395
+      decals_172: -2100293640
+      decals_173: 1838622373
+      decals_174: 2000367357
+      decals_175: 118611293
+      decals_176: 1785683923
+      decals_177: -521161487
+      decals_178: -2045544819
+      decals_179: 97296930
+      decals_18: -1280177067
+      decals_180: -2031034073
+      decals_181: 956028597
+      decals_182: -2109721336
+      decals_183: -1050823970
+      decals_184: 335468250
+      decals_185: 473872337
+      decals_186: -851921153
+      decals_187: -103124651
+      decals_188: 1705008659
+      decals_189: -177683726
+      decals_19: -506241693
+      decals_190: -510162426
+      decals_191: -1199561628
+      decals_192: -462094381
+      decals_193: 1175088432
+      decals_194: 2041780012
+      decals_195: -1112054038
+      decals_2: -383523162
+      decals_20: 671384557
+      decals_21: 798895245
+      decals_22: -1536370459
+      decals_23: -1978175421
+      decals_24: -680460369
+      decals_25: 1668543153
+      decals_26: 504474804
+      decals_27: -621397029
+      decals_28: -678970563
+      decals_29: -1104767233
+      decals_3: 1292475659
+      decals_30: -64462532
+      decals_31: 1496929791
+      decals_32: -210110298
+      decals_33: 1519257148
+      decals_34: -970295146
+      decals_35: -402788422
+      decals_36: -1968057456
+      decals_37: 1103521840
+      decals_38: 2114708358
+      decals_39: -1312509261
+      decals_4: -1430613158
+      decals_40: -438361041
+      decals_41: -961807395
+      decals_42: -1057690154
+      decals_43: -696246170
+      decals_44: 1960088312
+      decals_45: -532089894
+      decals_46: 1125671330
+      decals_47: 539808537
+      decals_48: -36786148
+      decals_49: -319267357
+      decals_5: 1635717821
+      decals_50: 509909521
+      decals_51: -1581091934
+      decals_52: 2038805767
+      decals_53: -700809990
+      decals_54: -1452194889
+      decals_55: 1890110139
+      decals_56: -1781044776
+      decals_57: -964632019
+      decals_58: -464277443
+      decals_59: 2134393694
+      decals_6: -1476369811
+      decals_60: -426129976
+      decals_61: 1715827692
+      decals_62: -1689732846
+      decals_63: -1948464875
+      decals_64: -974844604
+      decals_65: -1959784233
+      decals_66: -140865752
+      decals_67: 1483596555
+      decals_68: 31409450
+      decals_69: 296873141
+      decals_7: 1317655913
+      decals_70: 885503318
+      decals_71: -129567153
+      decals_72: 1341465447
+      decals_73: 2126120410
+      decals_74: 1623130267
+      decals_75: -1488732041
+      decals_76: 335116588
+      decals_77: 897208280
+      decals_78: 383324423
+      decals_79: -1580567881
+      decals_8: -1511426629
+      decals_80: 762325716
+      decals_81: 90557550
+      decals_82: -1413425160
+      decals_83: 1044683006
+      decals_84: 1642064966
+      decals_85: -443960544
+      decals_86: 960809641
+      decals_87: -353549019
+      decals_88: 216476014
+      decals_89: 1057335066
+      decals_9: 501251635
+      decals_90: -477163140
+      decals_91: -1346441889
+      decals_92: 879302795
+      decals_93: 552298074
+      decals_94: -449547405
+      decals_95: -1977787035
+      decals_96: -1535427104
+      decals_97: 870318390
+      decals_98: 952674252
+      decals_99: 1799309759
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

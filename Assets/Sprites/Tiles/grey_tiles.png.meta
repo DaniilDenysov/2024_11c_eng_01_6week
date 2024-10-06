@@ -1,0 +1,4426 @@
+fileFormatVersion: 2
+guid: c0a14c342ffe7b04faf5bd641aa21a98
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 517
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: grey_tiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 441f1c27fe70fbb4db2c2debdd585a1a
+      internalID: -1709132633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_1
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79456108be0b7c64ab0db63f95ee7068
+      internalID: -1173823893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_2
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb8fde5c578054640bb16ff191f2895f
+      internalID: -770167288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_3
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cee7fcd6f2726944a9c874fddce5fc1
+      internalID: -508602220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_4
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44cb28ea5c5378c479a8e49babf4e574
+      internalID: -756175528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_5
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 082f26ad4d252884b99d03ca2e2806a4
+      internalID: 639080497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_6
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d0c2c02d1c1cbd4b99177948429f504
+      internalID: 1204737156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_7
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9b5882aad41ae64b88bc190249c1732
+      internalID: -1889779015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_8
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39cea90a7652d7b4bbefad7f4837a8ff
+      internalID: -490537749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_9
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 384a3aae35a187042851a06e1ceb42ec
+      internalID: -1613777425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_10
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3809e26d27efc754087490492d37119a
+      internalID: -1047660721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_11
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe3863e29d69e934ab1667d129e6a362
+      internalID: 1606635898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_12
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b1b4a0298832a4aab580e7a5aaa0d1
+      internalID: -220213937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_13
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1962d6e6defa08b4ab2095483b8d5018
+      internalID: 425014001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62f245ac0a43776418a8fa6f12d79e36
+      internalID: 1675783850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_15
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8790b48f9d20154e95e1d2122793cf2
+      internalID: 272455597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_16
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7244ffaefa86cb745808cbb8d58dd73e
+      internalID: 305921168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_17
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d60be3126e2ef0d448afabf094d37cfc
+      internalID: 2100442674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_18
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd207dd076222b429b2fc8a2bea12a3
+      internalID: 241232343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_19
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da5154a5f186a61429f0659fd9b4bde7
+      internalID: -1688360255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_20
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea2777680be03fd4aa653e118e6bf032
+      internalID: 244222812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_21
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baff08897b52a844d91ee170170e1390
+      internalID: -627476976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_22
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d90409fafe2393d4e9bde51c74e269ac
+      internalID: 1651046471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_23
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df1210d50bc30c24aa372d6917583294
+      internalID: 1692291330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_24
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27f842ea16374c44b33e34aa0ba7292
+      internalID: 538833453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_25
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da7045dbab6e7b45a2aa0f7e28d27fb
+      internalID: -568703239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_26
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6da30d92ff5551408467279756260ef
+      internalID: -729840910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_27
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee2d785f7a662154a91cf31d7a30717c
+      internalID: 1476168604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d4cc1a4b6ca7104cab6db977c21d7c2
+      internalID: 1008949429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_29
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d8dc80b03faec46a52ca75b6e061ed
+      internalID: -241588198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_30
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17e646d9b0f95e4e876cf22a45a8e53
+      internalID: 1984584810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_31
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b71733a0674013442841f65f1409e97a
+      internalID: 840985354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_32
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2478e5b0775c9854b9435d0cd2fe6e0c
+      internalID: 1687815943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_33
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3303b5a0519f0440a0ab821e2733b0b
+      internalID: -1009073432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_34
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25edb8e2fc7d16340960feefa0cf53d3
+      internalID: -912482953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_35
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf0360f587fed284bae43868d0a6ba3d
+      internalID: 1671441870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_36
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4372d5349539c444ba625b58a280f778
+      internalID: -357470880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_37
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4001a8467b7a3f143acc88584d183e5e
+      internalID: -1573240480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_38
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8559975a9c0f8b45b68f271aa7353de
+      internalID: 1835043349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_39
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840442a3a56bd7f4795abaa8d02b0c51
+      internalID: -1082447436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_40
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702558c76e25e1348b5b4fd4224767a0
+      internalID: -480318449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_41
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6d75ed049ba1144ba661efe1580dc1
+      internalID: -1913642721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c33923f803b4d7243b5b03fcb3d89b7e
+      internalID: 769926152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_43
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80be02c2146db73458d1daa549370b56
+      internalID: -664184252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_44
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3c3f798a0329142b36d418017fcea1
+      internalID: 76128907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_45
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17806d165c0e72c4a98ea671e52d42c1
+      internalID: 1156798532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_46
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b484802c3857d7949991dbf0109308ad
+      internalID: 140877952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_47
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f4f3a1f3d040d4b97904f6fe7abaf2
+      internalID: -43912751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_48
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fcf4895e4f5aaf49a64729cb118b508
+      internalID: -679111020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_49
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a09efe413d6b6da4dbd0ddecb3262a53
+      internalID: 1881158043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_50
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e04fc932efb44742a3f3204ab1ba894
+      internalID: 1566883229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_51
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dafc93de5def3d438a0f5dfc5924113
+      internalID: -2140116990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_52
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffde29f3508faf44c82ccd97e2906c58
+      internalID: -334534172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_53
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233c5aa6cc310c340a59e12d808e296c
+      internalID: 1346206046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_54
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31167988905ef844ab748e08bf0ed955
+      internalID: -887037225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_55
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9393db3a60a35504c9d0d4cd3ba67b16
+      internalID: 285025388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a9970f2ef9d93d46846e81695db5e31
+      internalID: 1282909092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_57
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36caa7074bff1f4482eab386a7d508b
+      internalID: -399648873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_58
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f425e1a3bd1b8c41af684a0d780cacd
+      internalID: 553447490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_59
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a11f4668b9eb5b4e80ead33a43f3ca9
+      internalID: 2086110661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_60
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07443eb8120b2f5419957005210a5805
+      internalID: 1847634382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_61
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13eb49986c4327e46bcde9845f92a611
+      internalID: 564534848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_62
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a7dc249decb3a742b22409d06b12de8
+      internalID: 685148994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_63
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 253fbf26d7dedd544b46fc0aafa8c413
+      internalID: -2001401175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_64
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fd207251d9223040a0b36dc7c41a15f
+      internalID: -204160810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_65
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06fa6ef6e9447ea4eabfee4fafedbf44
+      internalID: -1821164078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_66
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6e93ed1df9c084b8162178d8a614ec
+      internalID: -1320209642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_67
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8e31f2a19f2d7248928996c3e2574db
+      internalID: -1353674139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_68
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 252e0ce2cf701ab409decbd8a018cd7c
+      internalID: 1974674940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_69
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 901d58ca76067434aa54b87b1cee239a
+      internalID: 123664385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a08465f795830b440871e8495f8173f3
+      internalID: -628578842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_71
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 294ad3e12b7103a4a8deb2b6c5cc2d3f
+      internalID: 1959166614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_72
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b48107a2e84b99149b35cbbf3c8c0563
+      internalID: 664871591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_73
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce52d4b4bbdb654aa1596859200d524
+      internalID: 317504696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_74
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7571c5972572a114eb31ae776d95e509
+      internalID: 1381116361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_75
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 011c177232863624b8ce70a65303bf9e
+      internalID: -1153054823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_76
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f522d32465ff1e748815584dd34c10dd
+      internalID: 606893320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_77
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bbe97cdc51a52c4b8d61f754e71552c
+      internalID: -969116201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_78
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fad810adb1fa704d8f55f7d81f0bc74
+      internalID: 88745676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_79
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb48e7f9f6eeea445b78c8731c4ae375
+      internalID: -249427775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_80
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d037b4263cd1be4da533737af4d74c6
+      internalID: 502716798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_81
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4be36affcd16a4443b883a02e0e81c01
+      internalID: 654907553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_82
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d952c351eed188548bb30ba17379ea0f
+      internalID: -1675747136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_83
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a3801a73d0e93043b3bc7a619fb6059
+      internalID: 1484709486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 794caba403dfa044f96c475b3f42cf86
+      internalID: -1801419341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_85
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7fe4aaf12c158348bfa7446bbcc07e1
+      internalID: -65174600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_86
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abf57a004adc35f45afe91de024c2dff
+      internalID: -1172078433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_87
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ce306b87ba27346aa24e70e9325956
+      internalID: 1455786385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_88
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531f1db48f1b9e542b73560d7e6fc4e6
+      internalID: 54139452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_89
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee0bc4905c270d40816e593831458fc
+      internalID: 1164259027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_90
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aed7a1365b55001408228bd70bdf5740
+      internalID: 900370015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_91
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ff8ccaccd2d1bb46a06a3984b240ffd
+      internalID: 99476262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_92
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1cd90925097f34aa3104a713f76039
+      internalID: 687972189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_93
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dedc10bfd311d354f84a826e56b3518e
+      internalID: 5696074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_94
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8018845fc0ad8264ab86e0914c5da04c
+      internalID: 1001437714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_95
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce90dd74c9f7e34d80a70aa9d50ffa6
+      internalID: 2094600621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_96
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16b42be084d3dd40ad2d9386a2e7da9
+      internalID: -1283921116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_97
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb50f757d5d2df4486ee47e05993c91
+      internalID: 1971290184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_98
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4bb9c4ba5009a74fafa3e4683de8653
+      internalID: 350663966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_99
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6b16b5f0a6173a44bf5da9e5a362e8b
+      internalID: 1775552307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_100
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2658058c69bfa684182d24c80300ccf3
+      internalID: -2024106903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_101
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea27ad5309a5f9245ab82409997e8254
+      internalID: 1264496438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_102
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed418ea9d92c6a44aba3c2cf744654a3
+      internalID: 974955558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_103
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a85d8c8165044e04c8f955fb131cd1c2
+      internalID: -333467367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_104
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bee54bdc3db0cb4c9769cff469b8ebd
+      internalID: -835397215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_105
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6341669881aab24d905e5f2940fb890
+      internalID: -1730318442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_106
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c87f12ba4f6c454999fbb40937eeb5f
+      internalID: -436472869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_107
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e510a7787b21e34bbcc0e8d86f8f2ec
+      internalID: -1896903641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_108
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 131dcc829c1b0ca468ec047542596de2
+      internalID: -854817122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_109
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd58ed9bf474c6942a00decd52017c9d
+      internalID: -1131516407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_110
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54c1bfa2db573e4e9cf26ae4d676561
+      internalID: 1019233542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_111
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0634e6d59d9de82439468733d1912dfe
+      internalID: 2137514595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_112
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8fb208ba54301348ac6ab2728da1df9
+      internalID: 727230278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_113
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1764c0a822c7e344a171c5436d98d55
+      internalID: -1600389636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_114
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71d624bb1f63f3b4ba906cc9f3bce6b0
+      internalID: -503457958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_115
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c3f121589e85241af2a60cc053119c
+      internalID: -2019366595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_116
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0c9c89c2ba57bd4abbbac5e18fc7e1d
+      internalID: 2000863869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_117
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b115ffc24cbcafe46b0ef6987c457eb9
+      internalID: 937359378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_118
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b36aa30966bdfd04abac00330bbff2d3
+      internalID: 669330755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_119
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 061862a7b9171f8479715e4b1da263be
+      internalID: -574658087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_120
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1516c3d604ec6884fa4bd707b95498e4
+      internalID: -634622587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_121
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a1b4eeb56ddb6b4c8e9679aa9d7ce9c
+      internalID: 948252312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_122
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369874c308d5d81489cb679f9875a138
+      internalID: 582948718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_123
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d4d9c098a59104984c7ffcf5c79ad6
+      internalID: -660091557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_124
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff17d0b2cae7d3b48abbfe902d2d1f46
+      internalID: 779429997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_125
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 460d5e8f99393b44f8a8eeccc58e04cc
+      internalID: -828867918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_126
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75e24a032eeb9bb4c970a1c1ad17bc2a
+      internalID: -748432625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_127
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b14c272b137f1b41b51e15e81332cf4
+      internalID: -367244661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_128
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff860168b4f2a4849bbbc2b6c9a0fc3d
+      internalID: -1869884943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_129
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be861274abbada04ca657c4fd9f9fd3f
+      internalID: 332466372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_130
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25428c0598265c24aa4043d782389b17
+      internalID: 754417953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_131
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f5c3c0bb2ac3c4499afbf6ca030d7cf
+      internalID: 1592929186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_132
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7643f43fe7b554694b2a89266cab63
+      internalID: -2045759683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_133
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c18581075dcfce2459ac554624958f2b
+      internalID: 1822160370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_134
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9a064291373f24884a01cd4fc9bc72
+      internalID: -1235054115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_135
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b6dc41c11f37e0498974d4440359555
+      internalID: 682989841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_136
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28ca14cd5f9839242941104921a33f35
+      internalID: 518358127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_137
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bba3b73d21adc8419b33730ae5da7a5
+      internalID: 1270728207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_138
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10b8e77cbd11767418ec09b61c00bdff
+      internalID: 1661535506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_139
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a28734eab5039964da12135932d8ab50
+      internalID: 544080971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75459058c6d8e224ca8137333701f330
+      internalID: -2109410440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_141
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fca87f6cc24c154388dfdaae4b2d40d
+      internalID: 200591419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_142
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcefa9bd1950c04418d54f6c270de742
+      internalID: 330760553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_143
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1c1d3188400cf48a9372928a7f4238
+      internalID: 1151987569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_144
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72e995c449ca23c46805d80357057ac3
+      internalID: -983736044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_145
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65481c716023d294e8002d9ffd494de0
+      internalID: 435502241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_146
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2b1c440ab0d0324982110f064ba8fba
+      internalID: -349755648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_147
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176f0cde64ea1224bb93aa1a23ebfa5a
+      internalID: 1570147334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_148
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 208bf676bc7d2244382f72415476bd28
+      internalID: -1151256509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_149
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac451c00aaad0b8429fae80591bb187d
+      internalID: 1445056395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_150
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a8fe567f0646f4684436d8bb57cb2a
+      internalID: 230781020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_151
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf2acbd28689fb49abc16640f8f229d
+      internalID: 1346831897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_152
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585588999dd572f4a9c39cfef7973561
+      internalID: -882892603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_153
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da11f4eca97d5624f8f88fdb717fb4d6
+      internalID: -741023665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_154
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9e032c4431287c45875c2d4d2879c83
+      internalID: -1588332721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_155
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04def6281032c14c9f9eb632ab11d7a
+      internalID: 1003471188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_156
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 002af3bc7699d454dab4e69a7869b717
+      internalID: -774079079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_157
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aab1f3e7ce07d54a8294b5e827064b5
+      internalID: -1164976811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_158
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5981e78d971416468498b0846e9e9a1
+      internalID: -73741023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_159
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7175935760f400543a46b29c8de228ee
+      internalID: -1268077254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_160
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76fe844eea2880c4f9ac8214fa558559
+      internalID: 678519321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_161
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4a5ba6a1dd0edb4b8e834d5c7a757bf
+      internalID: -1836562106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_162
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d7e8fb4f0fd7c648b4dc8e1adc0abc2
+      internalID: -731653515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_163
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31712aed09f0de148919e182db5c6fac
+      internalID: -2092004998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_164
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 280263b44aacccf46b17cbcd7ac00ccb
+      internalID: 620179959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_165
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3ddc0166ab45fa4fbd1d517546cee3b
+      internalID: -1464387145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_166
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79b0d513e3a01c849aa4e933f6a61695
+      internalID: -1710553673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_167
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 948636a3ad54cba4183f64a2e93faf36
+      internalID: 620424740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_168
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7927f460fcd996448a8f14226d51cc91
+      internalID: 740427482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_169
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97e023b7dbe2cd34e84bb80bf7a1b82f
+      internalID: -1475711935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_170
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29fef7e81634eec4ebe3fdff7986d955
+      internalID: -88778774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_171
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42fcd55471c559247a6ad1e74b25bc97
+      internalID: 337414516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_172
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 105a37ee397b0bd47bc46a81d70a3eb7
+      internalID: 61031040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_173
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d54a42facc074c40bd99928dc78658d
+      internalID: 167090030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_174
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 862bce203ae765945831d3a29570efbd
+      internalID: -430094405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_175
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d470a286da4df4e906441ee47fd680
+      internalID: -769018744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_176
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855a46a5d47993b40b7d1e182ffa5da1
+      internalID: -257374977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_177
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d80f4511501f82d46a4259fafe21da79
+      internalID: -1517673539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_178
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31ca931b863e23341bcf9a4a26a34b8e
+      internalID: -184583336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_179
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa93d65c2fcfaba40933b40c0a50e285
+      internalID: -833209312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_180
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b97010f70c4c14b98a27f1d915e85d
+      internalID: 941880212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_181
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e2aaef322635b4cb8a99de24e89a3f
+      internalID: -166655237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_182
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 210b9251507f78445a7d056a0d1f658e
+      internalID: -2082689122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_183
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 165fa55dcd88b5748b6b0c51cf19627d
+      internalID: 785426813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_184
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc26f323c14b2bc4a89c8294e83e191a
+      internalID: 2034056908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_185
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daff3e694611a654283b07ec3c11c1de
+      internalID: -137843316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_186
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 864efd63db173e147b4eb4b8e994174e
+      internalID: 1674129936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_187
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc1a6af9c30d6345b3789e70f3b273e
+      internalID: -1646147372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_188
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8ba0e170c78ea43b0f4946152dd966
+      internalID: 1684723003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_189
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639a442a1086bd54f96ed791e52ee802
+      internalID: -1678155038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_190
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4b13e6b8d425e4cb9a5ff102ee4422
+      internalID: -2140760058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_191
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9153f6eb1eb0cbd4b818f0f4d9a605a3
+      internalID: -1876629554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_192
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89a7493acb49e954c9836902ac5f51b5
+      internalID: 1410539074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_193
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ca3c159967ac24a833cd813c2929a3
+      internalID: 1624485450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_194
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee1c88d69c5df7a40b36688eba890de0
+      internalID: 1891881004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grey_tiles_195
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebcbbbdc8b6cb914fb687323d5b9f0af
+      internalID: -143964360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      grey_tiles_0: -1709132633
+      grey_tiles_1: -1173823893
+      grey_tiles_10: -1047660721
+      grey_tiles_100: -2024106903
+      grey_tiles_101: 1264496438
+      grey_tiles_102: 974955558
+      grey_tiles_103: -333467367
+      grey_tiles_104: -835397215
+      grey_tiles_105: -1730318442
+      grey_tiles_106: -436472869
+      grey_tiles_107: -1896903641
+      grey_tiles_108: -854817122
+      grey_tiles_109: -1131516407
+      grey_tiles_11: 1606635898
+      grey_tiles_110: 1019233542
+      grey_tiles_111: 2137514595
+      grey_tiles_112: 727230278
+      grey_tiles_113: -1600389636
+      grey_tiles_114: -503457958
+      grey_tiles_115: -2019366595
+      grey_tiles_116: 2000863869
+      grey_tiles_117: 937359378
+      grey_tiles_118: 669330755
+      grey_tiles_119: -574658087
+      grey_tiles_12: -220213937
+      grey_tiles_120: -634622587
+      grey_tiles_121: 948252312
+      grey_tiles_122: 582948718
+      grey_tiles_123: -660091557
+      grey_tiles_124: 779429997
+      grey_tiles_125: -828867918
+      grey_tiles_126: -748432625
+      grey_tiles_127: -367244661
+      grey_tiles_128: -1869884943
+      grey_tiles_129: 332466372
+      grey_tiles_13: 425014001
+      grey_tiles_130: 754417953
+      grey_tiles_131: 1592929186
+      grey_tiles_132: -2045759683
+      grey_tiles_133: 1822160370
+      grey_tiles_134: -1235054115
+      grey_tiles_135: 682989841
+      grey_tiles_136: 518358127
+      grey_tiles_137: 1270728207
+      grey_tiles_138: 1661535506
+      grey_tiles_139: 544080971
+      grey_tiles_14: 1675783850
+      grey_tiles_140: -2109410440
+      grey_tiles_141: 200591419
+      grey_tiles_142: 330760553
+      grey_tiles_143: 1151987569
+      grey_tiles_144: -983736044
+      grey_tiles_145: 435502241
+      grey_tiles_146: -349755648
+      grey_tiles_147: 1570147334
+      grey_tiles_148: -1151256509
+      grey_tiles_149: 1445056395
+      grey_tiles_15: 272455597
+      grey_tiles_150: 230781020
+      grey_tiles_151: 1346831897
+      grey_tiles_152: -882892603
+      grey_tiles_153: -741023665
+      grey_tiles_154: -1588332721
+      grey_tiles_155: 1003471188
+      grey_tiles_156: -774079079
+      grey_tiles_157: -1164976811
+      grey_tiles_158: -73741023
+      grey_tiles_159: -1268077254
+      grey_tiles_16: 305921168
+      grey_tiles_160: 678519321
+      grey_tiles_161: -1836562106
+      grey_tiles_162: -731653515
+      grey_tiles_163: -2092004998
+      grey_tiles_164: 620179959
+      grey_tiles_165: -1464387145
+      grey_tiles_166: -1710553673
+      grey_tiles_167: 620424740
+      grey_tiles_168: 740427482
+      grey_tiles_169: -1475711935
+      grey_tiles_17: 2100442674
+      grey_tiles_170: -88778774
+      grey_tiles_171: 337414516
+      grey_tiles_172: 61031040
+      grey_tiles_173: 167090030
+      grey_tiles_174: -430094405
+      grey_tiles_175: -769018744
+      grey_tiles_176: -257374977
+      grey_tiles_177: -1517673539
+      grey_tiles_178: -184583336
+      grey_tiles_179: -833209312
+      grey_tiles_18: 241232343
+      grey_tiles_180: 941880212
+      grey_tiles_181: -166655237
+      grey_tiles_182: -2082689122
+      grey_tiles_183: 785426813
+      grey_tiles_184: 2034056908
+      grey_tiles_185: -137843316
+      grey_tiles_186: 1674129936
+      grey_tiles_187: -1646147372
+      grey_tiles_188: 1684723003
+      grey_tiles_189: -1678155038
+      grey_tiles_19: -1688360255
+      grey_tiles_190: -2140760058
+      grey_tiles_191: -1876629554
+      grey_tiles_192: 1410539074
+      grey_tiles_193: 1624485450
+      grey_tiles_194: 1891881004
+      grey_tiles_195: -143964360
+      grey_tiles_2: -770167288
+      grey_tiles_20: 244222812
+      grey_tiles_21: -627476976
+      grey_tiles_22: 1651046471
+      grey_tiles_23: 1692291330
+      grey_tiles_24: 538833453
+      grey_tiles_25: -568703239
+      grey_tiles_26: -729840910
+      grey_tiles_27: 1476168604
+      grey_tiles_28: 1008949429
+      grey_tiles_29: -241588198
+      grey_tiles_3: -508602220
+      grey_tiles_30: 1984584810
+      grey_tiles_31: 840985354
+      grey_tiles_32: 1687815943
+      grey_tiles_33: -1009073432
+      grey_tiles_34: -912482953
+      grey_tiles_35: 1671441870
+      grey_tiles_36: -357470880
+      grey_tiles_37: -1573240480
+      grey_tiles_38: 1835043349
+      grey_tiles_39: -1082447436
+      grey_tiles_4: -756175528
+      grey_tiles_40: -480318449
+      grey_tiles_41: -1913642721
+      grey_tiles_42: 769926152
+      grey_tiles_43: -664184252
+      grey_tiles_44: 76128907
+      grey_tiles_45: 1156798532
+      grey_tiles_46: 140877952
+      grey_tiles_47: -43912751
+      grey_tiles_48: -679111020
+      grey_tiles_49: 1881158043
+      grey_tiles_5: 639080497
+      grey_tiles_50: 1566883229
+      grey_tiles_51: -2140116990
+      grey_tiles_52: -334534172
+      grey_tiles_53: 1346206046
+      grey_tiles_54: -887037225
+      grey_tiles_55: 285025388
+      grey_tiles_56: 1282909092
+      grey_tiles_57: -399648873
+      grey_tiles_58: 553447490
+      grey_tiles_59: 2086110661
+      grey_tiles_6: 1204737156
+      grey_tiles_60: 1847634382
+      grey_tiles_61: 564534848
+      grey_tiles_62: 685148994
+      grey_tiles_63: -2001401175
+      grey_tiles_64: -204160810
+      grey_tiles_65: -1821164078
+      grey_tiles_66: -1320209642
+      grey_tiles_67: -1353674139
+      grey_tiles_68: 1974674940
+      grey_tiles_69: 123664385
+      grey_tiles_7: -1889779015
+      grey_tiles_70: -628578842
+      grey_tiles_71: 1959166614
+      grey_tiles_72: 664871591
+      grey_tiles_73: 317504696
+      grey_tiles_74: 1381116361
+      grey_tiles_75: -1153054823
+      grey_tiles_76: 606893320
+      grey_tiles_77: -969116201
+      grey_tiles_78: 88745676
+      grey_tiles_79: -249427775
+      grey_tiles_8: -490537749
+      grey_tiles_80: 502716798
+      grey_tiles_81: 654907553
+      grey_tiles_82: -1675747136
+      grey_tiles_83: 1484709486
+      grey_tiles_84: -1801419341
+      grey_tiles_85: -65174600
+      grey_tiles_86: -1172078433
+      grey_tiles_87: 1455786385
+      grey_tiles_88: 54139452
+      grey_tiles_89: 1164259027
+      grey_tiles_9: -1613777425
+      grey_tiles_90: 900370015
+      grey_tiles_91: 99476262
+      grey_tiles_92: 687972189
+      grey_tiles_93: 5696074
+      grey_tiles_94: 1001437714
+      grey_tiles_95: 2094600621
+      grey_tiles_96: -1283921116
+      grey_tiles_97: 1971290184
+      grey_tiles_98: 350663966
+      grey_tiles_99: 1775552307
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
