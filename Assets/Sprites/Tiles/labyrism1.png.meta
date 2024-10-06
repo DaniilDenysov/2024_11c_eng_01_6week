@@ -1,0 +1,4426 @@
+fileFormatVersion: 2
+guid: 871bda762a690424a83c061a470261e0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 527
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: labyrism1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddf9beb54c9535e43a620818ed8f02af
+      internalID: 333713644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_1
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f7f6022d7ab034ab7485e6b6139e40
+      internalID: -652477192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_2
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa4bef3d28f641419147fc61a8b7928
+      internalID: 733921156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_3
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14b057d803c96e741919b5cc557cf5cb
+      internalID: 755462013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_4
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c097a484b2f7d845851e3bbf47bc178
+      internalID: -1025609689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_5
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6ee09feed4f5843a56952f12c9cc48
+      internalID: 981618605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_6
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f2132de6b4ec214bb8a8944aefd627f
+      internalID: -480708912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_7
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cd723080f006c04c89af93f58cc7b7d
+      internalID: 828049144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_8
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7598892366d581d46a8c7b111f32cb37
+      internalID: 1132442802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_9
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8852056dfa1997c479fc88388c841e5b
+      internalID: -845947692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_10
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab7147106319b84d97b4ab3c495f74f
+      internalID: 1958811824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_11
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2befb364630fdea4a8fe26c6db2d5b8d
+      internalID: -47321741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_12
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec4fc6d21bb32ad48b5fb84b0181cde9
+      internalID: -1187454121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_13
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 6854.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 475b780cb4bd1ab4fbe16462ffd6d71a
+      internalID: 2061593811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb4cfacd057f75741b24044e29db9906
+      internalID: 124692524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_15
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b84f0e655640c8b49a03a134abceab47
+      internalID: 691065333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_16
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfbe7c93510ab2b4e93236aa72f1b7e0
+      internalID: -2033560963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_17
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 012bab1c4e5d28f478ef32b7edd88858
+      internalID: -422012263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_18
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae17bdd4adcad80488d750125c073eb6
+      internalID: -1361525547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_19
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c3101de05098e24e8b82d864e4aebab
+      internalID: 1694254202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_20
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c829d6d3e005dce45b35503e97c4fb41
+      internalID: -1559122902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_21
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b445ec22c91b68449f6431b2dc0d92a
+      internalID: 1012682580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_22
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3b55ef1289039a4dbcf010bbd187080
+      internalID: 635709775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_23
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c7ea4c3d45b0d449642147485afd49
+      internalID: 656256941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_24
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bda547af1e2e4942a6d7516d6c19e6f
+      internalID: 99406357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_25
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa81f6d95b64194bb6048033cc8d95b
+      internalID: -1851196041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_26
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fbcfa62fadb01a4f8b5794c0f387952
+      internalID: -1194013607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_27
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 6327.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc2ac5e75a40d74999beccc140570c7
+      internalID: 1342986052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111d6f1bb65c9194a8e9277fa826a499
+      internalID: -1168992978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_29
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f729281b842c54c9c12ee81b40ccc3
+      internalID: -994450281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_30
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70ef02e1430c71045b2d0c55ff8d5ff8
+      internalID: 758270689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_31
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3d1c2ed7927a2e49a9624b26d28bab5
+      internalID: 1994805778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_32
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5080c91e4fd639a42a12ab9ab74617e6
+      internalID: -1638848372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_33
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5247fe5cc02942c42a4514b08f3155ff
+      internalID: 1265562327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_34
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b42561361edbbb241b912ce9f1ec4a59
+      internalID: -1625831772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_35
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f48a7a3db0dd8b5408bbb16abccb564f
+      internalID: 874617731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_36
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 998bedb7a1c00c948adb5499e1280628
+      internalID: 1666610209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_37
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fda0e166fff3fe4fae1e92f19b20abe
+      internalID: -1909643126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_38
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4629d3c4c18fa5144857beba27be5c3a
+      internalID: -682174834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_39
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b6d08bdd119f54ca60f460acf63780
+      internalID: 2091324976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_40
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46db0f9d16726844a7dc7ce3cab3123
+      internalID: -1263981835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_41
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 5800.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5de66bb3cfbfcb64991f8961436eaddf
+      internalID: 610955940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57570246a7cc8a74a9d956e4f1e0168c
+      internalID: 2025681678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_43
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b953ae06dd3d4c141a9bb87449975cd8
+      internalID: 1080591595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_44
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 877a7771b3aa0e04da09cb5b6c901327
+      internalID: -5052892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_45
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64f777f18d62aa54eb552a9035c6f611
+      internalID: 2085429811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_46
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a9324146ebbb14598ebf47b6a2a49f
+      internalID: -1892729109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_47
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24d9429093e26f641b60e61d3a97b390
+      internalID: -1085400547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_48
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd69cf3417f78743bed1824e2390bc5
+      internalID: 91161355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_49
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7c279f9b951244e8352742515553cb
+      internalID: 255775706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_50
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4376db7b87eef345ad413c7ca8051bd
+      internalID: 533195260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_51
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6624dde4026a8c44bb2a41829bcb1dd0
+      internalID: -950925936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_52
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 033b1150b01c3bc41b1c9930aa9b8fac
+      internalID: -1218703076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_53
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed056614bf2e32b48a990dc55ac2acef
+      internalID: 1853920472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_54
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 765283a139c4b624d88f6453db863e0c
+      internalID: -679796484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_55
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 5273.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d6bb00d5fcfe1e45ab70cfc8c392f7d
+      internalID: 1155200315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b8024a0a8dd54a49acc919fe725a886
+      internalID: 1197204348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_57
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6690dbc81c01bcd46b11e5e1efb7fe8f
+      internalID: 362705775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_58
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9220d83c1780b5747b59707fcba0b62b
+      internalID: 2092380155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_59
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 210805feee485d44891cd60c07269f58
+      internalID: -1388617524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_60
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a8cd8b754e384d4982fe04006d0671d
+      internalID: 788307493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_61
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a73d9e3749c074f9055e28a288989b
+      internalID: -1497536586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_62
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44cc1e42c06d7a3428de2fd409210d69
+      internalID: -803993534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_63
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51154fed36004c64db475bbb114a7c89
+      internalID: 2099951386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_64
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb146b87e3aa6664fbd7f53c60b95101
+      internalID: -426350004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_65
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b398ea27ffed9174cb686c53a18064d7
+      internalID: 1563756310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_66
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd39b98b0864de24699e960a923c3b67
+      internalID: 902659332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_67
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db3da63318b388b41bef3b729bffc490
+      internalID: 764508748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_68
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d6183105a6bff4c9cda28464277f68
+      internalID: 651503741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_69
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 4746.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3056be6793d4a746a4d277119557b1d
+      internalID: -1822374821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4bd422fe1b6932489938dba0e4793a0
+      internalID: -1767452265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_71
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab37b476c35ce746818699a5b4216e6
+      internalID: 769417335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_72
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f3be7aa847d72740a2d3668a1d3ac39
+      internalID: 1433522703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_73
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad8bfac50ed839458d9de410142ba6c
+      internalID: -1993573336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_74
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63e488eb92365f94d80a9240e6fc9519
+      internalID: -2114489856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_75
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7dad2e0447b8f4e943d4bc6391f680
+      internalID: 2008046727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_76
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 397f960c06e39324dacea373a9651729
+      internalID: -2003420332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_77
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b76fa9926e0416468528414b2e33553
+      internalID: 301344146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_78
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e03097508a4e5546bdac33c5c3d8b84
+      internalID: 2114558159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_79
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e34d26433d452c46b32a1c595b5dfee
+      internalID: 1712280801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_80
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f77e11b97dbcc04aa49d2c5e9b2640b
+      internalID: 479531218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_81
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d11689e7d013334f8189f0fcd96aa5a
+      internalID: -2135499616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_82
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e895b769093e744af734b4870db33a
+      internalID: 559466399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_83
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 4219.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9086199836bbdd40a76f9f2a75de380
+      internalID: -126239067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f35481638fd53549ac65e61357fc12c
+      internalID: -657285676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_85
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58d9ca46bd869a8469d2beb73e1aa91a
+      internalID: -1741515625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_86
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 854ed29b4f1e1f348bfbb8eb2c7e61b0
+      internalID: 1253916822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_87
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b537a96afcff0704eb36dceb48ca5476
+      internalID: 679808466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_88
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8828d15d3bc7d4cbea807d332070a1
+      internalID: 905279800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_89
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db7eda0455c1e84ab0efcf407c92fbf
+      internalID: -1996349912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_90
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46a26ee1d9cd2c94a8a3ddb662e8e84c
+      internalID: -1755855787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_91
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e87b5885edbfe489a9ffd917cc4939
+      internalID: -1007604545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_92
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fc614c53e0e4d94f8475a1c649ebbe8
+      internalID: 106080883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_93
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d186bc0ac9691c4c9df543fa6459f0c
+      internalID: 829525202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_94
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c513879b6a0c02641821fe71cf914aa5
+      internalID: 1794439515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_95
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf538a4ac2b9b34d974241c6c9c0e9c
+      internalID: -105437650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_96
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06cffd780ef299848a01634681666047
+      internalID: -1974887024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_97
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3692.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6202f8142bfa5b4eb8328933f3dced1
+      internalID: -436691250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_98
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462dd195444b2ba47a6c4d66cdd59afe
+      internalID: -1728916713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_99
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4935f36084921e048b905346ed53e987
+      internalID: -550780854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_100
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 665a35606ac609445b8856932661cf9d
+      internalID: 134990683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_101
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a0aeecf27844c4691a425e39443d52
+      internalID: -684274255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_102
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 427550b2001cb9447843a5f7db461d2f
+      internalID: -12041638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_103
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c777e86933fc3d40aaad243e3d15d6a
+      internalID: -653036878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_104
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89a60b6630b74d2428340b30f3a21b7e
+      internalID: -1652652058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_105
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f21cc3b0a52ab6040b0145078ea51170
+      internalID: -1995738567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_106
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fe6d803e0d254a4b9344010bbc084a2
+      internalID: 477154335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_107
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25cd379cabf282c4297e64bbc8bbb544
+      internalID: -1022645418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_108
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77edadfb018d3ed42bc82dc0553b25c3
+      internalID: -953668900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_109
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f62a2a89d402f4d9f6cb9230af0fba
+      internalID: -1402075288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_110
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3c3fe21d35a6145a9d4a2ac1b104f0
+      internalID: 517228518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_111
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3165.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c00b0706d99e644ae1a81098dbb8ed
+      internalID: -724037463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_112
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53736aa5c47063946a71c48998d1ea8f
+      internalID: -785947270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_113
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 532873f471e1d90438aa0ee88cd162ec
+      internalID: 1489363649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_114
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 922767fbdc1272a4a9d56d0d85660843
+      internalID: -1997594334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_115
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f660a21068fc844a29bbf8f104f17f
+      internalID: 519005293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_116
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf33ba2b67c44940a35d0f7cdae5bb3
+      internalID: -309550300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_117
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2aa646f7f99faa4d8322c671d6f9f10
+      internalID: -632597596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_118
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0b2d1e244ba344448ac39c0e4b59a13
+      internalID: -1150151624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_119
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 694e37eaa5b861a47bd2e76d9209c89c
+      internalID: 1762755278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_120
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c1596d0c48f89942949bfbbee8c3065
+      internalID: -1129895599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_121
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a46defe596f77d4693b033fc506dbdd
+      internalID: 2029434541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_122
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376f67aac57924045a80e8094dd5e5eb
+      internalID: -195271050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_123
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61c44dfb40b938441ba4406c82f7d104
+      internalID: -2091648977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_124
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b053957e7e3b6814f8ed945790e2a510
+      internalID: 1969688082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_125
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 2638.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b2bc73d9b192243932cc9fa9c9d611
+      internalID: 1942934853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_126
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398ef85f6c5acce41a5a037b2d3189fb
+      internalID: -1980501634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_127
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a7aaf02b3e4e5446aa1b55463e321b7
+      internalID: -668948242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_128
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39d3e0697f15c63439fe66f67bd38e2f
+      internalID: 482339904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_129
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e31dedffafd01a49bd14214e1a680df
+      internalID: 517617629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_130
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd252df57a405a944b5ef461700d26d5
+      internalID: 200893048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_131
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd3cfd54b5ae2274fa6e74762d3f9af2
+      internalID: -2070258045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_132
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d221e18e7aaf60941b75aa9164c9de8e
+      internalID: -398236611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_133
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a950cb9a31e8047b5d7e2cb97fad4f
+      internalID: 978135876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_134
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 378cb7263f42f724695f4f8eb1509df3
+      internalID: -1612018495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_135
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97ec392c082b31641ae5e0c1d436c6df
+      internalID: 1397894285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_136
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53448ea7410ab15408bcb55f9638006c
+      internalID: 409705348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_137
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf2a7a906b351c4fab24c7440ab41bc
+      internalID: 2013634648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_138
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6234fd19564a69f49bcd28665c178491
+      internalID: -833997189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_139
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 2111.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce525a6df48152488afd4a7ec53353d
+      internalID: -783888237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34dcf1852af311648bc111a1c27ed575
+      internalID: -1570672695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_141
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48482b3d525812749964fa308b7f387c
+      internalID: 1433949132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_142
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45cb090367c43744c9dcc6527faaecdb
+      internalID: -710725911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_143
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24612270d2a8d054da494fb66feb9635
+      internalID: 1819759128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_144
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d968f11a4f43963448b318d0fba94eb7
+      internalID: 1728311158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_145
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7ee15a71afa754d8cb91b0dc58d68a
+      internalID: 2087573757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_146
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 908eca901bd318d4982521ebac361cc6
+      internalID: 1397386387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_147
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f31333f448a77eb4c95af90b58a0ed90
+      internalID: 1777296366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_148
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de73c92f45e33b43b856cc39d1386b8
+      internalID: -57778509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_149
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7029892af7ca27418f796e325b92ee0
+      internalID: 2086226268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_150
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dc97e0cbbb4f3243b2d0a381035c59d
+      internalID: -1156744339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_151
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c2883134e330134e84925249b3e7289
+      internalID: 1935313754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_152
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c24238765f2e14d85e8e7f28490e99
+      internalID: 1952588380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_153
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 1584.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4edaf02fc4ac724a9a71f64b6eb2747
+      internalID: -1928505287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_154
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d80633324265d44da2648edefb3c59d
+      internalID: 1599947544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_155
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 706f56278aca5da469c37ad3f3018d62
+      internalID: 127503730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_156
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178ab0c2529aed84084f43e09ce2293f
+      internalID: 664002193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_157
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8491812c1eb35814093abbd9a7eb8efc
+      internalID: 1281758363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_158
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b4d129501c49046bd92ae788be58fd
+      internalID: -855943612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_159
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f044ef48f607b9a46a5751311da1e473
+      internalID: 509900291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_160
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b112808e524ad4948b382f89104de9e3
+      internalID: -95170173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_161
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 789ffde05dd0c794cacf102af939bfb7
+      internalID: 1933752909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_162
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd6c0ccb4e8ea034fb2ff70543e4ddce
+      internalID: 898620410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_163
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81599d02dc7aa8443a3c6d337081bb1d
+      internalID: 533055021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_164
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917ba953dcad3044d98ea7ac2b5ac1dc
+      internalID: 1965070147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_165
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c0337f85c9648e438084f913e447fd8
+      internalID: -1370655303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_166
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551ab60dcf4b8d64aa894f68413d0847
+      internalID: -441395821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_167
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 1057.7144
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de141f51e7056724995682523bc338a5
+      internalID: -1005464359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_168
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b435b1e9f448d488390ba953452d85
+      internalID: 1997116127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_169
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf89f26b065662c47a7b70f7615b5d05
+      internalID: -858678583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_170
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1fab8b06b3bd3e4fa1cd4dc94a8c2b1
+      internalID: 1646120272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_171
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d999d3c12e71c2047bd36389a2083ba3
+      internalID: 1088159202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_172
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037dc241a1b002945a79d95cecd85e62
+      internalID: -203333547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_173
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8975bdcbdedb83f42b97f64f1f435cc3
+      internalID: -1455580042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_174
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92fdae16efb65f419438d5cf1b8aefa
+      internalID: 780706664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_175
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6e2d68053dc5d844992eb6aab4f51b7
+      internalID: -945449726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_176
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795572d4f43b8ba4c81b417c1f72dae0
+      internalID: 848155209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_177
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c13cb132af41efb489c88c1d78d3fcec
+      internalID: 565429961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_178
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eabcefb8d5d2bb34d9f08fea8a3d4fd1
+      internalID: 756328770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_179
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b00d97d0172c0447a8ae3ea1a25ad44
+      internalID: -359074736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_180
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11496bb4091fa3c41bed2db6be773347
+      internalID: 729045395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_181
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 530.7143
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7b6f5de6b8fecb43bd48a298ad0e7bf
+      internalID: 895641327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_182
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63fce7c3b8bae8a438c1bfafbf9608e0
+      internalID: -1270171919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_183
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0f08ba7b37023744b37d28363a4d1ae
+      internalID: 1275758517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_184
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4edcb45591018854e9b9c8668499f6db
+      internalID: -642582269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_185
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cfd17436d8ade7459bc1f32d83bfff5
+      internalID: 1223791362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_186
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48a9ec9f074fa9643a9ca0092209533a
+      internalID: -1605931319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_187
+      rect:
+        serializedVersion: 2
+        x: 2635
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ecf0890f3d1d51428cdfd5cc3ed0de9
+      internalID: -1603759954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_188
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39fc1448b9c107d42b8ecb35ed1cb7b3
+      internalID: 1762295208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_189
+      rect:
+        serializedVersion: 2
+        x: 3689
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff520839e56ce3041a91c1867c0380c4
+      internalID: -1626261617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_190
+      rect:
+        serializedVersion: 2
+        x: 4216
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd8643e6abf521f4db385b643d9a60d4
+      internalID: -731927916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_191
+      rect:
+        serializedVersion: 2
+        x: 4743
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f696c9c8906a88048b9e6c59411d4f11
+      internalID: -648712506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_192
+      rect:
+        serializedVersion: 2
+        x: 5270
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a499b6651244f4fb2f375aa7cb89fc
+      internalID: -554978837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_193
+      rect:
+        serializedVersion: 2
+        x: 5797
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b225b7a8fab628f4f81c4d1a22e37690
+      internalID: -136048159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_194
+      rect:
+        serializedVersion: 2
+        x: 6324
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 570678b8c7bd106438a0f5e8f8b14065
+      internalID: -757982163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: labyrism1_195
+      rect:
+        serializedVersion: 2
+        x: 6851
+        y: 3.7142944
+        width: 527.2857
+        height: 527.2857
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b7d9961e576e9042ba82b1cf87a9413
+      internalID: -505369329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      labyrism1_0: 333713644
+      labyrism1_1: -652477192
+      labyrism1_10: 1958811824
+      labyrism1_100: 134990683
+      labyrism1_101: -684274255
+      labyrism1_102: -12041638
+      labyrism1_103: -653036878
+      labyrism1_104: -1652652058
+      labyrism1_105: -1995738567
+      labyrism1_106: 477154335
+      labyrism1_107: -1022645418
+      labyrism1_108: -953668900
+      labyrism1_109: -1402075288
+      labyrism1_11: -47321741
+      labyrism1_110: 517228518
+      labyrism1_111: -724037463
+      labyrism1_112: -785947270
+      labyrism1_113: 1489363649
+      labyrism1_114: -1997594334
+      labyrism1_115: 519005293
+      labyrism1_116: -309550300
+      labyrism1_117: -632597596
+      labyrism1_118: -1150151624
+      labyrism1_119: 1762755278
+      labyrism1_12: -1187454121
+      labyrism1_120: -1129895599
+      labyrism1_121: 2029434541
+      labyrism1_122: -195271050
+      labyrism1_123: -2091648977
+      labyrism1_124: 1969688082
+      labyrism1_125: 1942934853
+      labyrism1_126: -1980501634
+      labyrism1_127: -668948242
+      labyrism1_128: 482339904
+      labyrism1_129: 517617629
+      labyrism1_13: 2061593811
+      labyrism1_130: 200893048
+      labyrism1_131: -2070258045
+      labyrism1_132: -398236611
+      labyrism1_133: 978135876
+      labyrism1_134: -1612018495
+      labyrism1_135: 1397894285
+      labyrism1_136: 409705348
+      labyrism1_137: 2013634648
+      labyrism1_138: -833997189
+      labyrism1_139: -783888237
+      labyrism1_14: 124692524
+      labyrism1_140: -1570672695
+      labyrism1_141: 1433949132
+      labyrism1_142: -710725911
+      labyrism1_143: 1819759128
+      labyrism1_144: 1728311158
+      labyrism1_145: 2087573757
+      labyrism1_146: 1397386387
+      labyrism1_147: 1777296366
+      labyrism1_148: -57778509
+      labyrism1_149: 2086226268
+      labyrism1_15: 691065333
+      labyrism1_150: -1156744339
+      labyrism1_151: 1935313754
+      labyrism1_152: 1952588380
+      labyrism1_153: -1928505287
+      labyrism1_154: 1599947544
+      labyrism1_155: 127503730
+      labyrism1_156: 664002193
+      labyrism1_157: 1281758363
+      labyrism1_158: -855943612
+      labyrism1_159: 509900291
+      labyrism1_16: -2033560963
+      labyrism1_160: -95170173
+      labyrism1_161: 1933752909
+      labyrism1_162: 898620410
+      labyrism1_163: 533055021
+      labyrism1_164: 1965070147
+      labyrism1_165: -1370655303
+      labyrism1_166: -441395821
+      labyrism1_167: -1005464359
+      labyrism1_168: 1997116127
+      labyrism1_169: -858678583
+      labyrism1_17: -422012263
+      labyrism1_170: 1646120272
+      labyrism1_171: 1088159202
+      labyrism1_172: -203333547
+      labyrism1_173: -1455580042
+      labyrism1_174: 780706664
+      labyrism1_175: -945449726
+      labyrism1_176: 848155209
+      labyrism1_177: 565429961
+      labyrism1_178: 756328770
+      labyrism1_179: -359074736
+      labyrism1_18: -1361525547
+      labyrism1_180: 729045395
+      labyrism1_181: 895641327
+      labyrism1_182: -1270171919
+      labyrism1_183: 1275758517
+      labyrism1_184: -642582269
+      labyrism1_185: 1223791362
+      labyrism1_186: -1605931319
+      labyrism1_187: -1603759954
+      labyrism1_188: 1762295208
+      labyrism1_189: -1626261617
+      labyrism1_19: 1694254202
+      labyrism1_190: -731927916
+      labyrism1_191: -648712506
+      labyrism1_192: -554978837
+      labyrism1_193: -136048159
+      labyrism1_194: -757982163
+      labyrism1_195: -505369329
+      labyrism1_2: 733921156
+      labyrism1_20: -1559122902
+      labyrism1_21: 1012682580
+      labyrism1_22: 635709775
+      labyrism1_23: 656256941
+      labyrism1_24: 99406357
+      labyrism1_25: -1851196041
+      labyrism1_26: -1194013607
+      labyrism1_27: 1342986052
+      labyrism1_28: -1168992978
+      labyrism1_29: -994450281
+      labyrism1_3: 755462013
+      labyrism1_30: 758270689
+      labyrism1_31: 1994805778
+      labyrism1_32: -1638848372
+      labyrism1_33: 1265562327
+      labyrism1_34: -1625831772
+      labyrism1_35: 874617731
+      labyrism1_36: 1666610209
+      labyrism1_37: -1909643126
+      labyrism1_38: -682174834
+      labyrism1_39: 2091324976
+      labyrism1_4: -1025609689
+      labyrism1_40: -1263981835
+      labyrism1_41: 610955940
+      labyrism1_42: 2025681678
+      labyrism1_43: 1080591595
+      labyrism1_44: -5052892
+      labyrism1_45: 2085429811
+      labyrism1_46: -1892729109
+      labyrism1_47: -1085400547
+      labyrism1_48: 91161355
+      labyrism1_49: 255775706
+      labyrism1_5: 981618605
+      labyrism1_50: 533195260
+      labyrism1_51: -950925936
+      labyrism1_52: -1218703076
+      labyrism1_53: 1853920472
+      labyrism1_54: -679796484
+      labyrism1_55: 1155200315
+      labyrism1_56: 1197204348
+      labyrism1_57: 362705775
+      labyrism1_58: 2092380155
+      labyrism1_59: -1388617524
+      labyrism1_6: -480708912
+      labyrism1_60: 788307493
+      labyrism1_61: -1497536586
+      labyrism1_62: -803993534
+      labyrism1_63: 2099951386
+      labyrism1_64: -426350004
+      labyrism1_65: 1563756310
+      labyrism1_66: 902659332
+      labyrism1_67: 764508748
+      labyrism1_68: 651503741
+      labyrism1_69: -1822374821
+      labyrism1_7: 828049144
+      labyrism1_70: -1767452265
+      labyrism1_71: 769417335
+      labyrism1_72: 1433522703
+      labyrism1_73: -1993573336
+      labyrism1_74: -2114489856
+      labyrism1_75: 2008046727
+      labyrism1_76: -2003420332
+      labyrism1_77: 301344146
+      labyrism1_78: 2114558159
+      labyrism1_79: 1712280801
+      labyrism1_8: 1132442802
+      labyrism1_80: 479531218
+      labyrism1_81: -2135499616
+      labyrism1_82: 559466399
+      labyrism1_83: -126239067
+      labyrism1_84: -657285676
+      labyrism1_85: -1741515625
+      labyrism1_86: 1253916822
+      labyrism1_87: 679808466
+      labyrism1_88: 905279800
+      labyrism1_89: -1996349912
+      labyrism1_9: -845947692
+      labyrism1_90: -1755855787
+      labyrism1_91: -1007604545
+      labyrism1_92: 106080883
+      labyrism1_93: 829525202
+      labyrism1_94: 1794439515
+      labyrism1_95: -105437650
+      labyrism1_96: -1974887024
+      labyrism1_97: -436691250
+      labyrism1_98: -1728916713
+      labyrism1_99: -550780854
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
