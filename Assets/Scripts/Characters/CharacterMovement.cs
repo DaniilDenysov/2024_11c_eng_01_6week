@@ -50,6 +50,10 @@ namespace Characters
 
         private void OnTick()
         {
+        }
+
+        public void MakeMovement() 
+        {
             if (isPaused) return;
             if (steps > 0)
             {

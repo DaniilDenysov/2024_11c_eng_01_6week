@@ -38,7 +38,9 @@ namespace Selectors
             }
         }
 
-       
+        public void MakeMovement() {
+            CurrentCharacter.MakeMovement();
+        }
     }
 
     public static class ListExtensions

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "1st_group_6_week.sln"
+    "dotnet.defaultSolution": "2024_11c_eng_01_6week.sln"
 }
