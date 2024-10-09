@@ -140,5 +140,10 @@ namespace Managers
         {
             _pool.Clear();
         }
+
+        public override void InstallBindings()
+        {
+            Container.Bind<PoolManager>().FromInstance(this).AsSingle();
+        }
     }
 }

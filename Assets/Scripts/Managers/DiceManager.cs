@@ -10,5 +10,10 @@ namespace Managers
         {
             return Random.Range(1,7);
         }
+
+        public override void InstallBindings()
+        {
+            Container.Bind<DiceManager>().FromInstance(this).AsSingle();
+        }
     }
 }
