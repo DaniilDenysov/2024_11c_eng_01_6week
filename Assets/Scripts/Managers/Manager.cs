@@ -23,7 +23,7 @@ namespace Managers
 
         public virtual void Awake()
         {
-            if (_sceneContext != null)
+       /*     if (_sceneContext != null)
             {
                 //_sceneContext.Container.BindInstance(this).AsSingle();
 
@@ -32,7 +32,7 @@ namespace Managers
             else
             {
                 Debug.LogError("No SceneContext found in the current scene.");
-            }
+            }*/
         }
     }
 }
