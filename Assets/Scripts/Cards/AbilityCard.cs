@@ -9,8 +9,8 @@ namespace Cards
     {
         public override bool OnCardActivation(SkillSelector arg1)
         {
+            arg1.Select();
             return true;
-            //selector
         }
     }
 }

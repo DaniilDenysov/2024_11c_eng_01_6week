@@ -31,7 +31,8 @@ namespace Characters.Skills
             }
             catch (Exception e)
             {
-                Debug.LogError($"Out of bounds:unable to find skill with index {i}!");
+                Debug.LogError($"Out of bounds:unable to find skill with index {i}!" +
+                    "Or failed to find CharacterMovement Component");
             }
         }
     }

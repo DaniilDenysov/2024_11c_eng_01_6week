@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -16,6 +17,7 @@ namespace Validation
         public static bool IsValid(Vector3Int direction, Tile tile) //calculate on separate thread
         {
             Sprite sprite = tile.sprite;
+
             if (sprite != null)
             {
                 Texture2D texture = sprite.texture;
@@ -78,7 +80,6 @@ namespace Validation
             }
             return false;
         }
-
 
         private static bool IsPixelTransparent(Color pixel) => pixel.a == 0;
     }

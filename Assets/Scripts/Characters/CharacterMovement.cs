@@ -71,5 +71,9 @@ namespace Characters
                 if (steps == 0) EventManager.FireEvent(EventManager.OnTurnEnd);
             }
         }
+
+        public PathValidator GetPathValidator() {
+            return pathValidator;
+        }
     }
 }
