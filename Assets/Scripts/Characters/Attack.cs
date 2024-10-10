@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ganeral;
 using UnityEngine;
 
 namespace Characters
@@ -7,7 +8,6 @@ namespace Characters
     [RequireComponent(typeof(Inventory))]
     public class Attack : MonoBehaviour
     {
-        [SerializeField] private List<Vector3> attackDirections = new List<Vector3>();
         private Inventory inventory;
 
         private void Awake()
@@ -15,21 +15,16 @@ namespace Characters
             inventory = GetComponent<Inventory>();
         }
 
-        public bool TryAttack ()
+        public bool TryAttack(Vector3 cell)
         {
-            Vector3 origin = transform.position;
-            foreach (var attackDirection in attackDirections)
+            var result = Physics2D.OverlapCircle(cell, 0.1f);
+
+            if (result != default && result.TryGetComponent(out Inventory opponentsInventory))
             {
-                var result = Physics2D.OverlapCircle(origin + attackDirection, 0.1f);
-                Debug.DrawRay(transform.position,attackDirection,Color.red,10f);
-                if (result != default && result.TryGetComponent(out Inventory opponentsInventory))
+                if (opponentsInventory.TryPopItem(out Human human))
                 {
-                    //Add zone handling
-                    if (opponentsInventory.TryPopItem(out Human human))
-                    {
-                        inventory.Add(human);
-                        return true;
-                    }
+                    inventory.Add(human);
+                    return true;
                 }
             }
 

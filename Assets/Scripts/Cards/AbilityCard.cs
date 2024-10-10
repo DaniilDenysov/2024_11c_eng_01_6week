@@ -13,5 +13,12 @@ namespace Cards
             arg1.Select();
             EventManager.OnSkillSetUp += OnCardSetUp;
         }
+
+        public override void OnCardSetUp(bool succesfully)
+        {
+            EventManager.OnSkillSetUp -= OnCardSetUp;
+
+            base.OnCardSetUp(succesfully);
+        }
     }
 }
