@@ -1,4 +1,5 @@
 using CustomTools;
+using Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,12 +28,15 @@ namespace Characters.Skills
         {
             try
             {
-                skills[i].Activate();
+                if (skills[i].IsActivatable()) {
+                    skills[i].Activate();
+                } else {
+                    EventManager.OnSkillSetUp(false);
+                }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Debug.LogError($"Out of bounds:unable to find skill with index {i}!" +
-                    "Or failed to find CharacterMovement Component");
+                Debug.LogError($"Out of bounds:unable to find skill with index {i}!");
             }
         }
     }

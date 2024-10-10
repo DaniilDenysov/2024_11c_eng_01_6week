@@ -33,16 +33,38 @@ namespace Ganeral
             };
         }
 
-        public static Vector3 GetAdjustedTileAdjustedPosition(Vector3 origin, Vector3 cellUnit, Vector3 position) {
-            return new Vector3((float)roundByUnitGrid(origin.x, cellUnit.x, position.x), 
-                (float)roundByUnitGrid(origin.y, cellUnit.y, position.y), 0);
+        public static Vector3 GetUnitDirection(Tilemap tilemap, Vector3 firstPosition, Vector3 secondPosition) {
+            Vector3 unitSize = tilemap.layoutGrid.cellSize;
+
+            Vector3Int firstTilePosition = tilemap.WorldToCell(firstPosition);
+            Vector3Int secondTilePosition = tilemap.WorldToCell(secondPosition);
+            Vector3Int vectorDifference = secondTilePosition - firstTilePosition;
+
+            return new Vector3(
+                vectorDifference.x > 0 ? unitSize.x : (vectorDifference.x < 0 ? -unitSize.x : 0),
+                vectorDifference.y > 0 ? unitSize.y : (vectorDifference.y < 0 ? -unitSize.y : 0),
+                0
+            );
         }
 
-        private static float roundByUnitGrid(float offset, float unit, float number) {
-            float offsetedNumber = number - offset;
-            float reminder = offsetedNumber % unit;
+        public static bool IsSameCell(Vector3 firstPosition, Vector3 secondPosition) {
+            float threshold = 0.05f;
 
-            return number - reminder + (reminder >= (unit / 2) ? unit : 0);
+            return Vector2.Distance(firstPosition, secondPosition) < threshold;
+        }
+
+        public static Vector3Int VectorToIntVector(Vector3 vector) {
+            return new Vector3Int((int)vector.x, (int)vector.y, 0);
+        }
+
+        public static Vector3Int NormalizeIntVector(Vector3Int vector) {
+            float threshold = 1;
+
+            return new Vector3Int(
+                vector.x >= threshold ? 1 : vector.x <= -threshold ? -1 : 0,
+                vector.y >= threshold ? 1 : vector.y <= -threshold ? -1 : 0,
+                0
+            );
         }
     }
 }

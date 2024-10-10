@@ -1,5 +1,6 @@
 using Cards;
 using CustomTools;
+using Ganeral;
 using Managers;
 using System;
 using System.Collections;
@@ -52,6 +53,31 @@ namespace Characters
         {
         }
 
+        public void MakeCustomRotationMovement(Vector3 nextPosition, bool isStepsIgnored = false) 
+        {
+            if (isPaused) return;
+
+
+            if (steps > 0 || isStepsIgnored)
+            {
+                if (pathValidator.CanMoveTo(transform.position, nextPosition))
+                {
+                    Vector3 directionUnit = 
+                        CoordinateManager.GetUnitDirection(pathValidator.GetTileMap(), transform.position, nextPosition);
+
+                    while (!CoordinateManager.IsSameCell(transform.position, nextPosition)) {
+                        if (makeStep(transform.position + directionUnit, true)) {
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.Log("Unable to move");
+                }
+            }
+        }
+
         public void MakeMovement() 
         {
             if (isPaused) return;
@@ -61,14 +87,28 @@ namespace Characters
                 if (pathValidator.CanMoveTo(nextPosition,
                     -new Vector3Int((int)directionNormalized.x, (int)directionNormalized.y, (int)directionNormalized.z)))
                 {
-                    transform.position = nextPosition;
+                    makeStep(nextPosition);
                 }
                 else
                 {
                     Debug.Log("Unable to move");
                 }
-                steps--;
-                if (steps == 0) EventManager.FireEvent(EventManager.OnTurnEnd);
+            }
+        }
+
+        private bool makeStep(Vector3 nextPosition, bool isStepsIgnored = false) {
+            transform.position = nextPosition;
+
+            return decreaseStep();
+        }
+
+        private bool decreaseStep() {
+            steps--;
+            if (steps == 0) {
+                EventManager.FireEvent(EventManager.OnTurnEnd);
+                return true;
+            } else {
+                return false;
             }
         }
 

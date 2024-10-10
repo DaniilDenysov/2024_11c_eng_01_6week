@@ -7,9 +7,9 @@ namespace Cards
 {
     public class EatCard : Card<ICollector>
     {
-        public override bool OnCardActivation(ICollector arg1)
+        public override void OnCardActivation(ICollector arg1)
         {
-            return arg1.PickUp();
+            OnCardSetUp(arg1.PickUp());
         }
     }
 }

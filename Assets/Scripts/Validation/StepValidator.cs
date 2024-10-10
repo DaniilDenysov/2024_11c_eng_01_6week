@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ganeral;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -27,7 +28,10 @@ namespace Validation
 
                 int transparentPixelCount = 0;
                 int totalPixelCount = 0;
-                if (direction == Vector3Int.left)
+
+                Vector3Int normalizedDirection = CoordinateManager.NormalizeIntVector(direction);
+
+                if (normalizedDirection == Vector3Int.left)
                 {
                     for (int y = 0; y < height; y++)
                     {
@@ -39,7 +43,7 @@ namespace Validation
                         }
                     }
                 }
-                else if (direction == Vector3Int.right)
+                else if (normalizedDirection == Vector3Int.right)
                 {
                     for (int y = 0; y < height; y++)
                     {
@@ -51,7 +55,7 @@ namespace Validation
                         }
                     }
                 }
-                else if (direction == Vector3Int.up)
+                else if (normalizedDirection == Vector3Int.up)
                 {
                     for (int x = 0; x < width; x++)
                     {
@@ -63,7 +67,7 @@ namespace Validation
                         }
                     }
                 }
-                else if (direction == Vector3Int.down)
+                else if (normalizedDirection == Vector3Int.down)
                 {
                     for (int x = 0; x < width; x++)
                     {
