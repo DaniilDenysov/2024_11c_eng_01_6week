@@ -5,25 +5,34 @@ using TMPro;
 using Mirror;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using System;
 
 namespace Managers
 {
     public class LobbyManager : Manager
     {
+        [SerializeField] private GameObject startGameButton;
         [SerializeField] private TMP_InputField joinLobby, createLobby;
-
+        [SerializeField] private Transform participantsContainer;
         [SerializeField] private UnityEvent onConnectedToLobby,onDisconnectedFromLobby;
 
         private void OnEnable()
         {
             CustomNetworkManager.OnClientConnected += OnClientConnected;
             CustomNetworkManager.OnClientDisconnected += OnClientDisconnected;
+            LobbyParticipantHandler.OnPartyOwnerChanged += OnPartyOwnerChanged; 
+        }
+
+        private void OnPartyOwnerChanged(bool obj)
+        {
+            startGameButton.SetActive(obj);
         }
 
         private void OnDisable()
         {
             CustomNetworkManager.OnClientConnected -= OnClientConnected;
             CustomNetworkManager.OnClientDisconnected -= OnClientDisconnected;
+            LobbyParticipantHandler.OnPartyOwnerChanged -= OnPartyOwnerChanged;
         }
 
         public void JoinLobby()
@@ -37,13 +46,20 @@ namespace Managers
             if (NetworkServer.active && NetworkClient.isConnected)
             {
                 NetworkManager.singleton.StopHost();
+
+                onDisconnectedFromLobby?.Invoke();
             }
             else
             {
                 NetworkManager.singleton.StopClient();
 
-                SceneManager.LoadScene(0);
+                onDisconnectedFromLobby?.Invoke();
             }
+        }
+
+        public void StartGame ()
+        {
+            NetworkClient.connection.identity.GetComponent<LobbyParticipantHandler>().CmdStartGame();
         }
 
         private void OnClientConnected()
