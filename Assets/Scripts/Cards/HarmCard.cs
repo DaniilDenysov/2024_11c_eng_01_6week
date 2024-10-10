@@ -7,9 +7,9 @@ namespace Cards
 {
     public class HarmCard : Card<TilemapPath>
     {
-        public override bool OnCardActivation(TilemapPath arg1)
+        public override void OnCardActivation(TilemapPath arg1)
         {
-            return true;
+            OnCardSetUp(true);
         }
     }
 }

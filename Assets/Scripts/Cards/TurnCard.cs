@@ -6,10 +6,10 @@ namespace Cards
 {
     public class TurnCard : Card<ITurnAction>
     {
-        public override bool OnCardActivation(ITurnAction arg1)
+        public override void OnCardActivation(ITurnAction arg1)
         {
             arg1.OnTurn();
-            return true;
+            OnCardSetUp(true);
         }
     }
 }

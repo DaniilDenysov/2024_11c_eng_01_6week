@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ganeral;
 using Managers;
 using UnityEngine;
@@ -24,16 +25,14 @@ public class TileSelector : MonoBehaviour
 
             if (tile)
             {
-                EventManager.OnLitTileClick(
-                    CoordinateManager.GetAdjustedTileAdjustedPosition(
-                        tileMap.transform.position, cellUnit, worldPoint));
+                EventManager.OnLitTileClick(tilePosition + cellUnit);
 
                 SetTilesUnlit();
             }
         }
     }
 
-    public void SetTilesLit(Vector3[] positions)
+    public void SetTilesLit(List<Vector3> positions)
     {
         foreach (Vector3 position in positions)
         {

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Cards
 {
-    [RequireComponent(typeof(RectTransform),typeof(CanvasGroup))]
+    [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
     public abstract class Card<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         private CanvasGroup canvasGroup;
@@ -13,6 +13,7 @@ namespace Cards
         private Camera camera;
         private RectTransform rectTransform;
         private Vector2 startPosition;
+        private bool IsCardSettingUp;
 
         public virtual void Awake()
         {
@@ -20,6 +21,7 @@ namespace Cards
             container = transform.parent;
             rectTransform = GetComponent<RectTransform>();
             camera = Camera.main;
+            IsCardSettingUp = false;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -41,13 +43,10 @@ namespace Cards
 
             var result = Physics2D.OverlapCircle(destination, 1f);
             //or use raycast
-            if (result != null && result.TryGetComponent(out T action))
+            if (result != null && result.TryGetComponent(out T action) && !IsCardSettingUp)
             {
-                if (OnCardActivation(action))
-                {
-                    Destroy(gameObject); //change to add to the pool
-                    return;
-                }
+                IsCardSettingUp = true;
+                OnCardActivation(action);
             }
 
 
@@ -55,7 +54,16 @@ namespace Cards
             transform.parent = container;
         }
 
-        public abstract bool OnCardActivation(T arg1);
+        public abstract void OnCardActivation(T arg1);
 
+        public void OnCardSetUp(bool succesfully)
+        {
+            if (succesfully)
+            {
+                Destroy(gameObject);
+            }
+
+            IsCardSettingUp = false;
+        }
     }
 }

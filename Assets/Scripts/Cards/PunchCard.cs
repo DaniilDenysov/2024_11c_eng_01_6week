@@ -7,9 +7,9 @@ namespace Cards
 {
     public class PunchCard : Card<Attack>
     {
-        public override bool OnCardActivation(Attack arg1)
+        public override void OnCardActivation(Attack arg1)
         {
-            return arg1.TryAttack();
+            OnCardSetUp(arg1.TryAttack());
         }
     }
 }
