@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Managers;
+using Selectors;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Cards
 {
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-    public abstract class Card<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public abstract class Card<T> : MonoBehaviour
     {
         private CanvasGroup canvasGroup;
         private Transform container;
@@ -14,6 +17,7 @@ namespace Cards
         private RectTransform rectTransform;
         private Vector2 startPosition;
         private bool IsCardSettingUp;
+        private CardDeck _cardDeck;
 
         public virtual void Awake()
         {
@@ -22,41 +26,30 @@ namespace Cards
             rectTransform = GetComponent<RectTransform>();
             camera = Camera.main;
             IsCardSettingUp = false;
+            SetCardDeck();
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
+        private void Update()
         {
-            canvasGroup.alpha = 0.7f;
-            startPosition = transform.position;
-            transform.parent = transform.parent.parent;
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            rectTransform.position = Input.mousePosition;
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            canvasGroup.alpha = 1f;
-            Vector3 destination = camera.ScreenToWorldPoint(transform.position);
-
-            var result = Physics2D.OverlapCircle(destination, 1f);
-            //or use raycast
-            if (result != null && result.TryGetComponent(out T action) && !IsCardSettingUp)
+            Vector2 mousePos = Input.mousePosition;
+            
+            if (Input.GetMouseButtonUp(0) 
+                && RectTransformUtility.RectangleContainsScreenPoint(rectTransform, mousePos))
             {
-                IsCardSettingUp = true;
-                OnCardActivation(action);
+                GameObject currentPlayer = CharacterSelector.CurrentCharacter.gameObject;
+                
+                if (_cardDeck.GetApproval(gameObject) && currentPlayer.TryGetComponent(out T action))
+                {
+                    IsCardSettingUp = true;
+                    canvasGroup.alpha = 0.5f;
+                    OnCardActivation(action);
+                }
             }
-
-
-            transform.position = startPosition;
-            transform.parent = container;
         }
 
         public abstract void OnCardActivation(T arg1);
 
-        public void OnCardSetUp(bool succesfully)
+        public virtual void OnCardSetUp(bool succesfully)
         {
             if (succesfully)
             {
@@ -64,6 +57,22 @@ namespace Cards
             }
 
             IsCardSettingUp = false;
+            canvasGroup.alpha = 1f;
+        }
+
+        public void SetCardDeck()
+        {
+            Transform parent = transform.parent;
+            
+            while (parent != null)
+            {
+                if (parent.TryGetComponent(out CardDeck cardDeck))
+                {
+                    _cardDeck = cardDeck;
+                }
+                
+                parent = parent.transform.parent;
+            }
         }
     }
 }

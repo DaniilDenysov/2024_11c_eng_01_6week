@@ -14,11 +14,10 @@ namespace Selectors
         [SerializeField] private DiceManager diceManager; //inject using zenject later
         [SerializeField] private List<CharacterMovement> characters = new List<CharacterMovement>();
         private Queue<CharacterMovement> turnOrder;
-
-
+        
+        
         private void Awake()
         {
-            characters.Shuffle();
             turnOrder = new Queue<CharacterMovement>(characters);
             EventManager.OnTurnStart += OnTurnStart;
         }

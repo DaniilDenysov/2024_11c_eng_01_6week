@@ -7,17 +7,14 @@ namespace Ganeral
 {
     public class CoordinateManager : MonoBehaviour
     {
-        public static List<Transform> GetEntities(Transform transform, Vector3 direction)
+        public static List<GameObject> GetEntities(Vector3 position)
         {
-            Vector3 origin = transform.position;
+            var circles = Physics2D.OverlapCircleAll(position, 0.1f);
 
-            var circles = Physics2D.OverlapCircleAll(origin + direction, 0.1f);
-            Debug.DrawRay(transform.position, direction, Color.red, 10f);
-            List<Transform> result = new List<Transform>();
-
+            List<GameObject> result = new List<GameObject>();
             foreach (Collider2D circle in circles) {
-                if (circle != default && circle.transform != transform) {
-                    result.Add(circle.transform);
+                if (circle != default) {
+                    result.Add(circle.gameObject);
                 }
             }
 
