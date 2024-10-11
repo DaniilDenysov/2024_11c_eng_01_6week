@@ -28,6 +28,11 @@ namespace Managers
             startGameButton.SetActive(obj);
         }
 
+        public void Ready ()
+        {
+            NetworkClient.connection.identity.GetComponent<LobbyParticipantHandler>().CmdReady();
+        }
+
         private void OnDisable()
         {
             CustomNetworkManager.OnClientConnected -= OnClientConnected;
