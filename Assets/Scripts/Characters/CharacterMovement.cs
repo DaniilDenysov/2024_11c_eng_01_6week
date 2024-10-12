@@ -138,6 +138,14 @@ namespace Characters
             }
         }
 
+        public List<CharacterMovement> GetAvailableTargets(List<CharacterMovement> allCharacters)
+        {
+            List<CharacterMovement> targets = new List<CharacterMovement>(allCharacters);
+            targets.Remove(this);
+            return targets;
+        }
+
+
         public PathValidator GetPathValidator()
         {
             return pathValidator;

@@ -10,14 +10,24 @@ namespace Selectors
 {
     public class CharacterSelector : MonoBehaviour
     {
+        public static CharacterSelector Instance { get; private set; }
         public static CharacterMovement CurrentCharacter { get; private set; }
         [SerializeField] private DiceManager diceManager; //inject using zenject later
         [SerializeField] private List<CharacterMovement> characters = new List<CharacterMovement>();
         private Queue<CharacterMovement> turnOrder;
-        
-        
+
+
         private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject); // Ensures there's only one instance
+            }
+
             turnOrder = new Queue<CharacterMovement>(characters);
             EventManager.OnTurnStart += OnTurnStart;
         }
@@ -26,6 +36,15 @@ namespace Selectors
         {
             SelectNext();
         }
+
+        private void OnDestroy()
+        {
+            if (Instance == this)
+            {
+                Instance = null;
+            }
+        }
+
 
         public void SelectNext ()
         {
@@ -40,6 +59,20 @@ namespace Selectors
         public void MakeMovement() {
             CurrentCharacter.MakeMovement();
         }
+
+        public void DisplayCharacterSelection(List<CharacterMovement> availableTargets, Action<CharacterMovement> onTargetSelected)
+        {
+            foreach (var target in availableTargets)
+            {
+                Debug.Log($"Available Target: {target.name}");
+            }
+
+            if (availableTargets.Count > 0)
+            {
+                onTargetSelected?.Invoke(availableTargets[0]);
+            }
+        }
+
     }
 
     public static class ListExtensions
@@ -55,4 +88,5 @@ namespace Selectors
             }
         }
     }
+
 }

@@ -7,6 +7,8 @@ public class Inventory : MonoBehaviour, ICollector
 {
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private List<ICollectible> inventory = new List<ICollectible>();
+    [SerializeField] private int cardDrawCount = 1;
+
 
     public bool PickUp()
     {
@@ -39,4 +41,11 @@ public class Inventory : MonoBehaviour, ICollector
     {
         inventory.Add(human);
     }
+
+    public void AdjustCardDraw(int adjustment)
+    {
+        cardDrawCount += adjustment;
+        cardDrawCount = Mathf.Max(1, cardDrawCount);
+    }
+
 }

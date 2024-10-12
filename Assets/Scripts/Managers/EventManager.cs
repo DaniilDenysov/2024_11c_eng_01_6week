@@ -13,6 +13,7 @@ namespace Managers
         public static Action<bool> OnSkillSetUp;
         public static Action<MonoBehaviour[]> OnMultiStepCardUsed;
         public static Action<bool> OnMultiStepSwitch;
+        public static Action<GameObject> OnPlayerAttacked;
 
         public static void FireEvent(Action action)
         {
@@ -60,3 +61,4 @@ namespace Managers
     }
 }
 
+ 
