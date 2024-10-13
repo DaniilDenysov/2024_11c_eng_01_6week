@@ -17,7 +17,6 @@ namespace Cards
         public override void OnCardSetUp(bool succesfully)
         {
             EventManager.OnSkillSetUp -= OnCardSetUp;
-
             base.OnCardSetUp(succesfully);
         }
     }

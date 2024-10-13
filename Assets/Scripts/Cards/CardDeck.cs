@@ -21,7 +21,6 @@ namespace Cards
         void Awake()
         {
             isMultiCardStep = false;
-            EventManager.OnMultiStepSwitch += StartMultiCardStepSwitch;
             StepCards = new List<GameObject>();
         }
 
@@ -68,7 +67,7 @@ namespace Cards
 
                     MonoBehaviour[] components = card.GetComponents<MonoBehaviour>();
                     
-                    EventManager.OnMultiStepCardUsed.Invoke(components);
+                    // EventManager.OnMultiStepCardUsed.Invoke(components);
                 }
             
                 return false;

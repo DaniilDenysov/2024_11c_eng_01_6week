@@ -1,104 +1,82 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Cards;
 using Characters;
 using Characters.Skills;
 using Ganeral;
-using Managers;
 using UnityEngine;
 using Validation;
 
 [RequireComponent(typeof(CharacterMovement)), RequireComponent(typeof(Attack))]
 public class LongTongue : Skill
 {
-    [SerializeField] private TileSelector directionSelector;
-    private CharacterMovement movement;
-    private Attack attack;
+    [SerializeField] private TileSelector cellSelector;
+    private CharacterMovement _movement;
+    private Attack _attack;
+    private int _range = 2;
 
     void Awake()
     {
-        movement = GetComponent<CharacterMovement>();
-        attack = GetComponent<Attack>();
+        _movement = GetComponent<CharacterMovement>();
+        _attack = GetComponent<Attack>();
     }
 
     public override void Activate()
     {
-        EventManager.OnMultiStepSwitch(true);
-        EventManager.OnMultiStepCardUsed += OnCardUsed;
-    }
+        PathValidator pathValidator = _movement.GetPathValidator();
+        Vector3 characterPosition = transform.position;
 
-    private void OnCardUsed(MonoBehaviour[] cardComponents)
-    {
-        EventManager.OnMultiStepCardUsed -= OnCardUsed;
+        List<Vector3> litPositions = new List<Vector3>();
 
-        bool isPunchCard = false;
-
-        foreach (MonoBehaviour mono in cardComponents)
+        foreach (Vector3 direction in CoordinateManager.GetAttackDirections())
         {
-            if (mono.GetType() == typeof(PunchCard))
+            for (int distance = 0; distance < _range; distance++)
             {
-                isPunchCard = true;
-            }
-        }
-        
-        if (isPunchCard)
-        {
-            PathValidator pathValidator = movement.GetPathValidator();
-            Vector3 characterPosition = transform.position;
-            List<Vector3> directions = CoordinateManager.GetAllDirections();
-
-            List<Vector3> litPositions = new List<Vector3>();
-
-            foreach (Vector3 direction in directions)
-            {
-                if (pathValidator.CanMoveTo(characterPosition, characterPosition + direction * 2))
+                Vector3 currentCell = characterPosition + direction * (distance + 1);
+                
+                if (pathValidator.CanMoveTo(characterPosition, currentCell))
                 {
-                    foreach (GameObject entity in CoordinateManager.GetEntities(characterPosition + direction * 2))
+                    foreach (GameObject entity in CoordinateManager.GetEntities(currentCell, gameObject))
                     {
                         if (entity.TryGetComponent(out Inventory _))
                         {
-                            litPositions.Add(characterPosition + direction * 2);
+                            litPositions.Add(currentCell);
                         }
                     }
                 }
             }
-
-            directionSelector.SetTilesLit(litPositions);
-            EventManager.OnLitTileClick += OnCellChosen;
-        } else {
-            EventManager.OnMultiStepSwitch(false);
-            EventManager.OnSkillSetUp(false);
         }
+        
+        cellSelector.SetTilesLit(litPositions, OnCellChosen);
     }
 
     private void OnCellChosen(Vector3 chosenTile)
     {
-        EventManager.OnLitTileClick -= OnCellChosen;
-        attack.TryAttack(chosenTile);
+        _attack.TryAttack(chosenTile);
         OnActivated();
     }
 
     public override bool IsActivatable()
     {
-        PathValidator pathValidator = movement.GetPathValidator();
+        PathValidator pathValidator = _movement.GetPathValidator();
         Vector3 characterPosition = transform.position;
-        List<Vector3> directions = CoordinateManager.GetAllDirections();
 
-        foreach (Vector3 direction in directions)
+        foreach (Vector3 direction in CoordinateManager.GetAttackDirections())
         {
-            if (pathValidator.CanMoveTo(characterPosition, characterPosition + direction * 2))
-            {
-                foreach (GameObject entity in CoordinateManager.GetEntities(characterPosition + direction * 2))
+            for (int distance = 0; distance < _range; distance++) {
+                Vector3 currentCell = characterPosition + direction * (distance + 1);
+                
+                if (pathValidator.CanMoveTo(characterPosition, currentCell))
                 {
-                    if (entity.TryGetComponent(out Inventory _))
+                    foreach (GameObject entity in CoordinateManager.GetEntities(currentCell, gameObject))
                     {
-                        return true;
+                        if (entity.TryGetComponent(out Inventory _))
+                        {
+                            return true;
+                        }
                     }
                 }
             }
         }
-        
+
         return false;
     }
 }

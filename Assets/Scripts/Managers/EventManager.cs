@@ -9,10 +9,9 @@ namespace Managers
     {
         public static Action OnTurnStart, OnTurnEnd;
         public static Action OnTick;
-        public static Action<Vector3> OnLitTileClick;
         public static Action<bool> OnSkillSetUp;
-        public static Action<MonoBehaviour[]> OnMultiStepCardUsed;
-        public static Action<bool> OnMultiStepSwitch;
+        // public static Action<bool> OnMultiStepSwitch;
+        // public static Action<MonoBehaviour[]> OnMultiStepCardUsed;
 
         public static void FireEvent(Action action)
         {

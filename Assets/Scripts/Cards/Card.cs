@@ -34,7 +34,8 @@ namespace Cards
             Vector2 mousePos = Input.mousePosition;
             
             if (Input.GetMouseButtonUp(0) 
-                && RectTransformUtility.RectangleContainsScreenPoint(rectTransform, mousePos))
+                && RectTransformUtility.RectangleContainsScreenPoint(rectTransform, mousePos)
+                && !IsCardSettingUp)
             {
                 GameObject currentPlayer = CharacterSelector.CurrentCharacter.gameObject;
                 

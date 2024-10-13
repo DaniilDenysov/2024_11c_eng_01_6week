@@ -1,35 +1,51 @@
+using System;
 using Characters;
 using Collectibles;
 using System.Collections.Generic;
+using Ganeral;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour, ICollector
 {
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private List<ICollectible> inventory = new List<ICollectible>();
+    private List<ICollectible> _inventory;
+
+    private void Awake()
+    {
+        _inventory = new List<ICollectible>();
+    }
 
     public bool PickUp()
     {
-        var result = Physics2D.OverlapCircle(transform.position, 1f, layerMask);
-        if (result != null && result.TryGetComponent(out ICollectible collectible))
+        return PickUp(transform.position);
+    }
+    
+    public bool PickUp(Vector3 cell)
+    {
+        bool result = false;
+        
+        foreach (GameObject entity in CoordinateManager.GetEntities(cell))
         {
-            var collected = collectible.Collect();
-            if (collected != default && collectible.GetType() == typeof(Human))
+            if (entity.TryGetComponent(out ICollectible collectible))
             {
-                inventory.Add(collected as Human);
-                return true;
+                if (collectible.GetType() == typeof(Human))
+                {
+                    var collected = collectible.Collect();
+                    _inventory.Add(collected as Human);
+                    result = true;
+                }
             }
         }
-        return false;
+        return result;
     }
 
     public bool TryPopItem (out Human human)
     {
         human = default;
-        if (inventory.Count > 0)
+        if (_inventory.Count > 0)
         {
-            human = inventory[0] as Human;
-            inventory.RemoveAt(0);
+            human = _inventory[0] as Human;
+            _inventory.RemoveAt(0);
             return true;
         }
         return false;
@@ -37,6 +53,6 @@ public class Inventory : MonoBehaviour, ICollector
 
     public void Add(Human human)
     {
-        inventory.Add(human);
+        _inventory.Add(human);
     }
 }

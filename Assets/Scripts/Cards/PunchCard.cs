@@ -1,3 +1,4 @@
+using System;
 using Characters;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Cards
     {
         [SerializeField] private TileSelector tileSelector;
         private Attack _attack;
-        
+
         public override void OnCardActivation(Attack arg1)
         {
             CharacterMovement movement;
@@ -32,7 +33,7 @@ namespace Cards
             
             PathValidator pathValidator = movement.GetPathValidator();
             Vector3 characterPosition = _attack.transform.position;
-            List<Vector3> directions = CoordinateManager.GetAllDirections();
+            List<Vector3> directions = CoordinateManager.GetAttackDirections();
 
             List<Vector3> litPositions = new List<Vector3>();
 
@@ -40,7 +41,8 @@ namespace Cards
             {
                 if (pathValidator.CanMoveTo(characterPosition, characterPosition + direction))
                 {
-                    foreach (GameObject entity in CoordinateManager.GetEntities(characterPosition + direction))
+                    foreach (GameObject entity in 
+                             CoordinateManager.GetEntities(characterPosition + direction, _attack.gameObject))
                     {
                         if (entity.TryGetComponent(out Inventory _))
                         {
@@ -52,8 +54,7 @@ namespace Cards
 
             if (litPositions.Capacity > 0)
             {
-                tileSelector.SetTilesLit(litPositions);
-                EventManager.OnLitTileClick += OnCellChosen;
+                tileSelector.SetTilesLit(litPositions, AttackCell);
             }
             else
             {
@@ -61,10 +62,8 @@ namespace Cards
             }
         }
         
-        private void OnCellChosen(Vector3 chosenTile)
+        private void AttackCell(Vector3 chosenTile)
         {
-            EventManager.OnLitTileClick -= OnCellChosen;
-
             OnCardSetUp(_attack.TryAttack(chosenTile));
         }
     }

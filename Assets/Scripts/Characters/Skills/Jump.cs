@@ -33,14 +33,11 @@ public class Jump : Skill
             }
         }
 
-        directionSelector.SetTilesLit(litPositions);
-        EventManager.OnLitTileClick += OnDirectionChosen;
+        directionSelector.SetTilesLit(litPositions, OnCellChosen);
     }
 
-    private void OnDirectionChosen(Vector3 chosenTile)
+    private void OnCellChosen(Vector3 chosenTile)
     {
-        EventManager.OnLitTileClick -= OnDirectionChosen;
-
         movement.Teleport(chosenTile, true);
 
         OnActivated();

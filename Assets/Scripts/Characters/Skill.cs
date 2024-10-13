@@ -9,8 +9,8 @@ namespace Characters.Skills
     {
         public abstract void Activate();
         public abstract bool IsActivatable();
-        public void OnActivated() {
-            EventManager.OnSkillSetUp(true);
+        public void OnActivated(bool isSuccessful = true) {
+            EventManager.OnSkillSetUp(isSuccessful);
         }
     }
 }

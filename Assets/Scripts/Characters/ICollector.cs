@@ -7,5 +7,6 @@ namespace Collectibles
     public interface ICollector
     {
         bool PickUp();
+        bool PickUp(Vector3 cell);
     }
 }

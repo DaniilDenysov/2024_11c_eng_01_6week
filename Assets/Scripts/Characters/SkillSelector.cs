@@ -12,8 +12,7 @@ namespace Characters.Skills
         [SerializeField] private GameObject selectSkill_HUD;
         [SerializeField] private Skill [] skills;
         
-        [PreCompilationConstructor]
-        public void RefreshSkills ()
+        public void Awake()
         {
             skills = GetComponents<Skill>();
         }
@@ -24,19 +23,15 @@ namespace Characters.Skills
             selectSkill_HUD.SetActive(true);
         }
 
-        public void SelectSkill (int i)
+        public void SelectSkill(int i)
         {
-            try
+            if (skills[i].IsActivatable())
             {
-                if (skills[i].IsActivatable()) {
-                    skills[i].Activate();
-                } else {
-                    EventManager.OnSkillSetUp(false);
-                }
+                skills[i].Activate();
             }
-            catch (Exception)
+            else
             {
-                Debug.LogError($"Out of bounds:unable to find skill with index {i}!");
+                EventManager.OnSkillSetUp(false);
             }
         }
     }
