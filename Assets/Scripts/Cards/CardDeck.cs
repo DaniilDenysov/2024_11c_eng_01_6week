@@ -25,9 +25,12 @@ namespace Cards
         {
             _isMultiCardStep = false;
             _stepCards = new List<GameObject>();
+        }
 
+        private void Start()
+        {
             EventManager.OnTurnEnd += OnTurnEnd;
-
+            
             for (int i = 0; i < cardNumber; i++)
             {
                 AddCard();
