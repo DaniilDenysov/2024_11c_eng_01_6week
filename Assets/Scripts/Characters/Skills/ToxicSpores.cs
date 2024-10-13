@@ -12,7 +12,6 @@ using UnityEngine;
  RequireComponent(typeof(ICollector))]
 public class ToxicSpores : Skill
 {
-    [SerializeField] private TileSelector directionSelector;
     private CharacterMovement _movement;
     private Attack _attack;
     private ICollector _collector;
@@ -34,7 +33,7 @@ public class ToxicSpores : Skill
 
         litPositions = litPositions.Distinct().ToList();
 
-        directionSelector.SetTilesLit(litPositions, OnDirectionChosen);
+        TileSelector.Instance.SetTilesLit(litPositions, OnDirectionChosen);
     }
 
     private void OnDirectionChosen(Vector3 chosenTile)

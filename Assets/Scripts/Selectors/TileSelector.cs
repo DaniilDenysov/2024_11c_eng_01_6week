@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 
 public class TileSelector : MonoBehaviour
 {
+    public static TileSelector Instance;
     [SerializeField] private Tilemap tileMap;
     private Vector3 cellUnit;
     [SerializeField] private TileBase highlightTile;
@@ -15,6 +16,7 @@ public class TileSelector : MonoBehaviour
     void Awake()
     {
         cellUnit = tileMap.layoutGrid.cellSize / 2;
+        Instance = this;
     }
 
     void Update()

@@ -9,7 +9,6 @@ using Validation;
 [RequireComponent(typeof(CharacterMovement)), RequireComponent(typeof(Attack))]
 public class LongTongue : Skill
 {
-    [SerializeField] private TileSelector cellSelector;
     private CharacterMovement _movement;
     private Attack _attack;
     private int _range = 2;
@@ -26,7 +25,7 @@ public class LongTongue : Skill
         
         List<Vector3> litPositions = _attack.GetAttackCells(_range);
         
-        cellSelector.SetTilesLit(litPositions, OnCellChosen);
+        TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
     }
 
     private void OnCellChosen(Vector3 chosenTile)

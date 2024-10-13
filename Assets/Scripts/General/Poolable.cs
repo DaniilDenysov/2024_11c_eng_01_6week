@@ -13,7 +13,6 @@ namespace Shooting
     {
         [SerializeField] protected UnityEvent _onPool;
 
-
         public virtual string GetPoolableName() => gameObject.name;
 
         public virtual void GetFromPool(string poolableName)
@@ -33,9 +32,8 @@ namespace Shooting
 
         public virtual void Pool()
         {
-            PoolManager.Instance.Put(GetPoolableName(), gameObject);
             _onPool.Invoke();
-            gameObject.SetActive(false);
+            PoolManager.Instance.Put(GetPoolableName(), gameObject);
         }
 
         public void Invoke(Vector2 position)

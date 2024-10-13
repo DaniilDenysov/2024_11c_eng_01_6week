@@ -39,6 +39,11 @@ namespace Selectors
             }
         }
 
+        public static void FinishTurn()
+        {
+            EventManager.FireEvent(EventManager.OnTurnEnd);
+        }
+
         public void MakeMovement() {
             CurrentCharacter.MakeMovement();
             onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());

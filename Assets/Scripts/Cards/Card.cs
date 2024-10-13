@@ -1,31 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using General;
 using Managers;
 using Selectors;
+using Shooting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Cards
 {
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-    public abstract class Card<T> : MonoBehaviour
+    public abstract class Card<T> : CardPoolable
     {
-        private CanvasGroup canvasGroup;
-        private Transform container;
-        private Camera camera;
-        private RectTransform rectTransform;
-        private Vector2 startPosition;
-        private bool IsCardSettingUp;
+        private CanvasGroup _canvasGroup;
+        private RectTransform _rectTransform;
+        private Vector2 _startPosition;
+        private bool _isCardSettingUp;
         private CardDeck _cardDeck;
 
         public virtual void Awake()
         {
-            canvasGroup = GetComponent<CanvasGroup>();
-            container = transform.parent;
-            rectTransform = GetComponent<RectTransform>();
-            camera = Camera.main;
-            IsCardSettingUp = false;
+            _canvasGroup = GetComponent<CanvasGroup>();
+            _rectTransform = GetComponent<RectTransform>();
+            _isCardSettingUp = false;
+        }
+
+        void OnEnable()
+        {
             SetCardDeck();
         }
 
@@ -34,15 +36,15 @@ namespace Cards
             Vector2 mousePos = Input.mousePosition;
             
             if (Input.GetMouseButtonUp(0) 
-                && RectTransformUtility.RectangleContainsScreenPoint(rectTransform, mousePos)
-                && !IsCardSettingUp)
+                && RectTransformUtility.RectangleContainsScreenPoint(_rectTransform, mousePos)
+                && !_isCardSettingUp)
             {
                 GameObject currentPlayer = CharacterSelector.CurrentCharacter.gameObject;
                 
                 if (_cardDeck.GetApproval(gameObject) && currentPlayer.TryGetComponent(out T action))
                 {
-                    IsCardSettingUp = true;
-                    canvasGroup.alpha = 0.5f;
+                    _isCardSettingUp = true;
+                    _canvasGroup.alpha = 0.5f;
                     OnCardActivation(action);
                 }
             }
@@ -50,15 +52,15 @@ namespace Cards
 
         public abstract void OnCardActivation(T arg1);
 
-        public virtual void OnCardSetUp(bool successfully)
+        public void OnCardSetUp(bool successfully)
         {
             if (successfully)
             {
-                Destroy(gameObject);
+                Pool();
             }
 
-            IsCardSettingUp = false;
-            canvasGroup.alpha = 1f;
+            _isCardSettingUp = false;
+            _canvasGroup.alpha = 1f;
         }
 
         public void SetCardDeck()

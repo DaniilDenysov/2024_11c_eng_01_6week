@@ -8,8 +8,6 @@ using UnityEngine.Serialization;
 
 public class Inventory : ICollector
 {
-    [SerializeField] private TileSelector tileSelector;
-    [SerializeField] private LayerMask layerMask;
     private List<ICollectible> _inventory;
     private Action<bool> _onPickedUp;
 
@@ -28,7 +26,7 @@ public class Inventory : ICollector
         else
         {
             List<Vector3> litPositions = GetPickUpCells(0, typeof(Human));
-            tileSelector.SetTilesLit(litPositions, OnCellChosen);
+            TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
             _onPickedUp = onPickedUp;
         }
     }
