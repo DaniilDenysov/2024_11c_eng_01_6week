@@ -28,7 +28,23 @@ namespace Managers
             NetworkServer.RegisterHandler<LobbyConnection>(OnCreateCharacter);
         }
 
-
+        public void UpdateSelection (List<int> connectionIds)
+        {
+           foreach(var handler in FindObjectsOfType<LobbyParticipantHandler>())
+           {
+                if (connectionIds.Contains(handler.Player.ConnectionId))
+                {
+                    Debug.Log("a");
+                    LobbyCharacterSelector.OnSelected?.Invoke(handler.Player.CharacterGUID);
+                }
+                else
+                {
+                    Debug.Log("b");
+                    LobbyCharacterSelector.OnDeselected?.Invoke(handler.Player.CharacterGUID);
+                }
+           }
+            Debug.Log("Updated selections");
+        }
 
         public override void OnServerConnect(NetworkConnectionToClient conn)
         {
@@ -38,11 +54,24 @@ namespace Managers
         public override void OnServerDisconnect(NetworkConnectionToClient conn)
         {
             base.OnServerDisconnect(conn);
+            if (NetworkServer.connections.Count > 0)  NetworkServer.connections[0].identity.GetComponent<LobbyParticipantHandler>().UpdateClient(NetworkServer.connections.Keys.ToList());
+           /* var list = NetworkServer.connections.Keys.ToList();
+            list.Remove(conn.connectionId);
+            foreach (var connection in NetworkServer.connections)
+            {
+                if (connection.Value.identity == null) continue;
+                if (connection.Value.identity.TryGetComponent(out LobbyParticipantHandler handler))
+                {
+                    handler.UpdateClient(list);
+                }
+            }
             if (conn.identity != null)
             {
                 connectedClients.RemoveAll((p)=>p.ConnectionId == conn.connectionId);
-            }
+            }*/
         }
+
+        
 
         
         public void SetSelectionForConnection(NetworkConnection networkConnection, string character)
@@ -60,14 +89,14 @@ namespace Managers
         public override void OnServerAddPlayer(NetworkConnectionToClient conn)
         {
             base.OnServerAddPlayer(conn);
-          //  var player = conn.identity.GetComponent<LobbyParticipantHandler>();
-          //  connectedClients.Add(player);
-          //  AddParticipantToContainer(conn);
-          //  player.SetPlayerName("Player" + connectedClients.Count);
-           // player.SetPartyOwner(connectedClients.Count == 1);
+
+            //  var player = conn.identity.GetComponent<LobbyParticipantHandler>();
+            //  connectedClients.Add(player);
+            //  AddParticipantToContainer(conn);
+            //  player.SetPlayerName("Player" + connectedClients.Count);
+            // player.SetPartyOwner(connectedClients.Count == 1);
 
         }
-
 
         public override void OnStopServer()
         {
@@ -129,6 +158,7 @@ namespace Managers
         public override void OnClientConnect()
         {
             base.OnClientConnect();
+            connectedClients = FindObjectsOfType<LobbyParticipantHandler>().Select((h) => h.Player).ToList();
             NetworkClient.Send(new LobbyConnection());
             OnClientConnected?.Invoke();
         }
@@ -136,6 +166,11 @@ namespace Managers
         public override void OnClientDisconnect()
         {
             base.OnClientDisconnect();
+         /*   connectedClients = FindObjectsOfType<LobbyParticipantHandler>().Select((h) => h.Player).ToList();
+            foreach (var connection in NetworkServer.connections)
+            {
+
+            }*/
             OnClientDisconnected?.Invoke();
         }
 

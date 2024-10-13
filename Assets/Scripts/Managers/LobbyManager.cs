@@ -13,11 +13,25 @@ namespace Managers
 {
     public class LobbyManager : Manager
     {
+        public static LobbyManager Instance;
         [SerializeField] private GameObject startGameButton;
         [SerializeField] private TMP_InputField joinLobby, createLobby;
         [SerializeField] private Transform participantsContainer;
         [SerializeField] private UnityEvent onConnectedToLobby,onDisconnectedFromLobby;
         [SerializeField] private List<LobbyCharacterSelector> selectors = new List<LobbyCharacterSelector>();
+
+        public override void Awake()
+        {
+            base.Awake();
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
 
         private void OnEnable()
         {
@@ -85,6 +99,7 @@ namespace Managers
 
         private void OnClientDisconnected()
         {
+            DeselectAllCharacters();
             onDisconnectedFromLobby?.Invoke();
         }
 

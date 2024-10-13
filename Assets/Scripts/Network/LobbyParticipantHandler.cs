@@ -41,6 +41,13 @@ public class LobbyParticipantHandler : NetworkBehaviour
         OnPartyOwnerChanged?.Invoke(newState.IsPartyOwner);
     }
 
+    [ClientRpc]
+    public void UpdateClient(List<int> connectionIds)
+    {
+
+        ((CustomNetworkManager)NetworkManager.singleton).UpdateSelection(connectionIds);
+    }
+
 
     public bool GetReady() => Player.IsReady;
 
