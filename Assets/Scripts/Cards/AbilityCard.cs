@@ -10,14 +10,7 @@ namespace Cards
     {
         public override void OnCardActivation(SkillSelector arg1)
         {
-            arg1.Select();
-            EventManager.OnSkillSetUp += OnCardSetUp;
-        }
-
-        public override void OnCardSetUp(bool succesfully)
-        {
-            EventManager.OnSkillSetUp -= OnCardSetUp;
-            base.OnCardSetUp(succesfully);
+            arg1.Select(OnCardSetUp);
         }
     }
 }

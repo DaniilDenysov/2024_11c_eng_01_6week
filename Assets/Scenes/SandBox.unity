@@ -8572,8 +8572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectSkill_HUD: {fileID: 986233009}
-  skills:
-  - {fileID: 1164625936}
+  skills: []
 --- !u!114 &1164625934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8610,10 +8609,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1164625928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 069c1afc45d4a4127bd636edea51514f, type: 3}
+  m_Script: {fileID: 11500000, guid: c24f36497335446392d8b1ab8c94626a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionSelector: {fileID: 1565776972}
+  _trail: {fileID: 7656455648323969285, guid: 41546fb43b4ba4212adb5672a0ee8184, type: 3}
 --- !u!1 &1187986754
 GameObject:
   m_ObjectHideFlags: 0

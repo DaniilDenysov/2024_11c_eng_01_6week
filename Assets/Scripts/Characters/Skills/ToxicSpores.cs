@@ -1,15 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Cards;
+using System.Linq;
 using Characters;
 using Characters.Skills;
 using Collectibles;
 using Ganeral;
-using Managers;
 using UnityEngine;
-using UnityEngine.Events;
-using Validation;
 
 [RequireComponent(typeof(CharacterMovement)),
  RequireComponent(typeof(Attack)),
@@ -29,41 +25,14 @@ public class ToxicSpores : Skill
         _attack = GetComponent<Attack>();
     }
 
-    public override void Activate()
+    public override void Activate(Action<bool> onSetUp)
     {
-        PathValidator pathValidator = _movement.GetPathValidator();
-        Vector3 characterPosition = transform.position;
-        List<Vector3> directions = CoordinateManager.GetAllDirections();
+        base.Activate(onSetUp);
+        
+        List<Vector3> litPositions = _attack.GetAttackCells(_range, false, false);
+        litPositions.AddRange(_collector.GetPickUpCells(_range, typeof(Human), false, false));
 
-        List<Vector3> litPositions = new List<Vector3>();
-
-        foreach (Vector3 direction in directions)
-        {
-            for (int distance = 0; distance < _range; distance++)
-            {
-                Vector3 currentCell = characterPosition + direction * (distance + 1);
-
-                if (!pathValidator.CanMoveTo(characterPosition, currentCell))
-                {
-                    break;
-                }
-                
-                foreach (GameObject entity in CoordinateManager.GetEntities(currentCell))
-                {
-                    if (entity.TryGetComponent(out Inventory _))
-                    {
-                        litPositions.Add(currentCell);
-                    }
-                    else if (entity.TryGetComponent(out ICollectible collectible))
-                    {
-                        if (collectible.GetType() == typeof(Human))
-                        {
-                            litPositions.Add(currentCell);
-                        }
-                    }
-                }
-            }
-        }
+        litPositions = litPositions.Distinct().ToList();
 
         directionSelector.SetTilesLit(litPositions, OnDirectionChosen);
     }
@@ -85,38 +54,7 @@ public class ToxicSpores : Skill
 
     public override bool IsActivatable()
     {
-        PathValidator pathValidator = _movement.GetPathValidator();
-        Vector3 characterPosition = transform.position;
-        List<Vector3> directions = CoordinateManager.GetAllDirections();
-        
-        foreach (Vector3 direction in directions)
-        {
-            for (int distance = 0; distance < _range; distance++)
-            {
-                Vector3 currentCell = characterPosition + direction * (distance + 1);
-
-                if (!pathValidator.CanMoveTo(characterPosition, currentCell))
-                {
-                    break;
-                }
-                
-                foreach (GameObject entity in CoordinateManager.GetEntities(currentCell))
-                {
-                    if (entity.TryGetComponent(out Inventory _))
-                    {
-                        return true;
-                    }
-                    else if (entity.TryGetComponent(out ICollectible collectible))
-                    {
-                        if (collectible.GetType() == typeof(Human))
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
+        return _attack.GetAttackCells(_range).Capacity > 0 
+               || _collector.GetPickUpCells(_range, typeof(Human)).Capacity > 0;
     }
 }

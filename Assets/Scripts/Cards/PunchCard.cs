@@ -17,40 +17,9 @@ namespace Cards
 
         public override void OnCardActivation(Attack arg1)
         {
-            CharacterMovement movement;
+            _attack = arg1;
             
-            if (!arg1.TryGetComponent(out _attack))
-            {
-                OnCardSetUp(false);
-                return;
-            }
-            
-            if (!arg1.TryGetComponent(out movement))
-            {
-                OnCardSetUp(false);
-                return;
-            }
-            
-            PathValidator pathValidator = movement.GetPathValidator();
-            Vector3 characterPosition = _attack.transform.position;
-            List<Vector3> directions = CoordinateManager.GetAttackDirections();
-
-            List<Vector3> litPositions = new List<Vector3>();
-
-            foreach (Vector3 direction in directions)
-            {
-                if (pathValidator.CanMoveTo(characterPosition, characterPosition + direction))
-                {
-                    foreach (GameObject entity in 
-                             CoordinateManager.GetEntities(characterPosition + direction, _attack.gameObject))
-                    {
-                        if (entity.TryGetComponent(out Inventory _))
-                        {
-                            litPositions.Add(characterPosition + direction);
-                        }
-                    }
-                }
-            }
+            List<Vector3> litPositions = _attack.GetAttackCells(1);
 
             if (litPositions.Capacity > 0)
             {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Characters;
@@ -19,8 +20,10 @@ public class SporeHook : Skill
         movement = GetComponent<CharacterMovement>();
     }
 
-    public override void Activate()
+    public override void Activate(Action<bool> onSetUp)
     {
+        base.Activate(onSetUp);
+        
         PathValidator pathValidator = movement.GetPathValidator();
         Vector3 characterPosition = transform.position;
         List<Vector3> directions = CoordinateManager.GetAllDirections();

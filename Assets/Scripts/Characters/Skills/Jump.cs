@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Characters;
 using Characters.Skills;
@@ -17,8 +18,10 @@ public class Jump : Skill
         movement = GetComponent<CharacterMovement>();
     }
 
-    public override void Activate()
+    public override void Activate(Action<bool> onSetUp)
     {
+        base.Activate(onSetUp);
+        
         PathValidator pathValidator = movement.GetPathValidator();
         Vector3 characterPosition = transform.position;
         List<Vector3> directions = CoordinateManager.GetAllDirections();

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Selectors
@@ -14,7 +15,7 @@ namespace Selectors
         [SerializeField] private DiceManager diceManager; //inject using zenject later
         [SerializeField] private List<CharacterMovement> characters = new List<CharacterMovement>();
         private Queue<CharacterMovement> turnOrder;
-        
+        public UnityEvent<string> onStepCountChanged;
         
         private void Awake()
         {
@@ -27,18 +28,20 @@ namespace Selectors
             SelectNext();
         }
 
-        public void SelectNext ()
+        public void SelectNext()
         {
             if (turnOrder.TryDequeue(out CharacterMovement characterMovement))
             {
                 turnOrder.Enqueue(characterMovement);
                 CurrentCharacter = characterMovement;
-                CurrentCharacter.AddSteps(diceManager.GetDiceValue());
+                CurrentCharacter.SetSteps(diceManager.GetDiceValue());
+                onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
             }
         }
 
         public void MakeMovement() {
             CurrentCharacter.MakeMovement();
+            onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
         }
     }
 
