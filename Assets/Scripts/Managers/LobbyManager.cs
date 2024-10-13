@@ -6,6 +6,8 @@ using Mirror;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System;
+using Lobby;
+using System.Threading.Tasks;
 
 namespace Managers
 {
@@ -15,12 +17,21 @@ namespace Managers
         [SerializeField] private TMP_InputField joinLobby, createLobby;
         [SerializeField] private Transform participantsContainer;
         [SerializeField] private UnityEvent onConnectedToLobby,onDisconnectedFromLobby;
+        [SerializeField] private List<LobbyCharacterSelector> selectors = new List<LobbyCharacterSelector>();
 
         private void OnEnable()
         {
             CustomNetworkManager.OnClientConnected += OnClientConnected;
             CustomNetworkManager.OnClientDisconnected += OnClientDisconnected;
             LobbyParticipantHandler.OnPartyOwnerChanged += OnPartyOwnerChanged; 
+        }
+
+        public void DeselectAllCharacters ()
+        {
+            foreach (var selector in selectors)
+            {
+                selector.SetBlock(false);
+            }
         }
 
         private void OnPartyOwnerChanged(bool obj)
@@ -46,7 +57,7 @@ namespace Managers
             NetworkManager.singleton.StartClient();
         }
 
-        public void LeaveLobby ()
+        public  void LeaveLobby ()
         {
             if (NetworkServer.active && NetworkClient.isConnected)
             {

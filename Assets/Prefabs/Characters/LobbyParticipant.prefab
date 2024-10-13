@@ -114,9 +114,15 @@ MonoBehaviour:
   syncInterval: 0
   displayName: {fileID: 5456789342652755481}
   readyImage: {fileID: 9090183092363535892}
+  characterSelected: {fileID: 6480423095956913077}
   playerName: 
   isPartyOwner: 0
   isReady: 0
+  characters:
+  - {fileID: 11400000, guid: 0fa00228b40a12d468535f8d830181f2, type: 2}
+  - {fileID: 11400000, guid: eaeceefb4f0dfcd4794de4cfd4910965, type: 2}
+  - {fileID: 11400000, guid: 7ffe14589396b4c4b901239b697dbdce, type: 2}
+  - {fileID: 11400000, guid: 6aeb2d74f37669243941b03738861a0b, type: 2}
 --- !u!1 &3639547058420267489
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

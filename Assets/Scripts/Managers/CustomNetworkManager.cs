@@ -1,9 +1,12 @@
+using DTOs;
+using System.Linq;
 using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Lobby;
 
 namespace Managers
 {
@@ -11,10 +14,10 @@ namespace Managers
     {
         [SerializeField] private NetworkIdentity lobbyParticipant, player;
         [SerializeField] private Transform lobbyDisplay;
-        [SerializeField] private List<LobbyParticipantHandler> connectedClients = new List<LobbyParticipantHandler>();
+        [SerializeField] private List<Player> connectedClients = new List<Player>();
         [SerializeField] private bool isGameInProgress = false;
         public static Action OnClientConnected, OnClientDisconnected;
-
+        public static Action OnValidateStates;
 
 
         #region Server
@@ -25,6 +28,8 @@ namespace Managers
             NetworkServer.RegisterHandler<LobbyConnection>(OnCreateCharacter);
         }
 
+
+
         public override void OnServerConnect(NetworkConnectionToClient conn)
         {
             base.OnServerConnect(conn);
@@ -33,12 +38,24 @@ namespace Managers
         public override void OnServerDisconnect(NetworkConnectionToClient conn)
         {
             base.OnServerDisconnect(conn);
-            if (conn.identity != null && conn.identity.TryGetComponent(out LobbyParticipantHandler player))
+            if (conn.identity != null)
             {
-                connectedClients.Remove(player);
+                connectedClients.RemoveAll((p)=>p.ConnectionId == conn.connectionId);
             }
         }
 
+        
+        public void SetSelectionForConnection(NetworkConnection networkConnection, string character)
+        {
+            var client = connectedClients.Where((c) => c.ConnectionId == networkConnection.connectionId).FirstOrDefault();
+            var clientObject = FindObjectsOfType<LobbyParticipantHandler>().Where((p) => p.Player.ConnectionId == client.ConnectionId).FirstOrDefault();
+            if (clientObject == null) return;
+            if (!string.IsNullOrEmpty(client.CharacterGUID))
+            {
+                //unblock character
+            }
+            clientObject.SetCharacterGUID(character); 
+        }
 
         public override void OnServerAddPlayer(NetworkConnectionToClient conn)
         {
@@ -50,6 +67,7 @@ namespace Managers
            // player.SetPartyOwner(connectedClients.Count == 1);
 
         }
+
 
         public override void OnStopServer()
         {
@@ -68,14 +86,18 @@ namespace Managers
         private void OnCreateCharacter(NetworkConnectionToClient conn, LobbyConnection message)
         {
             LobbyParticipantHandler participant = Instantiate(lobbyParticipant).GetComponent<LobbyParticipantHandler>();
-            connectedClients.Add(participant);
+            var player = new Player();
+            connectedClients.Add(player);
+            player.ConnectionId = conn.connectionId;
+            player.Nickname = "Player" + connectedClients.Count;
+            player.IsPartyOwner = connectedClients.Count == 1;
             NetworkServer.AddPlayerForConnection(conn, participant.gameObject);
-            foreach (var player in connectedClients)
+            conn.identity.GetComponent<LobbyParticipantHandler>().Player = player;
+            var clients = FindObjectsOfType<LobbyParticipantHandler>().OrderBy((c) => c.GetPlayerName());
+            foreach (var client in clients)
             {
-                player.AddToContainer();
+                client.AddToContainer();
             }
-            participant.SetPlayerName("Player" + connectedClients.Count);
-            participant.SetPartyOwner(connectedClients.Count == 1);
         }
 
         #region Client
@@ -89,11 +111,11 @@ namespace Managers
         public void StartGame ()
         {
 
-            if (connectedClients.Count >= 2 && isGameInProgress == false)
+            if (connectedClients.Count >= 1 && isGameInProgress == false)
             {
                 foreach (var player in connectedClients)
                 {
-                    if (!player.GetReady())
+                    if (!player.IsReady)
                     {
                         return;
                     }
@@ -130,5 +152,4 @@ namespace Managers
     {
       
     }
-
 }

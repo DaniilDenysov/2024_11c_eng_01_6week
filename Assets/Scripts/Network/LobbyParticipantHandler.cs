@@ -2,40 +2,58 @@ using Managers;
 using TMPro;
 using Mirror;
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AYellowpaper.SerializedCollections;
 using UnityEngine.UI;
+using DTOs;
+using Lobby;
 
 public class LobbyParticipantHandler : NetworkBehaviour
 {
     [SerializeField] private TMP_Text displayName;
-    [SerializeField] private Image readyImage; 
-    [SerializeField, SyncVar(hook = nameof(OnPlayerNameChanged))] private string playerName;
-    [SerializeField, SyncVar(hook = nameof(OnPartyOwnerStateChanged))] private bool isPartyOwner = false;
-    [SerializeField, SyncVar(hook = nameof(OnReady))] private bool isReady = false;
+    [SerializeField] private Image readyImage, characterSelected;
+ //   [SerializeField, SyncVar(hook = nameof(OnPlayerNameChanged))] private string playerName;
+ //   [SerializeField, SyncVar(hook = nameof(OnPartyOwnerStateChanged))] private bool isPartyOwner = false;
+  //  [SerializeField, SyncVar(hook = nameof(OnReady))] private bool isReady = false;
+    [SyncVar(hook = nameof(OnPlayerStateChanged))] public Player Player = new Player();
+    [SerializeField] private List<CharacterData> characters = new List<CharacterData>();
 
     public static event Action<bool> OnPartyOwnerChanged;
 
-    private void OnPartyOwnerStateChanged(bool oldState, bool newState)
+
+    public void OnPlayerStateChanged (Player oldState, Player newState)
     {
+        Debug.Log("Changed");
+        displayName.text = newState.Nickname;
+        readyImage.color = newState.IsReady == true ? Color.green : Color.red;
+        CharacterData characterData = characters.Where((c) => c.CharacterGUID == newState.CharacterGUID).FirstOrDefault();
+
+        if (characterData != null)
+        {
+            LobbyCharacterSelector.OnDeselected?.Invoke(oldState.CharacterGUID);
+            LobbyCharacterSelector.OnSelected?.Invoke(characterData.CharacterGUID);
+            characterSelected.sprite = characterData.CharacterIcon;
+        }
         if (!isOwned) return;
-        OnPartyOwnerChanged?.Invoke(newState);
+        OnPartyOwnerChanged?.Invoke(newState.IsPartyOwner);
     }
 
-    public bool GetReady() => isReady;
 
-    private void OnReady (bool oldState, bool newState)
+    public bool GetReady() => Player.IsReady;
+
+    [ClientRpc]
+    public void SetCharacterIcon (string chracterGUID)
     {
-        readyImage.color = newState == true ? Color.green : Color.red;
+        CharacterData characterData = characters.Where((c) => c.CharacterGUID == chracterGUID).FirstOrDefault();
+        if (characterData == null) return;
+        characterSelected.sprite = characterData.CharacterIcon;
     }
 
-    private void OnPlayerNameChanged(string oldName, string newName)
-    {
-        displayName.text = newName;
-    }
 
-    public bool GetPartyOwner() => isPartyOwner;
+    public bool GetPartyOwner() => Player.IsPartyOwner;
 
     [ClientRpc]
     public void AddToContainer ()
@@ -46,27 +64,53 @@ public class LobbyParticipantHandler : NetworkBehaviour
     [Server]
     public void SetPlayerName(string playerName)
     {
-        this.playerName = playerName;
+        var player = new Player(Player);
+        player.Nickname = playerName;
+        Player = player;
     }
+
+    public string GetPlayerName() => Player.Nickname; 
 
     [Server]
     public void SetPartyOwner (bool isPartyOwner)
     {
-        this.isPartyOwner = isPartyOwner;
+        var player = new Player(Player);
+        player.IsPartyOwner = isPartyOwner;
+        Player = player;
+    }
+
+    [Server]
+    public void SetConnectionId(int connectionId)
+    {
+        var player = new Player(Player);
+        player.ConnectionId = connectionId;
+        Player = player;
+    }
+
+    [Command]
+    public void SetCharacterGUID(string characterGUID)
+    {
+        var player = new Player(Player);
+        player.CharacterGUID = characterGUID;
+        Player = player;
     }
 
     [Command]
     public void CmdStartGame ()
     {
-        if (!isPartyOwner) return;
+        if (!Player.IsPartyOwner) return;
 
         ((CustomNetworkManager)NetworkManager.singleton).StartGame();
     }
 
+
+ 
     [Command]
     public void CmdReady()
     {
-        isReady = !isReady;
+        var player = new Player(Player);
+        player.IsReady = !Player.IsReady;
+        Player = player;
     }
 
     private void OnEnable()
@@ -83,7 +127,7 @@ public class LobbyParticipantHandler : NetworkBehaviour
 
     private void OnClientDisconnected()
     {
-
+     
     }
 
     private void OnClientConnected()
