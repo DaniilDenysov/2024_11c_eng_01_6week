@@ -9,17 +9,16 @@ namespace Cards
     public class HarmCard : Card<Inventory>
     {
         private Inventory targetInventory;
+        private bool harmActive;
 
         public override void OnCardActivation(Inventory inventory)
         {
-            // Check if the current character has an inventory
             if (inventory == null)
             {
                 OnCardSetUp(false);
                 return;
             }
 
-            // Create a list of available targets (including CurrentCharacter as a single target)
             List<CharacterMovement> availableTargets = new List<CharacterMovement> { CharacterSelector.CurrentCharacter };
 
             // Call DisplayCharacterSelection from the CharacterSelector
@@ -28,11 +27,11 @@ namespace Cards
 
         private void OnPlayerChosen(CharacterMovement selectedCharacter)
         {
-            // Assign the target inventory
             targetInventory = selectedCharacter.GetComponent<Inventory>();
             if (targetInventory != null)
             {
-                targetInventory.AdjustCardDraw(-1);  // Reduce the card draw by 1 for the target player.
+                harmActive = true;
+                targetInventory.AdjustCardDraw(-1);
                 EventManager.OnPlayerAttacked += OnPlayerAttacked;  // Subscribe to event when target is attacked.
                 OnCardSetUp(true);  // Confirm card setup.
             }
@@ -44,12 +43,17 @@ namespace Cards
 
         private void OnPlayerAttacked(GameObject attackedPlayer)
         {
-            if (attackedPlayer == targetInventory.gameObject)
+            if (attackedPlayer == targetInventory.gameObject && harmActive)
             {
-                // Remove the "Harm" effect when the target is attacked
-                targetInventory.AdjustCardDraw(1);  // Restore normal card draw.
-                EventManager.OnPlayerAttacked -= OnPlayerAttacked;  // Unsubscribe from the event.
-                Destroy(gameObject);  // Remove the card from the game.
+                if (targetInventory.TryPopItem(out Human human))
+                {
+                    Debug.Log("Harm active: Preventing human loss.");
+                }
+
+                targetInventory.AdjustCardDraw(1);
+                EventManager.OnPlayerAttacked -= OnPlayerAttacked;
+                harmActive = false;
+                Destroy(gameObject);
             }
         }
     }
