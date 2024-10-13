@@ -17,7 +17,6 @@ namespace Characters.Skills
             skills = GetComponents<Skill>();
         }
 
-
         public void Select ()
         {
             selectSkill_HUD.SetActive(true);
