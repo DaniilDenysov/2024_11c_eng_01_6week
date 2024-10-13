@@ -24,6 +24,24 @@ public class LobbyParticipantHandler : NetworkBehaviour
     public static event Action<bool> OnPartyOwnerChanged;
 
 
+    public void Awake()
+    {
+        CustomNetworkManager.OnValidateStates += OnValidateState;
+    }
+
+    [ClientRpc]
+    public void DeselectOnClient ()
+    {
+        LobbyManager.Instance.DeselectAllCharacters();
+    }
+
+    [ClientRpc]
+    public void OnValidateState()
+    {
+        Debug.Log("Validated");
+        LobbyCharacterSelector.OnSelected?.Invoke(Player.CharacterGUID);
+    }
+
     public void OnPlayerStateChanged (Player oldState, Player newState)
     {
         Debug.Log("Changed");
@@ -48,6 +66,7 @@ public class LobbyParticipantHandler : NetworkBehaviour
         ((CustomNetworkManager)NetworkManager.singleton).UpdateSelection(connectionIds);
     }
 
+   
 
     public bool GetReady() => Player.IsReady;
 
@@ -134,7 +153,7 @@ public class LobbyParticipantHandler : NetworkBehaviour
 
     private void OnClientDisconnected()
     {
-     
+        CustomNetworkManager.OnValidateStates -= OnValidateState;
     }
 
     private void OnClientConnected()

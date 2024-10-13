@@ -54,49 +54,13 @@ namespace Managers
         public override void OnServerDisconnect(NetworkConnectionToClient conn)
         {
             base.OnServerDisconnect(conn);
-            if (NetworkServer.connections.Count > 0)  NetworkServer.connections[0].identity.GetComponent<LobbyParticipantHandler>().UpdateClient(NetworkServer.connections.Keys.ToList());
-           /* var list = NetworkServer.connections.Keys.ToList();
-            list.Remove(conn.connectionId);
-            foreach (var connection in NetworkServer.connections)
-            {
-                if (connection.Value.identity == null) continue;
-                if (connection.Value.identity.TryGetComponent(out LobbyParticipantHandler handler))
-                {
-                    handler.UpdateClient(list);
-                }
-            }
-            if (conn.identity != null)
-            {
-                connectedClients.RemoveAll((p)=>p.ConnectionId == conn.connectionId);
-            }*/
-        }
-
-        
-
-        
-        public void SetSelectionForConnection(NetworkConnection networkConnection, string character)
-        {
-            var client = connectedClients.Where((c) => c.ConnectionId == networkConnection.connectionId).FirstOrDefault();
-            var clientObject = FindObjectsOfType<LobbyParticipantHandler>().Where((p) => p.Player.ConnectionId == client.ConnectionId).FirstOrDefault();
-            if (clientObject == null) return;
-            if (!string.IsNullOrEmpty(client.CharacterGUID))
-            {
-                //unblock character
-            }
-            clientObject.SetCharacterGUID(character); 
-        }
-
-        public override void OnServerAddPlayer(NetworkConnectionToClient conn)
-        {
-            base.OnServerAddPlayer(conn);
-
-            //  var player = conn.identity.GetComponent<LobbyParticipantHandler>();
-            //  connectedClients.Add(player);
-            //  AddParticipantToContainer(conn);
-            //  player.SetPlayerName("Player" + connectedClients.Count);
-            // player.SetPartyOwner(connectedClients.Count == 1);
+            NetworkClient.connection.identity.GetComponent<LobbyParticipantHandler>().DeselectOnClient();
+            OnValidateStates?.Invoke();
+            // OnValidateStates?.Invoke();
 
         }
+
+      
 
         public override void OnStopServer()
         {
@@ -166,17 +130,15 @@ namespace Managers
         public override void OnClientDisconnect()
         {
             base.OnClientDisconnect();
-         /*   connectedClients = FindObjectsOfType<LobbyParticipantHandler>().Select((h) => h.Player).ToList();
-            foreach (var connection in NetworkServer.connections)
-            {
-
-            }*/
+        //    LobbyManager.Instance.DeselectAllCharacters();
+         //   OnValidateStates?.Invoke();
             OnClientDisconnected?.Invoke();
         }
 
         public override void OnStopClient()
         {
             connectedClients.Clear();
+            LobbyManager.Instance.DeselectAllCharacters();
             MessageLogManager.Instance.DisplayMessage("Host error", "Host stopped");
             OnClientDisconnected?.Invoke();
         }
