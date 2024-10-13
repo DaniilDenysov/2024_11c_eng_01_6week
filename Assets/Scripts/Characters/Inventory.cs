@@ -4,23 +4,36 @@ using Collectibles;
 using System.Collections.Generic;
 using Ganeral;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Inventory : MonoBehaviour, ICollector
+public class Inventory : ICollector
 {
+    [SerializeField] private TileSelector tileSelector;
     [SerializeField] private LayerMask layerMask;
     private List<ICollectible> _inventory;
+    private Action<bool> _onPickedUp;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         _inventory = new List<ICollectible>();
     }
 
-    public bool PickUp()
+    public override void PickUp(Action<bool> onPickedUp)
     {
-        return PickUp(transform.position);
+        if (IsStaticPickUpCellsEmpty())
+        {
+            onPickedUp.Invoke(PickUp(transform.position));
+        }
+        else
+        {
+            List<Vector3> litPositions = GetPickUpCells(0, typeof(Human));
+            tileSelector.SetTilesLit(litPositions, OnCellChosen);
+            _onPickedUp = onPickedUp;
+        }
     }
     
-    public bool PickUp(Vector3 cell)
+    public override bool PickUp(Vector3 cell)
     {
         bool result = false;
         
@@ -36,7 +49,13 @@ public class Inventory : MonoBehaviour, ICollector
                 }
             }
         }
+        
         return result;
+    }
+
+    private void OnCellChosen(Vector3 cell)
+    {
+        _onPickedUp(PickUp(cell));
     }
 
     public bool TryPopItem (out Human human)

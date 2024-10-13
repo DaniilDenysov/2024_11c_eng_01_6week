@@ -18,6 +18,7 @@ namespace Characters
         [SerializeField] private GameObject HUD_display;
         [SerializeField] private bool isPaused;
         [SerializeField] private PathValidator pathValidator;
+        private int _stepCost = 1;
 
         private void Awake()
         {
@@ -39,9 +40,9 @@ namespace Characters
             directionNormalized = new Vector3(Mathf.RoundToInt(directionContinuous.x), Mathf.RoundToInt(directionContinuous.y));
         }
 
-        public void AddSteps(int value)
+        public void SetSteps(int value)
         {
-            steps += value;
+            steps = value;
         }
 
         public void SetPaused(bool state)
@@ -57,20 +58,22 @@ namespace Characters
         {
             if (isPaused) return;
 
-
-            if (steps > 0 || isStepsIgnored)
+            if (isStepsEnough() || isStepsIgnored)
             {
                 if (pathValidator.CanMoveTo(transform.position, nextPosition))
                 {
                     Vector3 directionUnit =
-                        CoordinateManager.GetUnitDirection(pathValidator.GetTileMap(), transform.position, nextPosition);
+                        CoordinateManager.GetUnitDirection(pathValidator.GetTileMap(), 
+                            transform.position, nextPosition);
 
                     while (!CoordinateManager.IsSameCell(transform.position, nextPosition))
                     {
-                        if (makeStep(transform.position + directionUnit, isStepsIgnored))
+                        if (!isStepsEnough() && !isStepsIgnored)
                         {
                             return;
                         }
+
+                        makeStep(transform.position + directionUnit, isStepsIgnored);
                     }
                 }
                 else
@@ -91,10 +94,12 @@ namespace Characters
 
                 while (!CoordinateManager.IsSameCell(transform.position, nextPosition))
                 {
-                    if (makeStep(transform.position + directionUnit, isStepsIgnored))
+                    if (!isStepsEnough() && !isStepsIgnored)
                     {
                         return;
                     }
+
+                    makeStep(transform.position + directionUnit, isStepsIgnored);
                 }
             }
         }
@@ -102,7 +107,7 @@ namespace Characters
         public void MakeMovement()
         {
             if (isPaused) return;
-            if (steps > 0)
+            if (isStepsEnough())
             {
                 Vector3 nextPosition = transform.position + directionNormalized;
                 if (pathValidator.CanMoveTo(nextPosition,
@@ -117,30 +122,48 @@ namespace Characters
             }
         }
 
-        private bool makeStep(Vector3 nextPosition, bool isStepsIgnored = false)
+        private void makeStep(Vector3 nextPosition, bool isStepsIgnored = false)
         {
+            if (!isStepsIgnored) {
+                decreaseStep();
+            }
+            EventManager.FireEvent(EventManager.OnCharacterMovesOut, transform.position, this);
             transform.position = nextPosition;
-
-            return decreaseStep();
+            EventManager.FireEvent(EventManager.OnCharacterMovesIn, nextPosition, this);
         }
 
-        private bool decreaseStep()
+        private bool isStepsEnough()
         {
-            steps--;
+            return steps - _stepCost >= 0;
+        }
+
+        private void decreaseStep()
+        {
+            steps -= _stepCost;
             if (steps == 0)
             {
                 EventManager.FireEvent(EventManager.OnTurnEnd);
-                return true;
-            }
-            else
-            {
-                return false;
             }
         }
 
         public PathValidator GetPathValidator()
         {
             return pathValidator;
+        }
+
+        public void SetStepCost(int stepCost)
+        {
+            _stepCost = stepCost;
+        }
+
+        public int GetSteps()
+        {
+            return steps;
+        }
+        
+        public void ResetStepCost()
+        {
+            _stepCost = 1;
         }
     }
 }

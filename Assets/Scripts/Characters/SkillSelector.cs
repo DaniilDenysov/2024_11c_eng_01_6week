@@ -11,26 +11,28 @@ namespace Characters.Skills
     {
         [SerializeField] private GameObject selectSkill_HUD;
         [SerializeField] private Skill [] skills;
+        private Action<bool> _onSetUp;
         
         public void Awake()
         {
             skills = GetComponents<Skill>();
         }
 
-        public void Select ()
+        public void Select (Action<bool> onSetUp)
         {
             selectSkill_HUD.SetActive(true);
+            _onSetUp = onSetUp;
         }
 
         public void SelectSkill(int i)
         {
             if (skills[i].IsActivatable())
             {
-                skills[i].Activate();
+                skills[i].Activate(_onSetUp);
             }
             else
             {
-                EventManager.OnSkillSetUp(false);
+                _onSetUp.Invoke(false);
             }
         }
     }

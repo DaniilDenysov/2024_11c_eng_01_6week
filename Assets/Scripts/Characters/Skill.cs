@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Managers;
@@ -7,10 +8,16 @@ namespace Characters.Skills
 {
     public abstract class Skill : MonoBehaviour
     {
-        public abstract void Activate();
+        private Action<bool> _onSetUp;
+
+        public virtual void Activate(Action<bool> onSetUp)
+        {
+            _onSetUp = onSetUp;
+        }
         public abstract bool IsActivatable();
+        
         public void OnActivated(bool isSuccessful = true) {
-            EventManager.OnSkillSetUp(isSuccessful);
+            _onSetUp.Invoke(isSuccessful);
         }
     }
 }

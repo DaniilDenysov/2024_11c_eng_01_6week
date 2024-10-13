@@ -9,7 +9,7 @@ namespace Cards
     {
         public override void OnCardActivation(ICollector arg1)
         {
-            OnCardSetUp(arg1.PickUp());
+            arg1.PickUp(OnCardSetUp);
         }
     }
 }

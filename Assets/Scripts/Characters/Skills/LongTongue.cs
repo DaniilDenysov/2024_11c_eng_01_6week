@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Characters;
 using Characters.Skills;
@@ -19,31 +20,11 @@ public class LongTongue : Skill
         _attack = GetComponent<Attack>();
     }
 
-    public override void Activate()
+    public override void Activate(Action<bool> onSetUp)
     {
-        PathValidator pathValidator = _movement.GetPathValidator();
-        Vector3 characterPosition = transform.position;
-
-        List<Vector3> litPositions = new List<Vector3>();
-
-        foreach (Vector3 direction in CoordinateManager.GetAttackDirections())
-        {
-            for (int distance = 0; distance < _range; distance++)
-            {
-                Vector3 currentCell = characterPosition + direction * (distance + 1);
-                
-                if (pathValidator.CanMoveTo(characterPosition, currentCell))
-                {
-                    foreach (GameObject entity in CoordinateManager.GetEntities(currentCell, gameObject))
-                    {
-                        if (entity.TryGetComponent(out Inventory _))
-                        {
-                            litPositions.Add(currentCell);
-                        }
-                    }
-                }
-            }
-        }
+        base.Activate(onSetUp);
+        
+        List<Vector3> litPositions = _attack.GetAttackCells(_range);
         
         cellSelector.SetTilesLit(litPositions, OnCellChosen);
     }
@@ -56,27 +37,6 @@ public class LongTongue : Skill
 
     public override bool IsActivatable()
     {
-        PathValidator pathValidator = _movement.GetPathValidator();
-        Vector3 characterPosition = transform.position;
-
-        foreach (Vector3 direction in CoordinateManager.GetAttackDirections())
-        {
-            for (int distance = 0; distance < _range; distance++) {
-                Vector3 currentCell = characterPosition + direction * (distance + 1);
-                
-                if (pathValidator.CanMoveTo(characterPosition, currentCell))
-                {
-                    foreach (GameObject entity in CoordinateManager.GetEntities(currentCell, gameObject))
-                    {
-                        if (entity.TryGetComponent(out Inventory _))
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
-
-        return false;
+        return _attack.GetAttackCells(_range).Capacity > 0;
     }
 }

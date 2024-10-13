@@ -50,9 +50,9 @@ namespace Cards
 
         public abstract void OnCardActivation(T arg1);
 
-        public virtual void OnCardSetUp(bool succesfully)
+        public virtual void OnCardSetUp(bool successfully)
         {
-            if (succesfully)
+            if (successfully)
             {
                 Destroy(gameObject);
             }

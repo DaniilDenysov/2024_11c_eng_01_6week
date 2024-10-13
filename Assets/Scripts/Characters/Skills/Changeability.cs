@@ -14,8 +14,10 @@ namespace Characters.Skills
             _turnAction = GetComponent<ITurnAction>();
         }
 
-        public override void Activate()
+        public override void Activate(Action<bool> onSetUp)
         {
+            base.Activate(onSetUp);
+            
             _turnAction.OnTurn();
             OnActivated();
         }
