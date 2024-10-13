@@ -10,7 +10,6 @@ using Validation;
 [RequireComponent(typeof(CharacterMovement))]
 public class Jump : Skill
 {
-    [SerializeField] private TileSelector directionSelector;
     private CharacterMovement movement;
 
     void Awake()
@@ -36,7 +35,7 @@ public class Jump : Skill
             }
         }
 
-        directionSelector.SetTilesLit(litPositions, OnCellChosen);
+        TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
     }
 
     private void OnCellChosen(Vector3 chosenTile)

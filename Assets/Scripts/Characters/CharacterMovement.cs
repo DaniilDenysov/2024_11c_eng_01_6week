@@ -5,6 +5,7 @@ using Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Selectors;
 using UnityEngine;
 using Validation;
 
@@ -142,7 +143,7 @@ namespace Characters
             steps -= _stepCost;
             if (steps == 0)
             {
-                EventManager.FireEvent(EventManager.OnTurnEnd);
+                CharacterSelector.FinishTurn();
             }
         }
 

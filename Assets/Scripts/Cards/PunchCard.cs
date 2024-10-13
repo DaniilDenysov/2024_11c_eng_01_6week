@@ -12,7 +12,6 @@ namespace Cards
 {
     public class PunchCard : Card<Attack>
     {
-        [SerializeField] private TileSelector tileSelector;
         private Attack _attack;
 
         public override void OnCardActivation(Attack arg1)
@@ -23,7 +22,7 @@ namespace Cards
 
             if (litPositions.Capacity > 0)
             {
-                tileSelector.SetTilesLit(litPositions, AttackCell);
+                TileSelector.Instance.SetTilesLit(litPositions, AttackCell);
             }
             else
             {

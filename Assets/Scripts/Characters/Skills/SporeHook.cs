@@ -11,7 +11,6 @@ using Validation;
 [RequireComponent(typeof(CharacterMovement))]
 public class SporeHook : Skill
 {
-    [SerializeField] private TileSelector directionSelector;
     private CharacterMovement movement;
     private int _range = 2;
 
@@ -51,7 +50,7 @@ public class SporeHook : Skill
             }
         }
 
-        directionSelector.SetTilesLit(litPositions, OnDirectionChosen);
+        TileSelector.Instance.SetTilesLit(litPositions, OnDirectionChosen);
     }
 
     private void OnDirectionChosen(Vector3 chosenTile)
