@@ -1,13 +1,18 @@
 using Characters;
 using Managers;
 using Selectors;
+using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cards
 {
     public class HarmCard : Card<Inventory>
     {
+        [SerializeField] private GameObject characterSelectionPanel;
+        [SerializeField] private Button characterButtonPrefab;
         private Inventory targetInventory;
         private bool harmActive;
 
@@ -19,21 +24,49 @@ namespace Cards
                 return;
             }
 
-            List<CharacterMovement> availableTargets = new List<CharacterMovement> { CharacterSelector.CurrentCharacter };
+            List<CharacterMovement> availableTargets = new List<CharacterMovement>(CharacterSelector.Instance.characters);
 
-            // Call DisplayCharacterSelection from the CharacterSelector
-            CharacterSelector.Instance.DisplayCharacterSelection(availableTargets, OnPlayerChosen);
+            //testing
+            //CharacterSelector.Instance.DisplayCharacterSelection(availableTargets, OnPlayerChosen);
+            //Debug.Log($"Available targets: {availableTargets.Count}");
+
+            DisplayCharacterSelection(availableTargets);
         }
 
+        
+        private void DisplayCharacterSelection(List<CharacterMovement> availableTargets)
+        {
+            characterSelectionPanel.SetActive(true);
+
+            foreach (var target in availableTargets)
+            {
+                Button newButton = Instantiate(characterButtonPrefab);
+                newButton.GetComponentInChildren<TMP_Text>().text = target.name;
+                newButton.gameObject.transform.SetParent(characterSelectionPanel.transform);
+
+                newButton.onClick.AddListener(() => OnPlayerChosen(target));
+                Debug.Log(newButton);
+            }
+        }
+        
         private void OnPlayerChosen(CharacterMovement selectedCharacter)
         {
+            characterSelectionPanel.SetActive(false);
+
+            foreach (Transform child in characterSelectionPanel.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
             targetInventory = selectedCharacter.GetComponent<Inventory>();
             if (targetInventory != null)
             {
                 harmActive = true;
                 targetInventory.AdjustCardDraw(-1);
-                EventManager.OnPlayerAttacked += OnPlayerAttacked;  // Subscribe to event when target is attacked.
-                OnCardSetUp(true);  // Confirm card setup.
+                EventManager.OnPlayerAttacked += OnPlayerAttacked;
+                OnCardSetUp(true);
+
+                Debug.Log("Harm applied");
             }
             else
             {
@@ -45,11 +78,6 @@ namespace Cards
         {
             if (attackedPlayer == targetInventory.gameObject && harmActive)
             {
-                if (targetInventory.TryPopItem(out Human human))
-                {
-                    Debug.Log("Harm active: Preventing human loss.");
-                }
-
                 targetInventory.AdjustCardDraw(1);
                 EventManager.OnPlayerAttacked -= OnPlayerAttacked;
                 harmActive = false;

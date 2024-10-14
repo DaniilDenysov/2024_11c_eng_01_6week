@@ -13,8 +13,9 @@ namespace Selectors
         public static CharacterSelector Instance { get; private set; }
         public static CharacterMovement CurrentCharacter { get; private set; }
         [SerializeField] private DiceManager diceManager; //inject using zenject later
-        [SerializeField] private List<CharacterMovement> characters = new List<CharacterMovement>();
+        [SerializeField] public List<CharacterMovement> characters = new List<CharacterMovement>();
         private Queue<CharacterMovement> turnOrder;
+        public List<CharacterMovement> Characters { get; private set; } = new List<CharacterMovement>();
 
 
         private void Awake()
@@ -25,11 +26,19 @@ namespace Selectors
             }
             else
             {
-                Destroy(gameObject); // Ensures there's only one instance
+                Destroy(gameObject);
             }
 
             turnOrder = new Queue<CharacterMovement>(characters);
             EventManager.OnTurnStart += OnTurnStart;
+        }
+
+        public void RegisterCharacter(CharacterMovement character)
+        {
+            if (!characters.Contains(character))
+            {
+                characters.Add(character);
+            }
         }
 
         private void OnTurnStart()

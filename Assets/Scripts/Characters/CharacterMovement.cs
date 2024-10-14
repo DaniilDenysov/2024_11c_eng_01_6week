@@ -2,6 +2,7 @@ using Cards;
 using CustomTools;
 using Ganeral;
 using Managers;
+using Selectors;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ namespace Characters
         {
             EventManager.OnTick += OnTick;
             directionNormalized = Vector3.left;
+        }
+
+        void Start()
+        {
+            CharacterSelector.Instance.RegisterCharacter(this);
         }
 
         public void OnTurn()
