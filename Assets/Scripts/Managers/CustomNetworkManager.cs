@@ -26,6 +26,13 @@ namespace Managers
         {
             base.OnStartServer();
             NetworkServer.RegisterHandler<LobbyConnection>(OnCreateCharacter);
+           // NetworkServer.RegisterHandler<ServerMessage>(OnRecievedMessage);
+        }
+
+        private void OnRecievedMessage(NetworkConnectionToClient arg1, ServerMessage arg2)
+        {
+            Debug.Log("Revieved message");
+            MessageLogManager.Instance.DisplayMessage(arg2.Title, arg2.Description);
         }
 
         public void UpdateSelection (List<int> connectionIds)
@@ -54,23 +61,38 @@ namespace Managers
         public override void OnServerDisconnect(NetworkConnectionToClient conn)
         {
             base.OnServerDisconnect(conn);
-            NetworkClient.connection.identity.GetComponent<LobbyParticipantHandler>().DeselectOnClient();
+            // NetworkClient.connection.identity.GetComponent<LobbyParticipantHandler>().DeselectOnClient();
+           // NetworkServer.SendToAll(ErrorMessage("Host error", "Host left the lobby"));
+
+
             OnValidateStates?.Invoke();
             // OnValidateStates?.Invoke();
 
         }
 
-      
+        public void OnLeave ()
+        {
+            
+        }
+
+        public ServerMessage ErrorMessage (string title,string description)
+        {
+            var message = new ServerMessage();
+            message.Description = description;
+            message.Title = title;
+            return message;
+        }
 
         public override void OnStopServer()
         {
             connectedClients.Clear();
+           // NetworkServer.SendToAll(ErrorMessage("Host error", "Host left the lobby"));
             OnClientDisconnected?.Invoke();
         }
 
         public override void OnStopHost()
         {
-            MessageLogManager.Instance.DisplayMessage("Host error","Host stopped");
+         //   NetworkServer.SendToAll(ErrorMessage("Host error", "Host left the lobby"));
             OnClientDisconnected?.Invoke();
         }
 
@@ -103,13 +125,14 @@ namespace Managers
 
         public void StartGame ()
         {
-
+            Debug.Log("Start game");
             if (connectedClients.Count >= 1 && isGameInProgress == false)
             {
-                foreach (var player in connectedClients)
+                foreach (var player in FindObjectsOfType<LobbyParticipantHandler>().Select((h) => h.Player).ToList())
                 {
                     if (!player.IsReady)
                     {
+                        Debug.Log("Not rdy!");
                         return;
                     }
                 }
@@ -139,7 +162,7 @@ namespace Managers
         {
             connectedClients.Clear();
             LobbyManager.Instance.DeselectAllCharacters();
-            MessageLogManager.Instance.DisplayMessage("Host error", "Host stopped");
+            //MessageLogManager.Instance.DisplayMessage("Host error", "Host stopped");
             OnClientDisconnected?.Invoke();
         }
         #endregion
@@ -148,5 +171,10 @@ namespace Managers
     public struct LobbyConnection : NetworkMessage
     {
       
+    }
+
+    public struct ServerMessage : NetworkMessage
+    {
+        public string Title, Description;
     }
 }

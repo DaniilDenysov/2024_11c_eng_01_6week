@@ -75,6 +75,7 @@ namespace Managers
         {
             if (NetworkServer.active && NetworkClient.isConnected)
             {
+                ((CustomNetworkManager)NetworkManager.singleton).OnLeave();
                 NetworkManager.singleton.StopHost();
 
                 onDisconnectedFromLobby?.Invoke();
