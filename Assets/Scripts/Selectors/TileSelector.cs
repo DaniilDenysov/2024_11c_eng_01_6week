@@ -11,7 +11,7 @@ public class TileSelector : MonoBehaviour
     [SerializeField] private Tilemap tileMap;
     private Vector3 cellUnit;
     [SerializeField] private TileBase highlightTile;
-    private Action<Vector3> onChosen;
+    private Action<Vector3> _onChosen;
 
     void Awake()
     {
@@ -29,7 +29,7 @@ public class TileSelector : MonoBehaviour
 
             if (tile)
             {
-                onChosen.Invoke(tilePosition + cellUnit);
+                _onChosen.Invoke(tilePosition + cellUnit);
                 SetTilesUnlit();
             }
         }
@@ -48,7 +48,7 @@ public class TileSelector : MonoBehaviour
             tileMap.SetTile(tilePosition, highlightTile);
         }
 
-        this.onChosen = onChosen;
+        _onChosen = onChosen;
     }
 
     public void SetTilesUnlit()

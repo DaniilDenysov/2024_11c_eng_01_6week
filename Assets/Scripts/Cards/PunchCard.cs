@@ -10,13 +10,13 @@ using Validation;
 
 namespace Cards
 {
-    public class PunchCard : Card<Attack>
+    public class PunchCard : Card
     {
         private Attack _attack;
 
-        public override void OnCardActivation(Attack arg1)
+        public override void OnCardActivation(GameObject activator)
         {
-            _attack = arg1;
+            activator.TryGetComponent(out _attack);
             
             List<Vector3> litPositions = _attack.GetAttackCells(1);
 

@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace Cards
 {
-    public class HarmCard : Card<TilemapPath>
+    public class HarmCard : Card
     {
-        public override void OnCardActivation(TilemapPath arg1)
+        public override void OnCardActivation(GameObject activator)
         {
             OnCardSetUp(true);
         }

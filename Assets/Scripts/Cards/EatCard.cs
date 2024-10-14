@@ -5,11 +5,14 @@ using UnityEngine;
 
 namespace Cards
 {
-    public class EatCard : Card<ICollector>
+    public class EatCard : Card
     {
-        public override void OnCardActivation(ICollector arg1)
+        public override void OnCardActivation(GameObject activator)
         {
-            arg1.PickUp(OnCardSetUp);
+            if (activator.TryGetComponent(out ICollector collector))
+            {
+                collector.PickUp(OnCardSetUp);
+            }
         }
     }
 }
