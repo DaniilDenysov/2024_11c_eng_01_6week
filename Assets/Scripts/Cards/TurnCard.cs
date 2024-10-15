@@ -9,8 +9,10 @@ namespace Cards
         public override void OnCardActivation(GameObject activator)
         {
             activator.TryGetComponent(out ITurnAction turnAction);
-            turnAction.OnTurn();
-            OnCardSetUp(true);
+            turnAction.ChooseNewDirection(() =>
+            {
+                OnCardSetUp(true);
+            });
         }
     }
 }

@@ -18,8 +18,10 @@ namespace Characters.Skills
         {
             base.Activate(onSetUp);
             
-            _turnAction.OnTurn();
-            OnActivated();
+            _turnAction.ChooseNewDirection(() =>
+            {
+                OnActivated();
+            });
         }
 
         public override bool IsActivatable()

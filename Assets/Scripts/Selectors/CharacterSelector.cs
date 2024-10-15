@@ -36,6 +36,7 @@ namespace Selectors
                 CurrentCharacter = characterMovement;
                 CurrentCharacter.SetSteps(diceManager.GetDiceValue());
                 onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
+                characterMovement.ChooseNewDirection(() => { });
             }
         }
 
