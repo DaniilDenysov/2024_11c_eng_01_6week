@@ -38,10 +38,14 @@ namespace Cards
         {
             EventManager.OnTurnEnd += OnTurnEnd;
             
-            for (int i = 0; i < cardNumber; i++)
-            {
-                AddCard();
-            }
+            // for (int i = 0; i < cardNumber; i++)
+            // {
+            //     AddCard();
+            // }
+            
+            AddCard("Ability");
+            AddCard("Punch");
+            AddCard("Turn");
         }
 
         private void Update() {

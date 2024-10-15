@@ -84,14 +84,14 @@ namespace Ganeral
             {
                 if (entity.TryGetComponent(out Inventory _))
                 {
-                    collector.PickUp(cell);
+                    attack.TryAttack(cell);
                     result = true;
                 }
                 else if (entity.TryGetComponent(out ICollectible collectible))
                 {
                     if (collectible.GetType() == typeof(Human))
                     {
-                        attack.TryAttack(cell);
+                        collector.PickUp(cell);
                         result = true;
                     }
                 }
