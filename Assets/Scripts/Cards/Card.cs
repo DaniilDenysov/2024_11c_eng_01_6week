@@ -1,61 +1,72 @@
-using System.Collections;
-using System.Collections.Generic;
+using Characters;
+using Characters.CharacterStates;
+using General;
+using Selectors;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Cards
 {
-    [RequireComponent(typeof(RectTransform),typeof(CanvasGroup))]
-    public abstract class Card<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
+    public abstract class Card : CardPoolable
     {
-        private CanvasGroup canvasGroup;
-        private Transform container;
-        private Camera camera;
-        private RectTransform rectTransform;
-        private Vector2 startPosition;
+        private CanvasGroup _canvasGroup;
+        private RectTransform _rectTransform;
+        private Vector2 _startPosition;
+        private CharacterStateManager _stateManager;
+        private GameObject _cardOwner;
 
         public virtual void Awake()
         {
-            canvasGroup = GetComponent<CanvasGroup>();
-            container = transform.parent;
-            rectTransform = GetComponent<RectTransform>();
-            camera = Camera.main;
+            _canvasGroup = GetComponent<CanvasGroup>();
+            _rectTransform = GetComponent<RectTransform>();
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
+        public void SetUp(GameObject player, CharacterStateManager stateManager)
         {
-            canvasGroup.alpha = 0.7f;
-            startPosition = transform.position;
-            transform.parent = transform.parent.parent;
+            _cardOwner = player;
+            _stateManager = stateManager;
         }
 
-        public void OnDrag(PointerEventData eventData)
+        private void Update()
         {
-            rectTransform.position = Input.mousePosition;
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            canvasGroup.alpha = 1f;
-            Vector3 destination = camera.ScreenToWorldPoint(transform.position);
-
-            var result = Physics2D.OverlapCircle(destination, 1f);
-            //or use raycast
-            if (result != null && result.TryGetComponent(out T action))
+            Vector2 mousePos = Input.mousePosition;
+            
+            if (Input.GetMouseButtonUp(0) 
+                && RectTransformUtility.RectangleContainsScreenPoint(_rectTransform, mousePos))
             {
-                if (OnCardActivation(action))
+                TryActivate();
+            }
+        }
+
+        public abstract void OnCardActivation(GameObject arg1);
+
+        public void OnCardSetUp(bool successfully)
+        {
+            _stateManager.SetCurrentState(new Idle());
+            _canvasGroup.alpha = 1f;
+            
+            if (successfully)
+            {
+                Pool();
+            }
+        }
+
+        public void TryActivate()
+        {
+            if (_stateManager.GetCurrentState().OnCardUsed(this) || 
+                _stateManager.GetCurrentState().GetType() == typeof(MultiCard))
+            {
+                _canvasGroup.alpha = 0.5f;
+                
+                if (_stateManager.GetCurrentState().OnCardUsed(this))
                 {
-                    Destroy(gameObject); //change to add to the pool
+                    _stateManager.SetCurrentState(new CardSettingUp());
+                    OnCardActivation(_cardOwner);
                     return;
                 }
+                
+                _stateManager.SetCurrentState(new CardSettingUp());
             }
-
-
-            transform.position = startPosition;
-            transform.parent = container;
         }
-
-        public abstract bool OnCardActivation(T arg1);
-
     }
 }

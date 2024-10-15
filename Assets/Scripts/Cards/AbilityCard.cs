@@ -1,16 +1,16 @@
 using Characters.Skills;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Cards
 {
-    public class AbilityCard : Card<SkillSelector>
+    public class AbilityCard : Card
     {
-        public override bool OnCardActivation(SkillSelector arg1)
+        public override void OnCardActivation(GameObject activator)
         {
-            return true;
-            //selector
+            if (activator.TryGetComponent(out SkillSelector selector))
+            {
+                selector.Select(OnCardSetUp);
+            }
         }
     }
 }

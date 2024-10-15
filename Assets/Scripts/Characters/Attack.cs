@@ -1,39 +1,129 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Collectibles;
+using Ganeral;
 using UnityEngine;
+using Validation;
 
 namespace Characters
 {
-    [RequireComponent(typeof(Inventory))]
+    [RequireComponent(typeof(Inventory)), RequireComponent(typeof(CharacterMovement))]
     public class Attack : MonoBehaviour
     {
-        [SerializeField] private List<Vector3> attackDirections = new List<Vector3>();
-        private Inventory inventory;
+        private Inventory _inventory;
+        private CharacterMovement _movement;
+        private Dictionary<string, List<Vector3>> _staticAttackCells;
 
         private void Awake()
         {
-            inventory = GetComponent<Inventory>();
+            _inventory = GetComponent<Inventory>();
+            _movement = GetComponent<CharacterMovement>();
+            _staticAttackCells = new Dictionary<string, List<Vector3>>();
         }
 
-        public bool TryAttack ()
+        public void AddStaticAttackCells(List<Vector3> cells, string groupName)
         {
-            Vector3 origin = transform.position;
-            foreach (var attackDirection in attackDirections)
+            if (_staticAttackCells.TryGetValue(groupName, out List<Vector3> groupCells))
             {
-                var result = Physics2D.OverlapCircle(origin + attackDirection, 0.1f);
-                Debug.DrawRay(transform.position,attackDirection,Color.red,10f);
-                if (result != default && result.TryGetComponent(out Inventory opponentsInventory))
+                groupCells.AddRange(cells);
+                groupCells = groupCells.Distinct().ToList();
+
+                _staticAttackCells[groupName] = groupCells;
+            }
+            else
+            {
+                _staticAttackCells.Add(groupName, cells);
+            }
+        }
+        
+        public void RemoveStaticAttackCells(string groupName)
+        {
+            _staticAttackCells.Remove(groupName);
+        }
+
+        public List<Vector3> GetAttackCells(int range, bool includeStaticCell = true, bool includeCurrentCell = true)
+        {
+            PathValidator pathValidator = _movement.GetPathValidator();
+            Vector3 characterPosition = transform.position;
+            List<Vector3> directions = 
+                includeCurrentCell ? CoordinateManager.GetAttackDirections() : CoordinateManager.GetAllDirections();
+
+            List<Vector3> result = new List<Vector3>();
+
+            foreach (Vector3 direction in directions)
+            {
+                for (int distance = 0; distance < range; distance++)
                 {
-                    //Add zone handling
-                    if (opponentsInventory.TryPopItem(out Human human))
+                    Vector3 currentCell = characterPosition + direction * (distance + 1);
+
+                    if (!pathValidator.CanMoveTo(characterPosition, currentCell))
                     {
-                        inventory.Add(human);
-                        return true;
+                        break;
+                    }
+                
+                    if (IsCellAttackable(currentCell))
+                    {
+                        result.Add(currentCell);
                     }
                 }
             }
 
+            if (includeStaticCell)
+            {
+                foreach (var group in _staticAttackCells)
+                {
+                    foreach (var cell in group.Value)
+                    {
+                        if (!result.Contains(cell))
+                        {
+                            if (IsCellAttackable(cell))
+                            {
+                                result.Add(cell);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public bool IsCellAttackable(Vector3 cell)
+        {
+            foreach (GameObject entity in CoordinateManager.GetEntities(cell))
+            {
+                if (IsEntityAttackable(entity))
+                {
+                    return true;
+                }
+            }
+
             return false;
+        }
+
+        public bool IsEntityAttackable(GameObject entity)
+        {
+            return entity.TryGetComponent(out Inventory _) && entity != gameObject;
+        }
+
+        public bool TryAttack(Vector3 cell)
+        {
+            bool result = false;
+            
+            foreach (GameObject entity in CoordinateManager.GetEntities(cell))
+            {
+                if (entity.TryGetComponent(out Inventory opponentsInventory))
+                {
+                    if (opponentsInventory.TryPopItem(out Human human))
+                    {
+                        _inventory.Add(human);
+                        result = true;
+                    }
+                }
+            }
+            
+            return result;
         }
     }
 }

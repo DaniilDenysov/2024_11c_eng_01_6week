@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Reflection;
+using Characters;
 
 namespace Managers
 {
@@ -9,6 +10,10 @@ namespace Managers
     {
         public static Action OnTurnStart, OnTurnEnd;
         public static Action OnTick;
+        public static Action<bool> OnCardSetUp;
+        public static Action<Vector3, CharacterMovement> OnCharacterMovesIn, OnCharacterMovesOut;
+        // public static Action<bool> OnMultiStepSwitch;
+        // public static Action<MonoBehaviour[]> OnMultiStepCardUsed;
 
         public static void FireEvent(Action action)
         {

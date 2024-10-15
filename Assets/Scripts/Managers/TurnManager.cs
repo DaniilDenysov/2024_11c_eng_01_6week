@@ -8,8 +8,9 @@ namespace Managers
 {
     public class TurnManager : Manager
     {
-        private void Start()
+        public override void Start()
         {
+            base.Start();
             OnTurnEnd();
             EventManager.OnTurnEnd += OnTurnEnd;
         }
@@ -17,6 +18,12 @@ namespace Managers
         private void OnTurnEnd()
         {
             EventManager.FireEvent(EventManager.OnTurnStart);
+        }
+
+
+        public override void InstallBindings()
+        {
+            Container.Bind<TurnManager>().FromInstance(this).AsSingle();
         }
     }
 }

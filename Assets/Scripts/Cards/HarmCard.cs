@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Cards
 {
-    public class HarmCard : Card<TilemapPath>
+    public class HarmCard : Card
     {
-        public override bool OnCardActivation(TilemapPath arg1)
+        public override void OnCardActivation(GameObject activator)
         {
-            return true;
+            OnCardSetUp(true);
         }
     }
 }

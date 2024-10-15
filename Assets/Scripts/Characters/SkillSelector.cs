@@ -1,4 +1,5 @@
 using CustomTools;
+using Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,28 +11,28 @@ namespace Characters.Skills
     {
         [SerializeField] private GameObject selectSkill_HUD;
         [SerializeField] private Skill [] skills;
+        private Action<bool> _onSetUp;
         
-        [PreCompilationConstructor]
-        public void RefreshSkills ()
+        public void Awake()
         {
             skills = GetComponents<Skill>();
         }
 
-
-        public void Select ()
+        public void Select (Action<bool> onSetUp)
         {
             selectSkill_HUD.SetActive(true);
+            _onSetUp = onSetUp;
         }
 
-        public void SelectSkill (int i)
+        public void SelectSkill(int i)
         {
-            try
+            if (skills[i].IsActivatable())
             {
-                skills[i].Activate();
+                skills[i].Activate(_onSetUp);
             }
-            catch (Exception e)
+            else
             {
-                Debug.LogError($"Out of bounds:unable to find skill with index {i}!");
+                _onSetUp.Invoke(false);
             }
         }
     }

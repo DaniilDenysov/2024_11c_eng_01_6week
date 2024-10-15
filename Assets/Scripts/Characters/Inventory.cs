@@ -1,35 +1,68 @@
+using System;
 using Characters;
 using Collectibles;
 using System.Collections.Generic;
+using Ganeral;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Inventory : MonoBehaviour, ICollector
+public class Inventory : ICollector
 {
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private List<Human> inventory = new List<Human>();
+    private List<ICollectible> _inventory;
+    private Action<bool> _onPickedUp;
 
-    public bool PickUp()
+    private new void Awake()
     {
-        var result = Physics2D.OverlapCircle(transform.position, 1f, layerMask);
-        if (result != null && result.TryGetComponent(out ICollectible collectible))
+        base.Awake();
+        _inventory = new List<ICollectible>();
+    }
+
+    public override void PickUp(Action<bool> onPickedUp)
+    {
+        if (IsStaticPickUpCellsEmpty())
         {
-            var collected = collectible.Collect();
-            if (collected != default && collectible.GetType() == typeof(Human))
+            onPickedUp.Invoke(PickUp(transform.position));
+        }
+        else
+        {
+            List<Vector3> litPositions = GetPickUpCells(0, typeof(Human));
+            TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
+            _onPickedUp = onPickedUp;
+        }
+    }
+    
+    public override bool PickUp(Vector3 cell)
+    {
+        bool result = false;
+        
+        foreach (GameObject entity in CoordinateManager.GetEntities(cell))
+        {
+            if (entity.TryGetComponent(out ICollectible collectible))
             {
-                inventory.Add(collected as Human);
-                return true;
+                if (collectible.GetType() == typeof(Human))
+                {
+                    var collected = collectible.Collect();
+                    _inventory.Add(collected as Human);
+                    result = true;
+                }
             }
         }
-        return false;
+        
+        return result;
+    }
+
+    private void OnCellChosen(Vector3 cell)
+    {
+        _onPickedUp(PickUp(cell));
     }
 
     public bool TryPopItem (out Human human)
     {
         human = default;
-        if (inventory.Count > 0)
+        if (_inventory.Count > 0)
         {
-            human = inventory[0];
-            inventory.RemoveAt(0);
+            human = _inventory[0] as Human;
+            _inventory.RemoveAt(0);
             return true;
         }
         return false;
@@ -37,6 +70,6 @@ public class Inventory : MonoBehaviour, ICollector
 
     public void Add(Human human)
     {
-        inventory.Add(human);
+        _inventory.Add(human);
     }
 }

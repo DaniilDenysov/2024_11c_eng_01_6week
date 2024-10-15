@@ -7,32 +7,8 @@ using UnityEditor;
 
 namespace Managers
 {
-    public abstract class Manager : MonoBehaviour
+    public abstract class Manager : MonoInstaller
     {
-        [SerializeField, ReadOnly] private SceneContext _sceneContext;
-
-
-        [PreCompilationConstructor]
-        public void Construct ()
-        {
-            _sceneContext = FindObjectOfType<SceneContext>();
-            #if UNITY_EDITOR
-            EditorUtility.SetDirty(this);
-            #endif
-        }
-
-        public virtual void Awake()
-        {
-       /*     if (_sceneContext != null)
-            {
-                //_sceneContext.Container.BindInstance(this).AsSingle();
-
-                Debug.Log($"{this.GetType().Name} has been autowired to the SceneContext.");
-            }
-            else
-            {
-                Debug.LogError("No SceneContext found in the current scene.");
-            }*/
-        }
+        public abstract override void InstallBindings();
     }
 }
