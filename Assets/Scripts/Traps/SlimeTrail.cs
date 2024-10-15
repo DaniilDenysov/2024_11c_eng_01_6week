@@ -90,6 +90,8 @@ namespace Traps
             EventManager.OnCharacterMovesIn -= OnPlayerMakesMoveIn;
             EventManager.OnCharacterMovesOut -= OnPlayerMakesMoveOut;
             EventManager.OnTurnEnd -= OnTurnEnd;
+            
+            Destroy(gameObject);
         }
 
         public bool IsTrailPositionedAt(Vector3 trail)

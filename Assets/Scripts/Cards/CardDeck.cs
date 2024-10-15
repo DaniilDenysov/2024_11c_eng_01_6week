@@ -3,7 +3,9 @@ using Selectors;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Characters;
 using General;
+using ModestTree;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -17,24 +19,34 @@ namespace Cards
         [SerializeField] private CardManager cardManager;
         
         private const int cardNumber = 4;
-        
-        private List<GameObject> _stepCards;
-        private bool _isMultiCardStep;
+        private CharacterStateManager _stateManager;
 
         void Awake()
         {
-            _isMultiCardStep = false;
-            _stepCards = new List<GameObject>();
+            if (!ownedBy.TryGetComponent(out _stateManager))
+            {
+                Debug.LogError("Failed to find state manager on card deck owner: " + ownedBy.name);
+            }
+        }
+
+        public CharacterStateManager GetStateManager()
+        {
+            return _stateManager;
         }
 
         private void Start()
         {
             EventManager.OnTurnEnd += OnTurnEnd;
             
-            for (int i = 0; i < cardNumber; i++)
-            {
-                AddCard();
-            }
+            // for (int i = 0; i < cardNumber; i++)
+            // {
+            //     AddCard();
+            // }
+
+            AddCard("Ability");
+            AddCard("Punch");
+            AddCard("Eat");
+            AddCard("Eat");
         }
 
         private void Update() {
@@ -49,6 +61,33 @@ namespace Cards
         private void AddCard()
         {
             CardPoolable newCard = cardManager.GetRandomCard();
+            
+            if (newCard.TryGetComponent(out Card card))
+            {
+                card.SetUp(ownedBy, _stateManager);
+            }
+            else
+            {
+                Debug.LogError("Failed to find Card Component on card: " + newCard.name);
+            }
+            
+            newCard.transform.SetParent(cardsContainer.transform);
+            newCard.gameObject.SetActive(true);
+        }
+        
+        private void AddCard(string cardName)
+        {
+            CardPoolable newCard = cardManager.Get(cardName);
+            
+            if (newCard.TryGetComponent(out Card card))
+            {
+                card.SetUp(ownedBy, _stateManager);
+            }
+            else
+            {
+                Debug.LogError("Failed to find Card Component on card: " + newCard.name);
+            }
+            
             newCard.transform.SetParent(cardsContainer.transform);
             newCard.gameObject.SetActive(true);
         }
@@ -58,52 +97,6 @@ namespace Cards
             for (int i = GetCardNumber(); i < cardNumber; i++)
             {
                 AddCard();
-            }
-        }
-
-        // private void StartMultiCardStepSwitch(bool arg1)
-        // {
-        //     if (CharacterSelector.CurrentCharacter.gameObject == ownedBy)
-        //     {
-        //         if (!isMultiCardStep)
-        //         {
-        //             isMultiCardStep = true;
-        //         }
-        //         else
-        //         {
-        //             isMultiCardStep = false;
-        //     
-        //             if (arg1)
-        //             {
-        //                 foreach (GameObject card in StepCards)
-        //                 {
-        //                     Destroy(card);
-        //                 }
-        //             }
-        //             
-        //             StepCards.Clear();
-        //         }
-        //     }
-        // }
-        
-        public bool GetApproval(GameObject card)
-        {
-            if (!_isMultiCardStep)
-            {
-                return true;
-            }
-            else
-            {
-                if (!_stepCards.Contains(card))
-                {
-                    _stepCards.Add(card);
-        
-                    MonoBehaviour[] components = card.GetComponents<MonoBehaviour>();
-                    
-                    // EventManager.OnMultiStepCardUsed.Invoke(components);
-                }
-            
-                return false;
             }
         }
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Ganeral;
 using Managers;
 using UnityEngine;
@@ -11,7 +12,9 @@ public class TileSelector : MonoBehaviour
     [SerializeField] private Tilemap tileMap;
     private Vector3 cellUnit;
     [SerializeField] private TileBase highlightTile;
-    private Action<Vector3> onChosen;
+    
+    private Action<Vector3> _onChosen;
+    private List<Vector3> _litPositions;
 
     void Awake()
     {
@@ -29,8 +32,11 @@ public class TileSelector : MonoBehaviour
 
             if (tile)
             {
-                onChosen.Invoke(tilePosition + cellUnit);
-                SetTilesUnlit();
+                if (_litPositions.Contains(tilePosition + cellUnit))
+                {
+                    SetTilesUnlit();
+                    _onChosen.Invoke(tilePosition + cellUnit);
+                }
             }
         }
     }
@@ -48,7 +54,8 @@ public class TileSelector : MonoBehaviour
             tileMap.SetTile(tilePosition, highlightTile);
         }
 
-        this.onChosen = onChosen;
+        _onChosen = onChosen;
+        _litPositions = positions;
     }
 
     public void SetTilesUnlit()

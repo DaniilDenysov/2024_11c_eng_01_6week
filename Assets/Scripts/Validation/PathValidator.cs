@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ganeral;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -52,6 +53,30 @@ namespace Validation
         private static Vector3 multiplyVectors(Vector3 firstVector, Vector3 secondVector)
         {
             return new Vector3(firstVector.x * secondVector.x, firstVector.y * secondVector.y, firstVector.z * secondVector.z);
+        }
+
+        public List<Vector3> GetAvailableCells(Vector3 fromCell, int range)
+        {
+            List<Vector3> result = new List<Vector3>();
+            
+            List<Vector3> directions = CoordinateManager.GetAllDirections();
+
+            foreach (Vector3 direction in directions)
+            {
+                for (int i = 0; i < range; i++)
+                {
+                    if (CanMoveTo(fromCell, fromCell + direction * (i + 1)))
+                    {
+                        result.Add(fromCell + direction * (i + 1));
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

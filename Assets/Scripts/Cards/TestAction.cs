@@ -1,3 +1,4 @@
+using System;
 using Cards;
 using CustomTools;
 using System.Collections;
@@ -19,6 +20,11 @@ public class TestAction : MonoBehaviour, ITurnAction
     public void OnTurn()
     {
         HUD_display.SetActive(true);
+    }
+
+    public void ChooseNewDirection(Action onDirectionChosen)
+    {
+        throw new NotImplementedException();
     }
 
     public void RotateObject()

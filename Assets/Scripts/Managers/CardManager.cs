@@ -17,9 +17,11 @@ namespace Managers
         private List<string> _deck;
         private int _nextPoolable;
         private Dictionary<string, List<CardPoolable>> _pool;
+        private List<string> _discardedCards;
 
         private void Awake()
         {
+            _discardedCards = new List<string>();
             _pool = new Dictionary<string, List<CardPoolable>>();
             _nextPoolable = 0;
             InitializeDeck();
@@ -34,13 +36,15 @@ namespace Managers
             }
             else
             {
+                _deck = _discardedCards;
                 _deck.Shuffle();
+                _discardedCards = new List<string>();
                 _nextPoolable = 0;
                 return Get(_deck[_nextPoolable]);
             }
         }
 
-        private CardPoolable Get(string cardName)
+        public CardPoolable Get(string cardName)
         {
             if (_pool.TryGetValue(cardName, out List<CardPoolable> objectList))
             {
@@ -73,8 +77,10 @@ namespace Managers
             }
             else
             {
-                _pool.Add(cardObject.GetPoolableName(), new List<CardPoolable>(){ cardObject });
+                _pool.Add(cardObject.GetPoolableName(), new List<CardPoolable> { cardObject });
             }
+            
+            _discardedCards.Add(cardObject.GetPoolableName());
             
             cardObject.gameObject.SetActive(false);
         }

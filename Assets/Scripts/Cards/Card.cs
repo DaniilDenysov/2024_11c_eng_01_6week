@@ -1,34 +1,30 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Characters;
+using Characters.CharacterStates;
 using General;
-using Managers;
 using Selectors;
-using Shooting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Cards
 {
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-    public abstract class Card<T> : CardPoolable
+    public abstract class Card : CardPoolable
     {
         private CanvasGroup _canvasGroup;
         private RectTransform _rectTransform;
         private Vector2 _startPosition;
-        private bool _isCardSettingUp;
-        private CardDeck _cardDeck;
+        private CharacterStateManager _stateManager;
+        private GameObject _cardOwner;
 
         public virtual void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _rectTransform = GetComponent<RectTransform>();
-            _isCardSettingUp = false;
         }
 
-        void OnEnable()
+        public void SetUp(GameObject player, CharacterStateManager stateManager)
         {
-            SetCardDeck();
+            _cardOwner = player;
+            _stateManager = stateManager;
         }
 
         private void Update()
@@ -36,45 +32,40 @@ namespace Cards
             Vector2 mousePos = Input.mousePosition;
             
             if (Input.GetMouseButtonUp(0) 
-                && RectTransformUtility.RectangleContainsScreenPoint(_rectTransform, mousePos)
-                && !_isCardSettingUp)
+                && RectTransformUtility.RectangleContainsScreenPoint(_rectTransform, mousePos))
             {
-                GameObject currentPlayer = CharacterSelector.CurrentCharacter.gameObject;
-                
-                if (_cardDeck.GetApproval(gameObject) && currentPlayer.TryGetComponent(out T action))
-                {
-                    _isCardSettingUp = true;
-                    _canvasGroup.alpha = 0.5f;
-                    OnCardActivation(action);
-                }
+                TryActivate();
             }
         }
 
-        public abstract void OnCardActivation(T arg1);
+        public abstract void OnCardActivation(GameObject arg1);
 
         public void OnCardSetUp(bool successfully)
         {
+            _stateManager.SetCurrentState(new Idle());
+            _canvasGroup.alpha = 1f;
+            
             if (successfully)
             {
                 Pool();
             }
-
-            _isCardSettingUp = false;
-            _canvasGroup.alpha = 1f;
         }
 
-        public void SetCardDeck()
+        public void TryActivate()
         {
-            Transform parent = transform.parent;
-            
-            while (parent != null)
+            if (_stateManager.GetCurrentState().OnCardUsed(this) || 
+                _stateManager.GetCurrentState().GetType() == typeof(MultiCard))
             {
-                if (parent.TryGetComponent(out CardDeck cardDeck))
+                _canvasGroup.alpha = 0.5f;
+                
+                if (_stateManager.GetCurrentState().OnCardUsed(this))
                 {
-                    _cardDeck = cardDeck;
+                    _stateManager.SetCurrentState(new CardSettingUp());
+                    OnCardActivation(_cardOwner);
+                    return;
                 }
                 
-                parent = parent.transform.parent;
+                _stateManager.SetCurrentState(new CardSettingUp());
             }
         }
     }

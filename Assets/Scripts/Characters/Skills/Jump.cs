@@ -40,7 +40,7 @@ public class Jump : Skill
 
     private void OnCellChosen(Vector3 chosenTile)
     {
-        movement.Teleport(chosenTile, true);
+        movement.Teleport(chosenTile);
 
         OnActivated();
     }

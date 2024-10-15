@@ -19,7 +19,9 @@ namespace Characters
         [SerializeField] private GameObject HUD_display;
         [SerializeField] private bool isPaused;
         [SerializeField] private PathValidator pathValidator;
+        
         private int _stepCost = 1;
+        private Action _onDirectionChosen;
 
         private void Awake()
         {
@@ -84,25 +86,11 @@ namespace Characters
             }
         }
 
-        public void Teleport(Vector3 nextPosition, bool isStepsIgnored = false)
+        public void Teleport(Vector3 nextPosition)
         {
             if (isPaused) return;
 
-            if (steps > 0 || isStepsIgnored)
-            {
-                Vector3 directionUnit =
-                    CoordinateManager.GetUnitDirection(pathValidator.GetTileMap(), transform.position, nextPosition);
-
-                while (!CoordinateManager.IsSameCell(transform.position, nextPosition))
-                {
-                    if (!isStepsEnough() && !isStepsIgnored)
-                    {
-                        return;
-                    }
-
-                    makeStep(transform.position + directionUnit, isStepsIgnored);
-                }
-            }
+            transform.position = nextPosition;
         }
 
         public void MakeMovement()
@@ -121,6 +109,25 @@ namespace Characters
                     Debug.Log("Unable to move");
                 }
             }
+        }
+
+        public void ChooseNewDirection(Action onDirectionChosen)
+        {
+            List<Vector3> turnPositions = CoordinateManager.GetAllDirections();
+
+            for (int i = 0; i < turnPositions.Count; i++)
+            {
+                turnPositions[i] += transform.position;
+            }
+
+            _onDirectionChosen = onDirectionChosen;
+            TileSelector.Instance.SetTilesLit(turnPositions, OnDirectionChosen);
+        }
+
+        private void OnDirectionChosen(Vector3 position)
+        {
+            directionNormalized = position - transform.position;
+            _onDirectionChosen.Invoke();
         }
 
         private void makeStep(Vector3 nextPosition, bool isStepsIgnored = false)
@@ -165,6 +172,11 @@ namespace Characters
         public void ResetStepCost()
         {
             _stepCost = 1;
+        }
+
+        public Vector3 GetDirection()
+        {
+            return directionNormalized;
         }
     }
 }
