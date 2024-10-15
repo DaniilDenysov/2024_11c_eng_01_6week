@@ -31,8 +31,9 @@ namespace Managers
         {
             if (_nextPoolable < _deck.Count)
             {
+                CardPoolable card = Get(_deck[_nextPoolable]);
                 _nextPoolable++;
-                return Get(_deck[_nextPoolable - 1]);
+                return card;
             }
             else
             {
@@ -48,25 +49,26 @@ namespace Managers
         {
             if (_pool.TryGetValue(cardName, out List<CardPoolable> objectList))
             {
-                CardPoolable instance = objectList[0];
-                objectList.RemoveAt(0);
-
-                return instance;
-            }
-            else
-            {
-                CardPoolable card = GetCardByName(cardName);
-                
-                if (card != null)
+                if (objectList.Count > 0)
                 {
-                    CardPoolable instance = Instantiate(card);
-                    instance.SetUp(this, cardName);
+                    CardPoolable instance = objectList[0];
+                    objectList.RemoveAt(0);
+
                     return instance;
                 }
-                
-                Debug.LogError("Failed to find card poolable: " + cardName);
-                return null;
             }
+
+            CardPoolable card = GetCardByName(cardName);
+
+            if (card != null)
+            {
+                CardPoolable instance = Instantiate(card);
+                instance.SetUp(this, cardName);
+                return instance;
+            }
+
+            Debug.LogError("Failed to find card poolable: " + cardName);
+            return null;
         }
         
         public void Put(CardPoolable cardObject)

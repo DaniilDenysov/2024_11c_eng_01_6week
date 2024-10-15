@@ -8,7 +8,6 @@ namespace Cards
 {
     public interface ITurnAction
     {
-        void OnTurn();
         void ChooseNewDirection(Action onDirectionChosen);
     }
 }

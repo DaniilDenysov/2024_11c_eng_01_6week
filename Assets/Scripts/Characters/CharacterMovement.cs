@@ -5,34 +5,36 @@ using Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Characters.CharacterStates;
 using Selectors;
 using UnityEngine;
 using Validation;
 
 namespace Characters
 {
+    [RequireComponent(typeof(CharacterStateManager))]
     public class CharacterMovement : MonoBehaviour, ITurnAction
     {
         [SerializeField, Range(0, 100)] private int steps = 0;
         [SerializeField, Range(0, 360f)] private float rotationStep = 90f;
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
-        [SerializeField] private GameObject HUD_display;
-        [SerializeField] private bool isPaused;
-        [SerializeField] private PathValidator pathValidator;
         
+        [SerializeField] private GameObject HUD_display;
+        [SerializeField] private PathValidator pathValidator;
+
+        private CharacterStateManager _stateManager;
         private int _stepCost = 1;
-        private Action _onDirectionChosen;
 
         private void Awake()
         {
+            _stateManager = GetComponent<CharacterStateManager>();
             EventManager.OnTick += OnTick;
             directionNormalized = Vector3.left;
         }
 
         public void OnTurn()
         {
-            HUD_display.SetActive(true);
-            isPaused = true;
+            ChooseNewDirection(() => { });
         }
 
         public void RotateObject()
@@ -48,19 +50,12 @@ namespace Characters
             steps = value;
         }
 
-        public void SetPaused(bool state)
-        {
-            isPaused = state;
-        }
-
         private void OnTick()
         {
         }
 
         public void MakeCustomRotationMovement(Vector3 nextPosition, bool isStepsIgnored = false)
         {
-            if (isPaused) return;
-
             if (isStepsEnough() || isStepsIgnored)
             {
                 if (pathValidator.CanMoveTo(transform.position, nextPosition))
@@ -88,15 +83,12 @@ namespace Characters
 
         public void Teleport(Vector3 nextPosition)
         {
-            if (isPaused) return;
-
             transform.position = nextPosition;
         }
 
         public void MakeMovement()
         {
-            if (isPaused) return;
-            if (isStepsEnough())
+            if (isStepsEnough() && _stateManager.GetCurrentState().GetType() == typeof(Idle))
             {
                 Vector3 nextPosition = transform.position + directionNormalized;
                 if (pathValidator.CanMoveTo(nextPosition,
@@ -113,6 +105,8 @@ namespace Characters
 
         public void ChooseNewDirection(Action onDirectionChosen)
         {
+            CharacterState previousState = _stateManager.GetCurrentState();
+            _stateManager.SetCurrentState(new CardSettingUp());
             List<Vector3> turnPositions = CoordinateManager.GetAllDirections();
 
             for (int i = 0; i < turnPositions.Count; i++)
@@ -120,14 +114,17 @@ namespace Characters
                 turnPositions[i] += transform.position;
             }
 
-            _onDirectionChosen = onDirectionChosen;
-            TileSelector.Instance.SetTilesLit(turnPositions, OnDirectionChosen);
+            TileSelector.Instance.SetTilesLit(turnPositions, cell =>
+            {
+                OnDirectionChosen(cell, previousState, onDirectionChosen);
+            });
         }
 
-        private void OnDirectionChosen(Vector3 position)
+        private void OnDirectionChosen(Vector3 position, CharacterState previousState, Action onDirectionChosen)
         {
             directionNormalized = position - transform.position;
-            _onDirectionChosen.Invoke();
+            _stateManager.SetCurrentState(previousState);
+            onDirectionChosen.Invoke();
         }
 
         private void makeStep(Vector3 nextPosition, bool isStepsIgnored = false)
