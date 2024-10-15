@@ -6,6 +6,11 @@ namespace Managers
 {
     public class MainMenuManager : Manager
     {
+        public override void InstallBindings()
+        {
+            Container.Bind<MainMenuManager>().To<MainMenuManager>().AsSingle();
+        }
+
         public void Quit()
         {
             Application.Quit();

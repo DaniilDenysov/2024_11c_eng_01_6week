@@ -20,18 +20,6 @@ namespace Managers
         [SerializeField] private UnityEvent onConnectedToLobby,onDisconnectedFromLobby;
         [SerializeField] private List<LobbyCharacterSelector> selectors = new List<LobbyCharacterSelector>();
 
-        public override void Awake()
-        {
-            base.Awake();
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(this);
-            }
-        }
 
         private void OnEnable()
         {
@@ -108,6 +96,11 @@ namespace Managers
         {
             NetworkManager.singleton.networkAddress = createLobby.text;
             NetworkManager.singleton.StartHost();
+        }
+
+        public override void InstallBindings()
+        {
+            Container.Bind<LobbyManager>().To<LobbyManager>().AsSingle();
         }
     }
 }

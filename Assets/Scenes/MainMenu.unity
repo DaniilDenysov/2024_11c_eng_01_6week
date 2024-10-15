@@ -1455,7 +1455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1bbd7af070a4364c894641683571748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneContext: {fileID: 789679110}
   startGameButton: {fileID: 1897067688}
   joinLobby: {fileID: 1609156150}
   createLobby: {fileID: 17892174}
@@ -1570,7 +1569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804b427aff9ec164d988d0582ee3e289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneContext: {fileID: 789679110}
 --- !u!1 &394676275
 GameObject:
   m_ObjectHideFlags: 0
