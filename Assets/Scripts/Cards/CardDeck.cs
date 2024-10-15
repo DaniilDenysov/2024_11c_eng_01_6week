@@ -19,17 +19,13 @@ namespace Cards
         [SerializeField] private CardManager cardManager;
         
         private const int cardNumber = 4;
-        
-        private bool _isMultiCardStep;
         private CharacterStateManager _stateManager;
 
         void Awake()
         {
-            _isMultiCardStep = false;
-            
-            if (!ownedBy.TryGetComponent<>(out _stateManager))
+            if (!ownedBy.TryGetComponent(out _stateManager))
             {
-                Debug.LogError("Failed to find state manager on card deck owner");
+                Debug.LogError("Failed to find state manager on card deck owner: " + ownedBy.name);
             }
         }
 
@@ -42,10 +38,15 @@ namespace Cards
         {
             EventManager.OnTurnEnd += OnTurnEnd;
             
-            for (int i = 0; i < cardNumber; i++)
-            {
-                AddCard();
-            }
+            // for (int i = 0; i < cardNumber; i++)
+            // {
+            //     AddCard();
+            // }
+
+            AddCard("Ability");
+            AddCard("Punch");
+            AddCard("Eat");
+            AddCard("Eat");
         }
 
         private void Update() {
@@ -60,6 +61,23 @@ namespace Cards
         private void AddCard()
         {
             CardPoolable newCard = cardManager.GetRandomCard();
+            
+            if (newCard.TryGetComponent(out Card card))
+            {
+                card.SetUp(ownedBy, _stateManager);
+            }
+            else
+            {
+                Debug.LogError("Failed to find Card Component on card: " + newCard.name);
+            }
+            
+            newCard.transform.SetParent(cardsContainer.transform);
+            newCard.gameObject.SetActive(true);
+        }
+        
+        private void AddCard(string cardName)
+        {
+            CardPoolable newCard = cardManager.Get(cardName);
             
             if (newCard.TryGetComponent(out Card card))
             {

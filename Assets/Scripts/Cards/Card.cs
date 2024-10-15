@@ -34,12 +34,7 @@ namespace Cards
             if (Input.GetMouseButtonUp(0) 
                 && RectTransformUtility.RectangleContainsScreenPoint(_rectTransform, mousePos))
             {
-                if (_stateManager.GetCurrentState().OnCardUsed(this))
-                {
-                    _stateManager.SetCurrentState(new CardSetingUp());
-                    _canvasGroup.alpha = 0.5f;
-                    OnCardActivation(_cardOwner);
-                }
+                TryActivate();
             }
         }
 
@@ -53,6 +48,24 @@ namespace Cards
             if (successfully)
             {
                 Pool();
+            }
+        }
+
+        public void TryActivate()
+        {
+            if (_stateManager.GetCurrentState().OnCardUsed(this) || 
+                _stateManager.GetCurrentState().GetType() == typeof(MultiCard))
+            {
+                _canvasGroup.alpha = 0.5f;
+                
+                if (_stateManager.GetCurrentState().OnCardUsed(this))
+                {
+                    _stateManager.SetCurrentState(new CardSettingUp());
+                    OnCardActivation(_cardOwner);
+                    return;
+                }
+                
+                _stateManager.SetCurrentState(new CardSettingUp());
             }
         }
     }

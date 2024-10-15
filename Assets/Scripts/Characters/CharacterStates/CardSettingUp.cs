@@ -1,10 +1,11 @@
+using Cards;
 using General;
 
 namespace Characters.CharacterStates
 {
-    public class CardSetingUp : CharacterState
+    public class CardSettingUp : CharacterState
     {
-        public override bool OnCardUsed(CardPoolable card)
+        public override bool OnCardUsed(Card card)
         {
             return false;
         }

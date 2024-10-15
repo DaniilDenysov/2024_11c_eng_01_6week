@@ -21,6 +21,7 @@ namespace Managers
 
         private void Awake()
         {
+            _discardedCards = new List<string>();
             _pool = new Dictionary<string, List<CardPoolable>>();
             _nextPoolable = 0;
             InitializeDeck();
@@ -43,7 +44,7 @@ namespace Managers
             }
         }
 
-        private CardPoolable Get(string cardName)
+        public CardPoolable Get(string cardName)
         {
             if (_pool.TryGetValue(cardName, out List<CardPoolable> objectList))
             {

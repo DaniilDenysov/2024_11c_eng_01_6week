@@ -89,7 +89,7 @@ namespace Characters
             return result;
         }
 
-        private bool IsCellAttackable(Vector3 cell)
+        public bool IsCellAttackable(Vector3 cell)
         {
             foreach (GameObject entity in CoordinateManager.GetEntities(cell))
             {
