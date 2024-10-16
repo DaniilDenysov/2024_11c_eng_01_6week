@@ -115,9 +115,12 @@ MonoBehaviour:
   displayName: {fileID: 5456789342652755481}
   readyImage: {fileID: 9090183092363535892}
   characterSelected: {fileID: 6480423095956913077}
-  playerName: 
-  isPartyOwner: 0
-  isReady: 0
+  Player:
+    Nickname: 
+    CharacterGUID: 
+    ConnectionId: 0
+    IsReady: 0
+    IsPartyOwner: 0
   characters:
   - {fileID: 11400000, guid: 0fa00228b40a12d468535f8d830181f2, type: 2}
   - {fileID: 11400000, guid: eaeceefb4f0dfcd4794de4cfd4910965, type: 2}

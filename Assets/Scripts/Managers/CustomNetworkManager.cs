@@ -7,18 +7,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Lobby;
+using Zenject;
+using UI;
 
 namespace Managers
 {
     public class CustomNetworkManager : NetworkManager
     {
-        [SerializeField] private NetworkIdentity lobbyParticipant, player;
-        [SerializeField] private Transform lobbyDisplay;
-        [SerializeField] private List<Player> connectedClients = new List<Player>();
+        [SerializeField] private GameObject playerLabelPrefab;
         [SerializeField] private bool isGameInProgress = false;
         public static Action OnClientConnected, OnClientDisconnected;
-        public static Action OnValidateStates;
-
 
         #region Server
 
@@ -26,31 +24,11 @@ namespace Managers
         {
             base.OnStartServer();
             NetworkServer.RegisterHandler<LobbyConnection>(OnCreateCharacter);
-           // NetworkServer.RegisterHandler<ServerMessage>(OnRecievedMessage);
         }
 
         private void OnRecievedMessage(NetworkConnectionToClient arg1, ServerMessage arg2)
         {
-            Debug.Log("Revieved message");
             MessageLogManager.Instance.DisplayMessage(arg2.Title, arg2.Description);
-        }
-
-        public void UpdateSelection (List<int> connectionIds)
-        {
-           foreach(var handler in FindObjectsOfType<LobbyParticipantHandler>())
-           {
-                if (connectionIds.Contains(handler.Player.ConnectionId))
-                {
-                    Debug.Log("a");
-                    LobbyCharacterSelector.OnSelected?.Invoke(handler.Player.CharacterGUID);
-                }
-                else
-                {
-                    Debug.Log("b");
-                    LobbyCharacterSelector.OnDeselected?.Invoke(handler.Player.CharacterGUID);
-                }
-           }
-            Debug.Log("Updated selections");
         }
 
         public override void OnServerConnect(NetworkConnectionToClient conn)
@@ -61,18 +39,15 @@ namespace Managers
         public override void OnServerDisconnect(NetworkConnectionToClient conn)
         {
             base.OnServerDisconnect(conn);
-            // NetworkClient.connection.identity.GetComponent<LobbyParticipantHandler>().DeselectOnClient();
-           // NetworkServer.SendToAll(ErrorMessage("Host error", "Host left the lobby"));
-
-
-            OnValidateStates?.Invoke();
-            // OnValidateStates?.Invoke();
-
-        }
-
-        public void OnLeave ()
-        {
-            
+            var participants = FindObjectsOfType<PlayerLabel>();
+            foreach (var participant in participants)
+            {
+                participant.OnValidateSelection();
+            }
+            foreach (var participant in participants)
+            {
+                participant.ValidateSelection();
+            }
         }
 
         public ServerMessage ErrorMessage (string title,string description)
@@ -85,56 +60,49 @@ namespace Managers
 
         public override void OnStopServer()
         {
-            connectedClients.Clear();
-           // NetworkServer.SendToAll(ErrorMessage("Host error", "Host left the lobby"));
             OnClientDisconnected?.Invoke();
         }
 
         public override void OnStopHost()
         {
-         //   NetworkServer.SendToAll(ErrorMessage("Host error", "Host left the lobby"));
             OnClientDisconnected?.Invoke();
         }
 
         #endregion
 
-        private void OnCreateCharacter(NetworkConnectionToClient conn, LobbyConnection message)
+        private void OnCreateCharacter(NetworkConnectionToClient conn,LobbyConnection lobbyConnection)
         {
-            LobbyParticipantHandler participant = Instantiate(lobbyParticipant).GetComponent<LobbyParticipantHandler>();
-            var player = new Player();
-            connectedClients.Add(player);
-            player.ConnectionId = conn.connectionId;
-            player.Nickname = "Player" + connectedClients.Count;
-            player.IsPartyOwner = connectedClients.Count == 1;
-            NetworkServer.AddPlayerForConnection(conn, participant.gameObject);
-            conn.identity.GetComponent<LobbyParticipantHandler>().Player = player;
-            var clients = FindObjectsOfType<LobbyParticipantHandler>().OrderBy((c) => c.GetPlayerName());
-            foreach (var client in clients)
+            GameObject participant = Instantiate(playerLabelPrefab);
+            if (participant != null)
             {
-                client.AddToContainer();
+                Debug.Log("PlayerLabel prefab instantiated successfully.");  // Debug log
             }
+            PlayerLabel [] connections = PlayerLabelsContainer.Instance.GetItems().ToArray();
+            if (participant.gameObject.TryGetComponent(out PlayerLabel label))
+            {
+                var player = new Player();
+                player.ConnectionId = conn.connectionId;
+                player.Nickname = "Player" + connections.Length;
+                player.IsPartyOwner = connections.Length == 0;
+                label.Player = player;
+            }
+            else
+            {
+                Debug.LogError("Unable to get label!");
+            }
+            NetworkServer.AddPlayerForConnection(conn, participant);
         }
 
         #region Client
 
-     
-        public void AddParticipantToContainer (LobbyParticipantHandler conn)
-        {
-           conn.transform.SetParent(lobbyDisplay.transform);
-        }
-
         public void StartGame ()
         {
-            Debug.Log("Start game");
-            if (connectedClients.Count >= 1 && isGameInProgress == false)
+            var connections = FindObjectsOfType<PlayerLabel>();
+            if (connections.Length >= 1 && isGameInProgress == false)
             {
-                foreach (var player in FindObjectsOfType<LobbyParticipantHandler>().Select((h) => h.Player).ToList())
+                foreach (var player in connections.Select((h) => h.Player).ToList())
                 {
-                    if (!player.IsReady)
-                    {
-                        Debug.Log("Not rdy!");
-                        return;
-                    }
+                    if (!player.IsReady) return;
                 }
                 isGameInProgress = true;
                 //change to more appropriate handling
@@ -145,7 +113,6 @@ namespace Managers
         public override void OnClientConnect()
         {
             base.OnClientConnect();
-            connectedClients = FindObjectsOfType<LobbyParticipantHandler>().Select((h) => h.Player).ToList();
             NetworkClient.Send(new LobbyConnection());
             OnClientConnected?.Invoke();
         }
@@ -153,16 +120,11 @@ namespace Managers
         public override void OnClientDisconnect()
         {
             base.OnClientDisconnect();
-        //    LobbyManager.Instance.DeselectAllCharacters();
-         //   OnValidateStates?.Invoke();
             OnClientDisconnected?.Invoke();
         }
 
         public override void OnStopClient()
         {
-            connectedClients.Clear();
-            LobbyManager.Instance.DeselectAllCharacters();
-            //MessageLogManager.Instance.DisplayMessage("Host error", "Host stopped");
             OnClientDisconnected?.Invoke();
         }
         #endregion

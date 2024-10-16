@@ -8,10 +8,9 @@ using UnityEngine.UI;
 
 namespace Lobby
 {
-    public class LobbyCharacterSelector : MonoBehaviour
+    public class CharacterSelectionLabel : MonoBehaviour
     {        
         public static Action<string> OnDeselected, OnSelected;
-        [SerializeField] private CharacterSelectionManager selectionManager;
         [SerializeField] private CharacterData characterData;
         [SerializeField] private GameObject blocker;
 
@@ -21,6 +20,12 @@ namespace Lobby
         {
             OnDeselected += OnCharacterDeselected;
             OnSelected += OnCharacterSelected;
+        }
+
+        public void OnDisable()
+        {
+            OnDeselected -= OnCharacterDeselected;
+            OnSelected -= OnCharacterSelected;
         }
 
         public void OnCharacterSelected (string character)
@@ -39,16 +44,10 @@ namespace Lobby
             }
         }
 
-        public void OnDisable()
-        {
-            OnDeselected -= OnCharacterDeselected;
-            OnSelected -= OnCharacterSelected;
-        }
 
         public void SelectCharacter ()
-        {     
-            var localPLayer = NetworkClient.connection.identity.GetComponent<LobbyParticipantHandler>();
-           localPLayer.SetCharacterGUID(characterData.CharacterGUID);
+        {
+           PlayerLabel.LocalPlayer.SetCharacterGUID(characterData.CharacterGUID);
         }
 
        

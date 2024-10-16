@@ -8,32 +8,40 @@ using UnityEngine.SceneManagement;
 using System;
 using Lobby;
 using System.Threading.Tasks;
+using UI;
 
 namespace Managers
 {
-    public class LobbyManager : Manager
+    public class LobbyManager : MonoBehaviour
     {
         public static LobbyManager Instance;
         [SerializeField] private GameObject startGameButton;
-        [SerializeField] private TMP_InputField joinLobby, createLobby;
-        [SerializeField] private Transform participantsContainer;
+        [SerializeField] private string lobbyName;
         [SerializeField] private UnityEvent onConnectedToLobby,onDisconnectedFromLobby;
-        [SerializeField] private List<LobbyCharacterSelector> selectors = new List<LobbyCharacterSelector>();
 
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
 
         private void OnEnable()
         {
             CustomNetworkManager.OnClientConnected += OnClientConnected;
             CustomNetworkManager.OnClientDisconnected += OnClientDisconnected;
-            LobbyParticipantHandler.OnPartyOwnerChanged += OnPartyOwnerChanged; 
+            PlayerLabel.OnPartyOwnerChanged += OnPartyOwnerChanged; 
         }
 
-        public void DeselectAllCharacters ()
+        public void SetLobbyName (string lobbyName)
         {
-            foreach (var selector in selectors)
-            {
-                selector.SetBlock(false);
-            }
+            this.lobbyName = lobbyName;
         }
 
         private void OnPartyOwnerChanged(bool obj)
@@ -43,19 +51,19 @@ namespace Managers
 
         public void Ready ()
         {
-            NetworkClient.connection.identity.GetComponent<LobbyParticipantHandler>().CmdReady();
+            NetworkClient.connection.identity.GetComponent<PlayerLabel>().CmdReady();
         }
 
         private void OnDisable()
         {
             CustomNetworkManager.OnClientConnected -= OnClientConnected;
             CustomNetworkManager.OnClientDisconnected -= OnClientDisconnected;
-            LobbyParticipantHandler.OnPartyOwnerChanged -= OnPartyOwnerChanged;
+            PlayerLabel.OnPartyOwnerChanged -= OnPartyOwnerChanged;
         }
 
         public void JoinLobby()
         {
-            NetworkManager.singleton.networkAddress = joinLobby.text;
+            NetworkManager.singleton.networkAddress = lobbyName;
             NetworkManager.singleton.StartClient();
         }
 
@@ -63,7 +71,6 @@ namespace Managers
         {
             if (NetworkServer.active && NetworkClient.isConnected)
             {
-                ((CustomNetworkManager)NetworkManager.singleton).OnLeave();
                 NetworkManager.singleton.StopHost();
 
                 onDisconnectedFromLobby?.Invoke();
@@ -78,7 +85,7 @@ namespace Managers
 
         public void StartGame ()
         {
-            NetworkClient.connection.identity.GetComponent<LobbyParticipantHandler>().CmdStartGame();
+            NetworkClient.connection.identity.GetComponent<PlayerLabel>().CmdStartGame();
         }
 
         private void OnClientConnected()
@@ -88,19 +95,14 @@ namespace Managers
 
         private void OnClientDisconnected()
         {
-            DeselectAllCharacters();
+            CharacterSelectionLabelContainer.Instance.DeselectAllCharacters();
             onDisconnectedFromLobby?.Invoke();
         }
 
         public void CreateLobby()
         {
-            NetworkManager.singleton.networkAddress = createLobby.text;
+            NetworkManager.singleton.networkAddress = lobbyName;
             NetworkManager.singleton.StartHost();
-        }
-
-        public override void InstallBindings()
-        {
-            Container.Bind<LobbyManager>().To<LobbyManager>().AsSingle();
         }
     }
 }
