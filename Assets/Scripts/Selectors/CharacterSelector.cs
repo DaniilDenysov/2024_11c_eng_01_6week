@@ -10,23 +10,50 @@ namespace Selectors
 {
     public class CharacterSelector : MonoBehaviour
     {
+        public static CharacterSelector Instance { get; private set; }
         public static CharacterMovement CurrentCharacter { get; private set; }
         [SerializeField] private DiceManager diceManager; //inject using zenject later
-        [SerializeField] private List<CharacterMovement> characters = new List<CharacterMovement>();
+        [SerializeField] public List<CharacterMovement> characters = new List<CharacterMovement>();
         private Queue<CharacterMovement> turnOrder;
+        public List<CharacterMovement> Characters { get; private set; } = new List<CharacterMovement>();
 
 
         private void Awake()
         {
-            characters.Shuffle();
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
             turnOrder = new Queue<CharacterMovement>(characters);
             EventManager.OnTurnStart += OnTurnStart;
+        }
+
+        public void RegisterCharacter(CharacterMovement character)
+        {
+            if (!characters.Contains(character))
+            {
+                characters.Add(character);
+            }
         }
 
         private void OnTurnStart()
         {
             SelectNext();
         }
+
+        private void OnDestroy()
+        {
+            if (Instance == this)
+            {
+                Instance = null;
+            }
+        }
+
 
         public void SelectNext ()
         {
@@ -41,6 +68,20 @@ namespace Selectors
         public void MakeMovement() {
             CurrentCharacter.MakeMovement();
         }
+
+        public void DisplayCharacterSelection(List<CharacterMovement> availableTargets, Action<CharacterMovement> onTargetSelected)
+        {
+            foreach (var target in availableTargets)
+            {
+                Debug.Log($"Available Target: {target.name}");
+            }
+
+            if (availableTargets.Count > 0)
+            {
+                onTargetSelected?.Invoke(availableTargets[0]);
+            }
+        }
+
     }
 
     public static class ListExtensions
@@ -56,4 +97,5 @@ namespace Selectors
             }
         }
     }
+
 }

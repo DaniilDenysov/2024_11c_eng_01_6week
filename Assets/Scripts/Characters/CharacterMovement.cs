@@ -1,6 +1,8 @@
 using Cards;
 using CustomTools;
+using Ganeral;
 using Managers;
+using Selectors;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +13,7 @@ namespace Characters
 {
     public class CharacterMovement : MonoBehaviour, ITurnAction
     {
-        [SerializeField,Range(0,100)] private int steps = 0;
+        [SerializeField, Range(0, 100)] private int steps = 0;
         [SerializeField, Range(0, 360f)] private float rotationStep = 90f;
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
         [SerializeField] private GameObject HUD_display;
@@ -22,6 +24,11 @@ namespace Characters
         {
             EventManager.OnTick += OnTick;
             directionNormalized = Vector3.left;
+        }
+
+        void Start()
+        {
+            CharacterSelector.Instance.RegisterCharacter(this);
         }
 
         public void OnTurn()
@@ -43,7 +50,7 @@ namespace Characters
             steps += value;
         }
 
-        public void SetPaused (bool state)
+        public void SetPaused(bool state)
         {
             isPaused = state;
         }
@@ -52,7 +59,53 @@ namespace Characters
         {
         }
 
-        public void MakeMovement() 
+        public void MakeCustomRotationMovement(Vector3 nextPosition, bool isStepsIgnored = false)
+        {
+            if (isPaused) return;
+
+
+            if (steps > 0 || isStepsIgnored)
+            {
+                if (pathValidator.CanMoveTo(transform.position, nextPosition))
+                {
+                    Vector3 directionUnit =
+                        CoordinateManager.GetUnitDirection(pathValidator.GetTileMap(), transform.position, nextPosition);
+
+                    while (!CoordinateManager.IsSameCell(transform.position, nextPosition))
+                    {
+                        if (makeStep(transform.position + directionUnit, isStepsIgnored))
+                        {
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.Log("Unable to move");
+                }
+            }
+        }
+
+        public void Teleport(Vector3 nextPosition, bool isStepsIgnored = false)
+        {
+            if (isPaused) return;
+
+            if (steps > 0 || isStepsIgnored)
+            {
+                Vector3 directionUnit =
+                    CoordinateManager.GetUnitDirection(pathValidator.GetTileMap(), transform.position, nextPosition);
+
+                while (!CoordinateManager.IsSameCell(transform.position, nextPosition))
+                {
+                    if (makeStep(transform.position + directionUnit, isStepsIgnored))
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+        public void MakeMovement()
         {
             if (isPaused) return;
             if (steps > 0)
@@ -61,15 +114,47 @@ namespace Characters
                 if (pathValidator.CanMoveTo(nextPosition,
                     -new Vector3Int((int)directionNormalized.x, (int)directionNormalized.y, (int)directionNormalized.z)))
                 {
-                    transform.position = nextPosition;
+                    makeStep(nextPosition);
                 }
                 else
                 {
                     Debug.Log("Unable to move");
                 }
-                steps--;
-                if (steps == 0) EventManager.FireEvent(EventManager.OnTurnEnd);
             }
+        }
+
+        private bool makeStep(Vector3 nextPosition, bool isStepsIgnored = false)
+        {
+            transform.position = nextPosition;
+
+            return decreaseStep();
+        }
+
+        private bool decreaseStep()
+        {
+            steps--;
+            if (steps == 0)
+            {
+                EventManager.FireEvent(EventManager.OnTurnEnd);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public List<CharacterMovement> GetAvailableTargets(List<CharacterMovement> allCharacters)
+        {
+            List<CharacterMovement> targets = new List<CharacterMovement>(allCharacters);
+            targets.Remove(this);
+            return targets;
+        }
+
+
+        public PathValidator GetPathValidator()
+        {
+            return pathValidator;
         }
     }
 }

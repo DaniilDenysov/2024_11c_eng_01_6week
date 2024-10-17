@@ -6,7 +6,9 @@ using UnityEngine;
 public class Inventory : MonoBehaviour, ICollector
 {
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private List<Human> inventory = new List<Human>();
+    [SerializeField] private List<ICollectible> inventory = new List<ICollectible>();
+    [SerializeField] private int cardDrawCount = 1;
+
 
     public bool PickUp()
     {
@@ -28,7 +30,7 @@ public class Inventory : MonoBehaviour, ICollector
         human = default;
         if (inventory.Count > 0)
         {
-            human = inventory[0];
+            human = inventory[0] as Human;
             inventory.RemoveAt(0);
             return true;
         }
@@ -39,4 +41,11 @@ public class Inventory : MonoBehaviour, ICollector
     {
         inventory.Add(human);
     }
+
+    public void AdjustCardDraw(int adjustment)
+    {
+        cardDrawCount += adjustment;
+        cardDrawCount = Mathf.Max(1, cardDrawCount);
+    }
+
 }

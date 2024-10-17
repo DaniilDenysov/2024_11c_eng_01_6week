@@ -11,7 +11,7 @@ using UnityEditor;
 
 namespace Managers
 {
-    public class PoolManager :  Manager
+    public class PoolManager : Manager
     {
         public static PoolManager Instance;
         private Dictionary<string, Queue<GameObject>> _pool = new Dictionary<string, Queue<GameObject>>();
@@ -139,6 +139,11 @@ namespace Managers
         private void OnDestroy()
         {
             _pool.Clear();
+        }
+
+        public override void InstallBindings()
+        {
+            Container.Bind<PoolManager>().FromInstance(this).AsSingle();
         }
     }
 }

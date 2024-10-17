@@ -6,9 +6,14 @@ namespace Managers
 {
     public class DiceManager : Manager
     {
-        public int GetDiceValue ()
+        public int GetDiceValue()
         {
-            return Random.Range(1,7);
+            return Random.Range(1, 7);
+        }
+
+        public override void InstallBindings()
+        {
+            Container.Bind<DiceManager>().FromInstance(this).AsSingle();
         }
     }
 }
