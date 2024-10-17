@@ -84,12 +84,13 @@ namespace Characters
 
         public void Teleport(Vector3 nextPosition)
         {
+            _stateManager.SetCurrentState(new Idle());
             transform.position = nextPosition;
         }
 
         public void MakeMovement()
         {
-            if (isStepsEnough() && _stateManager.GetCurrentState().GetType() == typeof(Idle))
+            if (isStepsEnough() && _stateManager.GetCurrentState().IsMovable())
             {
                 Vector3 nextPosition = transform.position + directionNormalized;
                 if (pathValidator.CanMoveTo(nextPosition,
@@ -135,6 +136,7 @@ namespace Characters
             }
             EventManager.FireEvent(EventManager.OnCharacterMovesOut, transform.position, this);
             transform.position = nextPosition;
+            _stateManager.SetCurrentState(new Idle());
             EventManager.FireEvent(EventManager.OnCharacterMovesIn, nextPosition, this);
         }
 

@@ -92,6 +92,7 @@ namespace Characters.Skills
                 if (litPositions.Count < 1)
                 {
                     card.OnCardSetUp(false);
+                    _stateManager.SetCurrentState(new MultiCard(OnCardUsed));
                     return;
                 }
                 

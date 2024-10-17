@@ -42,23 +42,27 @@ namespace Cards
 
         public void OnCardSetUp(bool successfully)
         {
-            _stateManager.SetCurrentState(new Idle());
             _canvasGroup.alpha = 1f;
             
             if (successfully)
             {
+                _stateManager.SetCurrentState(new CardUsed());
                 Pool();
+            }
+            else
+            {
+                _stateManager.SetCurrentState(new Idle());
             }
         }
 
         public void TryActivate()
         {
-            if (_stateManager.GetCurrentState().OnCardUsed(this) || 
+            if (_stateManager.GetCurrentState().IsCardUsable(this) || 
                 _stateManager.GetCurrentState().GetType() == typeof(MultiCard))
             {
                 _canvasGroup.alpha = 0.5f;
                 
-                if (_stateManager.GetCurrentState().OnCardUsed(this))
+                if (_stateManager.GetCurrentState().IsCardUsable(this))
                 {
                     _stateManager.SetCurrentState(new CardSettingUp());
                     OnCardActivation(_cardOwner);
