@@ -1,5 +1,7 @@
 using Characters;
 using Characters.CharacterStates;
+using Collectibles;
+using Ganeral;
 using General;
 using Selectors;
 using UnityEngine;
@@ -67,6 +69,30 @@ namespace Cards
                 
                 _stateManager.SetCurrentState(new CardSettingUp());
             }
+        }
+        
+        public static bool AttackAndEatAtCell(Vector3 cell, Attack attack, ICollector collector)
+        {
+            bool result = false;
+            
+            foreach (GameObject entity in CharacterMovement.GetEntities(cell))
+            {
+                if (entity.TryGetComponent(out Inventory _))
+                {
+                    attack.TryAttack(cell);
+                    result = true;
+                }
+                else if (entity.TryGetComponent(out ICollectible collectible))
+                {
+                    if (collectible.GetType() == typeof(Human))
+                    {
+                        collector.PickUp(cell);
+                        result = true;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

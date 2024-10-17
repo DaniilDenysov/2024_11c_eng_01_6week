@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Characters;
 using Ganeral;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -22,16 +23,16 @@ namespace Validation
 
         public bool CanMoveTo(Vector3 initialPosition, Vector3 nextPosition)
         {
-            Vector3 directionUnit = CoordinateManager.GetUnitDirection(walls, initialPosition, nextPosition);
+            Vector3 directionUnit = CharacterMovement.GetUnitDirection(walls, initialPosition, nextPosition);
 
             if (directionUnit.x == 0 || directionUnit.y == 0)
             {
                 for (Vector3 cursor = new Vector3(initialPosition.x, initialPosition.y) 
-                                                + multiplyVectors(walls.layoutGrid.cellSize, directionUnit);
-                    !CoordinateManager.IsSameCell(cursor, nextPosition + multiplyVectors(walls.layoutGrid.cellSize, directionUnit));
-                    cursor += multiplyVectors(walls.layoutGrid.cellSize, directionUnit))
+                                                + multiplyVectors(walls.layoutGrid.cellSize, directionUnit); 
+                     cursor != nextPosition + multiplyVectors(walls.layoutGrid.cellSize, directionUnit);
+                     cursor += multiplyVectors(walls.layoutGrid.cellSize, directionUnit))
                 {
-                    if (CanMoveTo(cursor, CoordinateManager.VectorToIntVector(directionUnit * -1)) == false)
+                    if (CanMoveTo(cursor, CharacterMovement.VectorToIntVector(directionUnit * -1)) == false)
                     {
                         return false;
                     }
@@ -59,7 +60,7 @@ namespace Validation
         {
             List<Vector3> result = new List<Vector3>();
             
-            List<Vector3> directions = CoordinateManager.GetAllDirections();
+            List<Vector3> directions = CharacterMovement.GetAllDirections();
 
             foreach (Vector3 direction in directions)
             {

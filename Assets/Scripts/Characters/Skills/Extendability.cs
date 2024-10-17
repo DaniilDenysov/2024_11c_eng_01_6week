@@ -96,7 +96,7 @@ namespace Characters.Skills
                     {
                         Vector3 oppositeDirection = traversedDirections[i2] * -1;
 
-                        availableTurns = CoordinateManager.GetAllDirections();
+                        availableTurns = CharacterMovement.GetAllDirections();
                         availableTurns.Remove(oppositeDirection);
                     }
                     else
@@ -107,7 +107,7 @@ namespace Characters.Skills
                     foreach (Vector3 direction in availableTurns)
                     {
                         if (_movement.GetPathValidator().CanMoveTo(traversedPositions[i2],
-                                CoordinateManager.VectorToIntVector(direction)))
+                                CharacterMovement.VectorToIntVector(direction)))
                         {
                             int currentTurnsMade = turnsMade[i2];
 
@@ -165,7 +165,7 @@ namespace Characters.Skills
                     {
                         Vector3 oppositeDirection = traversedDirections[i2] * -1;
 
-                        availableTurns = CoordinateManager.GetAllDirections();
+                        availableTurns = CharacterMovement.GetAllDirections();
                         availableTurns.Remove(oppositeDirection);
                     }
                     else
@@ -176,7 +176,7 @@ namespace Characters.Skills
                     foreach (Vector3 direction in availableTurns)
                     {
                         if (_movement.GetPathValidator().CanMoveTo(traversedPositions[i2],
-                                CoordinateManager.VectorToIntVector(direction)))
+                                CharacterMovement.VectorToIntVector(direction)))
                         {
                             int currentTurnsMade = turnsMade[i2];
 

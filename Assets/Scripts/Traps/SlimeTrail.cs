@@ -36,7 +36,7 @@ namespace Traps
                     "Gameobject making trail doesn't have Movement, Attack or Collection component");
             }
 
-            foreach (GameObject entity in CoordinateManager.GetEntities(transform.position))
+            foreach (GameObject entity in CharacterMovement.GetEntities(transform.position))
             {
                 if (entity.TryGetComponent(out CharacterMovement movement))
                 {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Characters;
 using Ganeral;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -28,7 +29,7 @@ namespace Validation
                 int transparentPixelCount = 0;
                 int totalPixelCount = 0;
 
-                Vector3Int normalizedDirection = CoordinateManager.NormalizeIntVector(direction);
+                Vector3Int normalizedDirection = CharacterMovement.NormalizeIntVector(direction);
 
                 if (normalizedDirection == Vector3Int.left)
                 {
