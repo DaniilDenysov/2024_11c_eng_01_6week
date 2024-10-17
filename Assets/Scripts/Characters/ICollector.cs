@@ -56,7 +56,7 @@ namespace Collectibles
             PathValidator pathValidator = _movement.GetPathValidator();
             Vector3 characterPosition = transform.position;
             List<Vector3> directions = 
-                includeCurrentCell ? CoordinateManager.GetAttackDirections() : CoordinateManager.GetAllDirections();
+                includeCurrentCell ? CharacterMovement.GetAttackDirections() : CharacterMovement.GetAllDirections();
 
             List<Vector3> result = new List<Vector3>();
 
@@ -100,7 +100,7 @@ namespace Collectibles
         
         public bool IsCellPickable(Vector3 cell, Type collectibleType)
         {
-            foreach (GameObject entity in CoordinateManager.GetEntities(cell))
+            foreach (GameObject entity in CharacterMovement.GetEntities(cell))
             {
                 if (IsPickable(entity, collectibleType))
                 {

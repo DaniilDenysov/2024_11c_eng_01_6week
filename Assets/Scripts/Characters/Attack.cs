@@ -47,7 +47,7 @@ namespace Characters
             PathValidator pathValidator = _movement.GetPathValidator();
             Vector3 characterPosition = transform.position;
             List<Vector3> directions = 
-                includeCurrentCell ? CoordinateManager.GetAttackDirections() : CoordinateManager.GetAllDirections();
+                includeCurrentCell ? CharacterMovement.GetAttackDirections() : CharacterMovement.GetAllDirections();
 
             List<Vector3> result = new List<Vector3>();
 
@@ -91,7 +91,7 @@ namespace Characters
 
         public bool IsCellAttackable(Vector3 cell)
         {
-            foreach (GameObject entity in CoordinateManager.GetEntities(cell))
+            foreach (GameObject entity in CharacterMovement.GetEntities(cell))
             {
                 if (IsEntityAttackable(entity))
                 {
@@ -111,7 +111,7 @@ namespace Characters
         {
             bool result = false;
             
-            foreach (GameObject entity in CoordinateManager.GetEntities(cell))
+            foreach (GameObject entity in CharacterMovement.GetEntities(cell))
             {
                 if (entity.TryGetComponent(out Inventory opponentsInventory))
                 {

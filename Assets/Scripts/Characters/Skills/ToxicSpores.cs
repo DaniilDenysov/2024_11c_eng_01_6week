@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cards;
 using Characters;
 using Characters.Skills;
 using Collectibles;
@@ -45,7 +46,7 @@ public class ToxicSpores : Skill
         for (int i = 1; i < _range; i++)
         {
             Vector3 currentCell = characterPosition + direction * i;
-            result = result || CoordinateManager.AttackAndEatAtCell(currentCell, _attack, _collector);
+            result = result || Card.AttackAndEatAtCell(currentCell, _attack, _collector);
         }
 
         OnActivated(result);

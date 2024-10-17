@@ -35,7 +35,7 @@ public class Inventory : ICollector
     {
         bool result = false;
         
-        foreach (GameObject entity in CoordinateManager.GetEntities(cell))
+        foreach (GameObject entity in CharacterMovement.GetEntities(cell))
         {
             if (entity.TryGetComponent(out ICollectible collectible))
             {

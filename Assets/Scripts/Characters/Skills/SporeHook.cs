@@ -25,7 +25,7 @@ public class SporeHook : Skill
         
         PathValidator pathValidator = movement.GetPathValidator();
         Vector3 characterPosition = transform.position;
-        List<Vector3> directions = CoordinateManager.GetAllDirections();
+        List<Vector3> directions = CharacterMovement.GetAllDirections();
 
         List<Vector3> litPositions = new List<Vector3>();
 
@@ -63,7 +63,7 @@ public class SporeHook : Skill
     {
         PathValidator pathValidator = movement.GetPathValidator();
         Vector3 characterPosition = transform.position;
-        List<Vector3> directions = CoordinateManager.GetAllDirections();
+        List<Vector3> directions = CharacterMovement.GetAllDirections();
         
         foreach (Vector3 direction in directions)
         {
