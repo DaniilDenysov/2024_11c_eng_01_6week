@@ -6,6 +6,11 @@ using Zenject;
 
 namespace UI
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="I">item</typeparam>
+    /// <typeparam name="T">self</typeparam>
     public abstract class LabelContainer<I,T> : Singleton<T> where I : MonoBehaviour where T : MonoBehaviour
     {
         [SerializeField] protected Transform container;

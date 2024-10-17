@@ -9,11 +9,13 @@ using UnityEngine.SceneManagement;
 using Lobby;
 using Zenject;
 using UI;
+using General;
 
 namespace Managers
 {
     public class CustomNetworkManager : NetworkManager
     {
+        [SerializeField] private List<Player> players;
         [SerializeField] private GameObject playerLabelPrefab;
         [SerializeField] private bool isGameInProgress = false;
         public static Action OnClientConnected, OnClientDisconnected;
@@ -34,6 +36,33 @@ namespace Managers
         public override void OnServerConnect(NetworkConnectionToClient conn)
         {
             base.OnServerConnect(conn);
+        }
+
+        public override void OnServerChangeScene(string newSceneName)
+        {
+            base.OnServerChangeScene(newSceneName);
+
+        }
+
+        public override void OnClientSceneChanged()
+        {
+            base.OnClientSceneChanged();
+            if (isGameInProgress)
+            {
+                Dictionary<string, Player> characterMappings = new Dictionary<string, Player>();
+                foreach (var player in players)
+                {
+                    characterMappings.TryAdd(player.CharacterGUID, player);
+                }
+                foreach (var networkPlayer in NetworkPlayerContainer.Instance.GetItems())
+                {
+                    if (characterMappings.TryGetValue(networkPlayer.GetCharacterGUID(), out Player playerData))
+                    {
+                        networkPlayer.SetPlayer(playerData);
+                        NetworkServer.AddPlayerForConnection(NetworkServer.connections[playerData.ConnectionId],networkPlayer.gameObject);
+                    }
+                }
+            }
         }
 
         public override void OnServerDisconnect(NetworkConnectionToClient conn)
@@ -70,6 +99,11 @@ namespace Managers
 
         #endregion
 
+        private List<Player> GetPlayersData ()
+        {
+            return PlayerLabelsContainer.Instance.GetItems().Select((i)=>i.Player).ToList();
+        }
+
         private void OnCreateCharacter(NetworkConnectionToClient conn,LobbyConnection lobbyConnection)
         {
             GameObject participant = Instantiate(playerLabelPrefab);
@@ -105,8 +139,9 @@ namespace Managers
                     if (!player.IsReady) return;
                 }
                 isGameInProgress = true;
+                players = GetPlayersData();
                 //change to more appropriate handling
-                ServerChangeScene("SandBox");
+                ServerChangeScene("Main");
             }
         }
 

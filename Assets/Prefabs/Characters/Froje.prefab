@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Froje
       objectReference: {fileID: 0}
+    - target: {fileID: 3301708372138815419, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: characterData
+      value: 
+      objectReference: {fileID: 11400000, guid: eaeceefb4f0dfcd4794de4cfd4910965, type: 2}
     - target: {fileID: 4323871563611979964, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -9,11 +9,12 @@ using Characters.CharacterStates;
 using Selectors;
 using UnityEngine;
 using Validation;
+using Mirror;
 
 namespace Characters
 {
     [RequireComponent(typeof(CharacterStateManager))]
-    public class CharacterMovement : MonoBehaviour, ITurnAction
+    public class CharacterMovement : NetworkBehaviour, ITurnAction
     {
         [SerializeField, Range(0, 100)] private int steps = 0;
         [SerializeField, Range(0, 360f)] private float rotationStep = 90f;
