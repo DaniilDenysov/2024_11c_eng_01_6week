@@ -2,6 +2,7 @@ using Cards;
 using CustomTools;
 using Ganeral;
 using Managers;
+using Selectors;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,6 +33,11 @@ namespace Characters
             _stateManager = GetComponent<CharacterStateManager>();
             EventManager.OnTick += OnTick;
             directionNormalized = Vector3.left;
+        }
+
+        void Start()
+        {
+            CharacterSelector.Instance.RegisterCharacter(this);
         }
 
         public void OnTurn()
@@ -154,6 +160,14 @@ namespace Characters
                 CharacterSelector.FinishTurn();
             }
         }
+
+        public List<CharacterMovement> GetAvailableTargets(List<CharacterMovement> allCharacters)
+        {
+            List<CharacterMovement> targets = new List<CharacterMovement>(allCharacters);
+            targets.Remove(this);
+            return targets;
+        }
+
 
         public PathValidator GetPathValidator()
         {

@@ -4,11 +4,11 @@ using Collectibles;
 using System.Collections.Generic;
 using Ganeral;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Inventory : ICollector
 {
-    private List<ICollectible> _inventory;
+    [SerializeField] private List<ICollectible> _inventory;
+    [SerializeField] private int cardDrawCount = 1;
     private Action<bool> _onPickedUp;
 
     private new void Awake()
@@ -30,11 +30,11 @@ public class Inventory : ICollector
             _onPickedUp = onPickedUp;
         }
     }
-    
+
     public override bool PickUp(Vector3 cell)
     {
         bool result = false;
-        
+
         foreach (GameObject entity in CharacterMovement.GetEntities(cell))
         {
             if (entity.TryGetComponent(out ICollectible collectible))
@@ -47,7 +47,7 @@ public class Inventory : ICollector
                 }
             }
         }
-        
+
         return result;
     }
 
@@ -56,7 +56,7 @@ public class Inventory : ICollector
         _onPickedUp(PickUp(cell));
     }
 
-    public bool TryPopItem (out Human human)
+    public bool TryPopItem(out Human human)
     {
         human = default;
         if (_inventory.Count > 0)
@@ -68,8 +68,22 @@ public class Inventory : ICollector
         return false;
     }
 
+    public void AdjustCardDraw(int adjustment)
+    {
+        cardDrawCount += adjustment;
+        cardDrawCount = Mathf.Max(1, cardDrawCount);
+    }
+}
+
     public void Add(Human human)
     {
         _inventory.Add(human);
     }
+
+    public void AdjustCardDraw(int adjustment)
+    {
+        cardDrawCount += adjustment;
+        cardDrawCount = Mathf.Max(1, cardDrawCount);
+    }
+
 }
