@@ -14,9 +14,14 @@ namespace Characters.CharacterStates
             _onCardUsed = onCardUsed;
         }
         
-        public override bool OnCardUsed(Card card)
+        public override bool IsCardUsable(Card card)
         {
             _onCardUsed?.Invoke(card);
+            return false;
+        }
+        
+        public override bool IsMovable()
+        {
             return false;
         }
     }

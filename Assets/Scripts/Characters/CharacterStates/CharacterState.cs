@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class CharacterState
 { 
-    public abstract bool OnCardUsed(Card card);
+    public abstract bool IsCardUsable(Card card);
+    public abstract bool IsMovable();
 }

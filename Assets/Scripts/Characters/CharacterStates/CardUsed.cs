@@ -1,14 +1,14 @@
+using System.Collections.Generic;
+using System.Numerics;
 using Cards;
-using General;
-using UnityEngine;
 
 namespace Characters.CharacterStates
 {
-    public class Idle : CharacterState
+    public class CardUsed : CharacterState
     {
         public override bool IsCardUsable(Card card)
         {
-            return true;
+            return false;
         }
         
         public override bool IsMovable()
