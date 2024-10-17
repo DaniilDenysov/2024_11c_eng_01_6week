@@ -1,7 +1,6 @@
 using Characters;
 using Managers;
 using Selectors;
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -25,15 +24,9 @@ namespace Cards
             }
 
             List<CharacterMovement> availableTargets = new List<CharacterMovement>(CharacterSelector.Instance.characters);
-
-            //testing
-            //CharacterSelector.Instance.DisplayCharacterSelection(availableTargets, OnPlayerChosen);
-            //Debug.Log($"Available targets: {availableTargets.Count}");
-
             DisplayCharacterSelection(availableTargets);
         }
 
-        
         private void DisplayCharacterSelection(List<CharacterMovement> availableTargets)
         {
             characterSelectionPanel.SetActive(true);
@@ -45,10 +38,9 @@ namespace Cards
                 newButton.gameObject.transform.SetParent(characterSelectionPanel.transform);
 
                 newButton.onClick.AddListener(() => OnPlayerChosen(target));
-                Debug.Log(newButton);
             }
         }
-        
+
         private void OnPlayerChosen(CharacterMovement selectedCharacter)
         {
             characterSelectionPanel.SetActive(false);
@@ -65,8 +57,6 @@ namespace Cards
                 targetInventory.AdjustCardDraw(-1);
                 EventManager.OnPlayerAttacked += OnPlayerAttacked;
                 OnCardSetUp(true);
-
-                Debug.Log("Harm applied");
             }
             else
             {

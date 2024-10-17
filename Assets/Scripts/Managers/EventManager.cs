@@ -1,19 +1,19 @@
 using UnityEngine;
 using System;
 using System.Reflection;
+using Characters;
 
 namespace Managers
 {
     [CreateAssetMenu(fileName = "Event Manager", menuName = "Create event manager")]
-    public class EventManager :  ScriptableObject
+    public class EventManager : ScriptableObject
     {
         public static Action OnTurnStart, OnTurnEnd;
         public static Action OnTick;
         public static Action<Vector3> OnLitTileClick;
         public static Action<bool> OnSkillSetUp;
-        public static Action<MonoBehaviour[]> OnMultiStepCardUsed;
-        public static Action<bool> OnMultiStepSwitch;
         public static Action<GameObject> OnPlayerAttacked;
+        public static Action<bool> OnCardSetUp;
 
         public static void FireEvent(Action action)
         {
@@ -24,15 +24,10 @@ namespace Managers
         {
             action?.Invoke(arg);
         }
-        
+
         public static void FireEvent<T, T1>(Action<T, T1> action, T arg, T1 arg1)
         {
             action?.Invoke(arg, arg1);
-        }
-
-        public static void FireEvent<T, T1, T2>(Action<T, T1, T2> action, T arg, T1 arg1, T2 arg2)
-        {
-            action?.Invoke(arg, arg1, arg2);
         }
 
         public static void FireEvent(string eventName)
@@ -57,8 +52,5 @@ namespace Managers
                 Debug.LogError("Event not found: " + eventName);
             }
         }
-
     }
 }
-
- 

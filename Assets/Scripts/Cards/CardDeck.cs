@@ -3,6 +3,9 @@ using Selectors;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Characters;
+using General;
+using ModestTree;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -15,69 +18,81 @@ namespace Cards
         [SerializeField] private GameObject cardsContainer;
         [SerializeField] private CardManager cardManager;
         
-        private List<GameObject> StepCards;
-        private bool isMultiCardStep;
+        private const int cardNumber = 4;
+        private CharacterStateManager _stateManager;
 
         void Awake()
         {
-            isMultiCardStep = false;
-            EventManager.OnMultiStepSwitch += StartMultiCardStepSwitch;
-            StepCards = new List<GameObject>();
+            if (!ownedBy.TryGetComponent(out _stateManager))
+            {
+                Debug.LogError("Failed to find state manager on card deck owner: " + ownedBy.name);
+            }
+        }
+
+        public CharacterStateManager GetStateManager()
+        {
+            return _stateManager;
+        }
+
+        private void Start()
+        {
+            EventManager.OnTurnEnd += OnTurnEnd;
+            
+            for (int i = 0; i < cardNumber; i++)
+            {
+                AddCard();
+            }
         }
 
         private void Update() {
             cardsContainer.SetActive(CharacterSelector.CurrentCharacter.gameObject == ownedBy);
         }
 
-        private void StartMultiCardStepSwitch(bool arg1)
+        private int GetCardNumber()
         {
-            if (CharacterSelector.CurrentCharacter.gameObject == ownedBy)
-            {
-                if (!isMultiCardStep)
-                {
-                    isMultiCardStep = true;
-                }
-                else
-                {
-                    isMultiCardStep = false;
-            
-                    if (arg1)
-                    {
-                        foreach (GameObject card in StepCards)
-                        {
-                            Destroy(card);
-                        }
-                    }
-                    
-                    StepCards.Clear();
-                }
-            }
+            return cardsContainer.transform.childCount;
         }
 
-        public bool GetApproval(GameObject card)
+        private void AddCard()
         {
-            if (!isMultiCardStep)
+            CardPoolable newCard = cardManager.GetRandomCard();
+            
+            if (newCard.TryGetComponent(out Card card))
             {
-                return true;
+                card.SetUp(ownedBy, _stateManager);
             }
             else
             {
-                if (!StepCards.Contains(card))
-                {
-                    StepCards.Add(card);
-
-                    MonoBehaviour[] components = card.GetComponents<MonoBehaviour>();
-                    
-                    EventManager.OnMultiStepCardUsed.Invoke(components);
-                }
-            
-                return false;
+                Debug.LogError("Failed to find Card Component on card: " + newCard.name);
             }
+            
+            newCard.transform.SetParent(cardsContainer.transform);
+            newCard.gameObject.SetActive(true);
+        }
+        
+        private void AddCard(string cardName)
+        {
+            CardPoolable newCard = cardManager.Get(cardName);
+            
+            if (newCard.TryGetComponent(out Card card))
+            {
+                card.SetUp(ownedBy, _stateManager);
+            }
+            else
+            {
+                Debug.LogError("Failed to find Card Component on card: " + newCard.name);
+            }
+            
+            newCard.transform.SetParent(cardsContainer.transform);
+            newCard.gameObject.SetActive(true);
         }
 
-        public void AddCard(String name)
+        private void OnTurnEnd()
         {
-            
+            for (int i = GetCardNumber(); i < cardNumber; i++)
+            {
+                AddCard();
+            }
         }
     }
 }

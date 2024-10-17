@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Ganeral;
 using Managers;
 using UnityEngine;
@@ -6,13 +8,18 @@ using UnityEngine.Tilemaps;
 
 public class TileSelector : MonoBehaviour
 {
+    public static TileSelector Instance;
     [SerializeField] private Tilemap tileMap;
     private Vector3 cellUnit;
     [SerializeField] private TileBase highlightTile;
+    
+    private Action<Vector3> _onChosen;
+    private List<Vector3> _litPositions;
 
     void Awake()
     {
         cellUnit = tileMap.layoutGrid.cellSize / 2;
+        Instance = this;
     }
 
     void Update()
@@ -25,33 +32,30 @@ public class TileSelector : MonoBehaviour
 
             if (tile)
             {
-                EventManager.OnLitTileClick(tilePosition + cellUnit);
-
-                SetTilesUnlit();
+                if (_litPositions.Contains(tilePosition + cellUnit))
+                {
+                    SetTilesUnlit();
+                    _onChosen.Invoke(tilePosition + cellUnit);
+                }
             }
         }
     }
 
-    public void SetTilesLit(List<Vector3> positions)
+    public void SetTilesLit(List<Vector3> positions, Action<Vector3> onChosen)
     {
+        if (positions.Count < 1)
+        {
+            Debug.LogError("Lit cells count is 0");
+        }
+        
         foreach (Vector3 position in positions)
         {
             Vector3Int tilePosition = tileMap.WorldToCell(position);
             tileMap.SetTile(tilePosition, highlightTile);
         }
-    }
 
-    public void SetTilesLit(Vector3 originPosition, int quantity, Vector3 direction, bool includeInitTile = false)
-    {
-        Vector3Int originTilePosition = tileMap.WorldToCell(originPosition);
-        Vector2 directionNormalized = NormalizeDirection(direction);
-
-        for (int i = includeInitTile ? 0 : 1; i < quantity; i++)
-        {
-            Vector3Int tilePosition = originTilePosition +
-                new Vector3Int((int)directionNormalized.x, (int)directionNormalized.y, 0) * i;
-            tileMap.SetTile(tilePosition, highlightTile);
-        }
+        _onChosen = onChosen;
+        _litPositions = positions;
     }
 
     public void SetTilesUnlit()

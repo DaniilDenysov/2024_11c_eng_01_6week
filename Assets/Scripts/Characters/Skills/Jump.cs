@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Characters;
 using Characters.Skills;
@@ -9,7 +10,6 @@ using Validation;
 [RequireComponent(typeof(CharacterMovement))]
 public class Jump : Skill
 {
-    [SerializeField] private TileSelector directionSelector;
     private CharacterMovement movement;
 
     void Awake()
@@ -17,11 +17,13 @@ public class Jump : Skill
         movement = GetComponent<CharacterMovement>();
     }
 
-    public override void Activate()
+    public override void Activate(Action<bool> onSetUp)
     {
+        base.Activate(onSetUp);
+        
         PathValidator pathValidator = movement.GetPathValidator();
         Vector3 characterPosition = transform.position;
-        List<Vector3> directions = CoordinateManager.GetAllDirections();
+        List<Vector3> directions = CharacterMovement.GetAllDirections();
 
         List<Vector3> litPositions = new List<Vector3>();
 
@@ -33,15 +35,12 @@ public class Jump : Skill
             }
         }
 
-        directionSelector.SetTilesLit(litPositions);
-        EventManager.OnLitTileClick += OnDirectionChosen;
+        TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
     }
 
-    private void OnDirectionChosen(Vector3 chosenTile)
+    private void OnCellChosen(Vector3 chosenTile)
     {
-        EventManager.OnLitTileClick -= OnDirectionChosen;
-
-        movement.Teleport(chosenTile, true);
+        movement.Teleport(chosenTile);
 
         OnActivated();
     }
@@ -50,7 +49,7 @@ public class Jump : Skill
     {
         PathValidator pathValidator = movement.GetPathValidator();
         Vector3 characterPosition = transform.position;
-        List<Vector3> directions = CoordinateManager.GetAllDirections();
+        List<Vector3> directions = CharacterMovement.GetAllDirections();
 
         foreach (Vector3 direction in directions)
         {

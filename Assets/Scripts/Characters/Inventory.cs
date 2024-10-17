@@ -1,45 +1,83 @@
+using System;
 using Characters;
 using Collectibles;
 using System.Collections.Generic;
+using Ganeral;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour, ICollector
+public class Inventory : ICollector
 {
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private List<ICollectible> inventory = new List<ICollectible>();
+    [SerializeField] private List<ICollectible> _inventory;
     [SerializeField] private int cardDrawCount = 1;
+    private Action<bool> _onPickedUp;
 
-
-    public bool PickUp()
+    private new void Awake()
     {
-        var result = Physics2D.OverlapCircle(transform.position, 1f, layerMask);
-        if (result != null && result.TryGetComponent(out ICollectible collectible))
-        {
-            var collected = collectible.Collect();
-            if (collected != default && collectible.GetType() == typeof(Human))
-            {
-                inventory.Add(collected as Human);
-                return true;
-            }
-        }
-        return false;
+        base.Awake();
+        _inventory = new List<ICollectible>();
     }
 
-    public bool TryPopItem (out Human human)
+    public override void PickUp(Action<bool> onPickedUp)
+    {
+        if (IsStaticPickUpCellsEmpty())
+        {
+            onPickedUp.Invoke(PickUp(transform.position));
+        }
+        else
+        {
+            List<Vector3> litPositions = GetPickUpCells(0, typeof(Human));
+            TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
+            _onPickedUp = onPickedUp;
+        }
+    }
+
+    public override bool PickUp(Vector3 cell)
+    {
+        bool result = false;
+
+        foreach (GameObject entity in CharacterMovement.GetEntities(cell))
+        {
+            if (entity.TryGetComponent(out ICollectible collectible))
+            {
+                if (collectible.GetType() == typeof(Human))
+                {
+                    var collected = collectible.Collect();
+                    _inventory.Add(collected as Human);
+                    result = true;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private void OnCellChosen(Vector3 cell)
+    {
+        _onPickedUp(PickUp(cell));
+    }
+
+    public bool TryPopItem(out Human human)
     {
         human = default;
-        if (inventory.Count > 0)
+        if (_inventory.Count > 0)
         {
-            human = inventory[0] as Human;
-            inventory.RemoveAt(0);
+            human = _inventory[0] as Human;
+            _inventory.RemoveAt(0);
             return true;
         }
         return false;
     }
 
+    public void AdjustCardDraw(int adjustment)
+    {
+        cardDrawCount += adjustment;
+        cardDrawCount = Mathf.Max(1, cardDrawCount);
+    }
+}
+
     public void Add(Human human)
     {
-        inventory.Add(human);
+        _inventory.Add(human);
     }
 
     public void AdjustCardDraw(int adjustment)
