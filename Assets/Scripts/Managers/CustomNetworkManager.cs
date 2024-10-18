@@ -117,22 +117,16 @@ namespace Managers
         private void OnCreateCharacter(NetworkConnectionToClient conn,LobbyConnection lobbyConnection)
         {
             GameObject participant = Instantiate(playerLabelPrefab);
-            if (participant != null)
-            {
-                Debug.Log("PlayerLabel prefab instantiated successfully.");  // Debug log
-            }
             PlayerLabel [] connections = PlayerLabelsContainer.Instance.GetItems().ToArray();
             if (participant.gameObject.TryGetComponent(out PlayerLabel label))
             {
                 var player = new Player();
                 player.ConnectionId = conn.connectionId;
-                player.Nickname = "Player" + connections.Length;
+                string name = PlayerPrefs.GetString("Nickname");
+                if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
+                else player.Nickname = name;
                 player.IsPartyOwner = connections.Length == 0;
                 label.Player = player;
-            }
-            else
-            {
-                Debug.LogError("Unable to get label!");
             }
             NetworkServer.AddPlayerForConnection(conn, participant);
         }
