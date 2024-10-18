@@ -41,7 +41,12 @@ namespace Managers
         public override void OnServerChangeScene(string newSceneName)
         {
             base.OnServerChangeScene(newSceneName);
+            Invoke(nameof(DelayedAction),5f);
+        }
 
+        public void DelayedAction ()
+        {
+            StopServer();
         }
 
         public override void OnClientSceneChanged()

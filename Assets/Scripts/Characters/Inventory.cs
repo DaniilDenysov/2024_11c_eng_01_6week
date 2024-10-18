@@ -73,17 +73,9 @@ public class Inventory : ICollector
         cardDrawCount += adjustment;
         cardDrawCount = Mathf.Max(1, cardDrawCount);
     }
-}
 
     public void Add(Human human)
     {
         _inventory.Add(human);
     }
-
-    public void AdjustCardDraw(int adjustment)
-    {
-        cardDrawCount += adjustment;
-        cardDrawCount = Mathf.Max(1, cardDrawCount);
-    }
-
 }

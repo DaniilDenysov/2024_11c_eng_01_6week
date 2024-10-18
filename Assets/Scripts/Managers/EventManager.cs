@@ -15,6 +15,10 @@ namespace Managers
         public static Action<GameObject> OnPlayerAttacked;
         public static Action<bool> OnCardSetUp;
 
+        public static Action<Vector3,CharacterMovement> OnCharacterMovesOut;
+
+        public static Action<Vector3, CharacterMovement> OnCharacterMovesIn;
+
         public static void FireEvent(Action action)
         {
             action?.Invoke();

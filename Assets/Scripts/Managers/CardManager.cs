@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AYellowpaper.SerializedCollections;
 using Cards;
+using Extensions.List;
 using General;
 using Selectors;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Managers
 {
     public class CardManager : Manager
     {
-        [SerializeField] private SerializedDictionary<CardPoolable, int> cards = new();
+        [SerializeField] private SerializedDictionary<CardPoolable, int> cards = new SerializedDictionary<CardPoolable, int>();
         private List<string> _deck;
         private int _nextPoolable;
         private Dictionary<string, List<CardPoolable>> _pool;

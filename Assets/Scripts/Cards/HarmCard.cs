@@ -8,14 +8,14 @@ using UnityEngine.UI;
 
 namespace Cards
 {
-    public class HarmCard : Card<Inventory>
+    public class HarmCard : Card
     {
         [SerializeField] private GameObject characterSelectionPanel;
         [SerializeField] private Button characterButtonPrefab;
         private Inventory targetInventory;
         private bool harmActive;
 
-        public override void OnCardActivation(Inventory inventory)
+        public override void OnCardActivation(GameObject inventory)
         {
             if (inventory == null)
             {
