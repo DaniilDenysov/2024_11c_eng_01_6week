@@ -10,13 +10,17 @@ using Lobby;
 using Zenject;
 using UI;
 using General;
+using UI.PlayerLog;
 
 namespace Managers
 {
     public class CustomNetworkManager : NetworkManager
     {
+        [SerializeField] private LocalPlayerLogLabel message; 
         [SerializeField] private List<Player> players;
+        [SerializeField, Range(1, 4)] private int minimalLobbySize = 1;
         [SerializeField] private GameObject playerLabelPrefab;
+        [SerializeField] private string mainScene;
         [SerializeField] private bool isGameInProgress = false;
         public static Action OnClientConnected, OnClientDisconnected;
 
@@ -41,12 +45,6 @@ namespace Managers
         public override void OnServerChangeScene(string newSceneName)
         {
             base.OnServerChangeScene(newSceneName);
-            Invoke(nameof(DelayedAction),5f);
-        }
-
-        public void DelayedAction ()
-        {
-            StopServer();
         }
 
         public override void OnClientSceneChanged()
@@ -73,14 +71,21 @@ namespace Managers
         public override void OnServerDisconnect(NetworkConnectionToClient conn)
         {
             base.OnServerDisconnect(conn);
-            var participants = FindObjectsOfType<PlayerLabel>();
-            foreach (var participant in participants)
+            if (!isGameInProgress)
             {
-                participant.OnValidateSelection();
+                var participants = FindObjectsOfType<PlayerLabel>();
+                foreach (var participant in participants)
+                {
+                    participant.OnValidateSelection();
+                }
+                foreach (var participant in participants)
+                {
+                    participant.ValidateSelection();
+                }
             }
-            foreach (var participant in participants)
+            else
             {
-                participant.ValidateSelection();
+                StopServer();
             }
         }
 
@@ -137,17 +142,37 @@ namespace Managers
         public void StartGame ()
         {
             var connections = FindObjectsOfType<PlayerLabel>();
-            if (connections.Length >= 1 && isGameInProgress == false)
+            if (connections.Length >= minimalLobbySize && isGameInProgress == false)
             {
                 foreach (var player in connections.Select((h) => h.Player).ToList())
                 {
-                    if (!player.IsReady) return;
+                    if (!player.IsReady)
+                    {
+                        AddLogMessage("Not all players are ready!");
+                        return;
+                    }
+                    if (string.IsNullOrEmpty(player.CharacterGUID))
+                    {
+                        AddLogMessage("Not all players selected their character!");
+                        return;
+                    }
                 }
                 isGameInProgress = true;
                 players = GetPlayersData();
                 //change to more appropriate handling
-                ServerChangeScene("Main");
+                ServerChangeScene(mainScene);
             }
+            else
+            {
+                AddLogMessage("Not enough players!");
+            }
+        }
+
+        public void AddLogMessage (string messageText)
+        {
+            var label = Instantiate(message).GetComponent<LocalPlayerLogLabel>();
+            label.Construct(messageText);
+            LocalPlayerLogContainer.Instance.Add(label);
         }
 
         public override void OnClientConnect()
