@@ -5693,6 +5693,9 @@ MonoBehaviour:
   spawnPrefabs:
   - {fileID: 4930947734536874560, guid: b0f77bfc65f93bb42936fdc13485ea13, type: 3}
   - {fileID: 2826222688164517831, guid: 7d09e73b412149f4b97b14bed3fd987e, type: 3}
+  - {fileID: 8611451595687368966, guid: 27ffbd87e2b7c2d4a9a2f7925d217368, type: 3}
+  - {fileID: 7169815776794296692, guid: 98601a2c494ee3a42bb6d0bc52dfed4e, type: 3}
+  - {fileID: 5950584236917469603, guid: 2fe193f43385cc74e8d33b959eeb9a6d, type: 3}
   snapshotSettings:
     bufferTimeMultiplier: 2
     bufferLimit: 32
@@ -5708,7 +5711,7 @@ MonoBehaviour:
   timeInterpolationGui: 0
   message: {fileID: 8649890022740311391, guid: 1f495fbf1a2763d4a9d3c524ae7f00d9, type: 3}
   players: []
-  minimalLobbySize: 2
+  minimalLobbySize: 1
   playerLabelPrefab: {fileID: 2826222688164517831, guid: 7d09e73b412149f4b97b14bed3fd987e, type: 3}
   mainScene: Main
   isGameInProgress: 0

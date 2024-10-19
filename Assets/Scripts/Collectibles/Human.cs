@@ -1,17 +1,19 @@
 using Collectibles;
 using CustomTools;
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Human : MonoBehaviour, ICollectible
+public class Human : NetworkBehaviour, ICollectible
 {
-    [SerializeField, ReadOnly] private int currentPoints; 
-    private int[] points = { 2, 4, 6 };
+    [SerializeField,SyncVar] private CharacterData ownedBy;
+    [SerializeField, Range(2,6)] private int currentPoints; 
 
-    private void Awake()
+    [Server]
+    public void SetOwner (CharacterData owner)
     {
-        currentPoints = points[Random.Range(0, points.Length)];
+        ownedBy = owner;
     }
 
     public object Collect()
