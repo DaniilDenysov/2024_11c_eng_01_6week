@@ -36,18 +36,19 @@ namespace Selectors
                 CurrentCharacter = characterMovement;
                 CurrentCharacter.SetSteps(diceManager.GetDiceValue());
                 onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
-                characterMovement.ChooseNewDirection(() => { });
+
+                EventManager.OnCharacterMovesIn += (vector3, movement) =>
+                {
+                    onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
+                };
+                
+                characterMovement.OnTurn();
             }
         }
 
         public static void FinishTurn()
         {
             EventManager.FireEvent(EventManager.OnTurnEnd);
-        }
-
-        public void MakeMovement() {
-            CurrentCharacter.MakeMovement();
-            onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
         }
     }
 

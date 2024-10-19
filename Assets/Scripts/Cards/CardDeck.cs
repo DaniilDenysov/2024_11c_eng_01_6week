@@ -1,14 +1,8 @@
 using Managers;
 using Selectors;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Characters;
 using General;
-using ModestTree;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 namespace Cards
 {
@@ -29,24 +23,14 @@ namespace Cards
             }
         }
 
-        public CharacterStateManager GetStateManager()
-        {
-            return _stateManager;
-        }
-
         private void Start()
         {
             EventManager.OnTurnEnd += OnTurnEnd;
             
-            // for (int i = 0; i < cardNumber; i++)
-            // {
-            //     AddCard();
-            // }
-
-            AddCard("Ability");
-            AddCard("Ability");
-            AddCard("Ability");
-            AddCard("Ability");
+            for (int i = 0; i < cardNumber; i++)
+            {
+                AddCard();
+            }
         }
 
         private void Update() {

@@ -33,16 +33,6 @@ namespace Traps
             return _collector.IsCellPickable(transform.position, typeof(Human));
         }
 
-        public bool Attack()
-        {
-            return _attack.TryAttack(transform.position);
-        }
-        
-        public bool Eat()
-        {
-            return _collector.PickUp(transform.position);
-        }
-
         public void RemoveFromField()
         {
             _attack = null;
