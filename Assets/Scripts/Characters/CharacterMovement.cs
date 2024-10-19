@@ -39,14 +39,6 @@ namespace Characters
             ChooseNewDirection(() => { });
         }
 
-        public void RotateObject()
-        {
-            Vector2 directionContinuous = directionNormalized;
-            Quaternion rotation = Quaternion.Euler(0, 0, rotationStep);
-            directionContinuous = rotation * directionContinuous;
-            directionNormalized = new Vector3(Mathf.RoundToInt(directionContinuous.x), Mathf.RoundToInt(directionContinuous.y));
-        }
-
         public void SetSteps(int value)
         {
             steps = value;
@@ -110,14 +102,8 @@ namespace Characters
         {
             CharacterState previousState = _stateManager.GetCurrentState();
             _stateManager.SetCurrentState(new CardSettingUp());
-            List<Vector3> turnPositions = CharacterMovement.GetAllDirections();
-
-            for (int i = 0; i < turnPositions.Count; i++)
-            {
-                turnPositions[i] += transform.position;
-            }
-
-            TileSelector.Instance.SetTilesLit(turnPositions, cell =>
+            
+            TileSelector.Instance.SetDirectionsTilesLit(transform.position, cell =>
             {
                 OnDirectionChosen(cell, previousState, onDirectionChosen);
             });
