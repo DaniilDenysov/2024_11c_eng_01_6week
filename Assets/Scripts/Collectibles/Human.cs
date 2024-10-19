@@ -7,11 +7,11 @@ using UnityEngine;
 
 public class Human : NetworkBehaviour, ICollectible
 {
-    [SerializeField,SyncVar] private CharacterData ownedBy;
+    [SerializeField,SyncVar] private string ownedBy;
     [SerializeField, Range(2,6)] private int currentPoints; 
 
     [Server]
-    public void SetOwner (CharacterData owner)
+    public void SetOwner (string owner)
     {
         ownedBy = owner;
     }

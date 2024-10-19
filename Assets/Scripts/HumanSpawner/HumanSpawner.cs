@@ -40,6 +40,10 @@ namespace Spawns
         public void Spawn()
         {
             HashSet<Vector3> usedCells = new HashSet<Vector3>();
+            foreach (var player in NetworkPlayerContainer.Instance.GetItems())
+            {
+                usedCells.Add(grid.WorldToCell(player.transform.position));
+            }
             foreach (var entry in datas)
             {
                 var area = entry.Key;
@@ -53,10 +57,13 @@ namespace Spawns
                         float posY = Random.Range(area.Pivot.y, area.Pivot.y + area.SizeY);
                         Vector3 spawnPosition = new Vector3(posX, posY, 0f) + transform.position;
                         Vector3Int tilePosition = grid.WorldToCell(spawnPosition);
-                        if (usedCells.Contains(tilePosition)) continue;
-                        if (NetworkPlayerContainer.Instance.GetItems().Find((p) => usedCells.Contains(grid.WorldToCell(p.gameObject.transform.position))) != null) continue;
+                        if (usedCells.Contains(tilePosition)) continue;                    
                         usedCells.Add(tilePosition);
                         GameObject spawnedObject = Instantiate(data.Prefab, tilePosition + new Vector3(0.5f, 0.5f), Quaternion.identity);
+                        if (spawnedObject.TryGetComponent(out Human human))
+                        {
+                            human.SetOwner(entry.Key.OwnedBy.CharacterGUID);
+                        }
                         NetworkServer.Spawn(spawnedObject);
                         i += 1;
                     }
