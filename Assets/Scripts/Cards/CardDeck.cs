@@ -1,14 +1,8 @@
 using Managers;
 using Selectors;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Characters;
 using General;
-using ModestTree;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 namespace Cards
 {
@@ -27,11 +21,6 @@ namespace Cards
             {
                 Debug.LogError("Failed to find state manager on card deck owner: " + ownedBy.name);
             }
-        }
-
-        public CharacterStateManager GetStateManager()
-        {
-            return _stateManager;
         }
 
         private void Start()

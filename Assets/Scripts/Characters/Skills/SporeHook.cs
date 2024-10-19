@@ -11,19 +11,18 @@ using Validation;
 [RequireComponent(typeof(CharacterMovement))]
 public class SporeHook : Skill
 {
-    private CharacterMovement movement;
+    private PathValidator pathValidator;
     private int _range = 2;
 
     void Awake()
     {
-        movement = GetComponent<CharacterMovement>();
+        pathValidator = GetComponent<CharacterMovement>().GetPathValidator();
     }
 
     public override void Activate(Action<bool> onSetUp)
     {
         base.Activate(onSetUp);
         
-        PathValidator pathValidator = movement.GetPathValidator();
         Vector3 characterPosition = transform.position;
         List<Vector3> directions = CharacterMovement.GetAllDirections();
 
@@ -31,10 +30,10 @@ public class SporeHook : Skill
 
         foreach (Vector3 direction in directions)
         {
-            for (int distance = 0; distance < _range; distance++)
+            for (int distance = 1; distance < _range + 1; distance++)
             {
-                Vector3 currentCell = characterPosition + direction * (distance + 1);
-                Vector3 nextCell = characterPosition + direction * (distance + 2);
+                Vector3 currentCell = characterPosition + direction * (distance);
+                Vector3 nextCell = characterPosition + direction * (distance + 1);
 
                 if (!pathValidator.CanMoveTo(characterPosition, currentCell))
                 {
@@ -44,7 +43,7 @@ public class SporeHook : Skill
                 if (pathValidator.CanMoveTo(characterPosition, currentCell) &&
                     !pathValidator.CanMoveTo(characterPosition, nextCell))
                 {
-                    litPositions.Add(currentCell);
+                    litPositions.Add(transform.position + direction);
                     break;
                 }
             }
@@ -55,13 +54,27 @@ public class SporeHook : Skill
 
     private void OnDirectionChosen(Vector3 chosenTile)
     {
-        movement.MakeCustomRotationMovement(chosenTile, true);
+        Vector3 characterPosition = transform.position;
+        Vector3 direction = chosenTile - characterPosition;
+        
+        for (int distance = 1; distance < _range + 1; distance++)
+        {
+            Vector3 currentCell = characterPosition + direction * (distance);
+            Vector3 nextCell = characterPosition + direction * (distance + 1);
+                
+            if (pathValidator.CanMoveTo(characterPosition, currentCell) &&
+                !pathValidator.CanMoveTo(characterPosition, nextCell))
+            {
+                transform.position = currentCell;
+                break;
+            }
+        }
+        
         OnActivated();
     }
 
     public override bool IsActivatable()
     {
-        PathValidator pathValidator = movement.GetPathValidator();
         Vector3 characterPosition = transform.position;
         List<Vector3> directions = CharacterMovement.GetAllDirections();
         

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Characters;
 using Ganeral;
 using Managers;
 using UnityEngine;
@@ -48,6 +49,7 @@ public class TileSelector : MonoBehaviour
             Debug.LogError("Lit cells count is 0");
         }
         
+        SetTilesUnlit();
         foreach (Vector3 position in positions)
         {
             Vector3Int tilePosition = tileMap.WorldToCell(position);
@@ -58,6 +60,27 @@ public class TileSelector : MonoBehaviour
         _litPositions = positions;
     }
 
+    public void SetDirectionsTilesLit(Vector3 position, Action<Vector3> onChosen, 
+        List<Vector3> excludeDirections = null)
+    {
+        List<Vector3> directionPositions = CharacterMovement.GetAllDirections();
+
+        for (int i = 0; i < directionPositions.Count; i++)
+        {
+            if (excludeDirections == null || !excludeDirections.Contains(directionPositions[i]))
+            {
+                directionPositions[i] += position;
+            }
+            else
+            {
+                directionPositions.RemoveAt(i);
+                i--;
+            }
+        }
+
+        SetTilesLit(directionPositions, onChosen);
+    }
+    
     public void SetTilesUnlit()
     {
         tileMap.ClearAllTiles();
