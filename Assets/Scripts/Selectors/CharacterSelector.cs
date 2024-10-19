@@ -11,16 +11,28 @@ namespace Selectors
 {
     public class CharacterSelector : MonoBehaviour
     {
+        public static CharacterSelector Instance { get; private set; }
         public static CharacterMovement CurrentCharacter { get; private set; }
-        [SerializeField] private DiceManager diceManager; //inject using zenject later
-        [SerializeField] private List<CharacterMovement> characters = new List<CharacterMovement>();
+        [SerializeField] private DiceManager diceManager;
+        private List<CharacterMovement> characters;
         private Queue<CharacterMovement> turnOrder;
         public UnityEvent<string> onStepCountChanged;
         
         private void Awake()
         {
+            Instance = this;
+            characters = new List<CharacterMovement>();
+            
             turnOrder = new Queue<CharacterMovement>(characters);
             EventManager.OnTurnStart += OnTurnStart;
+        }
+        
+        public void RegisterCharacter(CharacterMovement character)
+        {
+            if (!characters.Contains(character))
+            {
+                characters.Add(character);
+            }
         }
 
         private void OnTurnStart()
@@ -50,19 +62,10 @@ namespace Selectors
         {
             EventManager.FireEvent(EventManager.OnTurnEnd);
         }
-    }
 
-    public static class ListExtensions
-    {
-        public static void Shuffle<T>(this List<T> list)
+        public List<CharacterMovement> GetCharacters()
         {
-            for (int i = list.Count - 1; i > 0; i--)
-            {
-                int randomIndex = Random.Range(0, i + 1);
-                T temp = list[i];
-                list[i] = list[randomIndex];
-                list[randomIndex] = temp;
-            }
+            return characters;
         }
     }
 }

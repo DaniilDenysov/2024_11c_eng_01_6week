@@ -23,7 +23,7 @@ namespace Cards
                 return;
             }
 
-            List<CharacterMovement> availableTargets = new List<CharacterMovement>(CharacterSelector.Instance.characters);
+            List<CharacterMovement> availableTargets = new List<CharacterMovement>(CharacterSelector.Instance.GetCharacters());
             DisplayCharacterSelection(availableTargets);
         }
 
