@@ -14,25 +14,16 @@ namespace Selectors
         public static CharacterSelector Instance { get; private set; }
         public static CharacterMovement CurrentCharacter { get; private set; }
         [SerializeField] private DiceManager diceManager;
-        private List<CharacterMovement> characters;
+        [SerializeField] private List<CharacterMovement> characters;
         private Queue<CharacterMovement> turnOrder;
         public UnityEvent<string> onStepCountChanged;
         
         private void Awake()
         {
             Instance = this;
-            characters = new List<CharacterMovement>();
             
             turnOrder = new Queue<CharacterMovement>(characters);
             EventManager.OnTurnStart += OnTurnStart;
-        }
-        
-        public void RegisterCharacter(CharacterMovement character)
-        {
-            if (!characters.Contains(character))
-            {
-                characters.Add(character);
-            }
         }
 
         private void OnTurnStart()

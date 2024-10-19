@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6344946807899233857, guid: b4e0189f6ff444371a380526562411f4, type: 3}
       propertyPath: onBecameCancelable.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ApplyCancelAction
+      value: ApplyAction
       objectReference: {fileID: 0}
     - target: {fileID: 6344946807899233857, guid: b4e0189f6ff444371a380526562411f4, type: 3}
       propertyPath: onBecameCancelable.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

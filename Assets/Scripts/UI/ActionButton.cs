@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace UI
 {
     [RequireComponent(typeof(Button))]
-    public class CancelActionButton : MonoBehaviour
+    public class ActionButton : MonoBehaviour
     {
         private Button _button;
 
@@ -15,11 +15,11 @@ namespace UI
             _button = GetComponent<Button>();
         }
 
-        public void ApplyCancelAction(Action onCancel)
+        public void ApplyAction(Action onAction)
         {
             _button.onClick.AddListener(() =>
             {
-                onCancel.Invoke();
+                onAction.Invoke();
                 gameObject.SetActive(false);
             });
         }
