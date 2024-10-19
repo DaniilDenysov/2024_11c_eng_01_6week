@@ -12,6 +12,7 @@ using UnityEngine;
 using Validation;
 using Mirror;
 using Traps;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 namespace Characters
@@ -24,6 +25,8 @@ namespace Characters
         
         [SerializeField] private GameObject HUD_display;
         [SerializeField] private PathValidator pathValidator;
+        public UnityEvent _onMoveCancelable;
+        public UnityEvent _onMoveAvailable;
 
         private CharacterStateManager _stateManager;
         private const int StepCost = 1;
@@ -35,11 +38,6 @@ namespace Characters
             directionNormalized = Vector3.left;
 
             _stateManager._onStateChanged += OnStateChanged;
-        }
-
-        void Start()
-        {
-            CharacterSelector.Instance.RegisterCharacter(this);
         }
 
         public void OnTurn()
@@ -92,7 +90,12 @@ namespace Characters
 
             if (litPositions.Count > 0)
             {
+                _onMoveAvailable.Invoke();
                 TileSelector.Instance.SetTilesLit(litPositions, MakeMovement);
+            }
+            else if (CharacterSelector.CurrentCharacter == this)
+            {
+                _onMoveCancelable.Invoke();
             }
         }
 
@@ -195,14 +198,6 @@ namespace Characters
                 CharacterSelector.FinishTurn();
             }
         }
-
-        public List<CharacterMovement> GetAvailableTargets(List<CharacterMovement> allCharacters)
-        {
-            List<CharacterMovement> targets = new List<CharacterMovement>(allCharacters);
-            targets.Remove(this);
-            return targets;
-        }
-
 
         public PathValidator GetPathValidator()
         {
