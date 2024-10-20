@@ -315,10 +315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brail
       objectReference: {fileID: 0}
-    - target: {fileID: 8315957944333058023, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 552cf1143c95b8948811feae3b4a87bb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
