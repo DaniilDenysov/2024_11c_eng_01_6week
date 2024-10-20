@@ -9068,8 +9068,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   diceManager: {fileID: 1565776961}
   characters:
-  - {fileID: 2100536789}
   - {fileID: 1348920198}
+  - {fileID: 2100536789}
   - {fileID: 1073017848}
   - {fileID: 1585079872}
   onStepCountChanged:
