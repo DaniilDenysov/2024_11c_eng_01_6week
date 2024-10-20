@@ -21,6 +21,7 @@ namespace Characters
     {
         [SerializeField, Range(0, 100)] private int steps = 0;
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
+        [SerializeField] private GameObject _sprite;
         
         [SerializeField] private GameObject HUD_display;
         [SerializeField] private PathValidator pathValidator;
@@ -168,6 +169,9 @@ namespace Characters
         private void OnDirectionChosen(Vector3 position, CharacterState previousState, Action onDirectionChosen)
         {
             directionNormalized = position - transform.position;
+            float angle = Vector3.Angle(Vector3.up, directionNormalized);
+            
+            _sprite.transform.Rotate(new Vector3(0, 0, angle), Space.World);
             _stateManager.SetCurrentState(previousState);
             onDirectionChosen.Invoke();
         }
