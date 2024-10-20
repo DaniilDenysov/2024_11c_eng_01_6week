@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Characters;
 using Ganeral;
@@ -46,9 +47,9 @@ namespace Validation
             return true;
         }
 
-        public Tilemap GetTileMap()
+        public bool IsOutOfMap(Vector3 cell)
         {
-            return walls;
+            return !walls.cellBounds.Contains(walls.WorldToCell(cell));
         }
 
         private static Vector3 multiplyVectors(Vector3 firstVector, Vector3 secondVector)
