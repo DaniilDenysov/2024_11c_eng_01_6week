@@ -184,11 +184,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff4f8a9af1df1847a16afb0b7eed1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   steps: 0
-  rotationStep: 90
   directionNormalized: {x: 0, y: 0, z: 0}
+  _sprite: {fileID: 591980978110833233}
   HUD_display: {fileID: 6196447715059205138}
   pathValidator: {fileID: 0}
+  _onMoveCancelable:
+    m_PersistentCalls:
+      m_Calls: []
+  _onMoveAvailable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8985229544548765772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0878915fffa49d46b2ca1a5e997f80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardDrawCount: 1
 --- !u!114 &7227822774217613489
 MonoBehaviour:
   m_ObjectHideFlags: 0
