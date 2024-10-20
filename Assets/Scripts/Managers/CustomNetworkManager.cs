@@ -29,6 +29,7 @@ namespace Managers
         public override void OnStartServer()
         {
             base.OnStartServer();
+            NetworkServer.maxConnections = 4;
             NetworkServer.RegisterHandler<LobbyConnection>(OnCreateCharacter);
         }
 
@@ -40,6 +41,49 @@ namespace Managers
         public override void OnServerConnect(NetworkConnectionToClient conn)
         {
             base.OnServerConnect(conn);
+            //assign to available
+            Debug.Log("Connections:"+ NetworkServer.connections.Count);
+            if (isGameInProgress && NetworkServer.connections.Count <= NetworkServer.maxConnections)
+            {
+                var networkPlayer = GetPlayerForConnection(conn.connectionId);
+                if (networkPlayer == null)
+                {
+                    networkPlayer = NetworkPlayerContainer.Instance.GetItems().FirstOrDefault((p) => !NetworkServer.connections.Keys.Contains(p.GetPlayerData().ConnectionId));
+                }
+                //refactor with try functions
+                if (networkPlayer != null)
+                {
+                    var playerData = networkPlayer.GetPlayerData();
+                    playerData.ConnectionId = conn.connectionId;
+                    playerData.ConnectionId = conn.connectionId;
+                    players[players.IndexOf(players.FirstOrDefault((p)=>p.CharacterGUID== playerData.CharacterGUID))] = playerData;
+                    NetworkServer.AddPlayerForConnection(conn, networkPlayer.gameObject);
+                    Debug.Log($"assigned {networkPlayer.GetCharacterGUID()} for connection {conn.connectionId}");
+                    return;
+                }
+                conn.Disconnect();
+            }
+  
+        }
+
+        public NetworkPlayer GetPlayerForConnection(int connectionId)
+        {
+            var playerData = players.FirstOrDefault((p) => p.ConnectionId == connectionId);
+            if (playerData != null)
+            {
+                var networkPlayer = NetworkPlayerContainer.Instance.GetItems().FirstOrDefault((p) => p.GetPlayerData().ConnectionId == connectionId);
+                return networkPlayer;
+            }
+            return null;
+        }
+
+        public override void OnServerSceneChanged(string sceneName)
+        {
+            base.OnServerSceneChanged(sceneName);
+            if (isGameInProgress)
+            {
+                AssignOwnersForConnections();
+            }
         }
 
         public override void OnServerChangeScene(string newSceneName)
@@ -50,22 +94,25 @@ namespace Managers
         public override void OnClientSceneChanged()
         {
             base.OnClientSceneChanged();
-            if (isGameInProgress)
+        }
+
+        private void AssignOwnersForConnections ()
+        {
+            Dictionary<string, Player> characterMappings = new Dictionary<string, Player>();
+            foreach (var player in players)
             {
-                Dictionary<string, Player> characterMappings = new Dictionary<string, Player>();
-                foreach (var player in players)
+                characterMappings.TryAdd(player.CharacterGUID, player);
+            }
+
+            foreach (var networkPlayer in NetworkPlayerContainer.Instance.GetItems())
+            {
+                if (characterMappings.TryGetValue(networkPlayer.GetCharacterGUID(), out Player playerData))
                 {
-                    characterMappings.TryAdd(player.CharacterGUID, player);
-                }
-                foreach (var networkPlayer in NetworkPlayerContainer.Instance.GetItems())
-                {
-                    if (characterMappings.TryGetValue(networkPlayer.GetCharacterGUID(), out Player playerData))
-                    {
-                        networkPlayer.SetPlayer(playerData);
-                        NetworkServer.AddPlayerForConnection(NetworkServer.connections[playerData.ConnectionId],networkPlayer.gameObject);
-                    }
+                    networkPlayer.SetPlayer(playerData);
+                    NetworkServer.AddPlayerForConnection(NetworkServer.connections[playerData.ConnectionId], networkPlayer.gameObject);
                 }
             }
+            Debug.Log("Assigned ownership!");
         }
 
         public override void OnServerDisconnect(NetworkConnectionToClient conn)
@@ -85,8 +132,17 @@ namespace Managers
             }
             else
             {
-                StopServer();
+                var networkPlayer = GetPlayerForConnection(conn.connectionId);
+                if (networkPlayer != null)
+                {
+                    NetworkServer.RemovePlayerForConnection(conn, networkPlayer.gameObject);
+                    NetworkServer.connections.Remove(conn.connectionId);
+                }
             }
+           /* else
+            {
+                StopServer();
+            }*/
         }
 
         public ServerMessage ErrorMessage (string title,string description)
