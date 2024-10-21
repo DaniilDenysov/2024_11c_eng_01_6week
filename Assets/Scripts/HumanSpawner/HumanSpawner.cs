@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 using AYellowpaper.SerializedCollections;
 using General;
 using System.Linq;
+using Collectibles;
 
 namespace Spawns
 {

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Characters;
+using Mirror;
 using ModestTree;
 using UnityEngine;
 using Validation;
@@ -10,7 +11,7 @@ using Validation;
 namespace Collectibles
 {
     [RequireComponent(typeof(CharacterMovement))]
-    public abstract class Collector : MonoBehaviour
+    public abstract class Collector : NetworkBehaviour
     {
         private Dictionary<string, List<Vector3>> _staticPickUpCells;
         private CharacterMovement _movement;

@@ -1,24 +1,38 @@
 using Collectibles;
 using CustomTools;
 using Mirror;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Human : NetworkBehaviour, ICollectible
+namespace Collectibles
 {
-    [SerializeField,SyncVar] private string ownedBy;
-    [SerializeField, Range(2,6)] private int currentPoints; 
-
-    [Server]
-    public void SetOwner (string owner)
+    public class Human : NetworkBehaviour, ICollectible
     {
-        ownedBy = owner;
-    }
+        [SerializeField, SyncVar] private string ownedBy;
+        [SerializeField, Range(2, 6), SyncVar] private int currentPoints;
 
-    public object Collect()
-    {
-        gameObject.SetActive(false);
-        return this;
+
+        [Server]
+        public void SetOwner(string owner)
+        {
+            ownedBy = owner;
+        }
+
+        public HumanDTO GetData()
+        {
+            return new HumanDTO()
+            {
+                CharacterGUID = ownedBy,
+                Amount = currentPoints
+            };
+        }
+
+        public object Collect()
+        {
+            gameObject.SetActive(false);
+            return this;
+        }
     }
 }

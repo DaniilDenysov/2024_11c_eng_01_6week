@@ -81,7 +81,7 @@ public class TileSelector : MonoBehaviour
     
     public void SetTilesUnlit()
     {
-        tileMap.ClearAllTiles();
+        if (tileMap != null) tileMap.ClearAllTiles();
     }
 
     public Vector2 NormalizeDirection(Vector3 direction)

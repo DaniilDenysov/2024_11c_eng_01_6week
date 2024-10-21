@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Inventory : Collector
 {
+    [SerializeField] private List<HumanDTO> humanDTOs;
     [SerializeField] private List<ICollectible> _inventory;
     [SerializeField] private int cardDrawCount = 1;
     private Action<bool> _onPickedUp;
@@ -14,6 +15,7 @@ public class Inventory : Collector
     {
         base.Awake();
         _inventory = new List<ICollectible>();
+        humanDTOs = new List<HumanDTO>();
     }
 
     public override void PickUp(Action<bool> onPickedUp)
@@ -42,6 +44,7 @@ public class Inventory : Collector
                 {
                     var collected = collectible.Collect();
                     _inventory.Add(collected as Human);
+                    humanDTOs.Add((collected as Human).GetData());
                     result = true;
                 }
             }
@@ -62,6 +65,7 @@ public class Inventory : Collector
         {
             human = _inventory[0] as Human;
             _inventory.RemoveAt(0);
+            humanDTOs.RemoveAt(0);
             return true;
         }
         return false;
@@ -76,5 +80,6 @@ public class Inventory : Collector
     public void Add(Human human)
     {
         _inventory.Add(human);
+        humanDTOs.Add(human.GetData());
     }
 }
