@@ -1,9 +1,7 @@
 using Characters;
 using Characters.CharacterStates;
 using Collectibles;
-using Ganeral;
 using General;
-using Selectors;
 using UnityEngine;
 
 namespace Cards
@@ -75,7 +73,7 @@ namespace Cards
             }
         }
         
-        public static bool AttackAndEatAtCell(Vector3 cell, Attack attack, ICollector collector)
+        public static bool AttackAndEatAtCell(Vector3 cell, Attack attack, Collector collector)
         {
             bool result = false;
             

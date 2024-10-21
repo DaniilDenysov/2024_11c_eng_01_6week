@@ -1,19 +1,15 @@
 using Cards;
 using CustomTools;
-using Ganeral;
 using Managers;
 using Selectors;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Characters.CharacterStates;
-using Selectors;
 using UnityEngine;
 using Validation;
 using Mirror;
 using Traps;
 using UnityEngine.Events;
-using UnityEngine.Tilemaps;
 
 namespace Characters
 {
@@ -133,12 +129,6 @@ namespace Characters
             }
             
             _stateManager.SetCurrentState(new Idle());
-        }
-
-        public void Teleport(Vector3 nextPosition)
-        {
-            _stateManager.SetCurrentState(new Idle());
-            transform.position = nextPosition;
         }
 
         public void MakeMovement()

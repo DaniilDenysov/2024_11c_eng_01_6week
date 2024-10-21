@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Characters;
 using Characters.Skills;
-using Ganeral;
-using Managers;
 using UnityEngine;
 using Validation;
 

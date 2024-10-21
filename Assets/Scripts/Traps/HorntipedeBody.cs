@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using Characters;
 using Collectibles;
-using Ganeral;
-using Managers;
 using UnityEngine;
 
 namespace Traps
@@ -10,7 +8,7 @@ namespace Traps
     public class HorntipedeBody : MonoBehaviour
     {
         private Attack _attack;
-        private ICollector _collector;
+        private Collector _collector;
 
         public void SetUp(Vector3 position, GameObject owner)
         {

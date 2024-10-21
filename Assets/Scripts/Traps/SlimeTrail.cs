@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Characters;
 using Characters.Skills;
 using Collectibles;
-using Ganeral;
 using Managers;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace Traps
     public class SlimeTrail : MonoBehaviour
     {
         private Attack _attack;
-        private ICollector _collection;
+        private Collector _collection;
         [SerializeField] private CharacterMovement _ownerMovement;
         private const string GroupName = "SnailTrail";
         private const int LiveTime = 9;

@@ -5,23 +5,22 @@ using Cards;
 using Characters;
 using Characters.Skills;
 using Collectibles;
-using Ganeral;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterMovement)),
  RequireComponent(typeof(Attack)),
- RequireComponent(typeof(ICollector))]
+ RequireComponent(typeof(Collector))]
 public class ToxicSpores : Skill
 {
     private CharacterMovement _movement;
     private Attack _attack;
-    private ICollector _collector;
+    private Collector _collector;
     private int _range = 3;
 
     void Awake()
     {
         _movement = GetComponent<CharacterMovement>();
-        _collector = GetComponent<ICollector>();
+        _collector = GetComponent<Collector>();
         _attack = GetComponent<Attack>();
     }
 

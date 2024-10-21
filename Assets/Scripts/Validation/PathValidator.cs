@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Characters;
-using Ganeral;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 

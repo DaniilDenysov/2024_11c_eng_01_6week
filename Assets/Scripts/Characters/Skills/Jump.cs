@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using Characters;
 using Characters.Skills;
-using Ganeral;
-using Managers;
 using UnityEngine;
 using Validation;
 
@@ -43,7 +41,7 @@ public class Jump : Skill
 
     private void OnCellChosen(Vector3 chosenTile)
     {
-        movement.Teleport(chosenTile);
+        transform.position = chosenTile;
 
         OnActivated();
     }

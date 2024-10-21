@@ -2,10 +2,9 @@ using System;
 using Characters;
 using Collectibles;
 using System.Collections.Generic;
-using Ganeral;
 using UnityEngine;
 
-public class Inventory : ICollector
+public class Inventory : Collector
 {
     [SerializeField] private List<ICollectible> _inventory;
     [SerializeField] private int cardDrawCount = 1;

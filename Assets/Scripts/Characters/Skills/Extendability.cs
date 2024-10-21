@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Ganeral;
 using Traps;
 using UnityEngine;
 
@@ -63,7 +62,7 @@ namespace Characters.Skills
             }
             else
             {
-                _movement.Teleport(_body.Last().transform.position);
+                transform.position = _body.Last().transform.position;
                 ClearBody();
                 OnActivated();
             }
