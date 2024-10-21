@@ -8183,6 +8183,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2736840691751570769, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 370966e304a2f79438e5954dac9cb7e8, type: 3}
     - target: {fileID: 3765463449784216165, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
       propertyPath: m_Name
       value: Froje
@@ -8234,7 +8238,7 @@ PrefabInstance:
     - target: {fileID: 8222879061485363212, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: 1d122495edc3fff43bea106520e8d71e, type: 2}
     - target: {fileID: 8563589941145733781, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
       propertyPath: pathValidator
       value: 
