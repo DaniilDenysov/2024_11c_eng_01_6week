@@ -2,6 +2,7 @@ using Characters;
 using Characters.CharacterStates;
 using Collectibles;
 using General;
+using Managers;
 using UnityEngine;
 
 namespace Cards
@@ -14,11 +15,13 @@ namespace Cards
         private Vector2 _startPosition;
         private CharacterStateManager _stateManager;
         private GameObject _cardOwner;
+        private ActionBlockerManager actionBlocker;
 
         public virtual void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _rectTransform = GetComponent<RectTransform>();
+            actionBlocker = FindObjectOfType<ActionBlockerManager>();
         }
 
         public void SetUp(GameObject player, CharacterStateManager stateManager)
@@ -57,6 +60,12 @@ namespace Cards
 
         public void TryActivate()
         {
+            if (actionBlocker.IsActionBlocked("CardUse"))
+            {
+                Debug.Log("Card usage is blocked!");
+                return;
+            }
+
             if (_stateManager.GetCurrentState().IsCardUsable(this) || 
                 _stateManager.GetCurrentState().GetType() == typeof(MultiCard))
             {
