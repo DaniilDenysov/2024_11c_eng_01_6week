@@ -162,9 +162,11 @@ namespace Characters
         private void OnDirectionChosen(Vector3 position, CharacterState previousState, Action onDirectionChosen)
         {
             directionNormalized = position - transform.position;
+            
             float angle = Vector3.Angle(Vector3.up, directionNormalized);
             
-            _sprite.transform.Rotate(new Vector3(0, 0, angle), Space.World);
+            _sprite.transform.Rotate(
+                new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle), Space.World);
             _stateManager.SetCurrentState(previousState);
             onDirectionChosen.Invoke();
         }
