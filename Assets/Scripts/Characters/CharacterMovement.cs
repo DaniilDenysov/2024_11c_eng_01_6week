@@ -14,7 +14,7 @@ using UnityEngine.Events;
 namespace Characters
 {
     [RequireComponent(typeof(CharacterStateManager))]
-    public class CharacterMovement : NetworkBehaviour, ITurnAction
+    public class CharacterMovement : MonoBehaviour, ITurnAction
     {
         [SerializeField, Range(0, 100)] private int steps = 0;
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
