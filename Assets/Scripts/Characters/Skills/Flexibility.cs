@@ -66,7 +66,7 @@ namespace Characters.Skills
             else
             {
                 onBecameCancelable.Invoke(ApplyMove);
-                _stateManager.SetCurrentState(new MultiCard(OnCardUsed));
+                _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
             }
         }
 
@@ -86,13 +86,13 @@ namespace Characters.Skills
                     }
                 }
             
-                _stateManager.SetCurrentState(new CardSettingUp());
+                _stateManager.CmdSetCurrentState(new CardSettingUp());
                 _usedCard = card;
 
                 if (litPositions.Count < 1)
                 {
                     card.OnCardSetUp(false);
-                    _stateManager.SetCurrentState(new MultiCard(OnCardUsed));
+                    _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
                     return;
                 }
                 
@@ -119,7 +119,7 @@ namespace Characters.Skills
                 Debug.Log("Behaviour for card: " + _usedCard.name + " is not written");
             }
             
-            _stateManager.SetCurrentState(new MultiCard(OnCardUsed));
+            _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
         }
 
         public void ApplyMove()

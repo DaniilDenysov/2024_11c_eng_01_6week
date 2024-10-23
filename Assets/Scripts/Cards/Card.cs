@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Cards
 {
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-    public abstract class Card : CardPoolable
+    public abstract class Card : MonoBehaviour
     {
         private CanvasGroup _canvasGroup;
         private RectTransform _rectTransform;
@@ -46,12 +46,11 @@ namespace Cards
             
             if (successfully)
             {
-                _stateManager.SetCurrentState(new CardUsed());
-                Pool();
+                _stateManager.CmdSetCurrentState(new CardUsed());
             }
             else
             {
-                _stateManager.SetCurrentState(new Idle());
+                _stateManager.CmdSetCurrentState(new Idle());
             }
         }
 
@@ -64,12 +63,12 @@ namespace Cards
                 
                 if (_stateManager.GetCurrentState().IsCardUsable(this))
                 {
-                    _stateManager.SetCurrentState(new CardSettingUp());
+                    _stateManager.CmdSetCurrentState(new CardSettingUp());
                     OnCardActivation(_cardOwner);
                     return;
                 }
                 
-                _stateManager.SetCurrentState(new CardSettingUp());
+                _stateManager.CmdSetCurrentState(new CardSettingUp());
             }
         }
         

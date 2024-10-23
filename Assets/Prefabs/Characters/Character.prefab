@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: -3896990609854190779}
   - component: {fileID: 3301708372138815419}
   - component: {fileID: -3247492068951837679}
+  - component: {fileID: 4058615092038075695}
   m_Layer: 3
   m_Name: Character
   m_TagString: Untagged
@@ -314,9 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff4f8a9af1df1847a16afb0b7eed1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
   steps: 0
   directionNormalized: {x: 0, y: 0, z: 0}
   _sprite: {fileID: 591980978110833233}
@@ -354,6 +352,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0878915fffa49d46b2ca1a5e997f80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  humanDTOs: []
   cardDrawCount: 1
 --- !u!114 &7227822774217613489
 MonoBehaviour:
@@ -454,6 +456,22 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &4058615092038075695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295457703647012744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0a42a60e2e37e459ff626408d827e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  cardAmount: 0
 --- !u!1 &9005706121461494261
 GameObject:
   m_ObjectHideFlags: 0

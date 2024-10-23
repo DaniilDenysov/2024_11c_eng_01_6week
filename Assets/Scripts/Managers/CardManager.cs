@@ -1,126 +1,109 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using AYellowpaper.SerializedCollections;
 using Cards;
-using Extensions.List;
+using Client;
+using CustomTools;
 using General;
-using Selectors;
+using Mirror;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Managers
 {
-    public class CardManager : Manager
+    public class CardManager : NetworkBehaviour
     {
-        [SerializeField] private SerializedDictionary<CardPoolable, int> cards = new SerializedDictionary<CardPoolable, int>();
-        private List<string> _deck;
-        private int _nextPoolable;
-        private Dictionary<string, List<CardPoolable>> _pool;
-        private List<string> _discardedCards;
+        [SerializeField] private CardDeckDTO[] cards;
+        [SerializeField, Range(0, 100)] private int cardsLimit = 6;
 
-        private void Awake()
+        public override void OnStartServer()
         {
-            _discardedCards = new List<string>();
-            _pool = new Dictionary<string, List<CardPoolable>>();
-            _nextPoolable = 0;
-            InitializeDeck();
+            if (!isServer) return;
+            EventManager.OnTurnStart += OnTurnStart;
+            EventManager.OnTurnEnd += OnTurnEnd;
         }
 
-        public CardPoolable GetRandomCard()
+        public override void OnStopServer()
         {
-            if (_nextPoolable < _deck.Count)
-            {
-                CardPoolable card = Get(_deck[_nextPoolable]);
-                _nextPoolable++;
-                return card;
-            }
-            else
-            {
-                _deck = _discardedCards;
-                _deck.Shuffle();
-                _discardedCards = new List<string>();
-                _nextPoolable = 0;
-                return Get(_deck[_nextPoolable]);
-            }
+            if (!isServer) return;
+            EventManager.OnTurnStart -= OnTurnStart;
+            EventManager.OnTurnEnd -= OnTurnEnd;
         }
 
-        public CardPoolable Get(string cardName)
+        private void OnTurnStart()
         {
-            if (_pool.TryGetValue(cardName, out List<CardPoolable> objectList))
+            DistributeCardsToClients();
+        }
+
+        private void OnTurnEnd()
+        {
+
+        }
+
+        /// <summary>
+        /// Distributes cards across all clients if limit isn't reached
+        /// </summary>
+        [Server]
+        public void DistributeCardsToClients()
+        {
+            foreach (NetworkPlayer player in NetworkPlayerContainer.Instance.GetItems())
             {
-                if (objectList.Count > 0)
+                if (player.connectionToClient != null && player.TryGetComponent(out ClientData clientData))
                 {
-                    CardPoolable instance = objectList[0];
-                    objectList.RemoveAt(0);
+                    int diff = cardsLimit - clientData.GetCardAmount();
+                    for (int i = 0; i < diff; i++)
+                    {
+                        int cardIndex = GetRandomAvailableCardIndex();
+                        if (cardIndex == -1) return;
+                        cards[cardIndex].Amount-=1;
+                        AddCard(player.netIdentity.connectionToClient, cardIndex);
+                    }
+                }
+            }
+        }
 
-                    return instance;
+        /// <summary>
+        /// Tries to add the card to the client via TargetRpc.
+        /// </summary>
+        [TargetRpc]
+        public void AddCard(NetworkConnection conn, int cardIndex)
+        {
+            if (TryGetCard(cardIndex, out Card card))
+            {
+                ClientDeck.Instance.Add(card);
+            }
+        }
+
+        /// <summary>
+        /// Tries to get the card at the given index. If available, instantiates it.
+        /// </summary>
+        public bool TryGetCard(int i, out Card card)
+        {
+            card = Instantiate(cards[i].Card);
+            return true;
+        }
+
+        /// <summary>
+        /// Gets a random available card index from the deck.
+        /// </summary>
+        /// <returns>An index of a card that has a positive amount or -1 if none are available.</returns>
+        private int GetRandomAvailableCardIndex()
+        {
+            List<int> availableCards = new List<int>();
+
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (cards[i].Amount > 0)
+                {
+                    availableCards.Add(i);
                 }
             }
 
-            CardPoolable card = GetCardByName(cardName);
-
-            if (card != null)
+            if (availableCards.Count == 0)
             {
-                CardPoolable instance = Instantiate(card);
-                instance.SetUp(this, cardName);
-                return instance;
+                return -1;
             }
 
-            Debug.LogError("Failed to find card poolable: " + cardName);
-            return null;
-        }
-        
-        public void Put(CardPoolable cardObject)
-        {
-            if (_pool.TryGetValue(cardObject.GetPoolableName(), out List<CardPoolable> cardList))
-            {
-                cardList.Add(cardObject);
-            }
-            else
-            {
-                _pool.Add(cardObject.GetPoolableName(), new List<CardPoolable> { cardObject });
-            }
-            
-            _discardedCards.Add(cardObject.GetPoolableName());
-            
-            cardObject.gameObject.SetActive(false);
-        }
-
-        public CardPoolable GetCardByName(string cardName)
-        {
-            foreach (CardPoolable card in cards.Keys)
-            {
-                if (card.gameObject.name == cardName)
-                {
-                    return card;
-                }
-            }
-
-            return null;
-        }
-
-        public override void InstallBindings()
-        {
-            Container.Bind<CardManager>().FromInstance(this).AsSingle();
-        }
-
-        private void InitializeDeck()
-        {
-            _deck = new List<string>();
-            
-            foreach (var card in cards)
-            {
-                string cardName = card.Key.gameObject.name;
-                
-                for (int i = 0; i < card.Value; i++)
-                {
-                    _deck.Add(cardName);
-                }
-            }
-            
-            _deck.Shuffle();
+            int randomIndex = UnityEngine.Random.Range(0, availableCards.Count);
+            return availableCards[randomIndex];
         }
     }
 }

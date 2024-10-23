@@ -19,10 +19,11 @@ namespace Characters
             return _currentState;
         }
         
-        public void SetCurrentState(CharacterState newState)
+        public void CmdSetCurrentState(CharacterState newState)
         {
             _currentState = newState;
             _onStateChanged?.Invoke(newState);
         }
+
     }
 }

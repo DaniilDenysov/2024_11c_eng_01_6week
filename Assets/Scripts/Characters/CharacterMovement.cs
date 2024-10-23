@@ -128,7 +128,7 @@ namespace Characters
                 MakeMovement();
             }
             
-            _stateManager.SetCurrentState(new Idle());
+            _stateManager.CmdSetCurrentState(new Idle());
         }
 
         public void MakeMovement()
@@ -151,7 +151,7 @@ namespace Characters
         public void ChooseNewDirection(Action onDirectionChosen)
         {
             CharacterState previousState = _stateManager.GetCurrentState();
-            _stateManager.SetCurrentState(new CardSettingUp());
+            _stateManager.CmdSetCurrentState(new CardSettingUp());
             
             TileSelector.Instance.SetDirectionsTilesLit(transform.position, cell =>
             {
@@ -167,7 +167,7 @@ namespace Characters
             
             _sprite.transform.Rotate(
                 new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle), Space.World);
-            _stateManager.SetCurrentState(previousState);
+            _stateManager.CmdSetCurrentState(previousState);
             onDirectionChosen.Invoke();
         }
 
