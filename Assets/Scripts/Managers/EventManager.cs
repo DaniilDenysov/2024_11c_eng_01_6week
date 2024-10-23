@@ -8,6 +8,7 @@ namespace Managers
     [CreateAssetMenu(fileName = "Event Manager", menuName = "Create event manager")]
     public class EventManager : ScriptableObject
     {
+        public static Action OnClientTurn;
         public static Action OnTurnStart, OnTurnEnd;
         public static Action OnTick;
         public static Action<Vector3> OnLitTileClick;

@@ -1,41 +1,26 @@
-using System;
-using System.Collections.Generic;
 using Cards;
 using Client;
-using CustomTools;
 using General;
 using Mirror;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Managers
+namespace Distributors
 {
-    public class CardManager : NetworkBehaviour
+    public class CardDistributor : Distributor
     {
         [SerializeField] private CardDeckDTO[] cards;
         [SerializeField, Range(0, 100)] private int cardsLimit = 6;
 
-        public override void OnStartServer()
-        {
-            if (!isServer) return;
-            EventManager.OnTurnStart += OnTurnStart;
-            EventManager.OnTurnEnd += OnTurnEnd;
-        }
-
-        public override void OnStopServer()
-        {
-            if (!isServer) return;
-            EventManager.OnTurnStart -= OnTurnStart;
-            EventManager.OnTurnEnd -= OnTurnEnd;
-        }
-
-        private void OnTurnStart()
+        public override void OnTurnEnd()
         {
             DistributeCardsToClients();
         }
 
-        private void OnTurnEnd()
+        public override void OnTurnStart()
         {
-
+            
         }
 
         /// <summary>
@@ -53,7 +38,7 @@ namespace Managers
                     {
                         int cardIndex = GetRandomAvailableCardIndex();
                         if (cardIndex == -1) return;
-                        cards[cardIndex].Amount-=1;
+                        cards[cardIndex].Amount -= 1;
                         AddCard(player.netIdentity.connectionToClient, cardIndex);
                     }
                 }
