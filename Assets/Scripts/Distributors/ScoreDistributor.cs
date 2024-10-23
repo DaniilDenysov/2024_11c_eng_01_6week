@@ -1,23 +1,44 @@
 using Client;
+using DesignPatterns.Singleton;
 using General;
-using System.Collections;
-using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
 namespace Distributors
 {
-    public class ScoreDistributor : Distributor
+    public class ScoreDistributor : NetworkBehaviour
     {
+        public static ScoreDistributor Instance;
         [SerializeField] private int scorePerClient;
 
+        public virtual void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+        }
 
-        public override void OnTurnStart()
+        private void OnDestroy()
+        {
+            if (Instance == this)
+            {
+                Instance = null;
+            }
+        }
+
+        [Server]
+        public void AddScoreToCurrentClient ()
         {
             foreach (var client in NetworkPlayerContainer.Instance.GetItems())
             {
                 if (client.TryGetComponent(out ClientData data))
                 {
-                    data.SetScoreAmount(scorePerClient);
+                    if (data.GetTurn())
+                    {
+                        data.SetScoreAmount(scorePerClient);
+                        return;
+                    }
                 }
             }
         }

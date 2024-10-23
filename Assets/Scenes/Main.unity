@@ -651,7 +651,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1565776962}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Selectors.CharacterSelector, Assembly-CSharp
         m_MethodName: SelectNext
         m_Mode: 1
@@ -8004,17 +8004,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1073017848 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6658216226982079360, guid: b4e0189f6ff444371a380526562411f4, type: 3}
-  m_PrefabInstance: {fileID: 345601754}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aff4f8a9af1df1847a16afb0b7eed1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1156211771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8424,17 +8413,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1348920198 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8563589941145733781, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
-  m_PrefabInstance: {fileID: 1156211771}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aff4f8a9af1df1847a16afb0b7eed1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1367774965
 GameObject:
   m_ObjectHideFlags: 0
@@ -8911,12 +8889,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8264117350394651168, guid: a5766024853fed54094e2826db5ec643, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1565776962}
-    - targetCorrespondingSourceObject: {fileID: 8264117350394651168, guid: a5766024853fed54094e2826db5ec643, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1565776961}
-    - targetCorrespondingSourceObject: {fileID: 8264117350394651168, guid: a5766024853fed54094e2826db5ec643, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1565776967}
     - targetCorrespondingSourceObject: {fileID: 8264117350394651168, guid: a5766024853fed54094e2826db5ec643, type: 3}
       insertIndex: -1
@@ -8933,51 +8905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1565776961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003894986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d081b223cc47aea4c91a7f9872c57639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1565776962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003894986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8875aa0e916b96d4781058e57da25af7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diceManager: {fileID: 1565776961}
-  characters:
-  - {fileID: 1348920198}
-  - {fileID: 1585079872}
-  - {fileID: 1073017848}
-  - {fileID: 2100536789}
-  onStepCountChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2114438788}
-        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1565776967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9005,17 +8932,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileMap: {fileID: 1367774969}
   highlightTile: {fileID: 11400000, guid: 8a9df746f0096494b9dd110c314bbc28, type: 2}
---- !u!114 &1585079872 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3662280829379071686, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
-  m_PrefabInstance: {fileID: 901204187}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aff4f8a9af1df1847a16afb0b7eed1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1798901358
 GameObject:
   m_ObjectHideFlags: 0
@@ -9399,17 +9315,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2100536789 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2325258215295121443, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
-  m_PrefabInstance: {fileID: 422109506}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aff4f8a9af1df1847a16afb0b7eed1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2114438787
 GameObject:
   m_ObjectHideFlags: 0

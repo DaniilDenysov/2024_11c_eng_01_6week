@@ -1,5 +1,6 @@
 using Client;
 using General;
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,16 +19,18 @@ namespace Distributors
             }
         }
 
+        [Server]
         public override void OnTurnStart()
         {
-
            var player = order.Peek();
            if (player.TryGetComponent(out ClientData data))
            {
                 data.SetTurn(true);
+                ScoreDistributor.Instance.AddScoreToCurrentClient();
            }
         }
 
+        [Server]
         public override void OnTurnEnd()
         {
             var player = order.Dequeue();
