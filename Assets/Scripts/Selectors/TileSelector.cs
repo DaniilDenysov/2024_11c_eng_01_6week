@@ -13,7 +13,7 @@ public class TileSelector : MonoBehaviour
     [SerializeField] private TileBase highlightTile;
     
     private Action<Vector3> _onChosen;
-    private List<Vector3> _litPositions;
+    private List<Vector3> _litPositions = new List<Vector3>();
 
     void Awake()
     {

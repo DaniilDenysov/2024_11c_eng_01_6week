@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 949204349859030386}
   - component: {fileID: 5046985310595546341}
   - component: {fileID: 7174357504216090053}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HUD_Display_Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,8 +253,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2070651579895863959}
-  - {fileID: 7385977471280724710}
   - {fileID: 3766977852898556941}
+  - {fileID: 7385977471280724710}
   - {fileID: 1572826661930136519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -315,7 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff4f8a9af1df1847a16afb0b7eed1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steps: 0
   directionNormalized: {x: 0, y: 0, z: 0}
   _sprite: {fileID: 591980978110833233}
   HUD_display: {fileID: 6196447715059205138}
@@ -472,6 +471,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   cardAmount: 0
+  score: 0
+  myTurn: 0
 --- !u!1 &9005706121461494261
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +484,7 @@ GameObject:
   - component: {fileID: 7199637795845403022}
   - component: {fileID: 4401331466426920872}
   - component: {fileID: 8248622622117247570}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,6 +687,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1472812815566440296, guid: 2bfd534be28dbfc4bb2c87eea7ffa90f, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671861136515379120, guid: 2bfd534be28dbfc4bb2c87eea7ffa90f, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058067471691974705, guid: 2bfd534be28dbfc4bb2c87eea7ffa90f, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3385063962230891306, guid: 2bfd534be28dbfc4bb2c87eea7ffa90f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -765,6 +778,14 @@ PrefabInstance:
     - target: {fileID: 5501923873723644742, guid: 2bfd534be28dbfc4bb2c87eea7ffa90f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595186808735956539, guid: 2bfd534be28dbfc4bb2c87eea7ffa90f, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028606188388638996, guid: 2bfd534be28dbfc4bb2c87eea7ffa90f, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7237817693068962562, guid: 2bfd534be28dbfc4bb2c87eea7ffa90f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -881,6 +902,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1472812815566440296, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1671861136515379120, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058067471691974705, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3385063962230891306, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -933,6 +966,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4817532611387712776, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817532611387712776, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1923599143
+      objectReference: {fileID: 0}
     - target: {fileID: 5423363810271883414, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
       propertyPath: m_Name
       value: Character_HUD_Root
@@ -964,6 +1005,14 @@ PrefabInstance:
     - target: {fileID: 5501923873723644742, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5595186808735956539, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028606188388638996, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7237817693068962562, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
       propertyPath: m_AnchorMax.y

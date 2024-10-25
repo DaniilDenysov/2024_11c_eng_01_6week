@@ -13,7 +13,8 @@ namespace Client
 
         public void OnMyTurnChanged (bool oldValue, bool newValue)
         {
-            if (newValue && isOwned) EventManager.FireEvent(EventManager.OnClientTurn);
+            if (newValue && isOwned) EventManager.FireEvent(EventManager.OnClientStartTurn);
+            if (!newValue && oldValue && isOwned) EventManager.FireEvent(EventManager.OnClientEndTurn);
         }
 
         [Server]

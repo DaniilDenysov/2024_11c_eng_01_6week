@@ -8,19 +8,27 @@ using UnityEngine;
 
 namespace Distributors
 {
-    public class CardDistributor : Distributor
+    public class CardDistributor : NetworkBehaviour
     {
         [SerializeField] private CardDeckDTO[] cards;
         [SerializeField, Range(0, 100)] private int cardsLimit = 6;
 
-        public override void OnTurnEnd()
+        public static CardDistributor Instance;
+
+        public virtual void Awake()
         {
-            DistributeCardsToClients();
+            if (Instance == null)
+            {
+                Instance = this;
+            }
         }
 
-        public override void OnTurnStart()
+        private void OnDestroy()
         {
-            
+            if (Instance == this)
+            {
+                Instance = null;
+            }
         }
 
         /// <summary>

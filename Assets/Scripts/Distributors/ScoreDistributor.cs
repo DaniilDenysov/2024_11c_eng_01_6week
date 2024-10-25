@@ -34,11 +34,7 @@ namespace Distributors
             {
                 if (client.TryGetComponent(out ClientData data))
                 {
-                    if (data.GetTurn())
-                    {
-                        data.SetScoreAmount(scorePerClient);
-                        return;
-                    }
+                    data.SetScoreAmount(scorePerClient);
                 }
             }
         }

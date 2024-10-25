@@ -420,6 +420,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1518252719646465285, guid: b4e0189f6ff444371a380526562411f4, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 2229522346065087344, guid: b4e0189f6ff444371a380526562411f4, type: 3}
       propertyPath: m_Name
       value: Horntipede
@@ -889,6 +893,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7580592446815800998, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4651,6 +4659,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ishroom
       objectReference: {fileID: 0}
+    - target: {fileID: 8909351167936608323, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8016,6 +8028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Froje
       objectReference: {fileID: 0}
+    - target: {fileID: 4584854643604454416, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 5769489299157624488, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
       propertyPath: sceneId
       value: 688808594
@@ -8114,6 +8130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187986756}
   - component: {fileID: 1187986755}
+  - component: {fileID: 1187986757}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -8151,6 +8168,20 @@ Transform:
   - {fileID: 1367774966}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1187986757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187986754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1f0b129abea4468bfbc9b71e4ad83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileMap: {fileID: 1367774969}
+  highlightTile: {fileID: 11400000, guid: 8a9df746f0096494b9dd110c314bbc28, type: 2}
 --- !u!1 &1244980113
 GameObject:
   m_ObjectHideFlags: 0

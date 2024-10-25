@@ -10,13 +10,13 @@ using Validation;
 using Mirror;
 using Traps;
 using UnityEngine.Events;
+using Client;
 
 namespace Characters
 {
-    [RequireComponent(typeof(CharacterStateManager))]
+    [RequireComponent(typeof(CharacterStateManager),typeof(ClientData))]
     public class CharacterMovement : MonoBehaviour, ITurnAction
     {
-        [SerializeField, Range(0, 100)] private int steps = 0;
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
         [SerializeField] private GameObject _sprite;
         
@@ -27,13 +27,14 @@ namespace Characters
 
         private CharacterStateManager _stateManager;
         private const int StepCost = 1;
+        private ClientData clientData;
 
         private void Awake()
         {
             _stateManager = GetComponent<CharacterStateManager>();
             EventManager.OnTick += OnTick;
             directionNormalized = Vector3.left;
-
+            clientData = GetComponent<ClientData>();
             _stateManager._onStateChanged += OnStateChanged;
         }
 
@@ -59,7 +60,7 @@ namespace Characters
             List<Vector3> litPositions = new List<Vector3>();
             int distance = 1;
             
-            for (int availableSteps = 1; availableSteps < steps + 1; availableSteps++)
+            for (int availableSteps = 1; availableSteps < clientData.GetScoreAmount() + 1; availableSteps++)
             {
                 Vector3 currentPosition = transform.position + directionNormalized * distance;
                 
@@ -67,7 +68,7 @@ namespace Characters
                 {
                     availableSteps++;
 
-                    if (availableSteps >= steps + 1)
+                    if (availableSteps >= clientData.GetScoreAmount() + 1)
                     {
                         break;
                     }
@@ -99,11 +100,6 @@ namespace Characters
         private void UnhighlightAvailableMoves()
         {
             TileSelector.Instance.SetTilesUnlit();
-        }
-
-        public void SetSteps(int value)
-        {
-            steps = value;
         }
 
         private void OnTick()
@@ -183,13 +179,13 @@ namespace Characters
 
         private bool IsStepsEnough()
         {
-            return steps - StepCost >= 0;
+            return clientData.GetScoreAmount() - StepCost >= 0;
         }
 
         public void DecreaseStep()
         {
-            steps -= StepCost;
-            if (steps == 0)
+            clientData.SetScoreAmount(clientData.GetScoreAmount() - StepCost);
+            if (clientData.GetScoreAmount() == 0)
             {
                 CharacterSelector.FinishTurn();
             }
@@ -198,11 +194,6 @@ namespace Characters
         public PathValidator GetPathValidator()
         {
             return pathValidator;
-        }
-
-        public int GetSteps()
-        {
-            return steps;
         }
         
         public static List<GameObject> GetEntities(Vector3 position, GameObject self = null)

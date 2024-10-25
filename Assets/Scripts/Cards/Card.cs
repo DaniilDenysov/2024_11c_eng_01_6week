@@ -2,18 +2,18 @@ using Characters;
 using Characters.CharacterStates;
 using Collectibles;
 using General;
+using Mirror;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Cards
 {
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-    public abstract class Card : MonoBehaviour
+    public abstract class Card : MonoBehaviour, IPointerClickHandler
     {
         private CanvasGroup _canvasGroup;
         private RectTransform _rectTransform;
         private Vector2 _startPosition;
-        private CharacterStateManager _stateManager;
-        private GameObject _cardOwner;
 
         public virtual void Awake()
         {
@@ -21,21 +21,9 @@ namespace Cards
             _rectTransform = GetComponent<RectTransform>();
         }
 
-        public void SetUp(GameObject player, CharacterStateManager stateManager)
+        public void OnPointerClick(PointerEventData eventData)
         {
-            _cardOwner = player;
-            _stateManager = stateManager;
-        }
-
-        private void Update()
-        {
-            Vector2 mousePos = Input.mousePosition;
-            
-            if (Input.GetMouseButtonUp(0) 
-                && RectTransformUtility.RectangleContainsScreenPoint(_rectTransform, mousePos))
-            {
-                TryActivate();
-            }
+            TryActivate();
         }
 
         public abstract void OnCardActivation(GameObject arg1);
@@ -43,32 +31,37 @@ namespace Cards
         public void OnCardSetUp(bool successfully)
         {
             _canvasGroup.alpha = 1f;
-            
-            if (successfully)
+            if (NetworkClient.connection.identity != null && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
             {
-                _stateManager.CmdSetCurrentState(new CardUsed());
-            }
-            else
-            {
-                _stateManager.CmdSetCurrentState(new Idle());
+                if (successfully)
+                {
+                    stateManager.CmdSetCurrentState(new CardUsed());
+                }
+                else
+                {
+                    stateManager.CmdSetCurrentState(new Idle());
+                }
             }
         }
 
         public void TryActivate()
         {
-            if (_stateManager.GetCurrentState().IsCardUsable(this) || 
-                _stateManager.GetCurrentState().GetType() == typeof(MultiCard))
+            if (NetworkClient.connection.identity != null && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
             {
-                _canvasGroup.alpha = 0.5f;
-                
-                if (_stateManager.GetCurrentState().IsCardUsable(this))
+                if (stateManager.GetCurrentState().IsCardUsable(this) ||
+                stateManager.GetCurrentState().GetType() == typeof(MultiCard))
                 {
-                    _stateManager.CmdSetCurrentState(new CardSettingUp());
-                    OnCardActivation(_cardOwner);
-                    return;
+                    _canvasGroup.alpha = 0.5f;
+
+                    if (stateManager.GetCurrentState().IsCardUsable(this))
+                    {
+                        stateManager.CmdSetCurrentState(new CardSettingUp());
+                        OnCardActivation(stateManager.gameObject);
+                        return;
+                    }
+
+                    stateManager.CmdSetCurrentState(new CardSettingUp());
                 }
-                
-                _stateManager.CmdSetCurrentState(new CardSettingUp());
             }
         }
         

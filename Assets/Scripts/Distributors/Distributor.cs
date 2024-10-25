@@ -8,15 +8,15 @@ namespace Distributors
 {
     public abstract class Distributor : NetworkBehaviour
     {
-        public override void OnStartServer()
+        public override void OnStartClient()
         {
             if (!isServer) return;
             EventManager.OnTurnStart += OnTurnStart;
             EventManager.OnTurnEnd += OnTurnEnd;
         }
 
-        public override void OnStopServer()
-        {
+        public override void OnStopClient()
+        {   
             if (!isServer) return;
             EventManager.OnTurnStart -= OnTurnStart;
             EventManager.OnTurnEnd -= OnTurnEnd;

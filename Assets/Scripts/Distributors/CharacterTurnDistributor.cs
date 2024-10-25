@@ -7,31 +7,50 @@ using UnityEngine;
 
 namespace Distributors
 {
-    public class CharacterTurnDistributor : Distributor
+    public class CharacterTurnDistributor : NetworkBehaviour
     {
         private Queue<NetworkPlayer> order;
+
+        public static CharacterTurnDistributor Instance;
+
+        public virtual void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (Instance == this)
+            {
+                Instance = null;
+            }
+        }
 
         public override void OnStartServer()
         {
             if (isServer)
             {
                 order = new Queue<NetworkPlayer>(NetworkPlayerContainer.Instance.GetItems());
+                Debug.Log(order.Count);
             }
         }
 
         [Server]
-        public override void OnTurnStart()
+        public void OnTurnStart()
         {
            var player = order.Peek();
            if (player.TryGetComponent(out ClientData data))
            {
+                Debug.Log(player.name + " turn");
                 data.SetTurn(true);
-                ScoreDistributor.Instance.AddScoreToCurrentClient();
            }
         }
 
         [Server]
-        public override void OnTurnEnd()
+        public void OnTurnEnd()
         {
             var player = order.Dequeue();
             if (player.TryGetComponent(out ClientData data))

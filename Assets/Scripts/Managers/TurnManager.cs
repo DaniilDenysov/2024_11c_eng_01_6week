@@ -1,3 +1,4 @@
+using Distributors;
 using Mirror;
 using System;
 using System.Collections;
@@ -11,15 +12,16 @@ namespace Managers
         [SerializeField,Range(0,600)] private float turnTimeLimit = 180f, turnDelay = 30f;
         private Coroutine currentTurn;
 
-        [Server]
         private void Start()
         {
+            if (!isServer) return;
             StartNextTurn();
         }
 
         [ClientRpc]
         private void OnTurnStart()
         {
+            Debug.Log("Turn started");
             LocalPlayerLogContainer.Instance.AddLogMessage("Turn started");
             EventManager.FireEvent(EventManager.OnTurnStart);
         }
@@ -27,6 +29,7 @@ namespace Managers
         [ClientRpc]
         private void OnTurnEnd()
         {
+            Debug.Log("Turn ended");
             LocalPlayerLogContainer.Instance.AddLogMessage("Turn ended");
             EventManager.FireEvent(EventManager.OnTurnEnd);
         }
@@ -40,10 +43,14 @@ namespace Managers
 
         private IEnumerator StartTurn ()
         {
+            // yield return new WaitForSeconds(turnDelay);
+            CharacterTurnDistributor.Instance.OnTurnStart();
+            ScoreDistributor.Instance.AddScoreToCurrentClient();
+            CardDistributor.Instance.DistributeCardsToClients();
             OnTurnStart();
             yield return new WaitForSeconds(turnTimeLimit);
+            CharacterTurnDistributor.Instance.OnTurnEnd();
             OnTurnEnd();
-            yield return new WaitForSeconds(turnDelay);
         }
 
     }
