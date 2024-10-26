@@ -11,11 +11,12 @@ namespace Managers
         public static Action OnClientStartTurn, OnClientEndTurn;
         public static Action OnTurnStart, OnTurnEnd;
         public static Action OnTick;
+        
         public static Action<Vector3> OnLitTileClick;
         public static Action<bool> OnSkillSetUp;
         public static Action<bool> OnCardSetUp;
 
-        public static Action<Vector3,CharacterMovement> OnCharacterMovesOut;
+        public static Action<Vector3, CharacterMovement> OnCharacterMovesOut;
 
         public static Action<Vector3, CharacterMovement> OnCharacterMovesIn;
 

@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using Characters.CharacterStates;
 using UnityEngine;
 using Validation;
-using Mirror;
 using Traps;
 using UnityEngine.Events;
 using Client;
+using Mirror;
 
 namespace Characters
 {
@@ -32,15 +32,21 @@ namespace Characters
         private void Awake()
         {
             _stateManager = GetComponent<CharacterStateManager>();
-            EventManager.OnTick += OnTick;
             directionNormalized = Vector3.left;
             clientData = GetComponent<ClientData>();
+            
             _stateManager._onStateChanged += OnStateChanged;
+            EventManager.OnClientStartTurn += OnTurn;
         }
 
         public void OnTurn()
         {
-            ChooseNewDirection(() => { });
+            if (clientData.GetTurn())
+            {
+                Debug.Log("MyTurn" + gameObject.name);
+                _stateManager.CmdSetCurrentState(new Idle());
+                ChooseNewDirection(() => { });
+            }
         }
 
         private void OnStateChanged(CharacterState newState)
@@ -91,7 +97,7 @@ namespace Characters
                 _onMoveAvailable.Invoke();
                 TileSelector.Instance.SetTilesLit(litPositions, MakeMovement);
             }
-            else if (CharacterSelector.CurrentCharacter == this)
+            else if (clientData.GetTurn())
             {
                 _onMoveCancelable.Invoke();
             }
@@ -100,10 +106,6 @@ namespace Characters
         private void UnhighlightAvailableMoves()
         {
             TileSelector.Instance.SetTilesUnlit();
-        }
-
-        private void OnTick()
-        {
         }
 
         public void MakeMovement(Vector3 nextPosition)

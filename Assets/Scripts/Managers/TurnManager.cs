@@ -35,7 +35,7 @@ namespace Managers
         }
 
         [Server]
-        public void StartNextTurn ()
+        public void StartNextTurn()
         {
             if (currentTurn != null) StopCoroutine(currentTurn);
             currentTurn = StartCoroutine(StartTurn());
