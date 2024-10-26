@@ -11,7 +11,7 @@ namespace Characters
 
         private void Awake()
         {
-            _currentState = new Idle();
+            CmdSetCurrentState(new Idle());
         }
 
         public CharacterState GetCurrentState()

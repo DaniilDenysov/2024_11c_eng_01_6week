@@ -32,7 +32,6 @@ namespace Characters
         private void Awake()
         {
             _stateManager = GetComponent<CharacterStateManager>();
-            EventManager.OnTick += OnTick;
             directionNormalized = Vector3.left;
             clientData = GetComponent<ClientData>();
             _stateManager._onStateChanged += OnStateChanged;
@@ -45,6 +44,7 @@ namespace Characters
 
         private void OnStateChanged(CharacterState newState)
         {
+            Debug.Log("Changed");
             if (newState.IsMovable())
             {
                 HighlightAvailableMoves();
@@ -55,16 +55,18 @@ namespace Characters
             }
         }
 
-        private void HighlightAvailableMoves()
+        [Button]
+        public void HighlightAvailableMoves()
         {
             List<Vector3> litPositions = new List<Vector3>();
             int distance = 1;
             
             for (int availableSteps = 1; availableSteps < clientData.GetScoreAmount() + 1; availableSteps++)
             {
-                Vector3 currentPosition = transform.position + directionNormalized * distance;
+                Debug.Log("1");
+                Vector3 nextPosition = transform.position + directionNormalized * distance;
                 
-                if (IsSlimed(currentPosition))
+                if (IsSlimed(nextPosition))
                 {
                     availableSteps++;
 
@@ -74,15 +76,11 @@ namespace Characters
                     }
                 }
                 
-                if (pathValidator.CanMoveTo(transform.position, currentPosition))
+                if (pathValidator.CanMoveTo(transform.position, nextPosition))
                 {
-                    litPositions.Add(currentPosition);
+                    litPositions.Add(nextPosition);
                 }
-                else
-                {
-                    break;
-                }
-
+ 
                 distance++;
             }
 
@@ -102,9 +100,6 @@ namespace Characters
             TileSelector.Instance.SetTilesUnlit();
         }
 
-        private void OnTick()
-        {
-        }
 
         public void MakeMovement(Vector3 nextPosition)
         {

@@ -1,3 +1,4 @@
+using Characters;
 using Managers;
 using Mirror;
 using System.Collections;
@@ -8,7 +9,8 @@ namespace Client
 {
     public class ClientData : NetworkBehaviour
     {
-        [SerializeField, SyncVar] private int cardAmount, score;
+        [SerializeField, SyncVar] private int score;
+        [SerializeField, SyncVar(hook = nameof(OnScoreStateChanged))] private int cardAmount;
         [SerializeField, SyncVar(hook = nameof(OnMyTurnChanged))] private bool myTurn;
 
         public void OnMyTurnChanged (bool oldValue, bool newValue)
@@ -17,13 +19,17 @@ namespace Client
             if (!newValue && oldValue && isOwned) EventManager.FireEvent(EventManager.OnClientEndTurn);
         }
 
+        public void OnScoreStateChanged(int oldValue, int newValue)
+        {
+     
+        }
+
         [Server]
         public void SetCardAmount (int amount)
         {
             cardAmount = amount;
         }
 
-        [Server]
         public int GetCardAmount() => cardAmount;
 
 
@@ -33,7 +39,7 @@ namespace Client
             score = amount;
         }
 
-        [Server]
+
         public int GetScoreAmount() => score;
 
 
@@ -43,7 +49,7 @@ namespace Client
             myTurn = turn;
         }
 
-        [Server]
+
         public bool GetTurn() => myTurn;
 
     }
