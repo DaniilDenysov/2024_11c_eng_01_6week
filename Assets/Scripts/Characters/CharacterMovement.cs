@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using Characters.CharacterStates;
 using UnityEngine;
 using Validation;
-using Mirror;
 using Traps;
 using UnityEngine.Events;
 using Client;
+using Mirror;
 
 namespace Characters
 {
@@ -34,12 +34,18 @@ namespace Characters
             _stateManager = GetComponent<CharacterStateManager>();
             directionNormalized = Vector3.left;
             clientData = GetComponent<ClientData>();
+            
             _stateManager._onStateChanged += OnStateChanged;
+            EventManager.OnClientStartTurn += OnTurn;
         }
 
         public void OnTurn()
         {
-            ChooseNewDirection(() => { });
+            if (clientData.GetTurn())
+            {
+                _stateManager.CmdSetCurrentState(new Idle());
+                ChooseNewDirection(() => { });
+            }
         }
 
         private void OnStateChanged(CharacterState newState)
@@ -89,7 +95,7 @@ namespace Characters
                 _onMoveAvailable.Invoke();
                 TileSelector.Instance.SetTilesLit(litPositions, MakeMovement);
             }
-            else if (CharacterSelector.CurrentCharacter == this)
+            else if (clientData.GetTurn())
             {
                 _onMoveCancelable.Invoke();
             }
@@ -99,8 +105,7 @@ namespace Characters
         {
             TileSelector.Instance.SetTilesUnlit();
         }
-
-
+        
         public void MakeMovement(Vector3 nextPosition)
         {
             Vector3 difference = nextPosition - transform.position;
@@ -179,10 +184,10 @@ namespace Characters
 
         public void DecreaseStep()
         {
-            clientData.SetScoreAmount(clientData.GetScoreAmount() - StepCost);
+            clientData.CmdSetScoreAmount(clientData.GetScoreAmount() - StepCost);
             if (clientData.GetScoreAmount() == 0)
             {
-                CharacterSelector.FinishTurn();
+                EventManager.FireEvent(EventManager.OnTurnFinished);
             }
         }
 

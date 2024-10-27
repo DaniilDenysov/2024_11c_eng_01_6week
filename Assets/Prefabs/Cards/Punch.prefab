@@ -89,9 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158c2f80ca3161c4a88266728e2ebf65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onPool:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!225 &7852938162255491354
 CanvasGroup:
   m_ObjectHideFlags: 0

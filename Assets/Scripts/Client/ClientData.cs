@@ -11,21 +11,15 @@ namespace Client
     {
         [SerializeField, SyncVar] private int score;
         [SerializeField, SyncVar(hook = nameof(OnScoreStateChanged))] private int cardAmount;
-        [SerializeField, SyncVar(hook = nameof(OnMyTurnChanged))] private bool myTurn;
-
-        public void OnMyTurnChanged (bool oldValue, bool newValue)
-        {
-            if (newValue && isOwned) EventManager.FireEvent(EventManager.OnClientStartTurn);
-            if (!newValue && oldValue && isOwned) EventManager.FireEvent(EventManager.OnClientEndTurn);
-        }
+        [SerializeField, SyncVar] private bool myTurn;
 
         public void OnScoreStateChanged(int oldValue, int newValue)
         {
      
         }
 
-        [Server]
-        public void SetCardAmount (int amount)
+        [ClientRpc]
+        public void RpcSetCardAmount (int amount)
         {
             cardAmount = amount;
         }
@@ -33,24 +27,28 @@ namespace Client
         public int GetCardAmount() => cardAmount;
 
 
-        [Server]
-        public void SetScoreAmount(int amount)
+        [Command]
+        public void CmdSetScoreAmount(int amount)
         {
             score = amount;
         }
-
-
+        
+        [ClientRpc]
+        public void RpcSetScoreAmount(int amount)
+        {
+            score = amount;
+        }
+    
         public int GetScoreAmount() => score;
 
-
-        [Server]
-        public void SetTurn (bool turn)
+        [ClientRpc]
+        public void RpcSetTurn (bool turn)
         {
+            if (!turn && myTurn && isOwned) EventManager.FireEvent(EventManager.OnClientEndTurn);
             myTurn = turn;
+            if (myTurn && isOwned) EventManager.FireEvent(EventManager.OnClientStartTurn);
         }
-
-
+    
         public bool GetTurn() => myTurn;
-
     }
 }

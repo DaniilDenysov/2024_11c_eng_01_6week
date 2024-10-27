@@ -90,9 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557372aeb140792419f18fbad53dee7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onPool:
-    m_PersistentCalls:
-      m_Calls: []
   characterSelectionPanel: {fileID: 7619223714753394654}
   characterButtonPrefab: {fileID: 3655913379686864981, guid: cc13251ffb8c40744abd1adbc243f111, type: 3}
 --- !u!225 &2580695131498091

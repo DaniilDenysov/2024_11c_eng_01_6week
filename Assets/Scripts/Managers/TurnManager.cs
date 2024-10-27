@@ -18,7 +18,12 @@ namespace Managers
             StartNextTurn();
         }
 
-        [ClientRpc]
+        [Command(requiresAuthority = false)]
+        public void SetTurnChanged()
+        {
+            StartNextTurn();
+        }
+
         private void OnTurnStart()
         {
             Debug.Log("Turn started");
@@ -35,13 +40,18 @@ namespace Managers
         }
 
         [Server]
-        public void StartNextTurn ()
+        public void StartNextTurn()
         {
-            if (currentTurn != null) StopCoroutine(currentTurn);
+            if (currentTurn != null)
+            {
+                StopCoroutine(currentTurn);
+                EndTurn();
+            }
+            
             currentTurn = StartCoroutine(StartTurn());
         }
 
-        private IEnumerator StartTurn ()
+        private IEnumerator StartTurn()
         {
             // yield return new WaitForSeconds(turnDelay);
             CharacterTurnDistributor.Instance.OnTurnStart();
@@ -49,9 +59,15 @@ namespace Managers
             CardDistributor.Instance.DistributeCardsToClients();
             OnTurnStart();
             yield return new WaitForSeconds(turnTimeLimit);
+            EndTurn();
+            currentTurn = null;
+            StartNextTurn();
+        }
+
+        private void EndTurn()
+        {
             CharacterTurnDistributor.Instance.OnTurnEnd();
             OnTurnEnd();
         }
-
     }
 }

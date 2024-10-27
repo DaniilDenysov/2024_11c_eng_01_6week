@@ -34,7 +34,7 @@ namespace Distributors
             {
                 if (client.TryGetComponent(out ClientData data))
                 {
-                    data.SetScoreAmount(scorePerClient);
+                    data.RpcSetScoreAmount(scorePerClient);
                 }
             }
         }
