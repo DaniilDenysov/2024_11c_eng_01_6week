@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a2d65775c6c84bf429e1f7a316370072
+guid: cc829c552d61306478cc85a18f8fa3e2
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Jost
+  - Bellota Text
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
