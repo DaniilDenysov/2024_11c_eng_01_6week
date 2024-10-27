@@ -9,42 +9,39 @@ namespace Client
     public class ClientData : NetworkBehaviour
     {
         [SerializeField, SyncVar] private int cardAmount, score;
-        [SerializeField, SyncVar(hook = nameof(OnMyTurnChanged))] private bool myTurn;
+        [SerializeField, SyncVar] private bool myTurn;
 
-        public void OnMyTurnChanged (bool oldValue, bool newValue)
-        {
-            if (newValue && isOwned) EventManager.FireEvent(EventManager.OnClientStartTurn);
-            if (!newValue && oldValue && isOwned) EventManager.FireEvent(EventManager.OnClientEndTurn);
-        }
-
-        [Server]
-        public void SetCardAmount (int amount)
+        [ClientRpc]
+        public void RpcSetCardAmount (int amount)
         {
             cardAmount = amount;
         }
 
-        [Server]
         public int GetCardAmount() => cardAmount;
 
 
-        [Server]
-        public void SetScoreAmount(int amount)
+        [Command]
+        public void CmdSetScoreAmount(int amount)
+        {
+            score = amount;
+        }
+        
+        [ClientRpc]
+        public void RpcSetScoreAmount(int amount)
         {
             score = amount;
         }
 
-        [Server]
         public int GetScoreAmount() => score;
 
-
-        [Server]
-        public void SetTurn (bool turn)
+        [ClientRpc]
+        public void RpcSetTurn (bool turn)
         {
+            if (!turn && myTurn && isOwned) EventManager.FireEvent(EventManager.OnClientEndTurn);
             myTurn = turn;
+            if (myTurn && isOwned) EventManager.FireEvent(EventManager.OnClientStartTurn);
         }
 
-        [Server]
         public bool GetTurn() => myTurn;
-
     }
 }

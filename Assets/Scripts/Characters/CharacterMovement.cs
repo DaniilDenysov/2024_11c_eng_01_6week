@@ -43,7 +43,6 @@ namespace Characters
         {
             if (clientData.GetTurn())
             {
-                Debug.Log("MyTurn" + gameObject.name);
                 _stateManager.CmdSetCurrentState(new Idle());
                 ChooseNewDirection(() => { });
             }
@@ -186,10 +185,10 @@ namespace Characters
 
         public void DecreaseStep()
         {
-            clientData.SetScoreAmount(clientData.GetScoreAmount() - StepCost);
+            clientData.CmdSetScoreAmount(clientData.GetScoreAmount() - StepCost);
             if (clientData.GetScoreAmount() == 0)
             {
-                CharacterSelector.FinishTurn();
+                EventManager.FireEvent(EventManager.OnTurnFinished);
             }
         }
 

@@ -729,7 +729,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1798901360}
         m_TargetAssemblyTypeName: Managers.TurnManager, Assembly-CSharp
-        m_MethodName: StartNextTurn
+        m_MethodName: SetTurnChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -844,6 +844,10 @@ PrefabInstance:
     - target: {fileID: 1916133938090015561, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127909990331337546, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
+      propertyPath: syncDirection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2129661184290582681, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9310,6 +9314,7 @@ MonoBehaviour:
   syncInterval: 0
   turnTimeLimit: 180
   turnDelay: 30
+  isTurn: 0
 --- !u!4 &1798901361
 Transform:
   m_ObjectHideFlags: 0

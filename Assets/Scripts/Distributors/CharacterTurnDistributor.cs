@@ -42,12 +42,12 @@ namespace Distributors
         [Server]
         public void OnTurnStart()
         {
-           var player = order.Peek();
-           if (player.TryGetComponent(out ClientData data))
-           {
+            var player = order.Peek();
+            if (player.TryGetComponent(out ClientData data))
+            {
                 Debug.Log(player.name + " turn");
-                data.SetTurn(true);
-           }
+                data.RpcSetTurn(true);
+            }
         }
 
         [Server]
@@ -56,7 +56,7 @@ namespace Distributors
             var player = order.Dequeue();
             if (player.TryGetComponent(out ClientData data))
             {
-                data.SetTurn(false);
+                data.RpcSetTurn(false);
                 order.Enqueue(player);
             }
         }
