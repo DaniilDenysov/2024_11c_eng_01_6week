@@ -31,7 +31,8 @@ namespace Collectibles
 
         public object Collect()
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            // gameObject.SetActive(false);
             return this;
         }
     }

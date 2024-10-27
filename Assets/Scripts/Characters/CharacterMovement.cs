@@ -50,7 +50,6 @@ namespace Characters
 
         private void OnStateChanged(CharacterState newState)
         {
-            Debug.Log("Changed");
             if (newState.IsMovable())
             {
                 HighlightAvailableMoves();
@@ -69,7 +68,6 @@ namespace Characters
             
             for (int availableSteps = 1; availableSteps < clientData.GetScoreAmount() + 1; availableSteps++)
             {
-                Debug.Log("1");
                 Vector3 nextPosition = transform.position + directionNormalized * distance;
                 
                 if (IsSlimed(nextPosition))
