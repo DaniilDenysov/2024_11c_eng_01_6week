@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Managers;
+using Mirror;
 using UnityEngine;
 
 namespace Characters.Skills
 {
-    public abstract class Skill : MonoBehaviour
+    public abstract class Skill : NetworkBehaviour
     {
         private Action<bool> _onSetUp;
 

@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using Characters;
 using Collectibles;
+using Mirror;
 using UnityEngine;
 
 namespace Traps
 {
-    public class HorntipedeBody : MonoBehaviour
+    public class HorntipedeBody : NetworkBehaviour
     {
         private Attack _attack;
         private Inventory _collector;

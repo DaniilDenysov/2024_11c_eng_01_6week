@@ -797,6 +797,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 359842979679690558, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
+      propertyPath: syncDirection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 469032247192048670, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
       propertyPath: sceneId
       value: 1559769206
@@ -9314,7 +9318,6 @@ MonoBehaviour:
   syncInterval: 0
   turnTimeLimit: 180
   turnDelay: 30
-  isTurn: 0
 --- !u!4 &1798901361
 Transform:
   m_ObjectHideFlags: 0
