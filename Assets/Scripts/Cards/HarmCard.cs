@@ -1,7 +1,7 @@
 using Characters;
+using General;
 using Managers;
 using Selectors;
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,14 +9,12 @@ using UnityEngine.UI;
 
 namespace Cards
 {
-    public class HarmCard : Card<Inventory>
+    public class HarmCard : Card
     {
         [SerializeField] private GameObject characterSelectionPanel;
         [SerializeField] private Button characterButtonPrefab;
-        private Inventory targetInventory;
-        private bool harmActive;
 
-        public override void OnCardActivation(Inventory inventory)
+        public override void OnCardActivation(GameObject inventory)
         {
             if (inventory == null)
             {
@@ -24,17 +22,10 @@ namespace Cards
                 return;
             }
 
-            List<CharacterMovement> availableTargets = new List<CharacterMovement>(CharacterSelector.Instance.characters);
-
-            //testing
-            //CharacterSelector.Instance.DisplayCharacterSelection(availableTargets, OnPlayerChosen);
-            //Debug.Log($"Available targets: {availableTargets.Count}");
-
-            DisplayCharacterSelection(availableTargets);
+            DisplayCharacterSelection(NetworkPlayerContainer.Instance.GetItems());
         }
 
-        
-        private void DisplayCharacterSelection(List<CharacterMovement> availableTargets)
+        private void DisplayCharacterSelection(List<NetworkPlayer> availableTargets)
         {
             characterSelectionPanel.SetActive(true);
 
@@ -45,11 +36,10 @@ namespace Cards
                 newButton.gameObject.transform.SetParent(characterSelectionPanel.transform);
 
                 newButton.onClick.AddListener(() => OnPlayerChosen(target));
-                Debug.Log(newButton);
             }
         }
-        
-        private void OnPlayerChosen(CharacterMovement selectedCharacter)
+
+        private void OnPlayerChosen(NetworkPlayer selectedCharacter)
         {
             characterSelectionPanel.SetActive(false);
 
@@ -58,30 +48,14 @@ namespace Cards
                 Destroy(child.gameObject);
             }
 
-            targetInventory = selectedCharacter.GetComponent<Inventory>();
-            if (targetInventory != null)
+            if (selectedCharacter.TryGetComponent(out Inventory inventory))
             {
-                harmActive = true;
-                targetInventory.AdjustCardDraw(-1);
-                EventManager.OnPlayerAttacked += OnPlayerAttacked;
+                inventory.AdjustCardDraw(-1);
                 OnCardSetUp(true);
-
-                Debug.Log("Harm applied");
             }
             else
             {
                 OnCardSetUp(false);
-            }
-        }
-
-        private void OnPlayerAttacked(GameObject attackedPlayer)
-        {
-            if (attackedPlayer == targetInventory.gameObject && harmActive)
-            {
-                targetInventory.AdjustCardDraw(1);
-                EventManager.OnPlayerAttacked -= OnPlayerAttacked;
-                harmActive = false;
-                Destroy(gameObject);
             }
         }
     }

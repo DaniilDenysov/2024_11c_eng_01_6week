@@ -1,22 +1,58 @@
 using Collectibles;
 using CustomTools;
+using Mirror;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Human : MonoBehaviour, ICollectible
+namespace Collectibles
 {
-    [SerializeField, ReadOnly] private int currentPoints; 
-    private int[] points = { 2, 4, 6 };
-
-    private void Awake()
+    public class Human : ICollectible
     {
-        currentPoints = points[Random.Range(0, points.Length)];
-    }
+        [SerializeField, SyncVar] private string ownedBy;
+        [SerializeField, Range(2, 6), SyncVar] private int currentPoints;
+        [SerializeField, SyncVar] private bool isCollected;
 
-    public object Collect()
-    {
-        gameObject.SetActive(false);
-        return this;
+        [Server]
+        public void SetOwner(string owner)
+        {
+            ownedBy = owner;
+        }
+
+        private void Update()
+        {
+            if (isCollected && gameObject.activeInHierarchy)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        public HumanDTO GetData()
+        {
+            return new HumanDTO()
+            {
+                CharacterGUID = ownedBy,
+                Amount = currentPoints
+            };
+        }
+
+        public override object Collect()
+        {
+            CmdSetCollected(true);
+            return this;
+        }
+        
+        [Command(requiresAuthority = false)]
+        private void CmdSetCollected(bool isCollected)
+        {
+            RpcSetCollected(isCollected);
+        }
+    
+        [ClientRpc]
+        private void RpcSetCollected(bool isCollected)
+        {
+            this.isCollected = isCollected;
+        }
     }
 }

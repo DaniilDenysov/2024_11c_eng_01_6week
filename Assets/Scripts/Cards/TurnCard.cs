@@ -4,12 +4,15 @@ using UnityEngine;
 
 namespace Cards
 {
-    public class TurnCard : Card<ITurnAction>
+    public class TurnCard : Card
     {
-        public override void OnCardActivation(ITurnAction arg1)
+        public override void OnCardActivation(GameObject activator)
         {
-            arg1.OnTurn();
-            OnCardSetUp(true);
+            activator.TryGetComponent(out ITurnAction turnAction);
+            turnAction.ChooseNewDirection(() =>
+            {
+                OnCardSetUp(true);
+            });
         }
     }
 }

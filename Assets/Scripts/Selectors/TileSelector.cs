@@ -1,18 +1,24 @@
+using System;
 using System.Collections.Generic;
-using Ganeral;
-using Managers;
+using Characters;
+using Mirror;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TileSelector : MonoBehaviour
 {
+    public static TileSelector Instance;
     [SerializeField] private Tilemap tileMap;
     private Vector3 cellUnit;
     [SerializeField] private TileBase highlightTile;
+    
+    private Action<Vector3> _onChosen;
+    private List<Vector3> _litPositions;
 
     void Awake()
     {
         cellUnit = tileMap.layoutGrid.cellSize / 2;
+        Instance = this;
     }
 
     void Update()
@@ -21,42 +27,67 @@ public class TileSelector : MonoBehaviour
         {
             var worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             var tilePosition = tileMap.WorldToCell(worldPoint);
-            var tile = tileMap.GetTile(tilePosition);
 
-            if (tile)
+            TileClicked(tilePosition);
+        }
+    }
+
+    public void TileClicked(Vector3Int tilePosition)
+    {
+        var tile = tileMap.GetTile(tilePosition);
+        
+        if (tile)
+        {
+            if (_litPositions.Contains(tilePosition + cellUnit))
             {
-                EventManager.OnLitTileClick(tilePosition + cellUnit);
-
                 SetTilesUnlit();
+                _onChosen.Invoke(tilePosition + cellUnit);
             }
         }
     }
 
-    public void SetTilesLit(List<Vector3> positions)
+    public void SetTilesLit(List<Vector3> positions, Action<Vector3> onChosen)
     {
+        if (positions.Count < 1)
+        {
+            Debug.LogError("Lit cells count is 0");
+        }
+        
+        SetTilesUnlit();
         foreach (Vector3 position in positions)
         {
             Vector3Int tilePosition = tileMap.WorldToCell(position);
             tileMap.SetTile(tilePosition, highlightTile);
         }
+
+        _onChosen = onChosen;
+        _litPositions = positions;
     }
 
-    public void SetTilesLit(Vector3 originPosition, int quantity, Vector3 direction, bool includeInitTile = false)
+    public void SetDirectionsTilesLit(Vector3 position, Action<Vector3> onChosen, 
+        List<Vector3> excludeDirections = null)
     {
-        Vector3Int originTilePosition = tileMap.WorldToCell(originPosition);
-        Vector2 directionNormalized = NormalizeDirection(direction);
+        List<Vector3> directionPositions = CharacterMovement.GetAllDirections();
 
-        for (int i = includeInitTile ? 0 : 1; i < quantity; i++)
+        for (int i = 0; i < directionPositions.Count; i++)
         {
-            Vector3Int tilePosition = originTilePosition +
-                new Vector3Int((int)directionNormalized.x, (int)directionNormalized.y, 0) * i;
-            tileMap.SetTile(tilePosition, highlightTile);
+            if (excludeDirections == null || !excludeDirections.Contains(directionPositions[i]))
+            {
+                directionPositions[i] += position;
+            }
+            else
+            {
+                directionPositions.RemoveAt(i);
+                i--;
+            }
         }
-    }
 
+        SetTilesLit(directionPositions, onChosen);
+    }
+    
     public void SetTilesUnlit()
     {
-        tileMap.ClearAllTiles();
+        if (tileMap != null) tileMap.ClearAllTiles();
     }
 
     public Vector2 NormalizeDirection(Vector3 direction)

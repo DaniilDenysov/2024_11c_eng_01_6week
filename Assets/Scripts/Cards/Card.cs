@@ -1,78 +1,92 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Managers;
-using Selectors;
+using Characters;
+using Characters.CharacterStates;
+using Collectibles;
+using General;
+using Mirror;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Cards
 {
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-    public abstract class Card<T> : MonoBehaviour
+    public abstract class Card : MonoBehaviour, IPointerClickHandler
     {
-        private CanvasGroup canvasGroup;
-        private Transform container;
-        private Camera camera;
-        private RectTransform rectTransform;
-        private Vector2 startPosition;
-        private bool IsCardSettingUp;
-        private CardDeck _cardDeck;
+        private CanvasGroup _canvasGroup;
+        private RectTransform _rectTransform;
+        private Vector2 _startPosition;
 
         public virtual void Awake()
         {
-            canvasGroup = GetComponent<CanvasGroup>();
-            container = transform.parent;
-            rectTransform = GetComponent<RectTransform>();
-            camera = Camera.main;
-            IsCardSettingUp = false;
-            SetCardDeck();
+            _canvasGroup = GetComponent<CanvasGroup>();
+            _rectTransform = GetComponent<RectTransform>();
         }
 
-        private void Update()
+        public void OnPointerClick(PointerEventData eventData)
         {
-            Vector2 mousePos = Input.mousePosition;
-            
-            if (Input.GetMouseButtonUp(0) 
-                && RectTransformUtility.RectangleContainsScreenPoint(rectTransform, mousePos))
+            TryActivate();
+        }
+
+        public abstract void OnCardActivation(GameObject arg1);
+
+        public void OnCardSetUp(bool successfully)
+        {
+            _canvasGroup.alpha = 1f;
+            if (NetworkClient.connection.identity != null && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
             {
-                GameObject currentPlayer = CharacterSelector.CurrentCharacter.gameObject;
-                
-                if (_cardDeck.GetApproval(gameObject) && currentPlayer.TryGetComponent(out T action))
+                if (successfully)
                 {
-                    IsCardSettingUp = true;
-                    canvasGroup.alpha = 0.5f;
-                    OnCardActivation(action);
+                    stateManager.CmdSetCurrentState(new CardUsed());
+                }
+                else
+                {
+                    stateManager.CmdSetCurrentState(new Idle());
                 }
             }
         }
 
-        public abstract void OnCardActivation(T arg1);
-
-        public virtual void OnCardSetUp(bool succesfully)
+        public void TryActivate()
         {
-            if (succesfully)
+            if (NetworkClient.connection.identity != null && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
             {
-                Destroy(gameObject);
-            }
-
-            IsCardSettingUp = false;
-            canvasGroup.alpha = 1f;
-        }
-
-        public void SetCardDeck()
-        {
-            Transform parent = transform.parent;
-            
-            while (parent != null)
-            {
-                if (parent.TryGetComponent(out CardDeck cardDeck))
+                if (stateManager.GetCurrentState().IsCardUsable(this) ||
+                stateManager.GetCurrentState().GetType() == typeof(MultiCard))
                 {
-                    _cardDeck = cardDeck;
+                    _canvasGroup.alpha = 0.5f;
+
+                    if (stateManager.GetCurrentState().IsCardUsable(this))
+                    {
+                        stateManager.CmdSetCurrentState(new CardSettingUp());
+                        OnCardActivation(stateManager.gameObject);
+                        return;
+                    }
+
+                    stateManager.CmdSetCurrentState(new CardSettingUp());
                 }
-                
-                parent = parent.transform.parent;
             }
+        }
+        
+        public static bool AttackAndEatAtCell(Vector3 cell, Attack attack, Inventory collector)
+        {
+            bool result = false;
+            
+            foreach (GameObject entity in CharacterMovement.GetEntities(cell))
+            {
+                if (entity.TryGetComponent(out Inventory _))
+                {
+                    attack.TryAttack(cell);
+                    result = true;
+                }
+                else if (entity.TryGetComponent(out ICollectible collectible))
+                {
+                    if (collectible.GetType() == typeof(Human))
+                    {
+                        collector.PickUp(cell);
+                        result = true;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

@@ -6,7 +6,6 @@ namespace DesignPatterns.StateMachine
 {
     public abstract class State
     {
-
         public abstract void Apply();
     }
 }
