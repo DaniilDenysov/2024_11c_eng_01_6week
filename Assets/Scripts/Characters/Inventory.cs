@@ -12,7 +12,6 @@ public class Inventory : NetworkBehaviour
 {
     [SerializeField, SyncVar] private List<HumanDTO> humanDTOs;
     [SerializeField, SyncVar] private List<ICollectible> _inventory;
-    [SerializeField] private int cardDrawCount = 1;
     private Action<bool> _onPickedUp;
 
     private Dictionary<string, List<Vector3>> _staticPickUpCells;
@@ -122,12 +121,6 @@ public class Inventory : NetworkBehaviour
     {
         _inventory.RemoveAt(0);
         humanDTOs.RemoveAt(0);
-    }
-
-    public void AdjustCardDraw(int adjustment)
-    {
-        cardDrawCount += adjustment;
-        cardDrawCount = Mathf.Max(1, cardDrawCount);
     }
 
     public void Add(Human human)
