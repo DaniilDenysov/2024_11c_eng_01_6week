@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Mirror;
 using Traps;
 using UnityEngine;
 
@@ -13,14 +14,13 @@ namespace Characters.Skills
         
         private CharacterMovement _movement;
         
-        private List<HorntipedeBody> _body;
+        private  readonly SyncList<HorntipedeBody> _body = new ();
         private const int BodyLength = 3;
         private const int AvailableTurns = 1;
         private List<List<Vector3>> _paths;
 
         private void Awake()
         {
-            _body = new List<HorntipedeBody>();
             _movement = GetComponent<CharacterMovement>();
         }
 
@@ -35,11 +35,24 @@ namespace Characters.Skills
 
         private void BuildBody(Vector3 cell)
         {
-            HorntipedeBody newTrail = Instantiate(_bodyPrefab);
-            _body.Add(newTrail);
-            newTrail.SetUp(cell, gameObject);
+            CmdSpawnBody(cell);
+        }
+
+        [Command(requiresAuthority = false)]
+        private void CmdSpawnBody(Vector3 position)
+        {
+            RpcSpawnBody(position);
+        }
+
+        [TargetRpc]
+        private void RpcSpawnBody(Vector3 position)
+        {
+            HorntipedeBody body = Instantiate(_bodyPrefab);
+            body.transform.position = position;
+            _body.Add(body);
+            body.SetUp(position, gameObject);
+            NetworkServer.Spawn(body.gameObject);
             
-            Debug.Log("***");
             _paths.RemoveAll(list =>
             {
                 Vector3 previousDirection;

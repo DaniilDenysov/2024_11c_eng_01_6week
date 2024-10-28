@@ -8965,7 +8965,7 @@ MonoBehaviour:
     Amount: 10
   - Card: {fileID: 350858826076241073, guid: 118a4e9ca1d30ef4bba2c2b484ee68f6, type: 3}
     Amount: 10
-  cardsLimit: 4
+  cardsLimit: 8
 --- !u!1 &1506797980
 GameObject:
   m_ObjectHideFlags: 0
@@ -8997,9 +8997,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 1506797982}
   items:
+  - {fileID: 345601755}
   - {fileID: 422109507}
   - {fileID: 1156211772}
-  - {fileID: 345601755}
   - {fileID: 901204188}
 --- !u!4 &1506797982
 Transform:
@@ -9879,7 +9879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -720, y: 150}
+  m_AnchoredPosition: {x: -1047.42, y: 150}
   m_SizeDelta: {x: 0, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6707917305226298898
