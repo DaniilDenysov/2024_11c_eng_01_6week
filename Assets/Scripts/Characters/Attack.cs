@@ -116,7 +116,7 @@ namespace Characters
                 {
                     if (opponentsInventory.TryPopItem(out Human human))
                     {
-                        _inventory.Add(human);
+                        _inventory.CmdAddCollectibleToInventory(human);
                         result = true;
                     }
                 }

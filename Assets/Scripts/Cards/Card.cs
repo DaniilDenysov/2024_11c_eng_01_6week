@@ -65,7 +65,7 @@ namespace Cards
             }
         }
         
-        public static bool AttackAndEatAtCell(Vector3 cell, Attack attack, Collector collector)
+        public static bool AttackAndEatAtCell(Vector3 cell, Attack attack, Inventory collector)
         {
             bool result = false;
             

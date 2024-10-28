@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
 namespace Collectibles
 {
-    public interface ICollectible
+    public abstract class ICollectible : NetworkBehaviour
     {
-        object Collect ();
+        public abstract object Collect();
     }
 }
