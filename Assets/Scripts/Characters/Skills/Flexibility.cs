@@ -15,7 +15,7 @@ namespace Characters.Skills
     [RequireComponent(typeof(CharacterMovement)), 
      RequireComponent(typeof(CharacterStateManager)), 
      RequireComponent(typeof(Attack)), 
-     RequireComponent(typeof(Collector))]
+     RequireComponent(typeof(Inventory))]
     public class Flexibility : Skill
     {
         [SerializeField] private HorntipedeBody bodyPrefab;
@@ -24,7 +24,7 @@ namespace Characters.Skills
         private CharacterMovement _movement;
         private CharacterStateManager _stateManager;
         private Attack _attack;
-        private Collector _collector;
+        private Inventory _collector;
 
         private Card _usedCard;
         
@@ -37,7 +37,7 @@ namespace Characters.Skills
             _movement = GetComponent<CharacterMovement>();
             _stateManager = GetComponent<CharacterStateManager>();
             _attack = GetComponent<Attack>();
-            _collector = GetComponent<Collector>();
+            _collector = GetComponent<Inventory>();
         }
 
         public override void Activate(Action<bool> onSetUp)

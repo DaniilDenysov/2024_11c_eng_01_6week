@@ -9,7 +9,7 @@ namespace Cards
     {
         public override void OnCardActivation(GameObject activator)
         {
-            if (activator.TryGetComponent(out Collector collector))
+            if (activator.TryGetComponent(out Inventory collector))
             {
                 collector.PickUp(OnCardSetUp);
             }

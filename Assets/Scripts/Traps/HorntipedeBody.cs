@@ -8,7 +8,7 @@ namespace Traps
     public class HorntipedeBody : MonoBehaviour
     {
         private Attack _attack;
-        private Collector _collector;
+        private Inventory _collector;
 
         public void SetUp(Vector3 position, GameObject owner)
         {

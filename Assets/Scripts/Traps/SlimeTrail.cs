@@ -11,7 +11,7 @@ namespace Traps
     public class SlimeTrail : MonoBehaviour
     {
         private Attack _attack;
-        private Collector _collection;
+        private Inventory _collection;
         [SerializeField] private CharacterMovement _ownerMovement;
         private const string GroupName = "SnailTrail";
         private const int LiveTime = 9;
