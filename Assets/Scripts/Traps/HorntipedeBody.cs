@@ -32,10 +32,18 @@ namespace Traps
             return _collector.IsCellPickable(transform.position, typeof(Human));
         }
 
-        public void RemoveFromField()
+        [Command(requiresAuthority = false)]
+        public void CmdRemoveFromField()
+        {
+            RpcRemoveFromField();
+        }
+
+        [ClientRpc]
+        public void RpcRemoveFromField()
         {
             _attack = null;
             _collector = null;
+            
             Destroy(gameObject);
         }
     }

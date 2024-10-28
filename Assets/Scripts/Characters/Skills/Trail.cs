@@ -58,7 +58,7 @@ namespace Characters.Skills
             
             if (_currentTrail.Count >= MaxTrailSize)
             {
-                _currentTrail[0].RemoveFromField();
+                _currentTrail[0].CmdRemoveFromField();
                 _currentTrail.RemoveAt(0);
             }
 
@@ -84,7 +84,7 @@ namespace Characters.Skills
         {
             while (!_currentTrail.IsEmpty())
             {
-                _currentTrail[0].RemoveFromField();
+                _currentTrail[0].CmdRemoveFromField();
                 _currentTrail.RemoveAt(0);
             }
         }

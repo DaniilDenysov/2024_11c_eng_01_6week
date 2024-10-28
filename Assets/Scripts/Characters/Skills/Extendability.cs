@@ -48,7 +48,6 @@ namespace Characters.Skills
         private void RpcSpawnBody(Vector3 position)
         {
             HorntipedeBody body = Instantiate(_bodyPrefab);
-            body.transform.position = position;
             _body.Add(body);
             body.SetUp(position, gameObject);
             NetworkServer.Spawn(body.gameObject);
@@ -220,7 +219,7 @@ namespace Characters.Skills
         {
             foreach (HorntipedeBody bodyUnit in _body)
             {
-                bodyUnit.RemoveFromField();
+                bodyUnit.CmdRemoveFromField();
             }
             _body.Clear();
         }

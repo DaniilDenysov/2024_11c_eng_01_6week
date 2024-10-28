@@ -58,16 +58,26 @@ namespace Traps
             }
             else
             {
-                RemoveFromField();
+                CmdRemoveFromField();
             }
         }
 
-        public void RemoveFromField()
+        [Command]
+        public void CmdRemoveFromField()
         {
-            _attack.RemoveStaticAttackCells(GroupName);
-            _collection.RemoveStaticPickUpCells(GroupName);
-            _attack = null;
-            _collection = null;
+            RpcRemoveFromField();
+        }
+        
+        [ClientRpc]
+        public void RpcRemoveFromField()
+        {
+            if (_attack != null && _collection != null)
+            {
+                _attack.RemoveStaticAttackCells(GroupName);
+                _collection.RemoveStaticPickUpCells(GroupName);
+                _attack = null;
+                _collection = null;
+            }
             
             EventManager.OnCharacterMovesOut -= OnPlayerMakesMove;
             EventManager.OnTurnEnd -= OnTurnEnd;
