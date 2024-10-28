@@ -60,7 +60,7 @@ public class Inventory : NetworkBehaviour
     }
     
     [Command(requiresAuthority = false)]
-    private void CmdAddCollectibleToInventory(ICollectible collectible)
+    public void CmdAddCollectibleToInventory(ICollectible collectible)
     {
         RpcAddCollectibleToInventory(collectible);
     }
@@ -104,12 +104,24 @@ public class Inventory : NetworkBehaviour
         if (_inventory.Count > 0)
         {
             human = _inventory[0] as Human;
-            _inventory.RemoveAt(0);
-            humanDTOs.RemoveAt(0);
+            CmdRemoveItem();
             return true;
         }
 
         return false;
+    }
+    
+    [Command(requiresAuthority = false)]
+    public void CmdRemoveItem()
+    {
+        RpcRemoveItem();
+    }
+    
+    [ClientRpc]
+    private void RpcRemoveItem()
+    {
+        _inventory.RemoveAt(0);
+        humanDTOs.RemoveAt(0);
     }
 
     public void AdjustCardDraw(int adjustment)
