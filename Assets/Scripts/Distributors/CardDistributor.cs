@@ -13,7 +13,7 @@ namespace Distributors
     {
         [SerializeField] private CardDeckDTO[] cards;
         [SerializeField, Range(0, 100)] private int cardsLimit = 6;
-        [SyncVar] private SyncDictionary<NetworkPlayer, int> _harmCount = new SyncDictionary<NetworkPlayer, int>();
+        private readonly SyncDictionary<NetworkPlayer, int> _harmCount = new SyncDictionary<NetworkPlayer, int>();
 
         public static CardDistributor Instance;
 

@@ -4,21 +4,23 @@ using Characters;
 using Characters.Skills;
 using Collectibles;
 using Managers;
+using Mirror;
 using UnityEngine;
 
 namespace Traps
 {
-    public class SlimeTrail : MonoBehaviour
+    public class SlimeTrail : NetworkBehaviour
     {
         private Attack _attack;
         private Inventory _collection;
         [SerializeField] private CharacterMovement _ownerMovement;
         private const string GroupName = "SnailTrail";
         private const int LiveTime = 9;
-        private int _liveTime;
+        [SyncVar] private int _liveTime;
         private const int StepsConsumes = 2;
 
-        public void SetUp(GameObject owner)
+        [ClientRpc]
+        public void RpcSetUp(GameObject owner)
         {
             _liveTime = LiveTime;
             transform.position = owner.transform.position;
@@ -56,16 +58,26 @@ namespace Traps
             }
             else
             {
-                RemoveFromField();
+                CmdRemoveFromField();
             }
         }
 
-        public void RemoveFromField()
+        [Command]
+        public void CmdRemoveFromField()
         {
-            _attack.RemoveStaticAttackCells(GroupName);
-            _collection.RemoveStaticPickUpCells(GroupName);
-            _attack = null;
-            _collection = null;
+            RpcRemoveFromField();
+        }
+        
+        [ClientRpc]
+        public void RpcRemoveFromField()
+        {
+            if (_attack != null && _collection != null)
+            {
+                _attack.RemoveStaticAttackCells(GroupName);
+                _collection.RemoveStaticPickUpCells(GroupName);
+                _attack = null;
+                _collection = null;
+            }
             
             EventManager.OnCharacterMovesOut -= OnPlayerMakesMove;
             EventManager.OnTurnEnd -= OnTurnEnd;
