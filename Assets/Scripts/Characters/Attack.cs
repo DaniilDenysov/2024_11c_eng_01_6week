@@ -2,6 +2,7 @@ using Collectibles;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Distributors;
 using UnityEngine;
 using Validation;
 
@@ -112,12 +113,19 @@ namespace Characters
             
             foreach (GameObject entity in CharacterMovement.GetEntities(cell))
             {
-                if (entity.TryGetComponent(out Inventory opponentsInventory))
+                if (entity.TryGetComponent(out NetworkPlayer player))
                 {
-                    if (opponentsInventory.TryPopItem(out Human human))
+                    if (CardDistributor.Instance.GetHarmCount(player) > 0)
                     {
-                        _inventory.CmdAddCollectibleToInventory(human);
+                        CardDistributor.Instance.CmdDecreaseHarmCount(player);
                         result = true;
+                    } else if (entity.TryGetComponent(out Inventory opponentsInventory))
+                    {
+                        if (opponentsInventory.TryPopItem(out Human human))
+                        {
+                            _inventory.CmdAddCollectibleToInventory(human);
+                            result = true;
+                        }
                     }
                 }
             }

@@ -3,6 +3,7 @@ using General;
 using Managers;
 using Selectors;
 using System.Collections.Generic;
+using Distributors;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,16 +48,9 @@ namespace Cards
             {
                 Destroy(child.gameObject);
             }
-
-            if (selectedCharacter.TryGetComponent(out Inventory inventory))
-            {
-                inventory.AdjustCardDraw(-1);
-                OnCardSetUp(true);
-            }
-            else
-            {
-                OnCardSetUp(false);
-            }
+            
+            CardDistributor.Instance.CmdIncreaseHarmCount(selectedCharacter);
+            OnCardSetUp(true);
         }
     }
 }
