@@ -11,16 +11,14 @@ namespace Distributors
 {
     public class CardDistributor : NetworkBehaviour
     {
-        [SerializeField, SyncVar] private CardDeckDTO[] cards;
+        [SerializeField] private CardDeckDTO[] cards;
         [SerializeField, Range(0, 100)] private int cardsLimit = 6;
-        private Dictionary<NetworkPlayer, int> _harmCount;
+        [SyncVar] private SyncDictionary<NetworkPlayer, int> _harmCount = new SyncDictionary<NetworkPlayer, int>();
 
         public static CardDistributor Instance;
 
         public virtual void Awake()
         {
-            _harmCount = new Dictionary<NetworkPlayer, int>();
-            
             if (Instance == null)
             {
                 Instance = this;
