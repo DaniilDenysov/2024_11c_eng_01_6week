@@ -121,9 +121,9 @@ namespace Characters
                         result = true;
                     } else if (entity.TryGetComponent(out Inventory opponentsInventory))
                     {
-                        if (opponentsInventory.TryPopItem(out Human human))
+                        if (opponentsInventory.TryPopItem(out HumanDTO human))
                         {
-                            _inventory.CmdAddCollectibleToInventory(human);
+                            _inventory.Add(human);
                             result = true;
                         }
                     }
