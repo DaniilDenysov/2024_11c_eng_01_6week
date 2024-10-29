@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using Characters;
 using Characters.Skills;
-using Ganeral;
-using Managers;
 using UnityEngine;
 using Validation;
 
@@ -29,9 +27,12 @@ public class Jump : Skill
 
         foreach (Vector3 direction in directions)
         {
-            if (!pathValidator.CanMoveTo(characterPosition, characterPosition + direction))
+            Vector3 position = characterPosition + direction;
+            
+            if (!pathValidator.CanMoveTo(characterPosition, position)
+                && !pathValidator.IsOutOfMap(position))
             {
-                litPositions.Add(characterPosition + direction);
+                litPositions.Add(position);
             }
         }
 
@@ -40,7 +41,7 @@ public class Jump : Skill
 
     private void OnCellChosen(Vector3 chosenTile)
     {
-        movement.Teleport(chosenTile);
+        transform.position = chosenTile;
 
         OnActivated();
     }

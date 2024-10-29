@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Managers;
+using Mirror;
 using ModestTree;
 using Traps;
 using UnityEngine;
@@ -12,18 +13,13 @@ namespace Characters.Skills
     public class Trail : Skill
     {
         [SerializeField] private SlimeTrail trail;
-        private List<SlimeTrail> _currentTrail;
+        private readonly SyncList<SlimeTrail> _currentTrail = new ();
         private const int MaxTrailSize = 5;
-
-        private void Awake()
-        {
-            _currentTrail = new List<SlimeTrail>();
-        }
 
         public override void Activate(Action<bool> onSetUp)
         {
             base.Activate(onSetUp);
-            clearTrail();
+            ClearTrail();
             
             EventManager.OnTurnEnd += OnTurnEnd;
             EventManager.OnCharacterMovesIn += OnMoveMade;
@@ -62,13 +58,21 @@ namespace Characters.Skills
             
             if (_currentTrail.Count >= MaxTrailSize)
             {
-                _currentTrail[0].RemoveFromField();
+                _currentTrail[0].CmdRemoveFromField();
                 _currentTrail.RemoveAt(0);
             }
-            
-            SlimeTrail newTrail = Instantiate(trail, newPosition, transform.rotation);
-            newTrail.SetUp(gameObject);
+
+            CmdSpawnTrail(newPosition);
+        }
+
+        [Command(requiresAuthority = false)]
+        private void CmdSpawnTrail(Vector3 position)
+        {
+            SlimeTrail newTrail = Instantiate(trail, position, transform.rotation);
+            newTrail.RpcSetUp(gameObject);
             _currentTrail.Add(newTrail);
+            
+            NetworkServer.Spawn(newTrail.gameObject);
         }
 
         public override bool IsActivatable()
@@ -76,11 +80,11 @@ namespace Characters.Skills
             return true;
         }
 
-        public void clearTrail()
+        private void ClearTrail()
         {
             while (!_currentTrail.IsEmpty())
             {
-                _currentTrail[0].RemoveFromField();
+                _currentTrail[0].CmdRemoveFromField();
                 _currentTrail.RemoveAt(0);
             }
         }

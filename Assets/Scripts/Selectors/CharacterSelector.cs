@@ -1,9 +1,11 @@
 using Characters;
 using Managers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace Selectors
 {
@@ -12,36 +14,21 @@ namespace Selectors
         public static CharacterSelector Instance { get; private set; }
         public static CharacterMovement CurrentCharacter { get; private set; }
         [SerializeField] private DiceManager diceManager;
-        [SerializeField] public List<CharacterMovement> characters = new List<CharacterMovement>();
+        [SerializeField] private List<CharacterMovement> characters;
         private Queue<CharacterMovement> turnOrder;
         public UnityEvent<string> onStepCountChanged;
-
+        
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-
+            Instance = this;
+            
             turnOrder = new Queue<CharacterMovement>(characters);
             EventManager.OnTurnStart += OnTurnStart;
         }
 
-        public void RegisterCharacter(CharacterMovement character)
-        {
-            if (!characters.Contains(character))
-            {
-                characters.Add(character);
-            }
-        }
-
         private void OnTurnStart()
         {
-            SelectNext();
+          //  SelectNext();
         }
 
         public void SelectNext()
@@ -50,9 +37,14 @@ namespace Selectors
             {
                 turnOrder.Enqueue(characterMovement);
                 CurrentCharacter = characterMovement;
-                CurrentCharacter.SetSteps(diceManager.GetDiceValue());
-                onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
-                characterMovement.ChooseNewDirection(() => { });
+              //  onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
+
+             /*   EventManager.OnCharacterMovesIn += (vector3, movement) =>
+                {
+                    onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
+                };*/
+                
+                characterMovement.OnTurn();
             }
         }
 
@@ -61,23 +53,9 @@ namespace Selectors
             EventManager.FireEvent(EventManager.OnTurnEnd);
         }
 
-        public void MakeMovement()
+        public List<CharacterMovement> GetCharacters()
         {
-            CurrentCharacter.MakeMovement();
-            onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
-        }
-
-        public void DisplayCharacterSelection(List<CharacterMovement> availableTargets, Action<CharacterMovement> onTargetSelected)
-        {
-            foreach (var target in availableTargets)
-            {
-                Debug.Log($"Available Target: {target.name}");
-            }
-
-            if (availableTargets.Count > 0)
-            {
-                onTargetSelected?.Invoke(availableTargets[0]);
-            }
+            return characters;
         }
     }
 }

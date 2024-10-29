@@ -16,6 +16,14 @@ namespace DesignPatterns.Singleton
             }
         }
 
+        private void OnDestroy()
+        {
+            if (Instance as Singleton<T> == this)
+            {
+                Instance = default;
+            }
+        }
+
         public abstract T GetInstance();
     }
 }

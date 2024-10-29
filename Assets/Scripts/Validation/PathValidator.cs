@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using Characters;
-using Ganeral;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -23,7 +23,7 @@ namespace Validation
 
         public bool CanMoveTo(Vector3 initialPosition, Vector3 nextPosition)
         {
-            Vector3 directionUnit = CharacterMovement.GetUnitDirection(walls, initialPosition, nextPosition);
+            Vector3 directionUnit = GetUnitDirection(walls, initialPosition, nextPosition);
 
             if (directionUnit.x == 0 || directionUnit.y == 0)
             {
@@ -46,9 +46,9 @@ namespace Validation
             return true;
         }
 
-        public Tilemap GetTileMap()
+        public bool IsOutOfMap(Vector3 cell)
         {
-            return walls;
+            return !walls.cellBounds.Contains(walls.WorldToCell(cell));
         }
 
         private static Vector3 multiplyVectors(Vector3 firstVector, Vector3 secondVector)
@@ -78,6 +78,20 @@ namespace Validation
             }
 
             return result;
+        }
+
+        public static Vector3 GetUnitDirection(Tilemap tilemap, Vector3 firstPosition, Vector3 secondPosition) {
+            Vector3 unitSize = tilemap.layoutGrid.cellSize;
+
+            Vector3Int firstTilePosition = tilemap.WorldToCell(firstPosition);
+            Vector3Int secondTilePosition = tilemap.WorldToCell(secondPosition);
+            Vector3Int vectorDifference = secondTilePosition - firstTilePosition;
+
+            return new Vector3(
+                vectorDifference.x > 0 ? unitSize.x : (vectorDifference.x < 0 ? -unitSize.x : 0),
+                vectorDifference.y > 0 ? unitSize.y : (vectorDifference.y < 0 ? -unitSize.y : 0),
+                0
+            );
         }
     }
 }

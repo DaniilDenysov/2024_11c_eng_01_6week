@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using Characters;
 using Characters.Skills;
-using Ganeral;
 using UnityEngine;
-using Validation;
 
 [RequireComponent(typeof(CharacterMovement)), RequireComponent(typeof(Attack))]
 public class LongTongue : Skill

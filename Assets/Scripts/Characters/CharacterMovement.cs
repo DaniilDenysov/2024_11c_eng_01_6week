@@ -1,109 +1,139 @@
 using Cards;
 using CustomTools;
-using Ganeral;
 using Managers;
 using Selectors;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Characters.CharacterStates;
-using Selectors;
 using UnityEngine;
 using Validation;
+using Traps;
+using UnityEngine.Events;
+using Client;
 using Mirror;
-using UnityEngine.Tilemaps;
 
 namespace Characters
 {
-    [RequireComponent(typeof(CharacterStateManager))]
-    public class CharacterMovement : NetworkBehaviour, ITurnAction
+    [RequireComponent(typeof(CharacterStateManager),typeof(ClientData))]
+    public class CharacterMovement : MonoBehaviour, ITurnAction
     {
-        [SerializeField, Range(0, 100)] private int steps = 0;
-        [SerializeField, Range(0, 360f)] private float rotationStep = 90f;
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
+        [SerializeField] private GameObject _sprite;
         
         [SerializeField] private GameObject HUD_display;
         [SerializeField] private PathValidator pathValidator;
+        public UnityEvent _onMoveCancelable;
+        public UnityEvent _onMoveAvailable;
 
         private CharacterStateManager _stateManager;
-        private int _stepCost = 1;
+        private const int StepCost = 1;
+        private ClientData clientData;
 
         private void Awake()
         {
             _stateManager = GetComponent<CharacterStateManager>();
-            EventManager.OnTick += OnTick;
             directionNormalized = Vector3.left;
-        }
-
-        void Start()
-        {
-            CharacterSelector.Instance.RegisterCharacter(this);
+            clientData = GetComponent<ClientData>();
+            
+            _stateManager._onStateChanged += OnStateChanged;
+            EventManager.OnClientStartTurn += OnTurn;
         }
 
         public void OnTurn()
         {
-            ChooseNewDirection(() => { });
-        }
-
-        public void RotateObject()
-        {
-            Vector2 directionContinuous = directionNormalized;
-            Quaternion rotation = Quaternion.Euler(0, 0, rotationStep);
-            directionContinuous = rotation * directionContinuous;
-            directionNormalized = new Vector3(Mathf.RoundToInt(directionContinuous.x), Mathf.RoundToInt(directionContinuous.y));
-        }
-
-        public void SetSteps(int value)
-        {
-            steps = value;
-        }
-
-        private void OnTick()
-        {
-        }
-
-        public void MakeCustomRotationMovement(Vector3 nextPosition, bool isStepsIgnored = false)
-        {
-            if (isStepsEnough() || isStepsIgnored)
+            if (clientData.GetTurn())
             {
-                if (pathValidator.CanMoveTo(transform.position, nextPosition))
-                {
-                    Vector3 directionUnit =
-                        CharacterMovement.GetUnitDirection(pathValidator.GetTileMap(), 
-                            transform.position, nextPosition);
-
-                    while (transform.position != nextPosition)
-                    {
-                        if (!isStepsEnough() && !isStepsIgnored)
-                        {
-                            return;
-                        }
-
-                        makeStep(transform.position + directionUnit, isStepsIgnored);
-                    }
-                }
-                else
-                {
-                    Debug.Log("Unable to move");
-                }
+                _stateManager.CmdSetCurrentState(new Idle());
+                ChooseNewDirection(() => { });
             }
         }
 
-        public void Teleport(Vector3 nextPosition)
+        private void OnStateChanged(CharacterState newState)
         {
-            _stateManager.SetCurrentState(new Idle());
-            transform.position = nextPosition;
+            if (newState.IsMovable())
+            {
+                HighlightAvailableMoves();
+            }
+            else
+            {
+                UnhighlightAvailableMoves();
+            }
+        }
+
+        [Button]
+        public void HighlightAvailableMoves()
+        {
+            List<Vector3> litPositions = new List<Vector3>();
+            int distance = 1;
+            
+            for (int availableSteps = 1; availableSteps < clientData.GetScoreAmount() + 1; availableSteps++)
+            {
+                Vector3 nextPosition = transform.position + directionNormalized * distance;
+                
+                if (IsSlimed(nextPosition))
+                {
+                    availableSteps++;
+
+                    if (availableSteps >= clientData.GetScoreAmount() + 1)
+                    {
+                        break;
+                    }
+                }
+                
+                if (pathValidator.CanMoveTo(transform.position, nextPosition))
+                {
+                    litPositions.Add(nextPosition);
+                }
+ 
+                distance++;
+            }
+
+            if (litPositions.Count > 0)
+            {
+                _onMoveAvailable.Invoke();
+                TileSelector.Instance.SetTilesLit(litPositions, MakeMovement);
+            }
+            else if (clientData.GetTurn())
+            {
+                _onMoveCancelable.Invoke();
+            }
+        }
+
+        private void UnhighlightAvailableMoves()
+        {
+            TileSelector.Instance.SetTilesUnlit();
+        }
+        
+        public void MakeMovement(Vector3 nextPosition)
+        {
+            Vector3 difference = nextPosition - transform.position;
+            int steps = (int)Math.Abs(difference.x);
+
+            if (difference.x != 0 && difference.y != 0)
+            {
+                Debug.LogError("Unable to move into such direction");
+            }
+            else if (difference.x == 0)
+            {
+                steps = (int)Math.Abs(difference.y);
+            }
+
+            for (int i = 0; i < steps; i++) {
+                MakeMovement();
+            }
+            
+            _stateManager.CmdSetCurrentState(new Idle());
         }
 
         public void MakeMovement()
         {
-            if (isStepsEnough() && _stateManager.GetCurrentState().IsMovable())
+            if (IsStepsEnough() && _stateManager.GetCurrentState().IsMovable())
             {
                 Vector3 nextPosition = transform.position + directionNormalized;
                 if (pathValidator.CanMoveTo(nextPosition,
                     -new Vector3Int((int)directionNormalized.x, (int)directionNormalized.y, (int)directionNormalized.z)))
                 {
-                    makeStep(nextPosition);
+                    MakeStep(nextPosition);
                 }
                 else
                 {
@@ -115,15 +145,9 @@ namespace Characters
         public void ChooseNewDirection(Action onDirectionChosen)
         {
             CharacterState previousState = _stateManager.GetCurrentState();
-            _stateManager.SetCurrentState(new CardSettingUp());
-            List<Vector3> turnPositions = CharacterMovement.GetAllDirections();
-
-            for (int i = 0; i < turnPositions.Count; i++)
-            {
-                turnPositions[i] += transform.position;
-            }
-
-            TileSelector.Instance.SetTilesLit(turnPositions, cell =>
+            _stateManager.CmdSetCurrentState(new CardSettingUp());
+            
+            TileSelector.Instance.SetDirectionsTilesLit(transform.position, cell =>
             {
                 OnDirectionChosen(cell, previousState, onDirectionChosen);
             });
@@ -132,67 +156,44 @@ namespace Characters
         private void OnDirectionChosen(Vector3 position, CharacterState previousState, Action onDirectionChosen)
         {
             directionNormalized = position - transform.position;
-            _stateManager.SetCurrentState(previousState);
+            
+            float angle = Vector3.Angle(Vector3.up, directionNormalized);
+            
+            _sprite.transform.Rotate(
+                new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle), Space.World);
+            _stateManager.CmdSetCurrentState(previousState);
             onDirectionChosen.Invoke();
         }
 
-        private void makeStep(Vector3 nextPosition, bool isStepsIgnored = false)
+        private void MakeStep(Vector3 nextPosition, bool isStepsIgnored = false)
         {
             if (!isStepsIgnored) {
-                decreaseStep();
+                DecreaseStep();
             }
             EventManager.FireEvent(EventManager.OnCharacterMovesOut, transform.position, this);
             transform.position = nextPosition;
-            _stateManager.SetCurrentState(new Idle());
             EventManager.FireEvent(EventManager.OnCharacterMovesIn, nextPosition, this);
         }
 
-        private bool isStepsEnough()
+        private bool IsStepsEnough()
         {
-            return steps - _stepCost >= 0;
+            return clientData.GetScoreAmount() - StepCost >= 0;
         }
 
-        private void decreaseStep()
+        public void DecreaseStep()
         {
-            steps -= _stepCost;
-            if (steps == 0)
+            clientData.CmdSetScoreAmount(clientData.GetScoreAmount() - StepCost);
+            if (clientData.GetScoreAmount() == 0)
             {
-                CharacterSelector.FinishTurn();
+                EventManager.FireEvent(EventManager.OnTurnFinished);
             }
         }
-
-        public List<CharacterMovement> GetAvailableTargets(List<CharacterMovement> allCharacters)
-        {
-            List<CharacterMovement> targets = new List<CharacterMovement>(allCharacters);
-            targets.Remove(this);
-            return targets;
-        }
-
 
         public PathValidator GetPathValidator()
         {
             return pathValidator;
         }
-
-        public void SetStepCost(int stepCost)
-        {
-            _stepCost = stepCost;
-        }
-
-        public int GetSteps()
-        {
-            return steps;
-        }
         
-        public void ResetStepCost()
-        {
-            _stepCost = 1;
-        }
-
-        public Vector3 GetDirection()
-        {
-            return directionNormalized;
-        }
         public static List<GameObject> GetEntities(Vector3 position, GameObject self = null)
         {
             var circles = Physics2D.OverlapCircleAll(position, 0.1f);
@@ -201,6 +202,33 @@ namespace Characters
             foreach (Collider2D circle in circles) {
                 if (circle != default && circle.gameObject != self) {
                     result.Add(circle.gameObject);
+                }
+            }
+
+            return result;
+        }
+
+        public bool IsSlimed(Vector3 position)
+        {
+            foreach (SlimeTrail slimeGameObject in GetEntityOfType<SlimeTrail>(position))
+            {
+                if (slimeGameObject.GetOwner() != gameObject)
+                {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+        
+        public static List<T> GetEntityOfType<T>(Vector3 position)
+        {
+            var circles = Physics2D.OverlapCircleAll(position, 0.1f);
+
+            List<T> result = new List<T>();
+            foreach (Collider2D circle in circles) {
+                if (circle != default && circle.gameObject.TryGetComponent(out T component)) {
+                    result.Add(component);
                 }
             }
 
@@ -224,20 +252,6 @@ namespace Characters
                 new Vector3(-1, 0),
                 new Vector3(0, 0)
             };
-        }
-
-        public static Vector3 GetUnitDirection(Tilemap tilemap, Vector3 firstPosition, Vector3 secondPosition) {
-            Vector3 unitSize = tilemap.layoutGrid.cellSize;
-
-            Vector3Int firstTilePosition = tilemap.WorldToCell(firstPosition);
-            Vector3Int secondTilePosition = tilemap.WorldToCell(secondPosition);
-            Vector3Int vectorDifference = secondTilePosition - firstTilePosition;
-
-            return new Vector3(
-                vectorDifference.x > 0 ? unitSize.x : (vectorDifference.x < 0 ? -unitSize.x : 0),
-                vectorDifference.y > 0 ? unitSize.y : (vectorDifference.y < 0 ? -unitSize.y : 0),
-                0
-            );
         }
 
         public static Vector3Int VectorToIntVector(Vector3 vector) {

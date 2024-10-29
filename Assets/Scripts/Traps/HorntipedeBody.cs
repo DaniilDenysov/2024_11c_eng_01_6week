@@ -1,16 +1,15 @@
 using System.Collections.Generic;
 using Characters;
 using Collectibles;
-using Ganeral;
-using Managers;
+using Mirror;
 using UnityEngine;
 
 namespace Traps
 {
-    public class HorntipedeBody : MonoBehaviour
+    public class HorntipedeBody : NetworkBehaviour
     {
         private Attack _attack;
-        private ICollector _collector;
+        private Inventory _collector;
 
         public void SetUp(Vector3 position, GameObject owner)
         {
@@ -33,20 +32,18 @@ namespace Traps
             return _collector.IsCellPickable(transform.position, typeof(Human));
         }
 
-        public bool Attack()
+        [Command(requiresAuthority = false)]
+        public void CmdRemoveFromField()
         {
-            return _attack.TryAttack(transform.position);
-        }
-        
-        public bool Eat()
-        {
-            return _collector.PickUp(transform.position);
+            RpcRemoveFromField();
         }
 
-        public void RemoveFromField()
+        [ClientRpc]
+        public void RpcRemoveFromField()
         {
             _attack = null;
             _collector = null;
+            
             Destroy(gameObject);
         }
     }

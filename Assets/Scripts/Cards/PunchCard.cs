@@ -1,12 +1,6 @@
-using System;
 using Characters;
-using System.Collections;
 using System.Collections.Generic;
-using Ganeral;
-using Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Validation;
 
 namespace Cards
 {

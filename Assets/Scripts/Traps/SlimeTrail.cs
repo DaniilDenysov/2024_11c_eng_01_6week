@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using Characters;
 using Characters.Skills;
 using Collectibles;
-using Ganeral;
 using Managers;
+using Mirror;
 using UnityEngine;
 
 namespace Traps
 {
-    public class SlimeTrail : MonoBehaviour
+    public class SlimeTrail : NetworkBehaviour
     {
         private Attack _attack;
-        private ICollector _collection;
-        private CharacterMovement _ownerMovement;
+        private Inventory _collection;
+        [SerializeField] private CharacterMovement _ownerMovement;
         private const string GroupName = "SnailTrail";
         private const int LiveTime = 9;
-        private int _liveTime;
+        [SyncVar] private int _liveTime;
+        private const int StepsConsumes = 2;
 
-        public void SetUp(GameObject owner)
+        [ClientRpc]
+        public void RpcSetUp(GameObject owner)
         {
             _liveTime = LiveTime;
             transform.position = owner.transform.position;
@@ -36,35 +38,15 @@ namespace Traps
                     "Gameobject making trail doesn't have Movement, Attack or Collection component");
             }
 
-            foreach (GameObject entity in CharacterMovement.GetEntities(transform.position))
-            {
-                if (entity.TryGetComponent(out CharacterMovement movement))
-                {
-                    if (movement != _ownerMovement)
-                    {
-                        movement.SetStepCost(2);
-                    }
-                }
-            }
-
-            EventManager.OnCharacterMovesIn += OnPlayerMakesMoveIn;
-            EventManager.OnCharacterMovesOut += OnPlayerMakesMoveOut;
+            EventManager.OnCharacterMovesOut += OnPlayerMakesMove;
             EventManager.OnTurnEnd += OnTurnEnd;
         }
 
-        private void OnPlayerMakesMoveIn(Vector3 cell, CharacterMovement movement)
+        private void OnPlayerMakesMove(Vector3 cell, CharacterMovement movement)
         {
             if (movement != _ownerMovement && transform.position == movement.transform.position)
             {
-                movement.SetStepCost(2);
-            }
-        }
-        
-        private void OnPlayerMakesMoveOut(Vector3 cell, CharacterMovement movement)
-        {
-            if (movement != _ownerMovement && transform.position == movement.transform.position)
-            {
-                movement.ResetStepCost();
+                movement.DecreaseStep();
             }
         }
 
@@ -76,19 +58,28 @@ namespace Traps
             }
             else
             {
-                RemoveFromField();
+                CmdRemoveFromField();
             }
         }
 
-        public void RemoveFromField()
+        [Command]
+        public void CmdRemoveFromField()
         {
-            _attack.RemoveStaticAttackCells(GroupName);
-            _collection.RemoveStaticPickUpCells(GroupName);
-            _attack = null;
-            _collection = null;
+            RpcRemoveFromField();
+        }
+        
+        [ClientRpc]
+        public void RpcRemoveFromField()
+        {
+            if (_attack != null && _collection != null)
+            {
+                _attack.RemoveStaticAttackCells(GroupName);
+                _collection.RemoveStaticPickUpCells(GroupName);
+                _attack = null;
+                _collection = null;
+            }
             
-            EventManager.OnCharacterMovesIn -= OnPlayerMakesMoveIn;
-            EventManager.OnCharacterMovesOut -= OnPlayerMakesMoveOut;
+            EventManager.OnCharacterMovesOut -= OnPlayerMakesMove;
             EventManager.OnTurnEnd -= OnTurnEnd;
             
             Destroy(gameObject);
@@ -97,6 +88,11 @@ namespace Traps
         public bool IsTrailPositionedAt(Vector3 trail)
         {
             return transform.position.Equals(trail);
+        }
+
+        public GameObject GetOwner()
+        {
+            return _ownerMovement.gameObject;
         }
     }
 }

@@ -1,7 +1,9 @@
 using Characters;
+using General;
 using Managers;
 using Selectors;
 using System.Collections.Generic;
+using Distributors;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +14,6 @@ namespace Cards
     {
         [SerializeField] private GameObject characterSelectionPanel;
         [SerializeField] private Button characterButtonPrefab;
-        private Inventory targetInventory;
-        private bool harmActive;
 
         public override void OnCardActivation(GameObject inventory)
         {
@@ -23,11 +23,10 @@ namespace Cards
                 return;
             }
 
-            List<CharacterMovement> availableTargets = new List<CharacterMovement>(CharacterSelector.Instance.characters);
-            DisplayCharacterSelection(availableTargets);
+            DisplayCharacterSelection(NetworkPlayerContainer.Instance.GetItems());
         }
 
-        private void DisplayCharacterSelection(List<CharacterMovement> availableTargets)
+        private void DisplayCharacterSelection(List<NetworkPlayer> availableTargets)
         {
             characterSelectionPanel.SetActive(true);
 
@@ -41,7 +40,7 @@ namespace Cards
             }
         }
 
-        private void OnPlayerChosen(CharacterMovement selectedCharacter)
+        private void OnPlayerChosen(NetworkPlayer selectedCharacter)
         {
             characterSelectionPanel.SetActive(false);
 
@@ -49,30 +48,9 @@ namespace Cards
             {
                 Destroy(child.gameObject);
             }
-
-            targetInventory = selectedCharacter.GetComponent<Inventory>();
-            if (targetInventory != null)
-            {
-                harmActive = true;
-                targetInventory.AdjustCardDraw(-1);
-                EventManager.OnPlayerAttacked += OnPlayerAttacked;
-                OnCardSetUp(true);
-            }
-            else
-            {
-                OnCardSetUp(false);
-            }
-        }
-
-        private void OnPlayerAttacked(GameObject attackedPlayer)
-        {
-            if (attackedPlayer == targetInventory.gameObject && harmActive)
-            {
-                targetInventory.AdjustCardDraw(1);
-                EventManager.OnPlayerAttacked -= OnPlayerAttacked;
-                harmActive = false;
-                Destroy(gameObject);
-            }
+            
+            CardDistributor.Instance.CmdIncreaseHarmCount(selectedCharacter);
+            OnCardSetUp(true);
         }
     }
 }
