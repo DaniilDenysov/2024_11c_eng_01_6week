@@ -43,7 +43,7 @@ namespace Characters
         {
             if (clientData.GetTurn())
             {
-                _stateManager.CmdSetCurrentState(new Idle());
+                _stateManager.OnTurn();
                 ChooseNewDirection(() => { });
             }
         }
