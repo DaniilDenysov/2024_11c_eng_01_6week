@@ -5,17 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Mirror;
 using ModestTree;
+using UI.Containers;
 using UnityEngine;
 using Validation;
 
 public class Inventory : NetworkBehaviour
 {
-    [SerializeField, SyncVar(hook = nameof(OnInventoryChanged))] private List<HumanDTO> humanDTOs;
-
-    private void OnInventoryChanged(List<HumanDTO> oldValue, List<HumanDTO> newValue)
-    {
-        Debug.Log("Changed");
-    }
+    [SerializeField] private List<HumanDTO> humanDTOs;
 
     private Action<bool> _onPickedUp;
 
@@ -46,6 +42,7 @@ public class Inventory : NetworkBehaviour
     public bool PickUp(Vector3 cell)
     {
         bool result = false;
+        bool isGameEnded = false;
 
         foreach (GameObject entity in CharacterMovement.GetEntities(cell))
         {
@@ -53,9 +50,22 @@ public class Inventory : NetworkBehaviour
             {
                 if (collectible.GetType() == typeof(Human))
                 {
+                    HumanDTO humanDTO = (collectible as Human).GetData();
+                    
+                    CmdAddHuman(humanDTO);
+                    collectible.Collect();
+                    if (!InventoryContainer.Instance.TryAdd(humanDTO))
+                    {
+                        isGameEnded = true;
+                    }
                     result = true;
                 }
             }
+        }
+
+        if (isGameEnded)
+        {
+            Debug.Log("YEEAHH, Game ended!!!");
         }
 
         return result;
@@ -86,21 +96,39 @@ public class Inventory : NetworkBehaviour
         human = default;
         if (humanDTOs.Count > 0)
         {
-            //human = _inventory[0] as Human;
             human = humanDTOs[0];
-            humanDTOs.RemoveAt(0);
-            //CmdRemoveItem();
+            if (!InventoryContainer.Instance.TryRemove()) return false;
+            CmdRemoveHuman();
             return true;
         }
 
         return false;
     }
+    
+    [Command(requiresAuthority = false)]
+    public void CmdRemoveHuman()
+    {
+        RpcAddHuman();
+    }
 
-    public void Add(HumanDTO humanDTO)
+    [ClientRpc]
+    public void RpcAddHuman()
+    {
+        humanDTOs.RemoveAt(0);
+    }
+
+    [Command(requiresAuthority = false)]
+    public void CmdAddHuman(HumanDTO humanDTO)
+    {
+        RpcAddHuman(humanDTO);
+    }
+
+    [ClientRpc]
+    public void RpcAddHuman(HumanDTO humanDTO)
     {
         humanDTOs.Add(humanDTO);
     }
-
+    
     public void RemoveStaticPickUpCells(string groupName)
     {
         _staticPickUpCells.Remove(groupName);

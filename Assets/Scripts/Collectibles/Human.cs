@@ -12,20 +12,11 @@ namespace Collectibles
     {
         [SerializeField, SyncVar] private string ownedBy;
         [SerializeField, Range(2, 6), SyncVar] private int currentPoints;
-        [SerializeField, SyncVar] private bool isCollected;
 
         [Server]
         public void SetOwner(string owner)
         {
             ownedBy = owner;
-        }
-
-        private void Update()
-        {
-            if (isCollected && gameObject.activeInHierarchy)
-            {
-                gameObject.SetActive(false);
-            }
         }
 
         public HumanDTO GetData()
@@ -39,20 +30,20 @@ namespace Collectibles
 
         public override object Collect()
         {
-            CmdSetCollected(true);
+            CmdCollect();
             return this;
         }
         
         [Command(requiresAuthority = false)]
-        private void CmdSetCollected(bool isCollected)
+        private void CmdCollect()
         {
-            RpcSetCollected(isCollected);
+            RpcSetCollected();
         }
     
         [ClientRpc]
-        private void RpcSetCollected(bool isCollected)
+        private void RpcSetCollected()
         {
-            this.isCollected = isCollected;
+            Destroy(gameObject);
         }
     }
 }
