@@ -53,7 +53,6 @@ namespace Managers
 
         private IEnumerator StartTurn()
         {
-            // yield return new WaitForSeconds(turnDelay);
             CharacterTurnDistributor.Instance.OnTurnStart();
             ScoreDistributor.Instance.AddScoreToCurrentClient();
             CardDistributor.Instance.DistributeCardsToClients();

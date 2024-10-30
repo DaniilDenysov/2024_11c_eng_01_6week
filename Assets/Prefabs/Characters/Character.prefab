@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23fac922d8e7fab40abbff4ac9dc3404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectSkill_HUD: {fileID: 3441341211704583267}
+  selectSkill_HUD: {fileID: 6202873072632632520}
   skills: []
 --- !u!114 &4484523131089315455
 MonoBehaviour:
@@ -911,6 +911,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5423363810271883414, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
   m_PrefabInstance: {fileID: 7242264563895670005}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6202873072632632520 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3644741467919614013, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}
+  m_PrefabInstance: {fileID: 7242264563895670005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441341211704583267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ecb5f9b426047b78260a2309d82b20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7385977471280724710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 144663154144521747, guid: 00d82e2c2eeb2ce4095394b481c81377, type: 3}

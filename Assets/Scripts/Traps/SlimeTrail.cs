@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using Characters;
-using Characters.Skills;
-using Collectibles;
 using Managers;
 using Mirror;
 using UnityEngine;
@@ -16,8 +13,7 @@ namespace Traps
         [SerializeField] private CharacterMovement _ownerMovement;
         private const string GroupName = "SnailTrail";
         private const int LiveTime = 9;
-        [SyncVar] private int _liveTime;
-        private const int StepsConsumes = 2;
+        private int _liveTime;
 
         [ClientRpc]
         public void RpcSetUp(GameObject owner)
