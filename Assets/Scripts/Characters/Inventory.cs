@@ -2,9 +2,7 @@ using System;
 using Characters;
 using Collectibles;
 using System.Collections.Generic;
-using System.Linq;
 using Mirror;
-using ModestTree;
 using UI.Containers;
 using UnityEngine;
 using Validation;
@@ -12,31 +10,17 @@ using Validation;
 public class Inventory : NetworkBehaviour
 {
     [SerializeField] private List<HumanDTO> humanDTOs;
-
-    private Action<bool> _onPickedUp;
-
-    private Dictionary<string, List<Vector3>> _staticPickUpCells;
     private CharacterMovement _movement;
 
     private void Awake()
     {
         _movement = GetComponent<CharacterMovement>();
-        _staticPickUpCells = new Dictionary<string, List<Vector3>>();
         humanDTOs = new List<HumanDTO>();
     }
 
-    public void PickUp(Action<bool> onPickedUp)
+    public virtual void PickUp(Action<bool> onPickedUp)
     {
-        if (IsStaticPickUpCellsEmpty())
-        {
-            onPickedUp.Invoke(PickUp(transform.position));
-        }
-        else
-        {
-            List<Vector3> litPositions = GetPickUpCells(0, typeof(Human));
-            TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
-            _onPickedUp = onPickedUp;
-        }
+        onPickedUp.Invoke(PickUp(transform.position));
     }
 
     public bool PickUp(Vector3 cell)
@@ -69,26 +53,6 @@ public class Inventory : NetworkBehaviour
         }
 
         return result;
-    }
-
-    public void AddStaticPickUpCells(List<Vector3> cells, string groupName)
-    {
-        if (_staticPickUpCells.TryGetValue(groupName, out List<Vector3> groupCells))
-        {
-            groupCells.AddRange(cells);
-            groupCells = groupCells.Distinct().ToList();
-
-            _staticPickUpCells[groupName] = groupCells;
-        }
-        else
-        {
-            _staticPickUpCells.Add(groupName, cells);
-        }
-    }
-
-    private void OnCellChosen(Vector3 cell)
-    {
-        _onPickedUp(PickUp(cell));
     }
 
     public bool TryPopItem(out HumanDTO human)
@@ -128,18 +92,8 @@ public class Inventory : NetworkBehaviour
     {
         humanDTOs.Add(humanDTO);
     }
-    
-    public void RemoveStaticPickUpCells(string groupName)
-    {
-        _staticPickUpCells.Remove(groupName);
-    }
 
-    public bool IsStaticPickUpCellsEmpty()
-    {
-        return _staticPickUpCells.IsEmpty();
-    }
-
-    public List<Vector3> GetPickUpCells(int range, Type collectibleType, bool includeStaticCell = true,
+    public virtual List<Vector3> GetPickUpCells(int range, Type collectibleType, bool includeStaticCell = true,
         bool includeCurrentCell = true)
     {
         PathValidator pathValidator = _movement.GetPathValidator();
@@ -163,23 +117,6 @@ public class Inventory : NetworkBehaviour
                 if (IsCellPickable(currentCell, collectibleType))
                 {
                     result.Add(currentCell);
-                }
-            }
-        }
-
-        if (includeStaticCell)
-        {
-            foreach (var group in _staticPickUpCells)
-            {
-                foreach (var cell in group.Value)
-                {
-                    if (!result.Contains(cell))
-                    {
-                        if (IsCellPickable(cell, collectibleType))
-                        {
-                            result.Add(cell);
-                        }
-                    }
                 }
             }
         }

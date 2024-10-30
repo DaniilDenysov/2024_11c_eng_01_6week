@@ -12,7 +12,7 @@ namespace Traps
     public class SlimeTrail : NetworkBehaviour
     {
         private Attack _attack;
-        private Inventory _collection;
+        private StaticCellInventory _collection;
         [SerializeField] private CharacterMovement _ownerMovement;
         private const string GroupName = "SnailTrail";
         private const int LiveTime = 9;
