@@ -29,6 +29,8 @@ namespace Characters
         private const int StepCost = 1;
         private ClientData clientData;
 
+        private ActionBlockerManager actionBlocker;
+
         private void Awake()
         {
             _stateManager = GetComponent<CharacterStateManager>();
@@ -36,6 +38,8 @@ namespace Characters
             clientData = GetComponent<ClientData>();
             
             _stateManager._onStateChanged += OnStateChanged;
+
+            actionBlocker = FindObjectOfType<ActionBlockerManager>();
             EventManager.OnClientStartTurn += OnTurn;
         }
 
@@ -106,6 +110,13 @@ namespace Characters
         
         public void MakeMovement(Vector3 nextPosition)
         {
+
+            if (actionBlocker.IsActionBlocked("Move"))
+            {
+                Debug.Log("Move action is blocked!");
+                return;
+            }
+
             Vector3 difference = nextPosition - transform.position;
             int steps = (int)Math.Abs(difference.x);
 
