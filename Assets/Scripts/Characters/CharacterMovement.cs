@@ -7,16 +7,16 @@ using System.Collections.Generic;
 using Characters.CharacterStates;
 using UnityEngine;
 using Validation;
-using Mirror;
 using Traps;
 using UnityEngine.Events;
+using Client;
+using Mirror;
 
 namespace Characters
 {
-    [RequireComponent(typeof(CharacterStateManager))]
-    public class CharacterMovement : NetworkBehaviour, ITurnAction
+    [RequireComponent(typeof(CharacterStateManager),typeof(ClientData))]
+    public class CharacterMovement : MonoBehaviour, ITurnAction
     {
-        [SerializeField, Range(0, 100)] private int steps = 0;
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
         [SerializeField] private GameObject _sprite;
         
@@ -27,23 +27,29 @@ namespace Characters
 
         private CharacterStateManager _stateManager;
         private const int StepCost = 1;
+        private ClientData clientData;
 
         private ActionBlockerManager actionBlocker;
 
         private void Awake()
         {
             _stateManager = GetComponent<CharacterStateManager>();
-            EventManager.OnTick += OnTick;
             directionNormalized = Vector3.left;
-
+            clientData = GetComponent<ClientData>();
+            
             _stateManager._onStateChanged += OnStateChanged;
 
             actionBlocker = FindObjectOfType<ActionBlockerManager>();
+            EventManager.OnClientStartTurn += OnTurn;
         }
 
         public void OnTurn()
         {
-            ChooseNewDirection(() => { });
+            if (clientData.GetTurn())
+            {
+                _stateManager.CmdSetCurrentState(new Idle());
+                ChooseNewDirection(() => { });
+            }
         }
 
         private void OnStateChanged(CharacterState newState)
@@ -58,34 +64,31 @@ namespace Characters
             }
         }
 
-        private void HighlightAvailableMoves()
+        [Button]
+        public void HighlightAvailableMoves()
         {
             List<Vector3> litPositions = new List<Vector3>();
             int distance = 1;
             
-            for (int availableSteps = 1; availableSteps < steps + 1; availableSteps++)
+            for (int availableSteps = 1; availableSteps < clientData.GetScoreAmount() + 1; availableSteps++)
             {
-                Vector3 currentPosition = transform.position + directionNormalized * distance;
+                Vector3 nextPosition = transform.position + directionNormalized * distance;
                 
-                if (IsSlimed(currentPosition))
+                if (IsSlimed(nextPosition))
                 {
                     availableSteps++;
 
-                    if (availableSteps >= steps + 1)
+                    if (availableSteps >= clientData.GetScoreAmount() + 1)
                     {
                         break;
                     }
                 }
                 
-                if (pathValidator.CanMoveTo(transform.position, currentPosition))
+                if (pathValidator.CanMoveTo(transform.position, nextPosition))
                 {
-                    litPositions.Add(currentPosition);
+                    litPositions.Add(nextPosition);
                 }
-                else
-                {
-                    break;
-                }
-
+ 
                 distance++;
             }
 
@@ -94,7 +97,7 @@ namespace Characters
                 _onMoveAvailable.Invoke();
                 TileSelector.Instance.SetTilesLit(litPositions, MakeMovement);
             }
-            else if (CharacterSelector.CurrentCharacter == this)
+            else if (clientData.GetTurn())
             {
                 _onMoveCancelable.Invoke();
             }
@@ -104,16 +107,7 @@ namespace Characters
         {
             TileSelector.Instance.SetTilesUnlit();
         }
-
-        public void SetSteps(int value)
-        {
-            steps = value;
-        }
-
-        private void OnTick()
-        {
-        }
-
+        
         public void MakeMovement(Vector3 nextPosition)
         {
 
@@ -139,7 +133,7 @@ namespace Characters
                 MakeMovement();
             }
             
-            _stateManager.SetCurrentState(new Idle());
+            _stateManager.CmdSetCurrentState(new Idle());
         }
 
         public void MakeMovement()
@@ -162,7 +156,7 @@ namespace Characters
         public void ChooseNewDirection(Action onDirectionChosen)
         {
             CharacterState previousState = _stateManager.GetCurrentState();
-            _stateManager.SetCurrentState(new CardSettingUp());
+            _stateManager.CmdSetCurrentState(new CardSettingUp());
             
             TileSelector.Instance.SetDirectionsTilesLit(transform.position, cell =>
             {
@@ -178,7 +172,7 @@ namespace Characters
             
             _sprite.transform.Rotate(
                 new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle), Space.World);
-            _stateManager.SetCurrentState(previousState);
+            _stateManager.CmdSetCurrentState(previousState);
             onDirectionChosen.Invoke();
         }
 
@@ -194,26 +188,21 @@ namespace Characters
 
         private bool IsStepsEnough()
         {
-            return steps - StepCost >= 0;
+            return clientData.GetScoreAmount() - StepCost >= 0;
         }
 
         public void DecreaseStep()
         {
-            steps -= StepCost;
-            if (steps == 0)
+            clientData.CmdSetScoreAmount(clientData.GetScoreAmount() - StepCost);
+            if (clientData.GetScoreAmount() == 0)
             {
-                CharacterSelector.FinishTurn();
+                EventManager.FireEvent(EventManager.OnTurnFinished);
             }
         }
 
         public PathValidator GetPathValidator()
         {
             return pathValidator;
-        }
-
-        public int GetSteps()
-        {
-            return steps;
         }
         
         public static List<GameObject> GetEntities(Vector3 position, GameObject self = null)

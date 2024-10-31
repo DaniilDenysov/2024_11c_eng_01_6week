@@ -9,18 +9,18 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterMovement)),
  RequireComponent(typeof(Attack)),
- RequireComponent(typeof(Collector))]
+ RequireComponent(typeof(Inventory))]
 public class ToxicSpores : Skill
 {
     private CharacterMovement _movement;
     private Attack _attack;
-    private Collector _collector;
+    private Inventory _collector;
     private int _range = 3;
 
     void Awake()
     {
         _movement = GetComponent<CharacterMovement>();
-        _collector = GetComponent<Collector>();
+        _collector = GetComponent<Inventory>();
         _attack = GetComponent<Attack>();
     }
 

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Characters;
+using Mirror;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -27,15 +27,21 @@ public class TileSelector : MonoBehaviour
         {
             var worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             var tilePosition = tileMap.WorldToCell(worldPoint);
-            var tile = tileMap.GetTile(tilePosition);
 
-            if (tile)
+            TileClicked(tilePosition);
+        }
+    }
+
+    public void TileClicked(Vector3Int tilePosition)
+    {
+        var tile = tileMap.GetTile(tilePosition);
+        
+        if (tile)
+        {
+            if (_litPositions.Contains(tilePosition + cellUnit))
             {
-                if (_litPositions.Contains(tilePosition + cellUnit))
-                {
-                    SetTilesUnlit();
-                    _onChosen.Invoke(tilePosition + cellUnit);
-                }
+                SetTilesUnlit();
+                _onChosen.Invoke(tilePosition + cellUnit);
             }
         }
     }

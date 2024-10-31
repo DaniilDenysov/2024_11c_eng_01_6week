@@ -13,8 +13,9 @@ using UI;
 public class PlayerLabel : NetworkBehaviour
 {
     public static PlayerLabel LocalPlayer;
-    [SerializeField] private TMP_Text displayName;
-    [SerializeField] private Image readyImage, characterSelected;
+    [SerializeField] private Sprite iconPlaceHolder;
+    [SerializeField] private TMP_Text displayName, readyDisplay;
+    [SerializeField] private Image characterSelected;
     [SyncVar(hook = nameof(OnPlayerStateChanged))] public Player Player = new Player();
     [SerializeField] private List<CharacterData> characters = new List<CharacterData>();
 
@@ -103,7 +104,8 @@ public class PlayerLabel : NetworkBehaviour
         string suffix = "";
         if (isLocalPlayer) suffix = " (You)";
         displayName.text = newState.Nickname + suffix;
-        readyImage.color = newState.IsReady == true ? Color.green : Color.red;
+        readyDisplay.text = newState.IsReady == true ? "Ready" : "Not ready";
+        readyDisplay.color = newState.IsReady == true ? Color.green : Color.red;
         CharacterData characterData = characters.Where((c) => c.CharacterGUID == newState.CharacterGUID).FirstOrDefault();
 
         if (characterData != null)
@@ -111,6 +113,10 @@ public class PlayerLabel : NetworkBehaviour
             CharacterSelectionLabel.OnDeselected?.Invoke(oldState.CharacterGUID);
             CharacterSelectionLabel.OnSelected?.Invoke(characterData.CharacterGUID);
             characterSelected.sprite = characterData.CharacterIcon;
+        }
+        else
+        {
+            characterSelected.sprite = iconPlaceHolder;
         }
         if (!isOwned) return;
         OnPartyOwnerChanged?.Invoke(newState.IsPartyOwner);

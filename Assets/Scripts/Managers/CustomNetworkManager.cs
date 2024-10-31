@@ -16,7 +16,6 @@ namespace Managers
 {
     public class CustomNetworkManager : NetworkManager
     {
-        [SerializeField] private LocalPlayerLogLabel message; 
         [SerializeField] private List<Player> players;
         [SerializeField, Range(1, 4)] private int minimalLobbySize = 1;
         [SerializeField] private GameObject playerLabelPrefab;
@@ -198,12 +197,12 @@ namespace Managers
                 {
                     if (!player.IsReady)
                     {
-                        AddLogMessage("Not all players are ready!");
+                        LocalPlayerLogContainer.Instance.AddLogMessage("Not all players are ready!");
                         return;
                     }
                     if (string.IsNullOrEmpty(player.CharacterGUID))
                     {
-                        AddLogMessage("Not all players selected their character!");
+                        LocalPlayerLogContainer.Instance.AddLogMessage("Not all players selected their character!");
                         return;
                     }
                 }
@@ -214,15 +213,8 @@ namespace Managers
             }
             else
             {
-                AddLogMessage("Not enough players!");
+                LocalPlayerLogContainer.Instance.AddLogMessage("Not enough players!");
             }
-        }
-
-        public void AddLogMessage (string messageText)
-        {
-            var label = Instantiate(message).GetComponent<LocalPlayerLogLabel>();
-            label.Construct(messageText);
-            LocalPlayerLogContainer.Instance.Add(label);
         }
 
         public override void OnClientConnect()

@@ -4,6 +4,7 @@ using System.Linq;
 using Cards;
 using Characters.CharacterStates;
 using Collectibles;
+using Mirror;
 using Traps;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,7 +16,7 @@ namespace Characters.Skills
     [RequireComponent(typeof(CharacterMovement)), 
      RequireComponent(typeof(CharacterStateManager)), 
      RequireComponent(typeof(Attack)), 
-     RequireComponent(typeof(Collector))]
+     RequireComponent(typeof(Inventory))]
     public class Flexibility : Skill
     {
         [SerializeField] private HorntipedeBody bodyPrefab;
@@ -24,20 +25,19 @@ namespace Characters.Skills
         private CharacterMovement _movement;
         private CharacterStateManager _stateManager;
         private Attack _attack;
-        private Collector _collector;
+        private Inventory _collector;
 
         private Card _usedCard;
         
-        private List<HorntipedeBody> _body;
+        private readonly SyncList<HorntipedeBody> _body = new ();
         private const int BodyLength = 2;
         
         private void Awake()
         {
-            _body = new List<HorntipedeBody>();
             _movement = GetComponent<CharacterMovement>();
             _stateManager = GetComponent<CharacterStateManager>();
             _attack = GetComponent<Attack>();
-            _collector = GetComponent<Collector>();
+            _collector = GetComponent<Inventory>();
         }
 
         public override void Activate(Action<bool> onSetUp)
@@ -48,9 +48,22 @@ namespace Characters.Skills
 
         private void OnCellChosen(Vector3 cell)
         {
+            CmdSpawnBody(cell);
+        }
+        
+        [Command(requiresAuthority = false)]
+        private void CmdSpawnBody(Vector3 position)
+        {
+            RpcSpawnBody(position);
+        }
+
+        [TargetRpc]
+        private void RpcSpawnBody(Vector3 position)
+        {
             HorntipedeBody newTrail = Instantiate(bodyPrefab);
             _body.Add(newTrail);
-            newTrail.SetUp(cell, gameObject);
+            newTrail.SetUp(position, gameObject);
+            NetworkServer.Spawn(newTrail.gameObject);
 
             if (_body.Count < BodyLength)
             {
@@ -66,7 +79,7 @@ namespace Characters.Skills
             else
             {
                 onBecameCancelable.Invoke(ApplyMove);
-                _stateManager.SetCurrentState(new MultiCard(OnCardUsed));
+                _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
             }
         }
 
@@ -86,13 +99,13 @@ namespace Characters.Skills
                     }
                 }
             
-                _stateManager.SetCurrentState(new CardSettingUp());
+                _stateManager.CmdSetCurrentState(new CardSettingUp());
                 _usedCard = card;
 
                 if (litPositions.Count < 1)
                 {
                     card.OnCardSetUp(false);
-                    _stateManager.SetCurrentState(new MultiCard(OnCardUsed));
+                    _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
                     return;
                 }
                 
@@ -119,7 +132,7 @@ namespace Characters.Skills
                 Debug.Log("Behaviour for card: " + _usedCard.name + " is not written");
             }
             
-            _stateManager.SetCurrentState(new MultiCard(OnCardUsed));
+            _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
         }
 
         public void ApplyMove()
@@ -146,7 +159,7 @@ namespace Characters.Skills
         {
             foreach (HorntipedeBody bodyUnit in _body)
             {
-                bodyUnit.RemoveFromField();
+                bodyUnit.CmdRemoveFromField();
             }
             _body.Clear();
         }

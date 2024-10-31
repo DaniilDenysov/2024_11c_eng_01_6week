@@ -6,7 +6,9 @@ using UnityEngine;
 
 public class NetworkPlayer : NetworkBehaviour
 {
-   
+
+    public static NetworkPlayer LocalPlayerInstance;
+
     [SerializeField,SyncVar(hook = nameof(OnPlayerDataChanged))] private Player player;
 
     [SerializeField] private CharacterData characterData;
@@ -17,7 +19,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void OnPlayerDataChanged(Player oldValue, Player newValue)
     {
-        string name = PlayerPrefs.GetString("Nickname");
+      /*  string name = PlayerPrefs.GetString("Nickname");
         if (string.IsNullOrEmpty(name) && name != player.Nickname)
         {
             name = $"Player{newValue.ConnectionId}";
@@ -25,8 +27,24 @@ public class NetworkPlayer : NetworkBehaviour
         else
         {
             player.Nickname = name;
+        }*/
+        displayName.text = newValue.Nickname;
+    }
+
+    public override void OnStartAuthority()
+    {
+        if (isOwned)
+        {
+            LocalPlayerInstance = this;
         }
-        displayName.text = player.Nickname;
+    }
+
+    public override void OnStopAuthority()
+    {
+        if (isOwned)
+        {
+            LocalPlayerInstance = null;
+        }
     }
 
     [Server]

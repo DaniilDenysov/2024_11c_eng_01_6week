@@ -28,7 +28,7 @@ namespace Selectors
 
         private void OnTurnStart()
         {
-            SelectNext();
+          //  SelectNext();
         }
 
         public void SelectNext()
@@ -37,13 +37,12 @@ namespace Selectors
             {
                 turnOrder.Enqueue(characterMovement);
                 CurrentCharacter = characterMovement;
-                CurrentCharacter.SetSteps(diceManager.GetDiceValue());
-                onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
+              //  onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
 
-                EventManager.OnCharacterMovesIn += (vector3, movement) =>
+             /*   EventManager.OnCharacterMovesIn += (vector3, movement) =>
                 {
                     onStepCountChanged.Invoke(CurrentCharacter.GetSteps().ToString());
-                };
+                };*/
                 
                 characterMovement.OnTurn();
             }
