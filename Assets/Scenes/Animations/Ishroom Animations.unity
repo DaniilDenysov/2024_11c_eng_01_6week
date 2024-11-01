@@ -311,6 +311,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7061579020603394306, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
+      propertyPath: m_Size.x
+      value: 2.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061579020603394306, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
+      propertyPath: m_Size.y
+      value: 2.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061579020603394306, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9f29d342f47816f4faa4225b3abe8417, type: 3}
+    - target: {fileID: 7061579020603394306, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8089995046845132342, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
       propertyPath: m_Name
       value: Ishroom
