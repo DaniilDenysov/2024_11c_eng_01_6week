@@ -14,6 +14,7 @@ namespace Cards
         private CanvasGroup _canvasGroup;
         private RectTransform _rectTransform;
         private Vector2 _startPosition;
+        private Vector3 _activationPosition;
 
         public virtual void Awake()
         {
@@ -35,7 +36,8 @@ namespace Cards
             {
                 if (successfully)
                 {
-                    stateManager.CmdSetCurrentState(new CardUsed());
+                    stateManager.CmdSetCurrentState(
+                        new CardUsed(_activationPosition != stateManager.gameObject.transform.position));
                 }
                 else
                 {
@@ -52,14 +54,15 @@ namespace Cards
                 stateManager.GetCurrentState().GetType() == typeof(MultiCard))
                 {
                     _canvasGroup.alpha = 0.5f;
-
+                    _activationPosition = stateManager.gameObject.transform.position;
+                    
                     if (stateManager.GetCurrentState().IsCardUsable(this))
                     {
                         stateManager.CmdSetCurrentState(new CardSettingUp());
                         OnCardActivation(stateManager.gameObject);
                         return;
                     }
-
+                    
                     stateManager.CmdSetCurrentState(new CardSettingUp());
                 }
             }
