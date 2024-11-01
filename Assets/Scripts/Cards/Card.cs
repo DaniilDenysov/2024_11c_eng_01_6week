@@ -1,7 +1,6 @@
 using Characters;
 using Characters.CharacterStates;
 using Collectibles;
-using General;
 using Mirror;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,14 +11,12 @@ namespace Cards
     public abstract class Card : MonoBehaviour, IPointerClickHandler
     {
         private CanvasGroup _canvasGroup;
-        private RectTransform _rectTransform;
         private Vector2 _startPosition;
         private Vector3 _activationPosition;
 
         public virtual void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
-            _rectTransform = GetComponent<RectTransform>();
         }
 
         public void OnPointerClick(PointerEventData eventData)

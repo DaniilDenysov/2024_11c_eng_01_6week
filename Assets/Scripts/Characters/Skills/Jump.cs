@@ -54,7 +54,10 @@ public class Jump : Skill
 
         foreach (Vector3 direction in directions)
         {
-            if (!pathValidator.CanMoveTo(characterPosition, characterPosition + direction))
+            Vector3 position = characterPosition + direction;
+            
+            if (!pathValidator.CanMoveTo(characterPosition, position) 
+                && !pathValidator.IsOutOfMap(position))
             {
                 return true;
             }
