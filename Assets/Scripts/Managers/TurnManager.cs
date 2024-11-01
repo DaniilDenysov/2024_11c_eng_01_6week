@@ -56,6 +56,7 @@ namespace Managers
             CharacterTurnDistributor.Instance.OnTurnStart();
             ScoreDistributor.Instance.AddScoreToCurrentClient();
             CardDistributor.Instance.DistributeCardsToClients();
+            SyncedClock.Instance.StartTimer(turnTimeLimit);
             OnTurnStart();
             yield return new WaitForSeconds(turnTimeLimit);
             EndTurn();
@@ -66,6 +67,7 @@ namespace Managers
         private void EndTurn()
         {
             CharacterTurnDistributor.Instance.OnTurnEnd();
+            SyncedClock.Instance.DeleteTimer();
             OnTurnEnd();
         }
     }
