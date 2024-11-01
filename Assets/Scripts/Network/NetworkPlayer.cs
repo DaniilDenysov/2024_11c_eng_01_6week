@@ -47,6 +47,8 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    public CharacterData GetCharacterData() => characterData;
+
     [Server]
     public void SetPlayer(Player player)
     {

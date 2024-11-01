@@ -39,13 +39,14 @@ namespace Distributors
             }
         }
 
+        public NetworkPlayer GetCurrentPlayer() => order.Peek();
+
         [Server]
         public void OnTurnStart()
         {
             var player = order.Peek();
             if (player.TryGetComponent(out ClientData data))
             {
-                Debug.Log(player.name + " turn");
                 data.RpcSetTurn(true);
             }
         }
