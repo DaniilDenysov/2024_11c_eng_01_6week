@@ -11,6 +11,8 @@ using Traps;
 using UnityEngine.Events;
 using Client;
 using Mirror;
+using UnityEngine.InputSystem;
+using System.Linq;
 
 namespace Characters
 {
@@ -19,12 +21,11 @@ namespace Characters
     {
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
         [SerializeField] private GameObject _sprite;
-        
-        [SerializeField] private GameObject HUD_display;
         [SerializeField] private PathValidator pathValidator;
         public UnityEvent _onMoveCancelable;
         public UnityEvent _onMoveAvailable;
 
+        
         private CharacterStateManager _stateManager;
         private const int StepCost = 1;
         private ClientData clientData;
@@ -35,18 +36,40 @@ namespace Characters
             directionNormalized = Vector3.left;
             clientData = GetComponent<ClientData>();
             
-            _stateManager._onStateChanged += OnStateChanged;
-            EventManager.OnClientStartTurn += OnTurn;
+            _stateManager.OnStateChanged += OnStateChanged;
+           // EventManager.OnClientStartTurn += OnTurn;
+
         }
 
-        public void OnTurn()
+        private void Start()
+        {
+            InputManager.Instance.Subscribe(OnCellSelected);
+        }
+
+        private void OnCellSelected(InputAction.CallbackContext obj)
+        {
+            if (!clientData.GetTurn()) return;
+            if (!IsStepsEnough()) return;
+            if (!_stateManager.GetCurrentState().IsMovable()) return;
+            var nextPosition = transform.position + directionNormalized;
+            Debug.Log($"Current: {transform.position} Direction: {directionNormalized} NextPosition: {nextPosition}");
+            if (pathValidator.CanMoveTo(nextPosition, directionNormalized))
+            {
+                MoveTo(nextPosition);
+                DecreaseStep();
+                HighlightDrawer.Instance.ClearHighlightedCells();
+                _stateManager.CmdSetCurrentState(new Idle());
+            }
+        }
+
+      /*  public void OnTurn()
         {
             if (clientData.GetTurn())
             {
                 _stateManager.OnTurn();
                 ChooseNewDirection(() => { });
             }
-        }
+        }*/
 
         private void OnStateChanged(CharacterState newState)
         {
@@ -54,13 +77,8 @@ namespace Characters
             {
                 HighlightAvailableMoves();
             }
-            else
-            {
-                UnhighlightAvailableMoves();
-            }
         }
 
-        [Button]
         public void HighlightAvailableMoves()
         {
             List<Vector3> litPositions = new List<Vector3>();
@@ -91,88 +109,47 @@ namespace Characters
             if (litPositions.Count > 0)
             {
                 _onMoveAvailable.Invoke();
-                TileSelector.Instance.SetTilesLit(litPositions, MakeMovement);
+                HighlightDrawer.Instance.HighlightCells(litPositions);
             }
             else if (clientData.GetTurn())
             {
                 _onMoveCancelable.Invoke();
             }
         }
-
-        private void UnhighlightAvailableMoves()
-        {
-            TileSelector.Instance.SetTilesUnlit();
-        }
         
-        public void MakeMovement(Vector3 nextPosition)
+        public void MoveTo(Vector3 nextPosition)
         {
-            Vector3 difference = nextPosition - transform.position;
-            int steps = (int)Math.Abs(difference.x);
-
-            if (difference.x != 0 && difference.y != 0)
-            {
-                Debug.LogError("Unable to move into such direction");
-            }
-            else if (difference.x == 0)
-            {
-                steps = (int)Math.Abs(difference.y);
-            }
-
-            for (int i = 0; i < steps; i++) {
-                MakeMovement();
-            }
-            
+            transform.position = nextPosition;
             _stateManager.CmdSetCurrentState(new Idle());
-        }
-
-        public void MakeMovement()
-        {
-            if (IsStepsEnough() && _stateManager.GetCurrentState().IsMovable())
-            {
-                Vector3 nextPosition = transform.position + directionNormalized;
-                if (pathValidator.CanMoveTo(nextPosition,
-                    -new Vector3Int((int)directionNormalized.x, (int)directionNormalized.y, (int)directionNormalized.z)))
-                {
-                    MakeStep(nextPosition);
-                }
-                else
-                {
-                    Debug.Log("Unable to move");
-                }
-            }
         }
 
         public void ChooseNewDirection(Action onDirectionChosen)
         {
             CharacterState previousState = _stateManager.GetCurrentState();
             _stateManager.CmdSetCurrentState(new CardSettingUp());
-            
-            TileSelector.Instance.SetDirectionsTilesLit(transform.position, cell =>
-            {
-                OnDirectionChosen(cell, previousState, onDirectionChosen);
-            });
+
+             TileSelector.Instance.SetDirectionsTilesLit(transform.position, cell =>
+             {
+                 OnDirectionChosen(onDirectionChosen);
+             });
+            HighlightDrawer.Instance.HighlightCells(GetAllDirections().Select((vec)=>transform.position + vec).ToList());
         }
 
-        private void OnDirectionChosen(Vector3 position, CharacterState previousState, Action onDirectionChosen)
+        public void OnDirectionChosen (Action onDirectionChosen)
         {
-            directionNormalized = position - transform.position;
-            
-            float angle = Vector3.Angle(Vector3.up, directionNormalized);
-            
-            _sprite.transform.Rotate(
-                new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle), Space.World);
-            _stateManager.CmdSetCurrentState(previousState);
-            onDirectionChosen.Invoke();
-        }
-
-        private void MakeStep(Vector3 nextPosition, bool isStepsIgnored = false)
-        {
-            if (!isStepsIgnored) {
-                DecreaseStep();
-            }
-            EventManager.FireEvent(EventManager.OnCharacterMovesOut, transform.position, this);
-            transform.position = nextPosition;
-            EventManager.FireEvent(EventManager.OnCharacterMovesIn, nextPosition, this);
+            var worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Vector2.Distance(transform.position, worldPoint) > 3) return;
+            worldPoint.z = 0;
+            var direction = (worldPoint - transform.position).normalized;
+            directionNormalized = new Vector3Int(
+                Mathf.RoundToInt(direction.x),
+                Mathf.RoundToInt(direction.y),
+                0
+            );
+            onDirectionChosen?.Invoke();
+            HighlightDrawer.Instance.ClearHighlightedCells();
+            Debug.Log("Direction changed");
+            _stateManager.CmdSetCurrentState(new Idle());
         }
 
         private bool IsStepsEnough()
@@ -183,15 +160,11 @@ namespace Characters
         public void DecreaseStep()
         {
             clientData.CmdSetScoreAmount(clientData.GetScoreAmount() - StepCost);
-            if (clientData.GetScoreAmount() == 0)
+            //move to client data
+          /*  if (clientData.GetScoreAmount() == 0)
             {
                 EventManager.FireEvent(EventManager.OnTurnFinished);
-            }
-        }
-
-        public PathValidator GetPathValidator()
-        {
-            return pathValidator;
+            }*/
         }
         
         public static List<GameObject> GetEntities(Vector3 position, GameObject self = null)
@@ -238,7 +211,7 @@ namespace Characters
         public static List<Vector3> GetAllDirections() {
             return new List<Vector3> {
                 new Vector3(0, 1),
-                new Vector3(1, 0),
+                new Vector3(1, 0),  
                 new Vector3(0, -1),
                 new Vector3(-1, 0)
             };
@@ -252,20 +225,6 @@ namespace Characters
                 new Vector3(-1, 0),
                 new Vector3(0, 0)
             };
-        }
-
-        public static Vector3Int VectorToIntVector(Vector3 vector) {
-            return new Vector3Int((int)vector.x, (int)vector.y, 0);
-        }
-
-        public static Vector3Int NormalizeIntVector(Vector3Int vector) {
-            float threshold = 1;
-
-            return new Vector3Int(
-                vector.x >= threshold ? 1 : vector.x <= -threshold ? -1 : 0,
-                vector.y >= threshold ? 1 : vector.y <= -threshold ? -1 : 0,
-                0
-            );
         }
     }
 }

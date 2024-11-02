@@ -44,7 +44,7 @@ namespace Characters
 
         public List<Vector3> GetAttackCells(int range, bool includeStaticCell = true, bool includeCurrentCell = true)
         {
-            PathValidator pathValidator = _movement.GetPathValidator();
+            PathValidator pathValidator = PathValidator.Instance;
             Vector3 characterPosition = transform.position;
             List<Vector3> directions = 
                 includeCurrentCell ? CharacterMovement.GetAttackDirections() : CharacterMovement.GetAllDirections();
@@ -123,7 +123,7 @@ namespace Characters
                     {
                         if (opponentsInventory.TryPopItem(out HumanDTO human))
                         {
-                            _inventory.CmdAddHuman(human);
+                            _inventory.AddHuman(human);
                             result = true;
                         }
                     }

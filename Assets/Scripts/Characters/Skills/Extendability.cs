@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Extensions.Vector;
 using Mirror;
 using Traps;
 using UnityEngine;
+using Validation;
 
 namespace Characters.Skills
 {
@@ -14,7 +16,7 @@ namespace Characters.Skills
         
         private CharacterMovement _movement;
         
-        private  readonly SyncList<HorntipedeBody> _body = new ();
+        private  readonly SyncList<HorntipedeBody> _body = new SyncList<HorntipedeBody>();
         private const int BodyLength = 3;
         private const int AvailableTurns = 1;
         private List<List<Vector3>> _paths;
@@ -58,11 +60,11 @@ namespace Characters.Skills
                 
                 if (_body.Count() > 1)
                 {
-                    previousDirection = _body[^1].transform.position - _body[^2].transform.position;
+                    previousDirection = _body[1].transform.position - _body[2].transform.position;
                 }
                 else
                 {
-                    previousDirection = _body[^1].transform.position - transform.position;
+                    previousDirection = _body[1].transform.position - transform.position;
                 }
                 
                 return list[_body.Count() - 1] != previousDirection;
@@ -117,8 +119,8 @@ namespace Characters.Skills
 
                     foreach (Vector3 direction in availableTurns)
                     {
-                        if (_movement.GetPathValidator().CanMoveTo(traversedPositions[i2],
-                                CharacterMovement.VectorToIntVector(direction)))
+                        if (PathValidator.Instance.CanMoveTo(traversedPositions[i2],
+                                direction.VectorToIntVector()))
                         {
                             int currentTurnsMade = turnsMade[i2];
 
@@ -186,8 +188,8 @@ namespace Characters.Skills
 
                     foreach (Vector3 direction in availableTurns)
                     {
-                        if (_movement.GetPathValidator().CanMoveTo(traversedPositions[i2],
-                                CharacterMovement.VectorToIntVector(direction)))
+                        if (PathValidator.Instance.CanMoveTo(traversedPositions[i2],
+                                direction.VectorToIntVector()))
                         {
                             int currentTurnsMade = turnsMade[i2];
 

@@ -6,10 +6,10 @@ namespace Characters
 {
     public class CharacterStateManager : MonoBehaviour
     {
-        public Action<CharacterState> _onStateChanged;
+        public Action<CharacterState> OnStateChanged;
         private CharacterState _currentState;
 
-        private void Awake()
+        private void Start()
         {
             CmdSetCurrentState(new Idle());
         }
@@ -27,8 +27,7 @@ namespace Characters
         public void CmdSetCurrentState(CharacterState newState)
         {
             _currentState = newState;
-            _onStateChanged?.Invoke(newState);
+            OnStateChanged?.Invoke(newState);
         }
-
     }
 }

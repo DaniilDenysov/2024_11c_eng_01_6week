@@ -9,6 +9,7 @@ using System;
 using Lobby;
 using System.Threading.Tasks;
 using UI;
+using Managers.Network;
 
 namespace Managers
 {
@@ -36,6 +37,8 @@ namespace Managers
         {
             CustomNetworkManager.OnClientConnected += OnClientConnected;
             CustomNetworkManager.OnClientDisconnected += OnClientDisconnected;
+          //  LobbyNetworkManager.OnClientConnected += OnClientConnected;
+          //  LobbyNetworkManager.OnClientDisconnected += OnClientDisconnected;
             PlayerLabel.OnPartyOwnerChanged += OnPartyOwnerChanged; 
         }
 

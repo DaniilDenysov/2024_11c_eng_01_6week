@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using DTOs;
 using Lobby;
 using UI;
+using Managers.Network;
 
 public class PlayerLabel : NetworkBehaviour
 {
@@ -42,6 +43,7 @@ public class PlayerLabel : NetworkBehaviour
         if (!Player.IsPartyOwner) return;
 
         ((CustomNetworkManager)NetworkManager.singleton).StartGame();
+       // ((LobbyNetworkManager)NetworkManager.singleton).StartGame();
     }
  
     [Command]

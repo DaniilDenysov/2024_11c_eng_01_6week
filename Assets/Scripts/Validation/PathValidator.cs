@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using Characters;
+using DesignPatterns.Singleton;
+using Extensions.Vector;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Validation
 {
-    public class PathValidator : MonoBehaviour
+    public class PathValidator : Singleton<PathValidator>
     {
         [SerializeField] private Tilemap walls;
 
@@ -14,10 +16,12 @@ namespace Validation
         {
             var tile = walls.GetTile(walls.WorldToCell(nextPosition));
 
+            Debug.DrawLine(nextPosition, nextPosition - direction,Color.red,5f);
             if (tile != null)
             {
-                return StepValidator.IsValid(direction, tile as Tile);
+                return StepValidator.IsValid(-direction, tile as Tile);
             }
+            Debug.Log("Tile null");
             return false;
         }
 
@@ -32,7 +36,7 @@ namespace Validation
                      cursor != nextPosition + multiplyVectors(walls.layoutGrid.cellSize, directionUnit);
                      cursor += multiplyVectors(walls.layoutGrid.cellSize, directionUnit))
                 {
-                    if (CanMoveTo(cursor, CharacterMovement.VectorToIntVector(directionUnit * -1)) == false)
+                    if (CanMoveTo(cursor, (directionUnit * -1).VectorToIntVector()) == false)
                     {
                         return false;
                     }
@@ -92,6 +96,11 @@ namespace Validation
                 vectorDifference.y > 0 ? unitSize.y : (vectorDifference.y < 0 ? -unitSize.y : 0),
                 0
             );
+        }
+
+        public override PathValidator GetInstance()
+        {
+            return this;
         }
     }
 }

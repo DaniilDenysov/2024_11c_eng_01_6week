@@ -9,13 +9,23 @@ using Validation;
 
 public class Inventory : NetworkBehaviour
 {
-    [SerializeField] private List<HumanDTO> humanDTOs;
+    [SerializeField] private SyncList<HumanDTO> humanDTOs = new SyncList<HumanDTO>();
     private CharacterMovement _movement;
+    public static Action OnHumanPickedUp;
 
     private void Awake()
     {
         _movement = GetComponent<CharacterMovement>();
-        humanDTOs = new List<HumanDTO>();
+        humanDTOs.Callback += OnInventoryChanged;
+    }
+
+    private void OnInventoryChanged(SyncList<HumanDTO>.Operation op, int itemIndex, HumanDTO oldItem, HumanDTO newItem)
+    {
+        if (op == SyncList<HumanDTO>.Operation.OP_ADD)
+        {
+            Debug.Log("Picked");
+            OnHumanPickedUp?.Invoke();
+        }
     }
 
     public virtual void PickUp(Action<bool> onPickedUp)
@@ -36,7 +46,7 @@ public class Inventory : NetworkBehaviour
                 {
                     HumanDTO humanDTO = (collectible as Human).GetData();
                     
-                    CmdAddHuman(humanDTO);
+                    AddHuman(humanDTO);
                     collectible.Collect();
                     if (!InventoryContainer.Instance.TryAdd(humanDTO))
                     {
@@ -62,41 +72,31 @@ public class Inventory : NetworkBehaviour
         {
             human = humanDTOs[0];
             if (!InventoryContainer.Instance.TryRemove()) return false;
-            CmdRemoveHuman();
+            RemoveHuman();
             return true;
         }
 
         return false;
     }
-    
-    [Command(requiresAuthority = false)]
-    public void CmdRemoveHuman()
+
+    public void AddHuman(HumanDTO humanDTO)
     {
-        RpcAddHuman();
+        if (isOwned) Debug.Log("CANT MODIFY");
+        humanDTOs.Add(humanDTO);
     }
 
-    [ClientRpc]
-    public void RpcAddHuman()
+    public void RemoveHuman()
     {
+        if (isOwned) Debug.Log("CANT MODIFY");
         humanDTOs.RemoveAt(0);
     }
 
-    [Command(requiresAuthority = false)]
-    public void CmdAddHuman(HumanDTO humanDTO)
-    {
-        RpcAddHuman(humanDTO);
-    }
-
-    [ClientRpc]
-    public void RpcAddHuman(HumanDTO humanDTO)
-    {
-        humanDTOs.Add(humanDTO);
-    }
+    public IReadOnlyCollection<HumanDTO> GetHumans() => humanDTOs;
 
     public virtual List<Vector3> GetPickUpCells(int range, Type collectibleType, bool includeStaticCell = true,
         bool includeCurrentCell = true)
     {
-        PathValidator pathValidator = _movement.GetPathValidator();
+        PathValidator pathValidator = PathValidator.Instance;
         Vector3 characterPosition = transform.position;
         List<Vector3> directions =
             includeCurrentCell ? CharacterMovement.GetAttackDirections() : CharacterMovement.GetAllDirections();

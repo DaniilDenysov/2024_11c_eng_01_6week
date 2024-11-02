@@ -19,11 +19,39 @@ namespace Managers
         [SerializeField] private List<Player> players;
         [SerializeField, Range(1, 4)] private int minimalLobbySize = 1;
         [SerializeField] private GameObject playerLabelPrefab;
+        [SerializeField] private PlayerScoreLabel playerScoreLabel;
         [SerializeField] private string mainScene;
         [SerializeField] private bool isGameInProgress = false;
         public static Action OnClientConnected, OnClientDisconnected;
 
+        public override void Awake()
+        {
+            base.Awake();
+            Inventory.OnHumanPickedUp += OnHumanPickedUp;
+        }
+
+        [Server]
+        private void OnHumanPickedUp()
+        {
+            foreach (var player in NetworkPlayerContainer.Instance.GetItems())
+            {
+                if (player.gameObject.TryGetComponent(out Inventory inv))
+                {
+                    //change to == 12 later
+                    if (inv.GetHumans().Count >= 1)
+                    {
+                        Debug.Log("11111111111111111111");
+                        GameplayManager.Instance.OnGameFinished();
+                        break;
+                    }
+                }
+            }
+        }
+
+
         #region Server
+
+
 
         public override void OnStartServer()
         {

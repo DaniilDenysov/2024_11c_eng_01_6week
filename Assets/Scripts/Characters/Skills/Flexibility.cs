@@ -9,7 +9,7 @@ using Traps;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
-using Button = UnityEngine.UI.Button;
+using Validation;
 
 namespace Characters.Skills
 {
@@ -29,7 +29,7 @@ namespace Characters.Skills
 
         private Card _usedCard;
         
-        private readonly SyncList<HorntipedeBody> _body = new ();
+        private readonly SyncList<HorntipedeBody> _body = new SyncList<HorntipedeBody>();
         private const int BodyLength = 2;
         
         private void Awake()
@@ -73,7 +73,7 @@ namespace Characters.Skills
                 }
                 else
                 {
-                    HighlightAvailableTiles(_body[^2].transform.position);
+                    HighlightAvailableTiles(_body[2].transform.position);
                 }
             }
             else
@@ -167,7 +167,7 @@ namespace Characters.Skills
         public void HighlightAvailableTiles(Vector3 previousPos)
         {
             Vector3 currentCell = _body.Count > 0 ? _body.Last().transform.position : transform.position;
-            List<Vector3> litPositions = _movement.GetPathValidator().GetAvailableCells(currentCell, 1);
+            List<Vector3> litPositions = PathValidator.Instance.GetAvailableCells(currentCell, 1);
             litPositions.Remove(previousPos);
 
             TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);

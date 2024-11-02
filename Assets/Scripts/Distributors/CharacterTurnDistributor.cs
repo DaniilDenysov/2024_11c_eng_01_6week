@@ -5,29 +5,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Characters;
 using UnityEngine;
+using DesignPatterns.Singleton;
 
 namespace Distributors
 {
-    public class CharacterTurnDistributor : NetworkBehaviour
+    public class CharacterTurnDistributor : NetworkSingleton<CharacterTurnDistributor>
     {
         private Queue<NetworkPlayer> order;
 
-        public static CharacterTurnDistributor Instance;
-
-        public virtual void Awake()
+        public override CharacterTurnDistributor GetInstance()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-        }
-
-        private void OnDestroy()
-        {
-            if (Instance == this)
-            {
-                Instance = null;
-            }
+            return this;
         }
 
         public override void OnStartServer()
@@ -35,7 +23,6 @@ namespace Distributors
             if (isServer)
             {
                 order = new Queue<NetworkPlayer>(NetworkPlayerContainer.Instance.GetItems());
-                Debug.Log(order.Count);
             }
         }
 

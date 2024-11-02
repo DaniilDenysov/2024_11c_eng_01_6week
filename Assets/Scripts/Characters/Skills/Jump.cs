@@ -18,8 +18,8 @@ public class Jump : Skill
     public override void Activate(Action<bool> onSetUp)
     {
         base.Activate(onSetUp);
-        
-        PathValidator pathValidator = movement.GetPathValidator();
+
+        PathValidator pathValidator = PathValidator.Instance;
         Vector3 characterPosition = transform.position;
         List<Vector3> directions = CharacterMovement.GetAllDirections();
 
@@ -48,7 +48,7 @@ public class Jump : Skill
 
     public override bool IsActivatable()
     {
-        PathValidator pathValidator = movement.GetPathValidator();
+        PathValidator pathValidator = PathValidator.Instance;
         Vector3 characterPosition = transform.position;
         List<Vector3> directions = CharacterMovement.GetAllDirections();
 

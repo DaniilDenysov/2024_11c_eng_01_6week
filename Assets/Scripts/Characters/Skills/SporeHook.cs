@@ -12,9 +12,9 @@ public class SporeHook : Skill
     private PathValidator pathValidator;
     private int _range = 2;
 
-    void Awake()
+    void Start()
     {
-        pathValidator = GetComponent<CharacterMovement>().GetPathValidator();
+        pathValidator = PathValidator.Instance;
     }
 
     public override void Activate(Action<bool> onSetUp)

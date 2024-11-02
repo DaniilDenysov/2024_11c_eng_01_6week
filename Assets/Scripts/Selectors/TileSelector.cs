@@ -89,28 +89,4 @@ public class TileSelector : MonoBehaviour
     {
         if (tileMap != null) tileMap.ClearAllTiles();
     }
-
-    public Vector2 NormalizeDirection(Vector3 direction)
-    {
-        Vector3 directionNormalized = direction.normalized;
-
-        if (directionNormalized.y > 0.5)
-        {
-            return new Vector2(0, 1);
-        }
-        else if (directionNormalized.x > 0.5)
-        {
-            return new Vector2(1, 0);
-        }
-        else if (directionNormalized.y < -0.5)
-        {
-            return new Vector2(0, -1);
-        }
-        else if (directionNormalized.x < -0.5)
-        {
-            return new Vector2(-1, 0);
-        }
-
-        return new Vector2(0, 0);
-    }
 }
