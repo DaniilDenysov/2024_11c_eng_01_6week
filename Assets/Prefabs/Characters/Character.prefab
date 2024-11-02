@@ -351,13 +351,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionNormalized: {x: 0, y: 0, z: 0}
-  _sprite: {fileID: 591980978110833233}
-  HUD_display: {fileID: 0}
+  sprite: {fileID: 591980978110833233}
   pathValidator: {fileID: 0}
-  _onMoveCancelable:
+  onMoveCancelable:
     m_PersistentCalls:
       m_Calls: []
-  _onMoveAvailable:
+  onMoveAvailable:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8985229544548765772
@@ -507,6 +506,9 @@ MonoBehaviour:
   score: 0
   cardAmount: 0
   myTurn: 0
+  onScoreChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9005706121461494261
 GameObject:
   m_ObjectHideFlags: 0

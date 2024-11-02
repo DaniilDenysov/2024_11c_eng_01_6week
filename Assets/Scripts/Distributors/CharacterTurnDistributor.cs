@@ -1,3 +1,4 @@
+using System;
 using Client;
 using General;
 using Mirror;
@@ -5,14 +6,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Characters;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Distributors
 {
     public class CharacterTurnDistributor : NetworkBehaviour
     {
         private Queue<NetworkPlayer> order;
-
         public static CharacterTurnDistributor Instance;
+        [SerializeField] private UnityEvent onTurnEnd;
 
         public virtual void Awake()
         {
@@ -55,6 +57,9 @@ namespace Distributors
         public void OnTurnEnd()
         {
             var player = order.Dequeue();
+            
+            onTurnEnd.Invoke();
+            
             if (player.TryGetComponent(out ClientData data))
             {
                 data.RpcSetTurn(false);

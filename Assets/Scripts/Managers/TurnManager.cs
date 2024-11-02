@@ -53,11 +53,11 @@ namespace Managers
 
         private IEnumerator StartTurn()
         {
-            CharacterTurnDistributor.Instance.OnTurnStart();
             GlobalMessageContainer.Instance.DisplayMessage($"Turn of {CharacterTurnDistributor.Instance.GetCurrentPlayer().GetCharacterData().ChracterName}", "New turn!");
             yield return new WaitForSeconds(turnDelay);
             ScoreDistributor.Instance.AddScoreToCurrentClient();
             CardDistributor.Instance.DistributeCardsToClients();
+            CharacterTurnDistributor.Instance.OnTurnStart();
             SyncedClock.Instance.StartTimer(turnTimeLimit);
             OnTurnStart();
             yield return new WaitForSeconds(turnTimeLimit);

@@ -1,9 +1,11 @@
+using System;
 using Characters;
 using Managers;
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Client
 {
@@ -12,6 +14,7 @@ namespace Client
         [SerializeField, SyncVar] private int score;
         [SerializeField, SyncVar(hook = nameof(OnScoreStateChanged))] private int cardAmount;
         [SerializeField, SyncVar] private bool myTurn;
+        [SerializeField] private UnityEvent<String> onScoreChanged;
 
         public void OnScoreStateChanged(int oldValue, int newValue)
         {
@@ -26,19 +29,23 @@ namespace Client
 
         public int GetCardAmount() => cardAmount;
 
-
-        [Command]
+        [Command(requiresAuthority = false)]
         public void CmdSetScoreAmount(int amount)
         {
-            score = amount;
+            RpcSetScoreAmount(amount);
         }
         
         [ClientRpc]
         public void RpcSetScoreAmount(int amount)
         {
             score = amount;
+
+            if (isOwned)
+            {
+                onScoreChanged.Invoke(amount.ToString());
+            }
         }
-    
+        
         public int GetScoreAmount() => score;
 
         [ClientRpc]
