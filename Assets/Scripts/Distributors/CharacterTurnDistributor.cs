@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Characters;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Distributors
 {
@@ -14,7 +15,8 @@ namespace Distributors
     {
         private Queue<NetworkPlayer> order;
         public static CharacterTurnDistributor Instance;
-        [SerializeField] private UnityEvent onTurnEnd;
+        [SerializeField] private UnityEvent onLocalTurnStart;
+        [SerializeField] private UnityEvent onLocalTurnEnd;
 
         public virtual void Awake()
         {
@@ -47,23 +49,43 @@ namespace Distributors
         public void OnTurnStart()
         {
             var player = order.Peek();
+            OnLocalTurn(player.connectionToClient, true);
+            
             if (player.TryGetComponent(out ClientData data))
             {
                 data.RpcSetTurn(true);
             }
         }
 
+        [ClientRpc]
+        private void OnLocalTurnStart()
+        {
+            
+        }
+
         [Server]
         public void OnTurnEnd()
         {
             var player = order.Dequeue();
-            
-            onTurnEnd.Invoke();
-            
+            OnLocalTurn(player.connectionToClient, false);
+
             if (player.TryGetComponent(out ClientData data))
             {
                 data.RpcSetTurn(false);
                 order.Enqueue(player);
+            }
+        }
+        
+        [TargetRpc]
+        private void OnLocalTurn(NetworkConnection target, bool isStart)
+        {
+            if (isStart)
+            {
+                onLocalTurnStart.Invoke();
+            }
+            else
+            {
+                onLocalTurnEnd.Invoke();
             }
         }
     }

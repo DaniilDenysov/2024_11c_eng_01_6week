@@ -19,7 +19,6 @@ namespace Traps
         public void RpcSetUp(GameObject owner)
         {
             _liveTime = LiveTime;
-            transform.position = owner.transform.position;
             
             if (owner.TryGetComponent(out _ownerMovement) 
                 && owner.TryGetComponent(out _attack) 
@@ -58,7 +57,7 @@ namespace Traps
             }
         }
 
-        [Command]
+        [Command(requiresAuthority = false)]
         public void CmdRemoveFromField()
         {
             RpcRemoveFromField();
