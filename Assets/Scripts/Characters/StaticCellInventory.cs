@@ -51,7 +51,7 @@ namespace Characters
             else
             {
                 List<Vector3> litPositions = GetPickUpCells(0, typeof(Human));
-                TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
+                InputManager.Instance.AddCellCallbacks(new HashSet<Vector3>(litPositions), OnCellChosen);
                 _onPickedUp = onPickedUp;
             }
         }

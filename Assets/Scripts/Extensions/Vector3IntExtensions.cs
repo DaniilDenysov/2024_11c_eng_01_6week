@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Extensions.Vector
@@ -7,7 +8,7 @@ namespace Extensions.Vector
 
         public static Vector3Int VectorToIntVector(this Vector3 vector)
         {
-            return new Vector3Int((int)vector.x, (int)vector.y, 0);
+            return new Vector3Int(Mathf.RoundToInt(vector.x), Mathf.RoundToInt(vector.y), 0);
         }
 
 

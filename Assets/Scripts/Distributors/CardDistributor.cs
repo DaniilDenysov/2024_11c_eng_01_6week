@@ -6,32 +6,20 @@ using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DesignPatterns.Singleton;
 
 namespace Distributors
 {
-    public class CardDistributor : NetworkBehaviour
+    public class CardDistributor : NetworkSingleton<CardDistributor>
     {
+        //move to other class later
+        public Stack<Card> UsedCards = new Stack<Card>();
+        //public Stack<Card> UsedCards { get => usedCards; private set { usedCards = value; } }
+
+
         [SerializeField] private CardDeckDTO[] cards;
         [SerializeField, Range(0, 100)] private int cardsLimit = 6;
         private readonly SyncDictionary<NetworkPlayer, int> _harmCount = new SyncDictionary<NetworkPlayer, int>();
-
-        public static CardDistributor Instance;
-
-        public virtual void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-        }
-
-        private void OnDestroy()
-        {
-            if (Instance == this)
-            {
-                Instance = null;
-            }
-        }
 
         /// <summary>
         /// Distributes cards across all clients if limit isn't reached
@@ -146,6 +134,11 @@ namespace Distributors
             _harmCount.TryAdd(player, 0);
 
             return _harmCount[player];
+        }
+
+        public override CardDistributor GetInstance()
+        {
+            return this;
         }
     }
 }

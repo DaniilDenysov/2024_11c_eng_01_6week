@@ -12,5 +12,10 @@ namespace Cards
                 selector.Select(OnCardSetUp);
             }
         }
+
+        public override bool SingletonUse()
+        {
+            return true;
+        }
     }
 }

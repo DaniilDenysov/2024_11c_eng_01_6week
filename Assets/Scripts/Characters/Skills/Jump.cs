@@ -36,7 +36,7 @@ public class Jump : Skill
             }
         }
 
-        TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
+        InputManager.Instance.AddCellCallbacks(new HashSet<Vector3>(litPositions), OnCellChosen);
     }
 
     private void OnCellChosen(Vector3 chosenTile)

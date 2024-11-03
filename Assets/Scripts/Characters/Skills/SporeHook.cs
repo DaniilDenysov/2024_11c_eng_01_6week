@@ -47,7 +47,7 @@ public class SporeHook : Skill
             }
         }
 
-        TileSelector.Instance.SetTilesLit(litPositions, OnDirectionChosen);
+        InputManager.Instance.AddCellCallbacks(new HashSet<Vector3>(litPositions), OnDirectionChosen);
     }
 
     private void OnDirectionChosen(Vector3 chosenTile)

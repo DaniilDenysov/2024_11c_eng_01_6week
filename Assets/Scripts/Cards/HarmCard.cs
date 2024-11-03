@@ -26,6 +26,11 @@ namespace Cards
             DisplayCharacterSelection(NetworkPlayerContainer.Instance.GetItems());
         }
 
+        public override bool SingletonUse()
+        {
+            return true;
+        }
+
         private void DisplayCharacterSelection(List<NetworkPlayer> availableTargets)
         {
             characterSelectionPanel.SetActive(true);

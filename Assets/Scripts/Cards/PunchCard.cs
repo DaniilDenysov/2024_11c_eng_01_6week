@@ -16,14 +16,20 @@ namespace Cards
 
             if (litPositions.Capacity > 0)
             {
-                TileSelector.Instance.SetTilesLit(litPositions, AttackCell);
+                HighlightDrawer.Instance.HighlightCells(litPositions);
+                InputManager.Instance.AddCellCallbacks(new HashSet<Vector3>(litPositions),AttackCell);
             }
             else
             {
-                OnCardSetUp(false);
+                Cancel();
             }
         }
-        
+
+        public override bool SingletonUse()
+        {
+            return true;
+        }
+
         private void AttackCell(Vector3 chosenTile)
         {
             OnCardSetUp(_attack.TryAttack(chosenTile));

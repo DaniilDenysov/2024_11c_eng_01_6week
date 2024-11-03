@@ -40,8 +40,14 @@ namespace Managers
                     //change to == 12 later
                     if (inv.GetHumans().Count >= 1)
                     {
-                        Debug.Log("11111111111111111111");
                         GameplayManager.Instance.OnGameFinished();
+                        foreach (var score in NetworkPlayerContainer.Instance.GetItems())
+                        {
+                            PlayerScoreLabel playerScore = Instantiate(playerScoreLabel, PlayerScoreContainer.Instance.transform);
+                            PlayerScoreContainer.Instance.Add(playerScore);
+                            var playerData = score.GetPlayerData();
+                            playerScore.Construct(player.GetCharacterData(),playerData.Nickname, $"{NetworkPlayerContainer.Instance.CalculateToatlScoreForPlayer(score)} cal");
+                        }
                         break;
                     }
                 }

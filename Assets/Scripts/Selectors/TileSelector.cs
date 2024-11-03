@@ -46,7 +46,7 @@ public class TileSelector : MonoBehaviour
         }
     }
 
-    public void SetTilesLit(List<Vector3> positions, Action<Vector3> onChosen)
+   /* public void SetTilesLit(List<Vector3> positions, Action<Vector3> onChosen)
     {
         if (positions.Count < 1)
         {
@@ -62,7 +62,7 @@ public class TileSelector : MonoBehaviour
 
         _onChosen = onChosen;
         _litPositions = positions;
-    }
+    } */
 
     public void SetDirectionsTilesLit(Vector3 position, Action<Vector3> onChosen, 
         List<Vector3> excludeDirections = null)
@@ -82,7 +82,7 @@ public class TileSelector : MonoBehaviour
             }
         }
 
-        SetTilesLit(directionPositions, onChosen);
+       // SetTilesLit(directionPositions, onChosen);
     }
     
     public void SetTilesUnlit()

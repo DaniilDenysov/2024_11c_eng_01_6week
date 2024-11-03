@@ -1,6 +1,7 @@
 using Characters;
 using Characters.CharacterStates;
 using Collectibles;
+using Distributors;
 using Mirror;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -23,6 +24,8 @@ namespace Cards
         {
             TryActivate();
         }
+
+        public abstract bool SingletonUse();
 
         public abstract void OnCardActivation(GameObject arg1);
 
@@ -56,6 +59,15 @@ namespace Cards
                     if (stateManager.GetCurrentState().IsCardUsable(this))
                     {
                         stateManager.CmdSetCurrentState(new CardSettingUp());
+                        if (CardDistributor.Instance.UsedCards.TryPeek(out Card card))
+                        {
+                            if (card != null)
+                            {
+                                card.Cancel();
+                            }
+                            CardDistributor.Instance.UsedCards.Pop();
+                        }
+                        CardDistributor.Instance.UsedCards.Push(this);
                         OnCardActivation(stateManager.gameObject);
                         return;
                     }
@@ -63,6 +75,17 @@ namespace Cards
                     stateManager.CmdSetCurrentState(new CardSettingUp());
                 }
             }
+        }
+
+        public void Cancel()
+        {
+            OnCardSetUp(false);
+        }
+
+        public void Discard ()
+        {
+            OnCardSetUp(true);
+            Destroy(gameObject);
         }
         
         public static bool AttackAndEatAtCell(Vector3 cell, Attack attack, Inventory collector)

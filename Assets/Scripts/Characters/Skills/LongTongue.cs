@@ -22,8 +22,8 @@ public class LongTongue : Skill
         base.Activate(onSetUp);
         
         List<Vector3> litPositions = _attack.GetAttackCells(_range);
-        
-        TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
+
+        InputManager.Instance.AddCellCallbacks(new HashSet<Vector3>(litPositions), OnCellChosen);
     }
 
     private void OnCellChosen(Vector3 chosenTile)

@@ -108,8 +108,8 @@ namespace Characters.Skills
                     _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
                     return;
                 }
-                
-                TileSelector.Instance.SetTilesLit(litPositions, OnCardSetUp);
+
+                InputManager.Instance.AddCellCallbacks(new HashSet<Vector3>(litPositions), OnCellChosen);
             }
             else
             {
@@ -137,11 +137,12 @@ namespace Characters.Skills
 
         public void ApplyMove()
         {
-            TileSelector.Instance.SetTilesLit(new List<Vector3>()
+            InputManager.Instance.AddCellCallbacks(new HashSet<Vector3>(new List<Vector3>()
             {
                 transform.position,
                 _body.Last().transform.position
-            }, OnShrinkPositionChosen);
+            }
+            ), OnShrinkPositionChosen);
         }
 
         public void OnShrinkPositionChosen(Vector3 cell)
@@ -149,10 +150,7 @@ namespace Characters.Skills
             ClearBody();
             
             transform.position = cell;
-            _movement.ChooseNewDirection(() =>
-            {
-                OnActivated();
-            });
+            _movement.OnNewDirectionChosen(cell);
         }
 
         private void ClearBody()
@@ -170,7 +168,8 @@ namespace Characters.Skills
             List<Vector3> litPositions = PathValidator.Instance.GetAvailableCells(currentCell, 1);
             litPositions.Remove(previousPos);
 
-            TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
+            HighlightDrawer.Instance.HighlightCells(litPositions);
+            InputManager.Instance.AddCellCallbacks(new HashSet<Vector3>(litPositions), OnCellChosen);
         }
 
         public override bool IsActivatable()

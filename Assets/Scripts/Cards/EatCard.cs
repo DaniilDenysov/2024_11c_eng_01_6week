@@ -14,5 +14,10 @@ namespace Cards
                 collector.PickUp(OnCardSetUp);
             }
         }
+
+        public override bool SingletonUse()
+        {
+            return true;
+        }
     }
 }

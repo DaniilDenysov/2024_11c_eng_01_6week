@@ -248,7 +248,8 @@ namespace Characters.Skills
                 litPositions.Add(currentCell + litDirection);
             }
             
-            TileSelector.Instance.SetTilesLit(litPositions, BuildBody);
+            HighlightDrawer.Instance.HighlightCells(litPositions);
+            InputManager.Instance.AddCellCallbacks(new HashSet<Vector3>(litPositions), BuildBody);
         }
     }
 }

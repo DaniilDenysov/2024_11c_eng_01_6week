@@ -13,13 +13,15 @@ using Client;
 using Mirror;
 using UnityEngine.InputSystem;
 using System.Linq;
+using Extensions.Vector;
+using Distributors;
 
 namespace Characters
 {
     [RequireComponent(typeof(CharacterStateManager),typeof(ClientData))]
-    public class CharacterMovement : MonoBehaviour, ITurnAction
+    public class CharacterMovement : MonoBehaviour
     {
-        [SerializeField, ReadOnly] private Vector3 directionNormalized;
+        [SerializeField, ReadOnly] private Vector3Int directionNormalized;
         [SerializeField] private GameObject _sprite;
         [SerializeField] private PathValidator pathValidator;
         public UnityEvent _onMoveCancelable;
@@ -33,30 +35,36 @@ namespace Characters
         private void Awake()
         {
             _stateManager = GetComponent<CharacterStateManager>();
-            directionNormalized = Vector3.left;
+            foreach (var direction in GetAllDirections())
+            {
+                var nextPosition = transform.position + direction;
+                Debug.Log($"Current: {transform.position} Direction: {direction} NextPosition: {nextPosition}");
+                if (pathValidator.CanMoveTo(nextPosition, direction.VectorToIntVector()))
+                {
+                    directionNormalized = new Vector3Int((int)direction.x, (int)direction.y);
+                    Debug.Log($"{name} + {direction}");
+                    break;
+                }
+            }
             clientData = GetComponent<ClientData>();
             
             _stateManager.OnStateChanged += OnStateChanged;
-           // EventManager.OnClientStartTurn += OnTurn;
-
         }
 
-        private void Start()
-        {
-            InputManager.Instance.Subscribe(OnCellSelected);
-        }
-
-        private void OnCellSelected(InputAction.CallbackContext obj)
+       // private void OnCellSelected(InputAction.CallbackContext obj)
+        private void OnCellSelected(Vector3 obj)
         {
             if (!clientData.GetTurn()) return;
             if (!IsStepsEnough()) return;
             if (!_stateManager.GetCurrentState().IsMovable()) return;
+
             var nextPosition = transform.position + directionNormalized;
             Debug.Log($"Current: {transform.position} Direction: {directionNormalized} NextPosition: {nextPosition}");
             if (pathValidator.CanMoveTo(nextPosition, directionNormalized))
             {
                 MoveTo(nextPosition);
                 DecreaseStep();
+                InputManager.Instance.ClearCallbacks();
                 HighlightDrawer.Instance.ClearHighlightedCells();
                 _stateManager.CmdSetCurrentState(new Idle());
             }
@@ -75,19 +83,85 @@ namespace Characters
         {
             if (newState.IsMovable())
             {
+                Debug.Log($"State changed: {newState.GetType()}");
+                //HighlightMoves(1);
                 HighlightAvailableMoves();
             }
         }
 
+        public void HighlightMoves (int depth)
+        {
+            List<Vector3> litPositions = new List<Vector3>();
+            int distance = 1;
+            for (int availableSteps = 1; availableSteps < depth; availableSteps++)
+            {
+                Vector3 nextPosition = transform.position + (directionNormalized * distance);
+                if (IsSlimed(nextPosition))
+                {
+                    availableSteps++;
+
+                    if (availableSteps >= clientData.GetScoreAmount() + 1)
+                    {
+                        break;
+                    }
+                }
+
+                if (pathValidator.CanMoveTo(nextPosition, directionNormalized * distance))
+                {
+                    litPositions.Add(nextPosition);
+                }
+                else
+                {
+                    Debug.Log("Not highlighted");
+                }
+
+                if (litPositions.Count > 0)
+                {
+                    _onMoveAvailable.Invoke();
+                    Debug.Log("Highlighted");
+                    HighlightDrawer.Instance.HighlightCells(litPositions);
+                    InputManager.Instance.AddCellCallbacksOverride(new HashSet<Vector3>(litPositions), OnCellSelected);
+                }
+                else if (clientData.GetTurn())
+                {
+                    _onMoveCancelable.Invoke();
+                }
+                distance++;
+            }
+        }
+         
         public void HighlightAvailableMoves()
         {
             List<Vector3> litPositions = new List<Vector3>();
             int distance = 1;
-            
-            for (int availableSteps = 1; availableSteps < clientData.GetScoreAmount() + 1; availableSteps++)
+            int maxDistance = 2;
+            //should be explicitly called when score added
+
+            for (int i = 0;i<clientData.GetScoreAmount() && distance < maxDistance;i++,distance++)
             {
-                Vector3 nextPosition = transform.position + directionNormalized * distance;
-                
+                Vector3 nextPosition = transform.position + (directionNormalized * distance);
+                Debug.Log("NextPos:"+nextPosition);
+
+                /*if (IsSlimed(nextPosition))
+                {
+                    availableSteps++;
+
+                    if (availableSteps >= clientData.GetScoreAmount() + 1)
+                    {
+                        break;
+                    }
+                }*/
+
+                if (pathValidator.CanMoveTo(nextPosition, directionNormalized))
+                {
+                    litPositions.Add(nextPosition);
+                }
+            }
+
+            /*for (int availableSteps = 0; availableSteps < clientData.GetScoreAmount(); availableSteps++)
+            {
+                Vector3 nextPosition = transform.position + (directionNormalized * distance);
+                Debug.Log("1");
                 if (IsSlimed(nextPosition))
                 {
                     availableSteps++;
@@ -98,18 +172,27 @@ namespace Characters
                     }
                 }
                 
-                if (pathValidator.CanMoveTo(transform.position, nextPosition))
+                if (pathValidator.CanMoveTo(nextPosition, directionNormalized))
                 {
                     litPositions.Add(nextPosition);
                 }
+                else
+                {
+                    Debug.Log("Not highlighted");
+                }
  
                 distance++;
-            }
+            }*/
 
             if (litPositions.Count > 0)
             {
                 _onMoveAvailable.Invoke();
+                Debug.Log("Highlighted");
+               
                 HighlightDrawer.Instance.HighlightCells(litPositions);
+                var set = new HashSet<Vector3>(litPositions);
+                Debug.Log("SetLen:"+set.Count);
+                InputManager.Instance.AddCellCallbacksOverride(set, OnCellSelected);
             }
             else if (clientData.GetTurn())
             {
@@ -123,32 +206,35 @@ namespace Characters
             _stateManager.CmdSetCurrentState(new Idle());
         }
 
-        public void ChooseNewDirection(Action onDirectionChosen)
+
+        public void OnChooseNewDirection()
         {
             CharacterState previousState = _stateManager.GetCurrentState();
             _stateManager.CmdSetCurrentState(new CardSettingUp());
-
-             TileSelector.Instance.SetDirectionsTilesLit(transform.position, cell =>
-             {
-                 OnDirectionChosen(onDirectionChosen);
-             });
-            HighlightDrawer.Instance.HighlightCells(GetAllDirections().Select((vec)=>transform.position + vec).ToList());
+            List<Vector3> positions = GetAllDirections().Select((vec) => transform.position + vec).ToList();
+            InputManager.Instance.AddCellCallbacksOverride(new HashSet<Vector3>(positions), OnNewDirectionChosen);
+            HighlightDrawer.Instance.HighlightCells(positions);
         }
 
-        public void OnDirectionChosen (Action onDirectionChosen)
+        public void OnNewDirectionChosen(Vector3 cell)
         {
-            var worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (Vector2.Distance(transform.position, worldPoint) > 3) return;
-            worldPoint.z = 0;
-            var direction = (worldPoint - transform.position).normalized;
+          //  HashSet<Vector3> positions = new HashSet<Vector3>(GetAllDirections().Select((vec) => transform.position + vec).ToList());
+            Debug.Log("Direction changed");
+
+            var direction = (cell - transform.position).normalized;
             directionNormalized = new Vector3Int(
                 Mathf.RoundToInt(direction.x),
                 Mathf.RoundToInt(direction.y),
                 0
             );
-            onDirectionChosen?.Invoke();
+            Debug.DrawRay(cell, direction, Color.red, 5f);
+            Debug.Log(direction + " " + directionNormalized);
+            if (CardDistributor.Instance.UsedCards.TryPeek(out Card card))
+            {
+                card.Discard();
+            }
+            InputManager.Instance.ClearCallbacks();
             HighlightDrawer.Instance.ClearHighlightedCells();
-            Debug.Log("Direction changed");
             _stateManager.CmdSetCurrentState(new Idle());
         }
 
