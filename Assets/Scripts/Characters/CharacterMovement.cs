@@ -165,6 +165,7 @@ namespace Characters
             
             sprite.transform.Rotate(
                 new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle), Space.World);
+            
             _stateManager.CmdSetCurrentState(previousState);
             onDirectionChosen.Invoke();
         }

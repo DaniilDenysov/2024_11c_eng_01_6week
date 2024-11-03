@@ -11545,6 +11545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileMap: {fileID: 1367774969}
   highlightTile: {fileID: 11400000, guid: 8a9df746f0096494b9dd110c314bbc28, type: 2}
+  arrowTile: {fileID: 11400000, guid: a78aadf2799484834b5d636cf5b4105a, type: 2}
 --- !u!1 &1798901358
 GameObject:
   m_ObjectHideFlags: 0
