@@ -428,6 +428,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Horntipede
       objectReference: {fileID: 0}
+    - target: {fileID: 2229522346065087344, guid: b4e0189f6ff444371a380526562411f4, type: 3}
+      propertyPath: m_TagString
+      value: Character
+      objectReference: {fileID: 0}
     - target: {fileID: 5810008551579606390, guid: b4e0189f6ff444371a380526562411f4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1258,6 +1262,10 @@ PrefabInstance:
     - target: {fileID: 7120926196442470611, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
       propertyPath: m_Name
       value: Brail
+      objectReference: {fileID: 0}
+    - target: {fileID: 7120926196442470611, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
+      propertyPath: m_TagString
+      value: Character
       objectReference: {fileID: 0}
     - target: {fileID: 7472103265654608104, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5571,6 +5579,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ishroom
       objectReference: {fileID: 0}
+    - target: {fileID: 8089995046845132342, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
+      propertyPath: m_TagString
+      value: Character
+      objectReference: {fileID: 0}
     - target: {fileID: 8909351167936608323, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
       propertyPath: m_Camera
       value: 
@@ -9062,6 +9074,10 @@ PrefabInstance:
     - target: {fileID: 3765463449784216165, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
       propertyPath: m_Name
       value: Froje
+      objectReference: {fileID: 0}
+    - target: {fileID: 3765463449784216165, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
+      propertyPath: m_TagString
+      value: Character
       objectReference: {fileID: 0}
     - target: {fileID: 4584854643604454416, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
       propertyPath: m_Camera
