@@ -1,5 +1,6 @@
 using Characters;
 using Characters.CharacterStates;
+using Client;
 using Collectibles;
 using Mirror;
 using UnityEngine;
@@ -45,22 +46,27 @@ namespace Cards
 
         public void TryActivate()
         {
-            if (NetworkClient.connection.identity != null && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
+            if (NetworkClient.connection.identity != null 
+                && NetworkClient.connection.identity.TryGetComponent(out ClientData clientData)
+                && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
             {
-                if (stateManager.GetCurrentState().IsCardUsable(this) ||
-                stateManager.GetCurrentState().GetType() == typeof(MultiCard))
+                if (clientData.GetTurn())
                 {
-                    _canvasGroup.alpha = 0.5f;
-                    _activationPosition = stateManager.gameObject.transform.position;
-                    
-                    if (stateManager.GetCurrentState().IsCardUsable(this))
+                    if (stateManager.GetCurrentState().IsCardUsable(this) ||
+                        stateManager.GetCurrentState().GetType() == typeof(MultiCard))
                     {
+                        _canvasGroup.alpha = 0.5f;
+                        _activationPosition = stateManager.gameObject.transform.position;
+
+                        if (stateManager.GetCurrentState().IsCardUsable(this))
+                        {
+                            stateManager.CmdSetCurrentState(new CardSettingUp());
+                            OnCardActivation(stateManager.gameObject);
+                            return;
+                        }
+
                         stateManager.CmdSetCurrentState(new CardSettingUp());
-                        OnCardActivation(stateManager.gameObject);
-                        return;
                     }
-                    
-                    stateManager.CmdSetCurrentState(new CardSettingUp());
                 }
             }
         }
