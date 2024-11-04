@@ -2,6 +2,7 @@ using Characters;
 using Characters.CharacterStates;
 using Collectibles;
 using General;
+using Managers;
 using Mirror;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,11 +15,15 @@ namespace Cards
         private CanvasGroup _canvasGroup;
         private RectTransform _rectTransform;
         private Vector2 _startPosition;
+        private CharacterStateManager _stateManager;
+        private GameObject _cardOwner;
+        private ActionBlockerManager actionBlocker;
 
         public virtual void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _rectTransform = GetComponent<RectTransform>();
+            actionBlocker = FindObjectOfType<ActionBlockerManager>();
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -46,6 +51,14 @@ namespace Cards
 
         public void TryActivate()
         {
+            if (actionBlocker.IsActionBlocked("CardUse"))
+            {
+                Debug.Log("Card usage is blocked!");
+                return;
+            }
+
+            if (_stateManager.GetCurrentState().IsCardUsable(this) || 
+                _stateManager.GetCurrentState().GetType() == typeof(MultiCard))
             if (NetworkClient.connection.identity != null && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
             {
                 if (stateManager.GetCurrentState().IsCardUsable(this) ||

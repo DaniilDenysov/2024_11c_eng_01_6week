@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Reflection;
 using Characters;
+using Collectibles;
 
 namespace Managers
 {
@@ -13,6 +14,7 @@ namespace Managers
         public static Action OnTick;
         public static Action OnTurnFinished;
         
+        public static Action<Human> OnHumanFearTriggered;
         public static Action<Vector3> OnLitTileClick;
         public static Action<bool> OnSkillSetUp;
         public static Action<bool> OnCardSetUp;

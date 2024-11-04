@@ -10,9 +10,13 @@ using Validation;
 
 public class Inventory : NetworkBehaviour
 {
-    [SerializeField, SyncVar] private List<HumanDTO> humanDTOs;
-    [SerializeField, SyncVar] private List<ICollectible> _inventory;
-    [SerializeField] private int cardDrawCount = 1;
+    [SerializeField, SyncVar(hook = nameof(OnInventoryChanged))] private List<HumanDTO> humanDTOs;
+
+    private void OnInventoryChanged(List<HumanDTO> oldValue, List<HumanDTO> newValue)
+    {
+        Debug.Log("Changed");
+    }
+
     private Action<bool> _onPickedUp;
 
     private Dictionary<string, List<Vector3>> _staticPickUpCells;
@@ -22,7 +26,6 @@ public class Inventory : NetworkBehaviour
     {
         _movement = GetComponent<CharacterMovement>();
         _staticPickUpCells = new Dictionary<string, List<Vector3>>();
-        _inventory = new List<ICollectible>();
         humanDTOs = new List<HumanDTO>();
     }
 
@@ -50,32 +53,12 @@ public class Inventory : NetworkBehaviour
             {
                 if (collectible.GetType() == typeof(Human))
                 {
-                    CmdAddCollectibleToInventory(collectible);
                     result = true;
                 }
             }
         }
 
         return result;
-    }
-    
-    [Command(requiresAuthority = false)]
-    public void CmdAddCollectibleToInventory(ICollectible collectible)
-    {
-        RpcAddCollectibleToInventory(collectible);
-    }
-    
-    [ClientRpc]
-    private void RpcAddCollectibleToInventory(ICollectible collectible)
-    {
-        var collected = collectible.Collect();
-        
-        _inventory.Add(collected as Human);
-        
-        if (collectible.GetType() == typeof(Human))
-        {
-            humanDTOs.Add((collectible as Human).GetData());
-        }
     }
 
     public void AddStaticPickUpCells(List<Vector3> cells, string groupName)
@@ -98,42 +81,24 @@ public class Inventory : NetworkBehaviour
         _onPickedUp(PickUp(cell));
     }
 
-    public bool TryPopItem(out Human human)
+    public bool TryPopItem(out HumanDTO human)
     {
         human = default;
-        if (_inventory.Count > 0)
+        if (humanDTOs.Count > 0)
         {
-            human = _inventory[0] as Human;
-            CmdRemoveItem();
+            //human = _inventory[0] as Human;
+            human = humanDTOs[0];
+            humanDTOs.RemoveAt(0);
+            //CmdRemoveItem();
             return true;
         }
 
         return false;
     }
-    
-    [Command(requiresAuthority = false)]
-    public void CmdRemoveItem()
-    {
-        RpcRemoveItem();
-    }
-    
-    [ClientRpc]
-    private void RpcRemoveItem()
-    {
-        _inventory.RemoveAt(0);
-        humanDTOs.RemoveAt(0);
-    }
 
-    public void AdjustCardDraw(int adjustment)
+    public void Add(HumanDTO humanDTO)
     {
-        cardDrawCount += adjustment;
-        cardDrawCount = Mathf.Max(1, cardDrawCount);
-    }
-
-    public void Add(Human human)
-    {
-        _inventory.Add(human);
-        humanDTOs.Add(human.GetData());
+        humanDTOs.Add(humanDTO);
     }
 
     public void RemoveStaticPickUpCells(string groupName)

@@ -4,6 +4,7 @@ using System.Linq;
 using Cards;
 using Characters.CharacterStates;
 using Collectibles;
+using Mirror;
 using Traps;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,12 +29,11 @@ namespace Characters.Skills
 
         private Card _usedCard;
         
-        private List<HorntipedeBody> _body;
+        private readonly SyncList<HorntipedeBody> _body = new ();
         private const int BodyLength = 2;
         
         private void Awake()
         {
-            _body = new List<HorntipedeBody>();
             _movement = GetComponent<CharacterMovement>();
             _stateManager = GetComponent<CharacterStateManager>();
             _attack = GetComponent<Attack>();
@@ -48,9 +48,22 @@ namespace Characters.Skills
 
         private void OnCellChosen(Vector3 cell)
         {
+            CmdSpawnBody(cell);
+        }
+        
+        [Command(requiresAuthority = false)]
+        private void CmdSpawnBody(Vector3 position)
+        {
+            RpcSpawnBody(position);
+        }
+
+        [TargetRpc]
+        private void RpcSpawnBody(Vector3 position)
+        {
             HorntipedeBody newTrail = Instantiate(bodyPrefab);
             _body.Add(newTrail);
-            newTrail.SetUp(cell, gameObject);
+            newTrail.SetUp(position, gameObject);
+            NetworkServer.Spawn(newTrail.gameObject);
 
             if (_body.Count < BodyLength)
             {
@@ -146,7 +159,7 @@ namespace Characters.Skills
         {
             foreach (HorntipedeBody bodyUnit in _body)
             {
-                bodyUnit.RemoveFromField();
+                bodyUnit.CmdRemoveFromField();
             }
             _body.Clear();
         }
