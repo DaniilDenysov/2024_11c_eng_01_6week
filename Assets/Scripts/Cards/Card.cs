@@ -1,15 +1,18 @@
+using System;
 using Characters;
 using Characters.CharacterStates;
 using Client;
 using Collectibles;
+using Distributors;
 using Mirror;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Cards
 {
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-    public abstract class Card : MonoBehaviour, IPointerClickHandler
+    public abstract class Card : NetworkBehaviour, IPointerClickHandler
     {
         private CanvasGroup _canvasGroup;
         private Vector2 _startPosition;
@@ -34,8 +37,13 @@ namespace Cards
             {
                 if (successfully)
                 {
+                    ClientDeck.Instance.Remove(this);
+                    CardDistributor.Instance.CmdDiscardCard(PrefabUtility.GetCorrespondingObjectFromSource(this));
+                    
                     stateManager.CmdSetCurrentState(
                         new CardUsed(_activationPosition != stateManager.gameObject.transform.position));
+                    
+                    gameObject.SetActive(false);
                 }
                 else
                 {

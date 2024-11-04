@@ -16,18 +16,23 @@ namespace UI
         [SerializeField] protected Transform container;
         [SerializeField] protected List<I> items = new List<I>();
 
-
         public virtual void Add (I item)
         {
             item.transform.SetParent(container);
             items.Add(item);
         }
 
-        public virtual List<I> GetItems ()
+        public List<I> GetItems ()
         {
             items.RemoveAll((i)=>i==null);
             return items;
         }
-
+        
+        public I Remove(I item)
+        {
+            item.transform.SetParent(null);
+            items.Remove(item);
+            return item;
+        }
     }
 }
