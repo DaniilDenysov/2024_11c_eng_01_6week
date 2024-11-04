@@ -49,11 +49,14 @@ namespace Distributors
         public void OnTurnStart()
         {
             var player = order.Peek();
-            OnLocalTurn(player.connectionToClient, true);
-            
-            if (player.TryGetComponent(out ClientData data))
+            if (player.connectionToClient != null)
             {
-                data.RpcSetTurn(true);
+                OnLocalTurn(player.connectionToClient, true);
+
+                if (player.TryGetComponent(out ClientData data))
+                {
+                    data.RpcSetTurn(true);
+                }
             }
         }
 

@@ -4988,6 +4988,7 @@ MonoBehaviour:
   players: []
   minimalLobbySize: 1
   playerLabelPrefab: {fileID: 2826222688164517831, guid: 7d09e73b412149f4b97b14bed3fd987e, type: 3}
+  playerScoreLabel: {fileID: 1099687581010529088, guid: ddd60f23d49d71946aada48578961117, type: 3}
   mainScene: Main
   isGameInProgress: 0
 --- !u!4 &1512126040

@@ -123,7 +123,7 @@ namespace Characters
                     {
                         if (opponentsInventory.TryPopItem(out HumanDTO human))
                         {
-                            _inventory.CmdAddHuman(human);
+                            _inventory.AddHuman(human);
                             result = true;
                         }
                     }

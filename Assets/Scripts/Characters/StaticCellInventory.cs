@@ -12,8 +12,9 @@ namespace Characters
         private Dictionary<string, List<Vector3>> _staticPickUpCells;
         private Action<bool> _onPickedUp;
 
-        public void Awake()
+        public override void Awake()
         {
+            base.Awake();
             _staticPickUpCells = new Dictionary<string, List<Vector3>>();
         }
 
