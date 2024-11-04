@@ -10717,7 +10717,6 @@ GameObject:
   - component: {fileID: 1367774966}
   - component: {fileID: 1367774969}
   - component: {fileID: 1367774968}
-  - component: {fileID: 1367774970}
   - component: {fileID: 1367774971}
   m_Layer: 0
   m_Name: Highlight
@@ -10852,42 +10851,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!19719996 &1367774970
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1367774965}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0
-  m_UseDelaunayMesh: 1
 --- !u!114 &1367774971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10900,6 +10863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57721c89cf6a9424f943a20ec8b28d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positions: []
 --- !u!1 &1396306023
 GameObject:
   m_ObjectHideFlags: 0

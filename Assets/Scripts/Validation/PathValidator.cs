@@ -19,7 +19,7 @@ namespace Validation
             Debug.DrawLine(nextPosition, nextPosition - direction,Color.red,5f);
             if (tile != null)
             {
-                return StepValidator.IsValid(-direction, tile as Tile);
+                return StepValidator.IsValid(direction, tile as Tile);
             }
             Debug.Log("Tile null");
             return false;

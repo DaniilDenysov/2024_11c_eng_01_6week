@@ -68,6 +68,10 @@ namespace Characters
                 HighlightDrawer.Instance.ClearHighlightedCells();
                 _stateManager.CmdSetCurrentState(new Idle());
             }
+            else
+            {
+                Debug.Log("Can't move");
+            }
         }
 
       /*  public void OnTurn()
@@ -84,126 +88,145 @@ namespace Characters
             if (newState.IsMovable())
             {
                 Debug.Log($"State changed: {newState.GetType()}");
-                //HighlightMoves(1);
-                HighlightAvailableMoves();
+                HighlightMoves();
+                //HighlightAvailableMoves();
             }
         }
 
-        public void HighlightMoves (int depth)
+        public void HighlightMove (Vector3 pos)
         {
-            List<Vector3> litPositions = new List<Vector3>();
-            int distance = 1;
-            for (int availableSteps = 1; availableSteps < depth; availableSteps++)
-            {
-                Vector3 nextPosition = transform.position + (directionNormalized * distance);
-                if (IsSlimed(nextPosition))
-                {
-                    availableSteps++;
-
-                    if (availableSteps >= clientData.GetScoreAmount() + 1)
-                    {
-                        break;
-                    }
-                }
-
-                if (pathValidator.CanMoveTo(nextPosition, directionNormalized * distance))
-                {
-                    litPositions.Add(nextPosition);
-                }
-                else
-                {
-                    Debug.Log("Not highlighted");
-                }
-
-                if (litPositions.Count > 0)
-                {
-                    _onMoveAvailable.Invoke();
-                    Debug.Log("Highlighted");
-                    HighlightDrawer.Instance.HighlightCells(litPositions);
-                    InputManager.Instance.AddCellCallbacksOverride(new HashSet<Vector3>(litPositions), OnCellSelected);
-                }
-                else if (clientData.GetTurn())
-                {
-                    _onMoveCancelable.Invoke();
-                }
-                distance++;
-            }
+            HighlightDrawer.Instance.HighlightCell(pos);
+            InputManager.Instance.AddCellCallbackOverride(pos, OnCellSelected);
         }
-         
-        public void HighlightAvailableMoves()
+
+        public void HighlightMoves()
         {
-            List<Vector3> litPositions = new List<Vector3>();
-            int distance = 1;
-            int maxDistance = 2;
-            //should be explicitly called when score added
-
-            for (int i = 0;i<clientData.GetScoreAmount() && distance < maxDistance;i++,distance++)
+            Debug.Log($"Current: {transform.position} Direction: {directionNormalized} NextPosition: {transform.position + directionNormalized}");
+            if (pathValidator.CanMoveTo(transform.position + directionNormalized, directionNormalized))
             {
-                Vector3 nextPosition = transform.position + (directionNormalized * distance);
-                Debug.Log("NextPos:"+nextPosition);
-
-                /*if (IsSlimed(nextPosition))
-                {
-                    availableSteps++;
-
-                    if (availableSteps >= clientData.GetScoreAmount() + 1)
-                    {
-                        break;
-                    }
-                }*/
-
-                if (pathValidator.CanMoveTo(nextPosition, directionNormalized))
-                {
-                    litPositions.Add(nextPosition);
-                }
+                HighlightMove(transform.position + directionNormalized);
             }
-
-            /*for (int availableSteps = 0; availableSteps < clientData.GetScoreAmount(); availableSteps++)
+            else if(clientData.GetTurn())
             {
-                Vector3 nextPosition = transform.position + (directionNormalized * distance);
-                Debug.Log("1");
-                if (IsSlimed(nextPosition))
-                {
-                    availableSteps++;
-
-                    if (availableSteps >= clientData.GetScoreAmount() + 1)
-                    {
-                        break;
-                    }
-                }
-                
-                if (pathValidator.CanMoveTo(nextPosition, directionNormalized))
-                {
-                    litPositions.Add(nextPosition);
-                }
-                else
-                {
-                    Debug.Log("Not highlighted");
-                }
- 
-                distance++;
-            }*/
-
-            if (litPositions.Count > 0)
-            {
-                _onMoveAvailable.Invoke();
-                Debug.Log("Highlighted");
-               
-                HighlightDrawer.Instance.HighlightCells(litPositions);
-                var set = new HashSet<Vector3>(litPositions);
-                Debug.Log("SetLen:"+set.Count);
-                InputManager.Instance.AddCellCallbacksOverride(set, OnCellSelected);
-            }
-            else if (clientData.GetTurn())
-            {
+                Debug.Log("Can't move");
                 _onMoveCancelable.Invoke();
             }
         }
-        
+
+        /*  public void HighlightMoves (int depth)
+          {
+              List<Vector3> litPositions = new List<Vector3>();
+              int distance = 1;
+              for (int availableSteps = 1; availableSteps < depth; availableSteps++)
+              {
+                  Vector3 nextPosition = transform.position + (directionNormalized * distance);
+                  if (IsSlimed(nextPosition))
+                  {
+                      availableSteps++;
+
+                      if (availableSteps >= clientData.GetScoreAmount() + 1)
+                      {
+                          break;
+                      }
+                  }
+
+                  if (pathValidator.CanMoveTo(nextPosition, directionNormalized * distance))
+                  {
+                      litPositions.Add(nextPosition);
+                  }
+                  else
+                  {
+                      Debug.Log("Not highlighted");
+                  }
+
+                  if (litPositions.Count > 0)
+                  {
+                      _onMoveAvailable.Invoke();
+                      Debug.Log("Highlighted");
+                      HighlightDrawer.Instance.HighlightCells(litPositions);
+                      InputManager.Instance.AddCellCallbacksOverride(new HashSet<Vector3>(litPositions), OnCellSelected);
+                  }
+                  else if (clientData.GetTurn())
+                  {
+                      _onMoveCancelable.Invoke();
+                  }
+                  distance++;
+              }
+          }*/
+
+        /* public void HighlightAvailableMoves()
+         {
+             List<Vector3> litPositions = new List<Vector3>();
+             int distance = 1;
+             int maxDistance = 2;
+             //should be explicitly called when score added
+
+             for (int i = 0;i<clientData.GetScoreAmount() && distance < maxDistance;i++,distance++)
+             {
+                 Vector3 nextPosition = transform.position + (directionNormalized * distance);
+                 Debug.Log("NextPos:"+nextPosition);
+
+                 if (IsSlimed(nextPosition))
+                 {
+                     availableSteps++;
+
+                     if (availableSteps >= clientData.GetScoreAmount() + 1)
+                     {
+                         break;
+                     }
+                 }
+
+                 if (pathValidator.CanMoveTo(nextPosition, directionNormalized))
+                 {
+                     litPositions.Add(nextPosition);
+                 }
+             }
+
+             for (int availableSteps = 0; availableSteps < clientData.GetScoreAmount(); availableSteps++)
+             {
+                 Vector3 nextPosition = transform.position + (directionNormalized * distance);
+                 Debug.Log("1");
+                 if (IsSlimed(nextPosition))
+                 {
+                     availableSteps++;
+
+                     if (availableSteps >= clientData.GetScoreAmount() + 1)
+                     {
+                         break;
+                     }
+                 }
+
+                 if (pathValidator.CanMoveTo(nextPosition, directionNormalized))
+                 {
+                     litPositions.Add(nextPosition);
+                 }
+                 else
+                 {
+                     Debug.Log("Not highlighted");
+                 }
+
+                 distance++;
+             }
+
+             if (litPositions.Count > 0)
+             {
+                 _onMoveAvailable.Invoke();
+                 Debug.Log("Highlighted");
+
+                 HighlightDrawer.Instance.HighlightCells(litPositions);
+                 var set = new HashSet<Vector3>(litPositions);
+                 Debug.Log("SetLen:"+set.Count);
+                 InputManager.Instance.AddCellCallbacksOverride(set, OnCellSelected);
+             }
+             else if (clientData.GetTurn())
+             {
+                 _onMoveCancelable.Invoke();
+             }
+         }*/
+
         public void MoveTo(Vector3 nextPosition)
         {
             transform.position = nextPosition;
-            _stateManager.CmdSetCurrentState(new Idle());
         }
 
 

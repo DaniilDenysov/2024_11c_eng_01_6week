@@ -8,8 +8,9 @@ namespace Extensions.Vector
 
         public static Vector3Int VectorToIntVector(this Vector3 vector)
         {
-            return new Vector3Int(Mathf.RoundToInt(vector.x), Mathf.RoundToInt(vector.y), 0);
+            return new Vector3Int(Mathf.FloorToInt(vector.x), Mathf.FloorToInt(vector.y), 0);
         }
+
 
 
         public static Vector3Int NormalizeIntVector(this Vector3Int vector)
