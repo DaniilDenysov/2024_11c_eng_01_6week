@@ -9234,18 +9234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e192029ce5f684d6892eb8b94cee2757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards:
-    _serializedList:
-    - Key: {fileID: 3648956849637883068, guid: 45df8d1660bf8f54b9ca17966540c266, type: 3}
-      Value: 2
-    - Key: {fileID: 5119913302006528522, guid: 184da955ad2fbea41b19aa106197e5eb, type: 3}
-      Value: 8
-    - Key: {fileID: 7620733589844510567, guid: 9cd205fa071d31046a4be42c8dfdd14c, type: 3}
-      Value: 10
-    - Key: {fileID: 3713896265231458271, guid: de80efeed02f62f4cae923059f5d3039, type: 3}
-      Value: 14
-    - Key: {fileID: 350858826076241073, guid: 118a4e9ca1d30ef4bba2c2b484ee68f6, type: 3}
-      Value: 14
 --- !u!1 &1585079865 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8089995046845132342, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
