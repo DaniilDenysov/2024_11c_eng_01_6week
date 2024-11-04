@@ -28,6 +28,12 @@ namespace Managers
             inputActions.Player.PauseMenu.performed += OnPause;
         }
 
+        private void OnDestroy()
+        {
+            OnFinish -= OnGameFinished;
+            inputActions.Player.PauseMenu.performed -= OnPause;
+        }
+
         private void OnPause(InputAction.CallbackContext obj)
         {
             pauseMenu.SetActive(!pauseMenu.activeInHierarchy);

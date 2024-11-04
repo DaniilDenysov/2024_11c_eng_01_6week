@@ -44,12 +44,15 @@ namespace Managers
                     if (inv.GetHumans().Count >= 1)
                     {
                         GameplayManager.Instance.OnGameFinished();
-                        foreach (var score in NetworkPlayerContainer.Instance.GetItems())
+                        foreach (var networkPlayer in NetworkPlayerContainer.Instance.GetItems())
                         {
-                            PlayerScoreLabel playerScore = Instantiate(playerScoreLabel, PlayerScoreContainer.Instance.transform);
-                            PlayerScoreContainer.Instance.Add(playerScore);
-                            var playerData = score.GetPlayerData();
-                            playerScore.Construct(player.GetCharacterData(), playerData.Nickname, $"{NetworkPlayerContainer.Instance.CalculateToatlScoreForPlayer(score)} cal");
+                            if (networkPlayer.connectionToClient != null)
+                            {
+                                PlayerScoreLabel playerScore = Instantiate(playerScoreLabel, PlayerScoreContainer.Instance.transform);
+                                PlayerScoreContainer.Instance.Add(playerScore);
+                                var playerData = networkPlayer.GetPlayerData();
+                                playerScore.Construct(player.GetCharacterData(), playerData.Nickname, $"{NetworkPlayerContainer.Instance.CalculateToatlScoreForPlayer(networkPlayer)} cal");
+                            }
                         }
                         break;
                     }

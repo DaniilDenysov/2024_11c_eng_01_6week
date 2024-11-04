@@ -38,7 +38,7 @@ namespace Cards
                 if (successfully)
                 {
                     ClientDeck.Instance.Remove(this);
-                    CardDistributor.Instance.CmdDiscardCard(PrefabUtility.GetCorrespondingObjectFromSource(this));
+                    CardDistributor.Instance.CmdDiscardCard(this);
                     
                     stateManager.CmdSetCurrentState(
                         new CardUsed(_activationPosition != stateManager.gameObject.transform.position));
