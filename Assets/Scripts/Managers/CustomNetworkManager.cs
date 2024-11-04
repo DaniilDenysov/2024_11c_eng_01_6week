@@ -75,6 +75,10 @@ namespace Managers
             base.OnServerConnect(conn);
             //assign to available
             Debug.Log("Connections:"+ NetworkServer.connections.Count);
+            if (!isGameInProgress)
+            {
+                ValidatePlayersSelections();
+            }
             if (isGameInProgress && NetworkServer.connections.Count <= NetworkServer.maxConnections)
             {
                 var networkPlayer = GetPlayerForConnection(conn.connectionId);
@@ -152,15 +156,7 @@ namespace Managers
             base.OnServerDisconnect(conn);
             if (!isGameInProgress)
             {
-                var participants = FindObjectsOfType<PlayerLabel>();
-                foreach (var participant in participants)
-                {
-                    participant.OnValidateSelection();
-                }
-                foreach (var participant in participants)
-                {
-                    participant.ValidateSelection();
-                }
+                ValidatePlayersSelections();
             }
             else
             {
@@ -175,6 +171,21 @@ namespace Managers
             {
                 StopServer();
             }*/
+        }
+
+        public void ValidatePlayersSelections ()
+        {
+            var participants = FindObjectsOfType<PlayerLabel>();
+            foreach (var participant in participants)
+            {
+                if (participant.connectionToClient == null) continue;
+                participant.OnValidateSelection();
+            }
+            foreach (var participant in participants)
+            {
+                if (participant.connectionToClient == null) continue;
+                participant.ValidateSelection();
+            }
         }
 
         public ServerMessage ErrorMessage (string title,string description)

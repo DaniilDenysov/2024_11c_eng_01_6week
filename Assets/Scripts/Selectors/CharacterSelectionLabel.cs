@@ -12,8 +12,9 @@ namespace Lobby
     {        
         public static Action<string,bool> OnSelected;
         public static Action<string> OnDeselected;
+        [SerializeField] private Image icon;
         [SerializeField] private CharacterData characterData;
-        [SerializeField] private GameObject blocker, cancelButton;
+        [SerializeField] private GameObject selectButton, cancelButton;
 
         public CharacterData GetCharacterData() => characterData;
 
@@ -33,10 +34,15 @@ namespace Lobby
         {
             if (characterData.CharacterGUID == character)
             {
-                blocker.SetActive(true);
+                selectButton.SetActive(false);
+                
                 if (isLocalPlayer)
                 {
                     cancelButton.SetActive(true);
+                }
+                else
+                {
+                    icon.color = Color.gray;
                 }
             }
         }
@@ -45,7 +51,8 @@ namespace Lobby
         {
             if (characterData.CharacterGUID == character)
             {
-                blocker.SetActive(false);
+                icon.color = Color.white;
+                selectButton.SetActive(true);
                 cancelButton.SetActive(false);
             }
         }
@@ -63,7 +70,7 @@ namespace Lobby
 
         public void SetBlock (bool state)
         {
-            blocker.SetActive(state);
+            selectButton.SetActive(state);
         }
     }
 }

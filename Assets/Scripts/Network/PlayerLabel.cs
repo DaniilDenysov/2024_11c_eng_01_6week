@@ -35,6 +35,12 @@ public class PlayerLabel : NetworkBehaviour
         PlayerLabelsContainer.Instance.Add(this);
     }
 
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        CharacterSelectionLabel.OnDeselected?.Invoke(Player.CharacterGUID);
+    }
+
     #region commands
     [Command]
     public void CmdStartGame ()
