@@ -144,7 +144,7 @@ public class PlayerLabel : NetworkBehaviour
     [ClientRpc]
     public void ValidateSelection()
     {
-        CharacterSelectionLabel.OnSelected?.Invoke(Player.CharacterGUID, Player.ConnectionId == LocalPlayer.connectionToClient.connectionId);
+      if (LocalPlayer != null && Player != null && LocalPlayer.connectionToClient != null)  CharacterSelectionLabel.OnSelected?.Invoke(Player.CharacterGUID, Player.ConnectionId == LocalPlayer.connectionToClient.connectionId);
     }
 
     [ClientRpc]

@@ -181,12 +181,12 @@ namespace Managers
             var participants = FindObjectsOfType<PlayerLabel>();
             foreach (var participant in participants)
             {
-                if (participant.connectionToClient == null) continue;
+                if (participant == null || participant.connectionToClient == null) continue;
                 participant.OnValidateSelection();
             }
             foreach (var participant in participants)
             {
-                if (participant.connectionToClient == null) continue;
+                if (participant == null || participant.connectionToClient == null) continue;
                 participant.ValidateSelection();
             }
         }

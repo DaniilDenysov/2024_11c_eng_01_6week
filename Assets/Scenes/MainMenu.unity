@@ -1163,10 +1163,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 542820093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -129.07996, y: -209.74243}
-  m_SizeDelta: {x: 761.8378, y: 174.12488}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -124.99997, y: -640}
+  m_SizeDelta: {x: 770, y: 180}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!222 &288213947
 CanvasRenderer:
@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 288213943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -1194,12 +1194,14 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 375, y: 80}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
 --- !u!1 &347270963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2739,10 +2741,10 @@ RectTransform:
   - {fileID: 1897067689}
   m_Father: {fileID: 542820093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 385.4, y: 233.26001}
-  m_SizeDelta: {x: 249.20392, y: 168.11621}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 384.99997, y: -650}
+  m_SizeDelta: {x: 250, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &715920867
 MonoBehaviour:
@@ -2765,7 +2767,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 250, y: 80}
-  m_Spacing: {x: 10, y: 10}
+  m_Spacing: {x: 10, y: 40}
   m_Constraint: 2
   m_ConstraintCount: 2
 --- !u!1 &724004545
@@ -7132,7 +7134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125, y: -130}
+  m_AnchoredPosition: {x: 125, y: -160}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1897067690
