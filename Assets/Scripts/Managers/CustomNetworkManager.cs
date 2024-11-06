@@ -2,15 +2,10 @@ using DTOs;
 using System.Linq;
 using Mirror;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Lobby;
-using Zenject;
 using UI;
 using General;
-using UI.PlayerLog;
 
 namespace Managers
 {
