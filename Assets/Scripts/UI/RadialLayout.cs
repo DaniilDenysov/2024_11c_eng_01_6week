@@ -26,7 +26,6 @@ THE SOFTWARE.
 
 namespace UnityEngine.UI.Extensions
 {
-    [AddComponentMenu("Layout/Extensions/Radial Layout")]
     public class RadialLayout : LayoutGroup
     {
         public float fDistance;

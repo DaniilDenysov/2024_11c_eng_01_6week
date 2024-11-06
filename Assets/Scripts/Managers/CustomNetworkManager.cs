@@ -18,6 +18,7 @@ namespace Managers
     {
         [SerializeField] private List<Player> players;
         [SerializeField, Range(1, 4)] private int minimalLobbySize = 1;
+        [SerializeField] private int humanWinScore = 1;
         [SerializeField] private GameObject playerLabelPrefab;
         [SerializeField] private PlayerScoreLabel playerScoreLabel;
         [SerializeField] private string mainScene;
@@ -40,8 +41,7 @@ namespace Managers
             {
                 if (player.gameObject.TryGetComponent(out Inventory inv))
                 {
-                    //change to == 12 later
-                    if (inv.GetHumans().Count >= 1)
+                    if (inv.GetHumans().Count >= humanWinScore)
                     {
                         GameplayManager.Instance.OnGameFinished();
                         foreach (var networkPlayer in NetworkPlayerContainer.Instance.GetItems())
