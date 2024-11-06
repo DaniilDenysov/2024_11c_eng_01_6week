@@ -10,7 +10,7 @@ namespace SaveSystem
     [RequireComponent(typeof(Slider))]
     public class SliderSaver : Saver // TODO: add better comments
     {
-        private Slider slider;
+        [SerializeField] private Slider slider;
 
         public override void Construct()
         {
