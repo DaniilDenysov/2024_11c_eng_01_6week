@@ -28,7 +28,7 @@ namespace Distributors
         }
 
         [Server]
-        public void AddScoreToCurrentClient ()
+        public void AddScoreToCurrentClient()
         {
             foreach (var client in NetworkPlayerContainer.Instance.GetItems())
             {

@@ -1,29 +1,26 @@
+using System;
 using Characters;
 using Characters.CharacterStates;
+using Client;
 using Collectibles;
-using General;
-using Managers;
+using Distributors;
 using Mirror;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Cards
 {
     [RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-    public abstract class Card : MonoBehaviour, IPointerClickHandler
+    public abstract class Card : NetworkBehaviour, IPointerClickHandler
     {
         private CanvasGroup _canvasGroup;
-        private RectTransform _rectTransform;
         private Vector2 _startPosition;
-        private CharacterStateManager _stateManager;
-        private GameObject _cardOwner;
-        private ActionBlockerManager actionBlocker;
+        private Vector3 _activationPosition;
 
         public virtual void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
-            _rectTransform = GetComponent<RectTransform>();
-            actionBlocker = FindObjectOfType<ActionBlockerManager>();
         }
 
         public void OnPointerClick(PointerEventData eventData)
@@ -40,7 +37,13 @@ namespace Cards
             {
                 if (successfully)
                 {
-                    stateManager.CmdSetCurrentState(new CardUsed());
+                    ClientDeck.Instance.Remove(this);
+                    CardDistributor.Instance.CmdDiscardCard(this);
+                    
+                    stateManager.CmdSetCurrentState(
+                        new CardUsed(_activationPosition != stateManager.gameObject.transform.position));
+                    
+                    gameObject.SetActive(false);
                 }
                 else
                 {
@@ -51,29 +54,27 @@ namespace Cards
 
         public void TryActivate()
         {
-            if (actionBlocker.IsActionBlocked("CardUse"))
+            if (NetworkClient.connection.identity != null 
+                && NetworkClient.connection.identity.TryGetComponent(out ClientData clientData)
+                && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
             {
-                Debug.Log("Card usage is blocked!");
-                return;
-            }
-
-            if (_stateManager.GetCurrentState().IsCardUsable(this) || 
-                _stateManager.GetCurrentState().GetType() == typeof(MultiCard))
-            if (NetworkClient.connection.identity != null && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
-            {
-                if (stateManager.GetCurrentState().IsCardUsable(this) ||
-                stateManager.GetCurrentState().GetType() == typeof(MultiCard))
+                if (clientData.GetTurn())
                 {
-                    _canvasGroup.alpha = 0.5f;
-
-                    if (stateManager.GetCurrentState().IsCardUsable(this))
+                    if (stateManager.GetCurrentState().IsCardUsable(this) ||
+                        stateManager.GetCurrentState().GetType() == typeof(MultiCard))
                     {
-                        stateManager.CmdSetCurrentState(new CardSettingUp());
-                        OnCardActivation(stateManager.gameObject);
-                        return;
-                    }
+                        _canvasGroup.alpha = 0.5f;
+                        _activationPosition = stateManager.gameObject.transform.position;
 
-                    stateManager.CmdSetCurrentState(new CardSettingUp());
+                        if (stateManager.GetCurrentState().IsCardUsable(this))
+                        {
+                            stateManager.CmdSetCurrentState(new CardSettingUp());
+                            OnCardActivation(stateManager.gameObject);
+                            return;
+                        }
+
+                        stateManager.CmdSetCurrentState(new CardSettingUp());
+                    }
                 }
             }
         }

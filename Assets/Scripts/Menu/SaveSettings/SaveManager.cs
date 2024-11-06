@@ -13,10 +13,18 @@ namespace SaveSystem
     public class SaveManager : MonoBehaviour // TODO: add better comments
     {
         private Dictionary<string, Saver> _savableComponents = new Dictionary<string, Saver>();
-        [SerializeField] private string _savePath;
+        [SerializeField] private string _fileName = "SaveSettings.json";
+        [SerializeField] private string _filePath = "Saves";
+        [SerializeField] private string _fullPath;
 
         private void Start()
         {
+            _filePath = Path.Combine(Application.dataPath, _filePath);
+            if (!Directory.Exists(_filePath))
+            {
+                Directory.CreateDirectory(_filePath);
+            }
+            _fullPath = Path.Combine(_filePath, _fileName);
             FindAndRegisterSavableComponents();
             LoadSettings();
             SceneManager.sceneLoaded += SaveSettings;
@@ -32,6 +40,11 @@ namespace SaveSystem
 
         private void SaveSettings(Scene scene, LoadSceneMode mode)
         {
+            SaveSettings();
+        }
+
+        public void SaveSettings()
+        {
             var dataList = new SavableData
             {
                 data = new List<Tuple<string, object>>()
@@ -43,14 +56,14 @@ namespace SaveSystem
             }
 
             string jsonData = JsonConvert.SerializeObject(dataList, Formatting.Indented);
-            File.WriteAllText(_savePath, jsonData);
+            File.WriteAllText(_fullPath, jsonData);
         }
 
-        private void LoadSettings()
+        public void LoadSettings()
         {
-            if (!File.Exists(_savePath)) return;
+            if (!File.Exists(_fullPath)) return;
 
-            string jsonData = File.ReadAllText(_savePath);
+            string jsonData = File.ReadAllText(_fullPath);
             SavableData save = JsonConvert.DeserializeObject<SavableData>(jsonData);
 
             if (save?.data == null) return;

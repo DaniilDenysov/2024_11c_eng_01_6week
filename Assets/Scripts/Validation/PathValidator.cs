@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Characters;
+using DesignPatterns.Singleton;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Validation
 {
-    public class PathValidator : MonoBehaviour
+    public class PathValidator : Singleton<PathValidator>
     {
         [SerializeField] private Tilemap walls;
 
@@ -92,6 +93,11 @@ namespace Validation
                 vectorDifference.y > 0 ? unitSize.y : (vectorDifference.y < 0 ? -unitSize.y : 0),
                 0
             );
+        }
+
+        public override PathValidator GetInstance()
+        {
+            return this;
         }
     }
 }

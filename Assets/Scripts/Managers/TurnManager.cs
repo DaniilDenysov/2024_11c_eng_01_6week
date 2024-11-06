@@ -53,10 +53,12 @@ namespace Managers
 
         private IEnumerator StartTurn()
         {
-            // yield return new WaitForSeconds(turnDelay);
-            CharacterTurnDistributor.Instance.OnTurnStart();
+            GlobalMessageContainer.Instance.DisplayMessage($"Turn of {CharacterTurnDistributor.Instance.GetCurrentPlayer().GetCharacterData().ChracterName}", "New turn!");
+            yield return new WaitForSeconds(turnDelay);
             ScoreDistributor.Instance.AddScoreToCurrentClient();
             CardDistributor.Instance.DistributeCardsToClients();
+            CharacterTurnDistributor.Instance.OnTurnStart();
+            SyncedClock.Instance.StartTimer(turnTimeLimit);
             OnTurnStart();
             yield return new WaitForSeconds(turnTimeLimit);
             EndTurn();
@@ -67,6 +69,7 @@ namespace Managers
         private void EndTurn()
         {
             CharacterTurnDistributor.Instance.OnTurnEnd();
+            SyncedClock.Instance.DeleteTimer();
             OnTurnEnd();
         }
     }

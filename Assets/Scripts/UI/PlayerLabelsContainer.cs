@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -9,7 +10,10 @@ namespace UI
         public override void Add(PlayerLabel item)
         {
             base.Add(item);
-            //item.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+            if (item.TryGetComponent(out RectTransform rect))
+            {
+                rect.localScale = new Vector3(1f,1f);
+            }
         }
 
         public override PlayerLabelsContainer GetInstance()

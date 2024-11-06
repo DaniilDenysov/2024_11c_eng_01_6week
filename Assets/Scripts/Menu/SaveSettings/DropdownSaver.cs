@@ -1,20 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 namespace SaveSystem
 {
     /// <summary>
     /// Saves and loads the state of a Dropdown component.
     /// </summary>
-    [RequireComponent(typeof(Dropdown))]
+    [RequireComponent(typeof(TMP_Dropdown))]
     public class DropdownSaver : Saver // TODO: add better comments
     {
-        [SerializeField] private Dropdown _dropdown;
+        [SerializeField] private TMP_Dropdown _dropdown;
 
         public override void Construct()
         {
-            _dropdown = GetComponent<Dropdown>();
+            _dropdown = GetComponent<TMP_Dropdown>();
             base.Construct();
         }
 

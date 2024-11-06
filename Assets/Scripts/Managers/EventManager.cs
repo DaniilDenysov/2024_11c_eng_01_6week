@@ -13,11 +13,7 @@ namespace Managers
         public static Action OnTurnStart, OnTurnEnd;
         public static Action OnTick;
         public static Action OnTurnFinished;
-        
-        public static Action<Human> OnHumanFearTriggered;
-        public static Action<Vector3> OnLitTileClick;
-        public static Action<bool> OnSkillSetUp;
-        public static Action<bool> OnCardSetUp;
+        public static Action OnScreenSizeChanged;
 
         public static Action<Vector3, CharacterMovement> OnCharacterMovesOut;
 

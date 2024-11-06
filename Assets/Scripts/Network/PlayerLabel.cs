@@ -35,6 +35,12 @@ public class PlayerLabel : NetworkBehaviour
         PlayerLabelsContainer.Instance.Add(this);
     }
 
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        CharacterSelectionLabel.OnDeselected?.Invoke(Player.CharacterGUID);
+    }
+
     #region commands
     [Command]
     public void CmdStartGame ()
@@ -111,11 +117,17 @@ public class PlayerLabel : NetworkBehaviour
         if (characterData != null)
         {
             CharacterSelectionLabel.OnDeselected?.Invoke(oldState.CharacterGUID);
-            CharacterSelectionLabel.OnSelected?.Invoke(characterData.CharacterGUID);
+            // bool isLocal = false;
+            /* if (oldState == null)
+             {
+                 isLocal = newState.ConnectionId == connectionToClient.connectionId; newState.ConnectionId == connectionToClient.connectionId
+             }*/
+            CharacterSelectionLabel.OnSelected?.Invoke(characterData.CharacterGUID, isLocalPlayer);
             characterSelected.sprite = characterData.CharacterIcon;
         }
         else
         {
+            CharacterSelectionLabel.OnDeselected?.Invoke(oldState.CharacterGUID);
             characterSelected.sprite = iconPlaceHolder;
         }
         if (!isOwned) return;
@@ -132,7 +144,7 @@ public class PlayerLabel : NetworkBehaviour
     [ClientRpc]
     public void ValidateSelection()
     {
-        CharacterSelectionLabel.OnSelected?.Invoke(Player.CharacterGUID);
+      if (LocalPlayer != null && Player != null && LocalPlayer.connectionToClient != null)  CharacterSelectionLabel.OnSelected?.Invoke(Player.CharacterGUID, Player.ConnectionId == LocalPlayer.connectionToClient.connectionId);
     }
 
     [ClientRpc]

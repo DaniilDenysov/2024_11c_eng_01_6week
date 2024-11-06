@@ -2,50 +2,42 @@ using System;
 using Characters;
 using Collectibles;
 using System.Collections.Generic;
-using System.Linq;
 using Mirror;
-using ModestTree;
+using UI.Containers;
 using UnityEngine;
 using Validation;
 
 public class Inventory : NetworkBehaviour
 {
-    [SerializeField, SyncVar(hook = nameof(OnInventoryChanged))] private List<HumanDTO> humanDTOs;
-
-    private void OnInventoryChanged(List<HumanDTO> oldValue, List<HumanDTO> newValue)
-    {
-        Debug.Log("Changed");
-    }
-
-    private Action<bool> _onPickedUp;
-
-    private Dictionary<string, List<Vector3>> _staticPickUpCells;
+    [SerializeField] private SyncList<HumanDTO> humanDTOs = new SyncList<HumanDTO>();
     private CharacterMovement _movement;
+    public static Action OnHumanPickedUp;
 
-    private void Awake()
+    public virtual void Awake()
     {
         _movement = GetComponent<CharacterMovement>();
-        _staticPickUpCells = new Dictionary<string, List<Vector3>>();
-        humanDTOs = new List<HumanDTO>();
+        humanDTOs.Callback += OnInventoryChanged;
     }
 
-    public void PickUp(Action<bool> onPickedUp)
+    private void OnInventoryChanged(SyncList<HumanDTO>.Operation op, int itemIndex, HumanDTO oldItem, HumanDTO newItem)
     {
-        if (IsStaticPickUpCellsEmpty())
+        Debug.Log("Changed");
+        if (op == SyncList<HumanDTO>.Operation.OP_ADD)
         {
-            onPickedUp.Invoke(PickUp(transform.position));
+            Debug.Log("Picked");
+            OnHumanPickedUp?.Invoke();
         }
-        else
-        {
-            List<Vector3> litPositions = GetPickUpCells(0, typeof(Human));
-            TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
-            _onPickedUp = onPickedUp;
-        }
+    }
+
+    public virtual void PickUp(Action<bool> onPickedUp)
+    {
+        onPickedUp.Invoke(PickUp(transform.position));
     }
 
     public bool PickUp(Vector3 cell)
     {
         bool result = false;
+        bool isGameEnded = false;
 
         foreach (GameObject entity in CharacterMovement.GetEntities(cell))
         {
@@ -53,32 +45,25 @@ public class Inventory : NetworkBehaviour
             {
                 if (collectible.GetType() == typeof(Human))
                 {
+                    HumanDTO humanDTO = (collectible as Human).GetData();
+
+                    AddHuman(humanDTO);
+                    collectible.Collect();
+                    if (!InventoryContainer.Instance.TryAdd(humanDTO))
+                    {
+                        isGameEnded = true;
+                    }
                     result = true;
                 }
             }
         }
 
+        if (isGameEnded)
+        {
+            Debug.Log("YEEAHH, Game ended!!!");
+        }
+
         return result;
-    }
-
-    public void AddStaticPickUpCells(List<Vector3> cells, string groupName)
-    {
-        if (_staticPickUpCells.TryGetValue(groupName, out List<Vector3> groupCells))
-        {
-            groupCells.AddRange(cells);
-            groupCells = groupCells.Distinct().ToList();
-
-            _staticPickUpCells[groupName] = groupCells;
-        }
-        else
-        {
-            _staticPickUpCells.Add(groupName, cells);
-        }
-    }
-
-    private void OnCellChosen(Vector3 cell)
-    {
-        _onPickedUp(PickUp(cell));
     }
 
     public bool TryPopItem(out HumanDTO human)
@@ -86,35 +71,42 @@ public class Inventory : NetworkBehaviour
         human = default;
         if (humanDTOs.Count > 0)
         {
-            //human = _inventory[0] as Human;
             human = humanDTOs[0];
-            humanDTOs.RemoveAt(0);
-            //CmdRemoveItem();
+            if (!InventoryContainer.Instance.TryRemove()) return false;
+            RemoveHuman();
             return true;
         }
 
         return false;
     }
 
-    public void Add(HumanDTO humanDTO)
+    public void AddHuman(HumanDTO humanDTO)
     {
+        if (!isOwned)
+        {
+            Debug.Log("CANT MODIFY");
+            return;
+        }
         humanDTOs.Add(humanDTO);
+        Debug.Log("Added");
     }
 
-    public void RemoveStaticPickUpCells(string groupName)
+    public void RemoveHuman()
     {
-        _staticPickUpCells.Remove(groupName);
+        if (!isOwned)
+        {
+            Debug.Log("CANT MODIFY");
+            return;
+        }
+        humanDTOs.RemoveAt(0);
     }
 
-    public bool IsStaticPickUpCellsEmpty()
-    {
-        return _staticPickUpCells.IsEmpty();
-    }
+    public IReadOnlyCollection<HumanDTO> GetHumans() => humanDTOs;
 
-    public List<Vector3> GetPickUpCells(int range, Type collectibleType, bool includeStaticCell = true,
+    public virtual List<Vector3> GetPickUpCells(int range, Type collectibleType, bool includeStaticCell = true,
         bool includeCurrentCell = true)
     {
-        PathValidator pathValidator = _movement.GetPathValidator();
+        PathValidator pathValidator = PathValidator.Instance;
         Vector3 characterPosition = transform.position;
         List<Vector3> directions =
             includeCurrentCell ? CharacterMovement.GetAttackDirections() : CharacterMovement.GetAllDirections();
@@ -135,23 +127,6 @@ public class Inventory : NetworkBehaviour
                 if (IsCellPickable(currentCell, collectibleType))
                 {
                     result.Add(currentCell);
-                }
-            }
-        }
-
-        if (includeStaticCell)
-        {
-            foreach (var group in _staticPickUpCells)
-            {
-                foreach (var cell in group.Value)
-                {
-                    if (!result.Contains(cell))
-                    {
-                        if (IsCellPickable(cell, collectibleType))
-                        {
-                            result.Add(cell);
-                        }
-                    }
                 }
             }
         }

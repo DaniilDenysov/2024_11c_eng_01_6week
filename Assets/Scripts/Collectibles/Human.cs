@@ -104,21 +104,21 @@ namespace Collectibles
 
         public override object Collect()
         {
-            CmdSetCollected(true);
             FindObjectOfType<HumanReactionManager>()?.UnregisterHuman(this);
+            CmdCollect();
             return this;
         }
         
         [Command(requiresAuthority = false)]
-        private void CmdSetCollected(bool isCollected)
+        private void CmdCollect()
         {
-            RpcSetCollected(isCollected);
+            RpcSetCollected();
         }
     
         [ClientRpc]
-        private void RpcSetCollected(bool isCollected)
+        private void RpcSetCollected()
         {
-            this.isCollected = isCollected;
+            Destroy(gameObject);
         }
     }
 }

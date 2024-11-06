@@ -14,6 +14,11 @@ namespace Characters
             CmdSetCurrentState(new Idle());
         }
 
+        public void OnTurn()
+        {
+            _currentState = new Idle();
+        }
+
         public CharacterState GetCurrentState()
         {
             return _currentState;

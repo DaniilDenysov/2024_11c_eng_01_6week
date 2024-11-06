@@ -11,6 +11,7 @@ public class TileSelector : MonoBehaviour
     [SerializeField] private Tilemap tileMap;
     private Vector3 cellUnit;
     [SerializeField] private TileBase highlightTile;
+    [SerializeField] private TileBase arrowTile;
     
     private Action<Vector3> _onChosen;
     private List<Vector3> _litPositions;
@@ -46,18 +47,41 @@ public class TileSelector : MonoBehaviour
         }
     }
 
-    public void SetTilesLit(List<Vector3> positions, Action<Vector3> onChosen)
+    public void SetTilesLit(List<Vector3> positions, Action<Vector3> onChosen, 
+        TileBase tile = null, List<Vector3> directions = null)
     {
         if (positions.Count < 1)
         {
             Debug.LogError("Lit cells count is 0");
         }
-        
-        SetTilesUnlit();
-        foreach (Vector3 position in positions)
+
+        if (directions != null)
         {
-            Vector3Int tilePosition = tileMap.WorldToCell(position);
-            tileMap.SetTile(tilePosition, highlightTile);
+            if (directions.Count != positions.Count)
+            {
+                Debug.Log("Direction Count doesn't equal to position count");
+                return;
+            }
+        }
+
+        SetTilesUnlit();
+        for (int i = 0; i < positions.Count; i++) 
+        {
+            Vector3Int tilePosition = tileMap.WorldToCell(positions[i]);
+            tileMap.SetTile(tilePosition, tile != null ? tile : highlightTile);
+
+            if (directions != null)
+            {
+                float angle = Vector3.Angle(directions[i], transform.up);
+                
+                if (directions[i].x > 0)
+                {
+                    angle = -angle;
+                }
+                
+                tileMap.SetTransformMatrix(tilePosition, Matrix4x4.TRS(Vector3.zero, 
+                    Quaternion.Euler(0, 0, angle), Vector3.one));
+            }
         }
 
         _onChosen = onChosen;
@@ -68,11 +92,13 @@ public class TileSelector : MonoBehaviour
         List<Vector3> excludeDirections = null)
     {
         List<Vector3> directionPositions = CharacterMovement.GetAllDirections();
+        List<Vector3> directions = new List<Vector3>();
 
         for (int i = 0; i < directionPositions.Count; i++)
         {
             if (excludeDirections == null || !excludeDirections.Contains(directionPositions[i]))
             {
+                directions.Add(directionPositions[i]);
                 directionPositions[i] += position;
             }
             else
@@ -82,7 +108,7 @@ public class TileSelector : MonoBehaviour
             }
         }
 
-        SetTilesLit(directionPositions, onChosen);
+        SetTilesLit(directionPositions, onChosen, arrowTile, directions);
     }
     
     public void SetTilesUnlit()

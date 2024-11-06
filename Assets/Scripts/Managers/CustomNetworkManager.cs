@@ -2,15 +2,10 @@ using DTOs;
 using System.Linq;
 using Mirror;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Lobby;
-using Zenject;
 using UI;
 using General;
-using UI.PlayerLog;
 
 namespace Managers
 {
@@ -18,12 +13,48 @@ namespace Managers
     {
         [SerializeField] private List<Player> players;
         [SerializeField, Range(1, 4)] private int minimalLobbySize = 1;
+        [SerializeField] private int humanWinScore = 1;
         [SerializeField] private GameObject playerLabelPrefab;
+        [SerializeField] private PlayerScoreLabel playerScoreLabel;
         [SerializeField] private string mainScene;
         [SerializeField] private bool isGameInProgress = false;
         public static Action OnClientConnected, OnClientDisconnected;
 
         #region Server
+
+        public override void Awake()
+        {
+            base.Awake();
+            Inventory.OnHumanPickedUp += OnHumanPickedUp;
+        }
+
+        [Server]
+        private void OnHumanPickedUp()
+        {
+            Debug.Log("Picked UP");
+            foreach (var player in NetworkPlayerContainer.Instance.GetItems())
+            {
+                if (player.gameObject.TryGetComponent(out Inventory inv))
+                {
+                    if (inv.GetHumans().Count >= humanWinScore)
+                    {
+                        GameplayManager.Instance.OnGameFinished();
+                        foreach (var networkPlayer in NetworkPlayerContainer.Instance.GetItems())
+                        {
+                            if (networkPlayer.connectionToClient != null)
+                            {
+                                PlayerScoreLabel playerScore = Instantiate(playerScoreLabel, PlayerScoreContainer.Instance.transform);
+                                PlayerScoreContainer.Instance.Add(playerScore);
+                                var playerData = networkPlayer.GetPlayerData();
+                                playerScore.Construct(player.GetCharacterData(), playerData.Nickname, $"{NetworkPlayerContainer.Instance.CalculateToatlScoreForPlayer(networkPlayer)} cal");
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
 
         public override void OnStartServer()
         {
@@ -42,6 +73,10 @@ namespace Managers
             base.OnServerConnect(conn);
             //assign to available
             Debug.Log("Connections:"+ NetworkServer.connections.Count);
+            if (!isGameInProgress)
+            {
+                ValidatePlayersSelections();
+            }
             if (isGameInProgress && NetworkServer.connections.Count <= NetworkServer.maxConnections)
             {
                 var networkPlayer = GetPlayerForConnection(conn.connectionId);
@@ -119,15 +154,7 @@ namespace Managers
             base.OnServerDisconnect(conn);
             if (!isGameInProgress)
             {
-                var participants = FindObjectsOfType<PlayerLabel>();
-                foreach (var participant in participants)
-                {
-                    participant.OnValidateSelection();
-                }
-                foreach (var participant in participants)
-                {
-                    participant.ValidateSelection();
-                }
+                ValidatePlayersSelections();
             }
             else
             {
@@ -142,6 +169,21 @@ namespace Managers
             {
                 StopServer();
             }*/
+        }
+
+        public void ValidatePlayersSelections ()
+        {
+            var participants = FindObjectsOfType<PlayerLabel>();
+            foreach (var participant in participants)
+            {
+                if (participant == null || participant.connectionToClient == null) continue;
+                participant.OnValidateSelection();
+            }
+            foreach (var participant in participants)
+            {
+                if (participant == null || participant.connectionToClient == null) continue;
+                participant.ValidateSelection();
+            }
         }
 
         public ServerMessage ErrorMessage (string title,string description)

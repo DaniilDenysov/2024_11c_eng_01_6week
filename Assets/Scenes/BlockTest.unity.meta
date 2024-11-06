@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: 9b3bfb042f4579f4d9a48829cde6b432
+<<<<<<<< HEAD:Assets/Scenes/BlockTest.unity.meta
+guid: 8e037e1a9910d4d3ca3eb397466185c5
 DefaultImporter:
+========
+guid: b6d2452311e42184fb58fae319abc3ee
+TextScriptImporter:
+>>>>>>>> Corrections:Assets/Scenes/SaveSettings.json.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

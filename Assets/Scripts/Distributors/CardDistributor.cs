@@ -5,6 +5,8 @@ using General;
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Distributors
@@ -14,6 +16,7 @@ namespace Distributors
         [SerializeField] private CardDeckDTO[] cards;
         [SerializeField, Range(0, 100)] private int cardsLimit = 6;
         private readonly SyncDictionary<NetworkPlayer, int> _harmCount = new SyncDictionary<NetworkPlayer, int>();
+        private CardDeckDTO[] _discardedCards;
 
         public static CardDistributor Instance;
 
@@ -23,6 +26,8 @@ namespace Distributors
             {
                 Instance = this;
             }
+
+            InitializeDiscardedCards();
         }
 
         private void OnDestroy()
@@ -52,9 +57,9 @@ namespace Distributors
                     int diff = cardsLimit - clientData.GetCardAmount();
                     for (int i = 0; i < diff - harmCount; i++)
                     {
-                        int cardIndex = GetRandomAvailableCardIndex();
+                        int cardIndex = GetRandomAvailableCardIndex(false);
                         if (cardIndex == -1) return;
-                        cards[cardIndex].Amount -= 1;
+                        cards[cardIndex].amount -= 1;
                         AddCard(player.netIdentity.connectionToClient, cardIndex);
                     }
                 }
@@ -72,13 +77,31 @@ namespace Distributors
                 ClientDeck.Instance.Add(card);
             }
         }
+        
+        [Command(requiresAuthority = false)]
+        public void CmdDiscardCard(Card card)
+        {
+            RpcDiscardCard(card);
+        }
+        
+        [ClientRpc]
+        public void RpcDiscardCard(Card card)
+        {
+            for (int i = 0; i < _discardedCards.Length; i++)
+            {
+                if (_discardedCards[i].card == card)
+                {
+                    _discardedCards[i].amount += 1;
+                }
+            }
+        }
 
         /// <summary>
         /// Tries to get the card at the given index. If available, instantiates it.
         /// </summary>
         public bool TryGetCard(int i, out Card card)
         {
-            card = Instantiate(cards[i].Card);
+            card = Instantiate(cards[i].card);
             return true;
         }
 
@@ -86,13 +109,13 @@ namespace Distributors
         /// Gets a random available card index from the deck.
         /// </summary>
         /// <returns>An index of a card that has a positive amount or -1 if none are available.</returns>
-        private int GetRandomAvailableCardIndex()
+        private int GetRandomAvailableCardIndex(bool isStoppable = true)
         {
             List<int> availableCards = new List<int>();
 
             for (int i = 0; i < cards.Length; i++)
             {
-                if (cards[i].Amount > 0)
+                if (cards[i].amount > 0)
                 {
                     availableCards.Add(i);
                 }
@@ -100,6 +123,15 @@ namespace Distributors
 
             if (availableCards.Count == 0)
             {
+                cards = _discardedCards;
+                InitializeDiscardedCards();
+                
+                if (!isStoppable)
+                {
+                    GetRandomAvailableCardIndex();
+                }
+
+                Debug.Log("HERE");
                 return -1;
             }
 
@@ -146,6 +178,17 @@ namespace Distributors
             _harmCount.TryAdd(player, 0);
 
             return _harmCount[player];
+        }
+
+        private void InitializeDiscardedCards()
+        {
+            _discardedCards = new CardDeckDTO[cards.Length];
+            _discardedCards = Enumerable.Repeat(new CardDeckDTO(0), cards.Length).ToArray();
+
+            for (int i = 0; i < _discardedCards.Length; i++)
+            {
+                _discardedCards[i].card = cards[i].card;
+            }
         }
     }
 }

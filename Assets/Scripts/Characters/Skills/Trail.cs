@@ -69,10 +69,9 @@ namespace Characters.Skills
         private void CmdSpawnTrail(Vector3 position)
         {
             SlimeTrail newTrail = Instantiate(trail, position, transform.rotation);
+            NetworkServer.Spawn(newTrail.gameObject);
             newTrail.RpcSetUp(gameObject);
             _currentTrail.Add(newTrail);
-            
-            NetworkServer.Spawn(newTrail.gameObject);
         }
 
         public override bool IsActivatable()
