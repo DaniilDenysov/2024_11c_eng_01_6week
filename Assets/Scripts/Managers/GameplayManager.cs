@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Managers
 {
@@ -15,28 +16,38 @@ namespace Managers
 
         private DefaultInputActions inputActions;
 
-        [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private GameObject pauseMenu, characterInfoMenu;
         [SerializeField] private Transform finishWindow;
 
+        [Inject]
+        public void Construct (DefaultInputActions inputActions)
+        {
+            this.inputActions = inputActions;
+            inputActions.Player.PauseMenu.performed += OnPause;
+            inputActions.Player.CharacterInfo.performed += OnCharacterInfo;
+        }
 
         public override void Awake()
         {
             base.Awake();
             OnFinish += OnGameFinished;
-            inputActions = new DefaultInputActions();
-            inputActions.Enable();
-            inputActions.Player.PauseMenu.performed += OnPause;
         }
 
         private void OnDestroy()
         {
             OnFinish -= OnGameFinished;
             inputActions.Player.PauseMenu.performed -= OnPause;
+            inputActions.Player.CharacterInfo.performed -= OnCharacterInfo;
         }
 
         private void OnPause(InputAction.CallbackContext obj)
         {
             pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+        }
+
+        private void OnCharacterInfo(InputAction.CallbackContext obj)
+        {
+            characterInfoMenu.SetActive(!characterInfoMenu.activeInHierarchy);
         }
 
         [ClientRpc]
