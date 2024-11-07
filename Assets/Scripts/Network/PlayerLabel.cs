@@ -28,8 +28,13 @@ public class PlayerLabel : NetworkBehaviour
         {
             Debug.Log("Assigned");
             LocalPlayer = this;
-            SetPlayerName(SteamFriends.GetPersonaName());
         }
+    }
+
+    public override void OnStartAuthority()
+    {
+        base.OnStartAuthority();
+        SetPlayerName(SteamFriends.GetPersonaName());
     }
 
     private void Start()
