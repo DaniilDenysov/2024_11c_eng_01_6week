@@ -31,7 +31,9 @@ namespace UnityEngine.UI.Extensions
         public float fDistance;
         [Range(0f, 360f)]
         public float AngleBetween, StartAngle;
-        public bool OnlyLayoutVisible = false;
+        public bool OnlyLayoutVisible;
+        public float _alphaDecrease;
+        
         protected override void OnEnable() { base.OnEnable(); CalculateRadial(); }
         public override void SetLayoutHorizontal()
         {
@@ -101,6 +103,12 @@ namespace UnityEngine.UI.Extensions
                     Vector3 directionNormalized = child.transform.position - transform.position;
                     float angle = Vector3.Angle(Vector3.up, directionNormalized);
                     child.transform.rotation = Quaternion.Euler(new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle));
+
+                    if (child.TryGetComponent(out Image image))
+                    {
+                        float value = 1 - _alphaDecrease * (transform.childCount - i - 1);
+                        image.color = new Color(value, value, value);
+                    }
                     
                     //Force objects to be center aligned, this can be changed however I'd suggest you keep all of the objects with the same anchor points.
                     child.anchorMin = child.anchorMax = child.pivot = new Vector2(0.5f, 0.5f);

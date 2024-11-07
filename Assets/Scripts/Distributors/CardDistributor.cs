@@ -15,7 +15,6 @@ namespace Distributors
     {
         [SerializeField] private CardDeckDTO[] cards;
         [SerializeField, Range(0, 100)] private int cardsLimit = 6;
-        private readonly SyncDictionary<NetworkPlayer, int> _harmCount = new SyncDictionary<NetworkPlayer, int>();
         private CardDeckDTO[] _discardedCards;
 
         public static CardDistributor Instance;
@@ -48,14 +47,9 @@ namespace Distributors
             {
                 if (player.connectionToClient != null && player.TryGetComponent(out ClientData clientData))
                 {
-                    if (!_harmCount.TryGetValue(player, out int harmCount))
-                    {
-                        harmCount = 0;
-                        _harmCount.Add(player, 0);
-                    }
+                    int diff = cardsLimit - ClientDeck.Instance.GetAmount() - clientData.GetHarmAmount();
                     
-                    int diff = cardsLimit - clientData.GetCardAmount();
-                    for (int i = 0; i < diff - harmCount; i++)
+                    for (int i = 0; i < diff; i++)
                     {
                         int cardIndex = GetRandomAvailableCardIndex(false);
                         if (cardIndex == -1) return;
@@ -131,53 +125,11 @@ namespace Distributors
                     GetRandomAvailableCardIndex();
                 }
 
-                Debug.Log("HERE");
                 return -1;
             }
 
             int randomIndex = UnityEngine.Random.Range(0, availableCards.Count);
             return availableCards[randomIndex];
-        }
-
-        [Command(requiresAuthority = false)]
-        public void CmdIncreaseHarmCount(NetworkPlayer player)
-        {
-            RpcIncreaseHarmCount(player);
-        }
-        
-        [ClientRpc]
-        private void RpcIncreaseHarmCount(NetworkPlayer player)
-        {
-            _harmCount.TryAdd(player, 0);
-
-            if (_harmCount[player] > 0)
-            {
-                _harmCount[player]++;
-            }
-        }
-        
-        [Command(requiresAuthority = false)]
-        public void CmdDecreaseHarmCount(NetworkPlayer player)
-        {
-            RpcDecreaseHarmCount(player);
-        }
-        
-        [ClientRpc]
-        private void RpcDecreaseHarmCount(NetworkPlayer player)
-        {
-            _harmCount.TryAdd(player, 0);
-
-            if (_harmCount[player] > 0)
-            {
-                _harmCount[player]--;
-            }
-        }
-
-        public int GetHarmCount(NetworkPlayer player)
-        {
-            _harmCount.TryAdd(player, 0);
-
-            return _harmCount[player];
         }
 
         private void InitializeDiscardedCards()
