@@ -223,7 +223,7 @@ namespace Managers
             {
                 var player = new Player();
                 player.ConnectionId = conn.connectionId;
-                string name = SteamFriends.GetPersonaName();
+                string name = "";
                 /*  if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
                   else player.Nickname = name;*/
                 player.Nickname = name;

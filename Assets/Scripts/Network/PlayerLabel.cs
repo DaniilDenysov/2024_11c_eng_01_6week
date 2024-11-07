@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using DTOs;
 using Lobby;
 using UI;
+using Steamworks;
 
 public class PlayerLabel : NetworkBehaviour
 {
@@ -27,6 +28,7 @@ public class PlayerLabel : NetworkBehaviour
         {
             Debug.Log("Assigned");
             LocalPlayer = this;
+            displayName.text = SteamFriends.GetPersonaName();
         }
     }
 
