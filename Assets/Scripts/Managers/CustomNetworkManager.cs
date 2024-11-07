@@ -91,7 +91,6 @@ namespace Managers
                 {
                     var playerData = networkPlayer.GetPlayerData();
                     playerData.ConnectionId = conn.connectionId;
-                    playerData.ConnectionId = conn.connectionId;
                     players[players.IndexOf(players.FirstOrDefault((p)=>p.CharacterGUID== playerData.CharacterGUID))] = playerData;
                     NetworkServer.AddPlayerForConnection(conn, networkPlayer.gameObject);
                     Debug.Log($"assigned {networkPlayer.GetCharacterGUID()} for connection {conn.connectionId}");
@@ -217,20 +216,23 @@ namespace Managers
 
         private void OnCreateCharacter(NetworkConnectionToClient conn,LobbyConnection lobbyConnection)
         {
-            GameObject participant = Instantiate(playerLabelPrefab);
-            PlayerLabel [] connections = PlayerLabelsContainer.Instance.GetItems().ToArray();
-            PlayerLabel label;
-            if (participant.gameObject.TryGetComponent(out label))
+            if (!isGameInProgress)
             {
-                var player = new Player();
-                player.ConnectionId = conn.connectionId;
-                /*  if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
-                  else player.Nickname = name;*/
-                player.Nickname = "";
-                player.IsPartyOwner = connections.Length == 0;
-                label.Player = player;
+                GameObject participant = Instantiate(playerLabelPrefab);
+                PlayerLabel[] connections = PlayerLabelsContainer.Instance.GetItems().ToArray();
+                PlayerLabel label;
+                if (participant.gameObject.TryGetComponent(out label))
+                {
+                    var player = new Player();
+                    player.ConnectionId = conn.connectionId;
+                    /*  if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
+                      else player.Nickname = name;*/
+                    player.Nickname = "";
+                    player.IsPartyOwner = connections.Length == 0;
+                    label.Player = player;
+                }
+                NetworkServer.AddPlayerForConnection(conn, participant);
             }
-            NetworkServer.AddPlayerForConnection(conn, participant);
         }
 
         #region Client
