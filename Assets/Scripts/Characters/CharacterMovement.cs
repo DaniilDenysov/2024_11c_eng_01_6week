@@ -18,7 +18,7 @@ namespace Characters
     [RequireComponent(typeof(CharacterStateManager),typeof(ClientData))]
     public class CharacterMovement : MonoBehaviour, ITurnAction
     {
-        [SerializeField, ReadOnly] private Vector3 directionNormalized;
+        [SerializeField, CustomTools.ReadOnly] private Vector3 directionNormalized;
         [SerializeField] private GameObject sprite;
         
         [SerializeField] private PathValidator pathValidator;
