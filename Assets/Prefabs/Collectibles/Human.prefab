@@ -55,7 +55,7 @@ MonoBehaviour:
   ownedBy: 
   currentPoints: 0
   isCollected: 0
-  fearRange: 5
+  fearRange: 2
 --- !u!212 &2059787713480887721
 SpriteRenderer:
   m_ObjectHideFlags: 0

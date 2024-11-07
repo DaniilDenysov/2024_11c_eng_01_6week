@@ -114,11 +114,11 @@ namespace Characters
         public void MakeMovement(Vector3 nextPosition)
         {
 
-            if (actionBlocker.IsActionBlocked("Move"))
+           /* if (actionBlocker.IsActionBlocked("Move"))
             {
                 Debug.Log("Move action is blocked!");
                 return;
-            }
+            }*/
 
             Vector3 difference = nextPosition - transform.position;
             int steps = (int)Math.Abs(difference.x);
