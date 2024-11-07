@@ -24,6 +24,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+using UnityEngine.Events;
+using UnityEngine.Serialization;
+
 namespace UnityEngine.UI.Extensions
 {
     public class RadialLayout : LayoutGroup
@@ -31,7 +34,16 @@ namespace UnityEngine.UI.Extensions
         public float fDistance;
         [Range(0f, 360f)]
         public float AngleBetween, StartAngle;
-        public bool OnlyLayoutVisible = false;
+        public bool OnlyLayoutVisible;
+        public float _alphaDecrease;
+        public int childCount;
+        public UnityEvent<int> OnChildCountChange;
+
+        protected override void Awake()
+        {
+            childCount = 0;
+        }
+
         protected override void OnEnable() { base.OnEnable(); CalculateRadial(); }
         public override void SetLayoutHorizontal()
         {
@@ -39,14 +51,17 @@ namespace UnityEngine.UI.Extensions
         public override void SetLayoutVertical()
         {
         }
+        
         public override void CalculateLayoutInputVertical()
         {
             CalculateRadial();
         }
+        
         public override void CalculateLayoutInputHorizontal()
         {
             CalculateRadial();
         }
+        
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
@@ -68,6 +83,7 @@ namespace UnityEngine.UI.Extensions
                 return;
 
             int ChildrenToFormat = 0;
+            
             if (OnlyLayoutVisible)
             {
                 for (int i = 0; i < transform.childCount; i++)
@@ -85,6 +101,13 @@ namespace UnityEngine.UI.Extensions
             float fOffsetAngle = AngleBetween;
             
             float fAngle = StartAngle - AngleBetween * (ChildrenToFormat - 1) / 2;
+            
+            if (ChildrenToFormat != childCount)
+            {
+                OnChildCountChange.Invoke(ChildrenToFormat);
+                childCount = ChildrenToFormat;
+            }
+            
             for (int i = 0; i < transform.childCount; i++)
             {
                 RectTransform child = (RectTransform)transform.GetChild(i);
@@ -101,6 +124,12 @@ namespace UnityEngine.UI.Extensions
                     Vector3 directionNormalized = child.transform.position - transform.position;
                     float angle = Vector3.Angle(Vector3.up, directionNormalized);
                     child.transform.rotation = Quaternion.Euler(new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle));
+
+                    if (child.TryGetComponent(out Image image))
+                    {
+                        float value = 1 - _alphaDecrease * (transform.childCount - i - 1);
+                        image.color = new Color(value, value, value);
+                    }
                     
                     //Force objects to be center aligned, this can be changed however I'd suggest you keep all of the objects with the same anchor points.
                     child.anchorMin = child.anchorMax = child.pivot = new Vector2(0.5f, 0.5f);

@@ -4,29 +4,26 @@ using Collectibles;
 using System.Collections.Generic;
 using Mirror;
 using UI.Containers;
+using UnityEditor;
 using UnityEngine;
 using Validation;
 
 public class Inventory : NetworkBehaviour
 {
-    [SerializeField] private SyncList<HumanDTO> humanDTOs = new SyncList<HumanDTO>();
+    private SyncList<HumanDTO> humanDTOs = new SyncList<HumanDTO>();
     private CharacterMovement _movement;
     public static Action OnHumanPickedUp;
 
     public virtual void Awake()
     {
         _movement = GetComponent<CharacterMovement>();
-        humanDTOs.Callback += OnInventoryChanged;
+        humanDTOs.OnAdd += OnInventoryChanged;
     }
 
-    private void OnInventoryChanged(SyncList<HumanDTO>.Operation op, int itemIndex, HumanDTO oldItem, HumanDTO newItem)
+    private void OnInventoryChanged(int itemIndex)
     {
-        Debug.Log("Changed");
-        if (op == SyncList<HumanDTO>.Operation.OP_ADD)
-        {
-            Debug.Log("Picked");
-            OnHumanPickedUp?.Invoke();
-        }
+        Debug.Log("Picked");
+        OnHumanPickedUp?.Invoke();
     }
 
     public virtual void PickUp(Action<bool> onPickedUp)

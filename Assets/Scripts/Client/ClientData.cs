@@ -6,28 +6,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Client
 {
     public class ClientData : NetworkBehaviour
     {
         [SerializeField, SyncVar] private int score;
-        [SerializeField, SyncVar(hook = nameof(OnScoreStateChanged))] private int cardAmount;
+        [SerializeField, SyncVar] private int harmAmount;
         [SerializeField, SyncVar] private bool myTurn;
+        [SyncVar] private int _cardCount;
         [SerializeField] private UnityEvent<String> onScoreChanged;
 
-        public void OnScoreStateChanged(int oldValue, int newValue)
+        [Command(requiresAuthority = false)]
+        public void CmdChangeHarmAmount(bool isAdded)
         {
-     
+            RpcChangeHarmAmount(isAdded);
         }
-
+        
         [ClientRpc]
-        public void RpcSetCardAmount (int amount)
+        private void RpcChangeHarmAmount(bool isAdded)
         {
-            cardAmount = amount;
+            if (isAdded)
+            {
+                harmAmount++;
+            }
+            else
+            {
+                harmAmount--;
+            }
         }
 
-        public int GetCardAmount() => cardAmount;
+        public int GetHarmAmount() => harmAmount;
 
         [Command(requiresAuthority = false)]
         public void CmdSetScoreAmount(int amount)
@@ -57,5 +67,15 @@ namespace Client
         }
     
         public bool GetTurn() => myTurn;
+
+        public void SetCardCount(int newCount)
+        {
+            _cardCount = newCount;
+        }
+        
+        public int GetCardCount()
+        {
+            return _cardCount;
+        }
     }
 }

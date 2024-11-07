@@ -2,6 +2,7 @@ using Collectibles;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Client;
 using Distributors;
 using UnityEngine;
 using Validation;
@@ -113,11 +114,11 @@ namespace Characters
             
             foreach (GameObject entity in CharacterMovement.GetEntities(cell))
             {
-                if (entity.TryGetComponent(out NetworkPlayer player))
+                if (entity.TryGetComponent(out ClientData player))
                 {
-                    if (CardDistributor.Instance.GetHarmCount(player) > 0)
+                    if (player.GetHarmAmount() > 0)
                     {
-                        CardDistributor.Instance.CmdDecreaseHarmCount(player);
+                        player.CmdChangeHarmAmount(false);
                         result = true;
                     } else if (entity.TryGetComponent(out Inventory opponentsInventory))
                     {

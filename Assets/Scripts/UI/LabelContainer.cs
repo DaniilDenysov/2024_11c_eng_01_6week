@@ -34,5 +34,10 @@ namespace UI
             items.Remove(item);
             return item;
         }
+
+        public int GetAmount()
+        {
+            return items.Count;
+        }
     }
 }
