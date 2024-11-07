@@ -28,14 +28,10 @@ public class PlayerLabel : NetworkBehaviour
         {
             Debug.Log("Assigned");
             LocalPlayer = this;
+
         }
     }
 
-    public override void OnStartAuthority()
-    {
-        base.OnStartAuthority();
-        SetPlayerName(SteamFriends.GetPersonaName());
-    }
 
     private void Start()
     {
@@ -76,8 +72,7 @@ public class PlayerLabel : NetworkBehaviour
     }
 
 
-
-    [ClientRpc]
+    [Command]
     public void SetPlayerName(string playerName)
     {
         var player = new Player(Player);
@@ -145,6 +140,12 @@ public class PlayerLabel : NetworkBehaviour
     }
     #endregion
     #region rpcs
+    [TargetRpc]
+    public void SetMyName ()
+    {
+       SetPlayerName(SteamFriends.GetPersonaName());
+    }
+
     [TargetRpc]
     public void OnValidateSelection()
     {

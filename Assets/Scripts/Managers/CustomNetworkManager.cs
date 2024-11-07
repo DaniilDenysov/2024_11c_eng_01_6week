@@ -219,7 +219,8 @@ namespace Managers
         {
             GameObject participant = Instantiate(playerLabelPrefab);
             PlayerLabel [] connections = PlayerLabelsContainer.Instance.GetItems().ToArray();
-            if (participant.gameObject.TryGetComponent(out PlayerLabel label))
+            PlayerLabel label;
+            if (participant.gameObject.TryGetComponent(out label))
             {
                 var player = new Player();
                 player.ConnectionId = conn.connectionId;
@@ -231,6 +232,10 @@ namespace Managers
                 label.Player = player;
             }
             NetworkServer.AddPlayerForConnection(conn, participant);
+            if (participant.gameObject.TryGetComponent(out label))
+            {
+                label.SetMyName();
+            }
         }
 
         #region Client
