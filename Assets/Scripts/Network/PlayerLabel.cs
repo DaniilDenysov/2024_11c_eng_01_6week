@@ -28,7 +28,8 @@ public class PlayerLabel : NetworkBehaviour
         {
             Debug.Log("Assigned");
             LocalPlayer = this;
-            displayName.text = SteamFriends.GetPersonaName();
+            Player.Nickname = SteamFriends.GetPersonaName();
+            Player = new Player(Player);
         }
     }
 
@@ -51,6 +52,7 @@ public class PlayerLabel : NetworkBehaviour
 
         ((CustomNetworkManager)NetworkManager.singleton).StartGame();
     }
+
  
     [Command]
     public void CmdReady()
