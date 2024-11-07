@@ -279,6 +279,7 @@ namespace Managers
 
         public override void OnStopClient()
         {
+            SteamMatchmaking.LeaveLobby(SteamID);
             OnClientDisconnected?.Invoke();
         }
         #endregion
