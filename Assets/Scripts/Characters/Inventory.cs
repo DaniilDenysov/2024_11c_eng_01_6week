@@ -16,17 +16,13 @@ public class Inventory : NetworkBehaviour
     public virtual void Awake()
     {
         _movement = GetComponent<CharacterMovement>();
-        humanDTOs.Callback += OnInventoryChanged;
+        humanDTOs.OnAdd += OnInventoryChanged;
     }
 
-    private void OnInventoryChanged(SyncList<HumanDTO>.Operation op, int itemIndex, HumanDTO oldItem, HumanDTO newItem)
+    private void OnInventoryChanged(int itemIndex)
     {
-        Debug.Log("Changed");
-        if (op == SyncList<HumanDTO>.Operation.OP_ADD)
-        {
-            Debug.Log("Picked");
-            OnHumanPickedUp?.Invoke();
-        }
+        Debug.Log("Picked");
+        OnHumanPickedUp?.Invoke();
     }
 
     public virtual void PickUp(Action<bool> onPickedUp)

@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UI;
 using General;
+using Steamworks;
 
 namespace Managers
 {
     public class CustomNetworkManager : NetworkManager
     {
+        public CSteamID SteamID { get; set; } 
         [SerializeField] private List<Player> players;
         [SerializeField, Range(1, 4)] private int minimalLobbySize = 1;
         [SerializeField] private int humanWinScore = 1;
@@ -196,11 +198,13 @@ namespace Managers
 
         public override void OnStopServer()
         {
+            SteamMatchmaking.LeaveLobby(SteamID);
             OnClientDisconnected?.Invoke();
         }
 
         public override void OnStopHost()
         {
+            SteamMatchmaking.LeaveLobby(SteamID);
             OnClientDisconnected?.Invoke();
         }
 
@@ -219,9 +223,10 @@ namespace Managers
             {
                 var player = new Player();
                 player.ConnectionId = conn.connectionId;
-                string name = PlayerPrefs.GetString("Nickname");
-                if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
-                else player.Nickname = name;
+                string name = SteamFriends.GetPersonaName();
+                /*  if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
+                  else player.Nickname = name;*/
+                player.Nickname = name;
                 player.IsPartyOwner = connections.Length == 0;
                 label.Player = player;
             }
