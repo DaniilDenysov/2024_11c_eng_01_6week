@@ -28,8 +28,7 @@ public class PlayerLabel : NetworkBehaviour
         {
             Debug.Log("Assigned");
             LocalPlayer = this;
-            Player.Nickname = SteamFriends.GetPersonaName();
-            Player = new Player(Player);
+            SetPlayerName(SteamFriends.GetPersonaName());
         }
     }
 
@@ -71,7 +70,9 @@ public class PlayerLabel : NetworkBehaviour
         characterSelected.sprite = characterData.CharacterIcon;
     }
 
-    [Server]
+
+
+    [ClientRpc]
     public void SetPlayerName(string playerName)
     {
         var player = new Player(Player);
