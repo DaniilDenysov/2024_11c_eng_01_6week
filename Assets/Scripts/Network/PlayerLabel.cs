@@ -38,6 +38,12 @@ public class PlayerLabel : NetworkBehaviour
         PlayerLabelsContainer.Instance.Add(this);
     }
 
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        CmdSetPlayerName(SteamFriends.GetPersonaName());
+    }
+
     public override void OnStopClient()
     {
         base.OnStopClient();
@@ -73,7 +79,7 @@ public class PlayerLabel : NetworkBehaviour
 
 
     [Command]
-    public void SetPlayerName(string playerName)
+    public void CmdSetPlayerName(string playerName)
     {
         var player = new Player(Player);
         player.Nickname = playerName;
@@ -140,11 +146,6 @@ public class PlayerLabel : NetworkBehaviour
     }
     #endregion
     #region rpcs
-    [TargetRpc]
-    public void SetMyName ()
-    {
-       SetPlayerName(SteamFriends.GetPersonaName());
-    }
 
     [TargetRpc]
     public void OnValidateSelection()

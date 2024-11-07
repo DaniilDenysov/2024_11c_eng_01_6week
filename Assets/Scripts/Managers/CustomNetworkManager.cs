@@ -224,18 +224,13 @@ namespace Managers
             {
                 var player = new Player();
                 player.ConnectionId = conn.connectionId;
-                string name = "";
                 /*  if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
                   else player.Nickname = name;*/
-                player.Nickname = name;
+                player.Nickname = "";
                 player.IsPartyOwner = connections.Length == 0;
                 label.Player = player;
             }
             NetworkServer.AddPlayerForConnection(conn, participant);
-            if (participant.gameObject.TryGetComponent(out label))
-            {
-                label.SetMyName();
-            }
         }
 
         #region Client
