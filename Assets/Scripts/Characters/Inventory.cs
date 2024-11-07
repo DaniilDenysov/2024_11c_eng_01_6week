@@ -4,12 +4,13 @@ using Collectibles;
 using System.Collections.Generic;
 using Mirror;
 using UI.Containers;
+using UnityEditor;
 using UnityEngine;
 using Validation;
 
 public class Inventory : NetworkBehaviour
 {
-    [SerializeField] private SyncList<HumanDTO> humanDTOs = new SyncList<HumanDTO>();
+    private SyncList<HumanDTO> humanDTOs = new SyncList<HumanDTO>();
     private CharacterMovement _movement;
     public static Action OnHumanPickedUp;
 
