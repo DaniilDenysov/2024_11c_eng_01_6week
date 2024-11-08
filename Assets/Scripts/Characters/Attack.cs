@@ -77,12 +77,9 @@ namespace Characters
                 {
                     foreach (var cell in group.Value)
                     {
-                        if (!result.Contains(cell))
+                        if (!result.Contains(cell) && IsCellAttackable(cell))
                         {
-                            if (IsCellAttackable(cell))
-                            {
-                                result.Add(cell);
-                            }
+                            result.Add(cell);
                         }
                     }
                 }
@@ -125,7 +122,6 @@ namespace Characters
                     {
                         if (opponentsInventory.TryPopItem(out HumanDTO human))
                         {
-                            Debug.Log("Attack works");
                             _inventory.AddHuman(human);
                             InventoryContainer.Instance.TryAdd(human);
                             result = true;

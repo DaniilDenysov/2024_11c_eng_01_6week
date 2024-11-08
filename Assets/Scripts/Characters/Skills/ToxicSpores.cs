@@ -30,6 +30,15 @@ public class ToxicSpores : Skill
         List<Vector3> excludedDirections = new List<Vector3>();
         List<Vector3> usableCell = _attack.GetAttackCells(_range, false, false);
         usableCell.AddRange(_collector.GetPickUpCells(_range, typeof(Human), false, false));
+        
+        Debug.Log("***");
+        
+        foreach (var cell in usableCell) 
+        {
+            Debug.Log(cell);
+        }
+        
+        Debug.Log("***");
 
         foreach (Vector3 direction in CharacterMovement.GetAllDirections())
         {
@@ -37,7 +46,7 @@ public class ToxicSpores : Skill
                 
             for (int distance = 1; distance < _range + 1; distance++)
             {
-                if (usableCell.Contains(transform.position + _range * direction))
+                if (usableCell.Contains(transform.position + distance * direction))
                 {
                     isUsableDirection = true;
                     break;
@@ -61,8 +70,9 @@ public class ToxicSpores : Skill
 
         for (int distance = 1; distance < _range + 1; distance++)
         {
+            Debug.Log(characterPosition + direction * distance);
             Vector3 currentCell = characterPosition + direction * distance;
-            result = result || Card.AttackAndEatAtCell(currentCell, _attack, _collector);
+            result = Card.AttackAndEatAtCell(currentCell, _attack, _collector) || result;
         }
 
         OnActivated(result);
