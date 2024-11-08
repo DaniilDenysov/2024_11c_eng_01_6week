@@ -18,6 +18,7 @@ namespace Managers
     {
         [SerializeField] private GameObject startGameButton;
         [SerializeField] private GameObject loadingLobbyScreen;
+        [SerializeField] private GameObject lobbyScreen;
         [SerializeField] private GameObject searchingLobbyScreen;
         [SerializeField] private string lobbyName, hostAddress;
         [SerializeField] private UnityEvent onConnectedToLobby,onDisconnectedFromLobby;
@@ -35,10 +36,17 @@ namespace Managers
             CustomNetworkManager.OnClientConnected += OnClientConnected;
             CustomNetworkManager.OnClientDisconnected += OnClientDisconnected;
             PlayerLabel.OnPartyOwnerChanged += OnPartyOwnerChanged;
-            
-            lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
-            joinLobbyRequested = Callback<GameLobbyJoinRequested_t>.Create(OnGameLobbyJoinRequested);
-            lobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
+            if (SteamManager.Initialized)
+            {
+                lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
+                joinLobbyRequested = Callback<GameLobbyJoinRequested_t>.Create(OnGameLobbyJoinRequested);
+                lobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
+                loadingLobbyScreen.SetActive(false);
+            }
+            else
+            {
+                loadingLobbyScreen.SetActive(true);
+            }
         }
 
 
@@ -216,6 +224,7 @@ namespace Managers
         {
             SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic,4);
             loadingLobbyScreen.SetActive(true);
+            lobbyScreen.SetActive(true);
         }
 
         public override LobbyManager GetInstance()

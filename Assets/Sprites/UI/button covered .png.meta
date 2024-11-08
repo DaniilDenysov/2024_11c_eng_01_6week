@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d84b8874f7a0c940bb4af8768a97788
+guid: ab4e7dfeaba1cdd49aedb97b46f9cbd3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pressed button _0
+      name: button covered _0
       rect:
         serializedVersion: 2
-        x: 1448
-        y: 1782
-        width: 1100
-        height: 450
+        x: 35
+        y: 26
+        width: 589
+        height: 233
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 75, y: 75, z: 75, w: 75}
+      border: {x: 37, y: 37, z: 37, w: 37}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d57d12faf80286546b4bac90c2bfbcdc
-      internalID: 1035141316
+      spriteID: dbb0e9ee43f0d62449473162a595a967
+      internalID: -1065428637
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pressed button _0: 1035141316
+      button covered _0: -1065428637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
