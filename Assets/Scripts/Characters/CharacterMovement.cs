@@ -19,7 +19,6 @@ namespace Characters
     public class CharacterMovement : MonoBehaviour, ITurnAction
     {
         [SerializeField, ReadOnly] private Vector3 directionNormalized;
-        [SerializeField] private GameObject sprite;
         
         [SerializeField] private PathValidator pathValidator;
         public UnityEvent onMoveCancelable;
@@ -171,12 +170,6 @@ namespace Characters
         private void OnDirectionChosen(Vector3 position, CharacterState previousState, Action onDirectionChosen)
         {
             directionNormalized = position - transform.position;
-            
-            float angle = Vector3.Angle(Vector3.up, directionNormalized);
-            
-            sprite.transform.Rotate(
-                new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle), Space.World);
-            
             _stateManager.CmdSetCurrentState(previousState);
             onDirectionChosen.Invoke();
         }
