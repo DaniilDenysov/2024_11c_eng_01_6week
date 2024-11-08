@@ -2,6 +2,7 @@ using System;
 using Characters;
 using Collectibles;
 using System.Collections.Generic;
+using General;
 using Mirror;
 using UI.Containers;
 using UnityEditor;
@@ -70,15 +71,33 @@ public class Inventory : NetworkBehaviour
     public bool TryPopItem(out HumanDTO human)
     {
         human = default;
+        
         if (humanDTOs.Count > 0)
         {
             human = humanDTOs[0];
-            if (!InventoryContainer.Instance.TryRemove()) return false;
+            // if (!InventoryContainer.Instance.TryRemove()) return false;
+            CmdRemoveHumanFromHud();
             RemoveHuman();
             return true;
         }
 
         return false;
+    }
+
+    [Command(requiresAuthority = false)]
+    private void CmdRemoveHumanFromHud()
+    {
+        NetworkPlayer owner = NetworkPlayerContainer.Instance.GetOwner(this);
+        if (owner != null)
+        {
+            RpcRemoveHumanFromHudInventory(owner.connectionToClient);
+        }
+    }
+    
+    [TargetRpc]
+    private void RpcRemoveHumanFromHudInventory(NetworkConnection connection)
+    {
+        InventoryContainer.Instance.TryRemove();
     }
 
     public void AddHuman(HumanDTO humanDTO)

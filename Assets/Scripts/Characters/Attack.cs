@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Client;
 using Distributors;
+using UI.Containers;
 using UnityEngine;
 using Validation;
 
@@ -124,7 +125,9 @@ namespace Characters
                     {
                         if (opponentsInventory.TryPopItem(out HumanDTO human))
                         {
+                            Debug.Log("Attack works");
                             _inventory.AddHuman(human);
+                            InventoryContainer.Instance.TryAdd(human);
                             result = true;
                         }
                     }
