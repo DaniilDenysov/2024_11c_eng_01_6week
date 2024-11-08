@@ -27,10 +27,6 @@ namespace Managers
         private Callback<GameLobbyJoinRequested_t> joinLobbyRequested;
         private Callback<LobbyEnter_t> lobbyEntered;
 
-    /*    private Callback<LobbyMatchList_t> lobbyMatchListCallback;
-        private bool lobbySearchInProgress = false;
-        private CSteamID firstLobbyFound;*/
-
         private void Start()
         {
             CustomNetworkManager.OnClientConnected += OnClientConnected;
@@ -48,67 +44,6 @@ namespace Managers
                 loadingLobbyScreen.SetActive(true);
             }
         }
-
-
-     /*   public bool TryGetFirstAvailableLobby(out CSteamID cSteamID)
-        {
-            cSteamID = default;
-
-            if (SteamManager.Initialized && !lobbySearchInProgress)
-            {
-                lobbySearchInProgress = true;
-                lobbyMatchListCallback = Callback<LobbyMatchList_t>.Create(OnLobbyMatchList);
-                SteamMatchmaking.AddRequestLobbyListStringFilter("game_id", "Labyrism", ELobbyComparison.k_ELobbyComparisonEqual);
-                SteamMatchmaking.RequestLobbyList();
-                return true; // Request initiated, will return result asynchronously
-            }
-            return false; // Return false if Steam is not initialized or a search is already in progress
-        }
-
-        private void OnLobbyMatchList(LobbyMatchList_t result)
-        {
-            lobbySearchInProgress = false;
-            if (result.m_nLobbiesMatching > 0)
-            {
-                // Get the first available lobby's ID
-                firstLobbyFound = SteamMatchmaking.GetLobbyByIndex(0);
-                Debug.Log("First available lobby found: " + firstLobbyFound);
-            }
-            else
-            {
-                firstLobbyFound = default; // No lobby found
-                Debug.Log("No available lobbies found.");
-            }
-        }
-
-        public IEnumerator LookForLobbies()
-        {
-            loadingLobbyScreen.SetActive(true);
-            CSteamID lobbyID;
-            while (true)
-            {
-                // Attempt to start looking for the first available lobby
-                if (TryGetFirstAvailableLobby(out lobbyID))
-                {
-                    // Wait until the callback assigns a valid CSteamID or confirms no lobbies were found
-                    while (lobbySearchInProgress)
-                    {
-                        yield return null; // Wait for the callback to finish
-                    }
-
-                    // Check if a valid lobby ID was found
-                    if (firstLobbyFound != default)
-                    {
-                        loadingLobbyScreen.SetActive(false);
-                        JoinLobby(firstLobbyFound);
-                        yield break; // Exit the coroutine once a lobby is found and joined
-                    }
-                }
-
-                // Optionally add a delay between retries to avoid hammering the API
-                yield return new WaitForSeconds(1f);
-            }
-        }*/
 
 
         #region SteamCallbacks

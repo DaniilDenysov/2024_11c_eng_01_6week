@@ -3707,6 +3707,10 @@ PrefabInstance:
       value: Menu
       objectReference: {fileID: 0}
     - target: {fileID: 2901350675286660151, guid: cbd5a5d5f323c60469a1c3614737e13b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2901350675286660151, guid: cbd5a5d5f323c60469a1c3614737e13b, type: 3}
       propertyPath: m_Spacing
       value: 10
       objectReference: {fileID: 0}
