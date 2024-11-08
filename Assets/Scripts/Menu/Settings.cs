@@ -64,12 +64,12 @@ namespace UI.Settings
 
         public void SetMusicVolume (float volume)
         {
-            audioMixer.SetFloat("Music", volume);
+            audioMixer.SetFloat("Music", Mathf.Log(volume)*20);
         }
 
         public void SetSoundsVolume(float volume)
         {
-            audioMixer.SetFloat("Sounds", volume);
+            audioMixer.SetFloat("Sounds", Mathf.Log(volume)*20);
         }
 
         public void SetScreenResolution(int i)
