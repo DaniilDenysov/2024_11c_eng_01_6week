@@ -15,7 +15,7 @@ namespace Distributors
     {
         [SerializeField] private CardDeckDTO[] cards;
         [SerializeField, Range(0, 100)] private int cardsLimit = 6;
-        private CardDeckDTO[] _discardedCards;
+        [SerializeField] private CardDeckDTO[] _discardedCards;
 
         public static CardDistributor Instance;
 
@@ -73,19 +73,20 @@ namespace Distributors
         }
         
         [Command(requiresAuthority = false)]
-        public void CmdDiscardCard(Card card)
+        public void CmdDiscardCard(String card)
         {
             RpcDiscardCard(card);
         }
         
         [ClientRpc]
-        public void RpcDiscardCard(Card card)
+        public void RpcDiscardCard(String card)
         {
             for (int i = 0; i < _discardedCards.Length; i++)
             {
-                if (_discardedCards[i].card == card)
+                if (_discardedCards[i].card.gameObject.name == card)
                 {
                     _discardedCards[i].amount += 1;
+                    return;
                 }
             }
         }
@@ -96,6 +97,7 @@ namespace Distributors
         public bool TryGetCard(int i, out Card card)
         {
             card = Instantiate(cards[i].card);
+            card.SetInitializedFrom(cards[i].card.gameObject.name);
             return true;
         }
 
@@ -122,7 +124,7 @@ namespace Distributors
                 
                 if (!isStoppable)
                 {
-                    GetRandomAvailableCardIndex();
+                    return GetRandomAvailableCardIndex();
                 }
 
                 return -1;

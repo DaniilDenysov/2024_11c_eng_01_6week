@@ -36,13 +36,6 @@ namespace UnityEngine.UI.Extensions
         public float AngleBetween, StartAngle;
         public bool OnlyLayoutVisible;
         public float _alphaDecrease;
-        public int childCount;
-        public UnityEvent<int> OnChildCountChange;
-
-        protected override void Awake()
-        {
-            childCount = 0;
-        }
 
         protected override void OnEnable() { base.OnEnable(); CalculateRadial(); }
         public override void SetLayoutHorizontal()
@@ -101,12 +94,6 @@ namespace UnityEngine.UI.Extensions
             float fOffsetAngle = AngleBetween;
             
             float fAngle = StartAngle - AngleBetween * (ChildrenToFormat - 1) / 2;
-            
-            if (ChildrenToFormat != childCount)
-            {
-                OnChildCountChange.Invoke(ChildrenToFormat);
-                childCount = ChildrenToFormat;
-            }
             
             for (int i = 0; i < transform.childCount; i++)
             {

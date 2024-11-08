@@ -17,6 +17,7 @@ namespace Cards
         private CanvasGroup _canvasGroup;
         private Vector2 _startPosition;
         private Vector3 _activationPosition;
+        private String _initializedFromName;
 
         public virtual void Awake()
         {
@@ -38,7 +39,7 @@ namespace Cards
                 if (successfully)
                 {
                     ClientDeck.Instance.Remove(this);
-                    CardDistributor.Instance.CmdDiscardCard(this);
+                    CardDistributor.Instance.CmdDiscardCard(_initializedFromName);
                     
                     stateManager.CmdSetCurrentState(
                         new CardUsed(_activationPosition != stateManager.gameObject.transform.position));
@@ -101,6 +102,11 @@ namespace Cards
             }
 
             return result;
+        }
+
+        public void SetInitializedFrom(String origin)
+        {
+            _initializedFromName = origin;
         }
     }
 }

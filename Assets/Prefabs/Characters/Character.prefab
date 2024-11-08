@@ -101,21 +101,23 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   target: {fileID: 1572826661930136519}
+  clientAuthority: 0
   syncPosition: 1
   syncRotation: 1
   syncScale: 1
-  onlySyncOnChange: 1
-  compressRotation: 0
   interpolatePosition: 1
   interpolateRotation: 1
   interpolateScale: 1
   coordinateSpace: 0
+  sendIntervalMultiplier: 1
   timelineOffset: 0
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChange: 1
   onlySyncOnChangeCorrectionMultiplier: 2
   rotationSensitivity: 0.01
+  compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
 --- !u!1 &3082913297082325551
@@ -425,7 +427,7 @@ MonoBehaviour:
   sceneId: 0
   _assetId: 1833279138
   serverOnly: 0
-  visibility: 0
+  visible: 0
   hasSpawned: 0
 --- !u!114 &3301708372138815419
 MonoBehaviour:
@@ -466,21 +468,23 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   target: {fileID: 5321693609869844705}
+  clientAuthority: 0
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
-  onlySyncOnChange: 1
-  compressRotation: 0
   interpolatePosition: 1
   interpolateRotation: 1
   interpolateScale: 1
   coordinateSpace: 0
+  sendIntervalMultiplier: 1
   timelineOffset: 0
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChange: 1
   onlySyncOnChangeCorrectionMultiplier: 2
   rotationSensitivity: 0.01
+  compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
 --- !u!114 &4058615092038075695
@@ -496,11 +500,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
-  syncMode: 0
+  syncMode: 1
   syncInterval: 0
   score: 0
   harmAmount: 0
   myTurn: 0
+  _cardCount: 0
   onScoreChanged:
     m_PersistentCalls:
       m_Calls: []
