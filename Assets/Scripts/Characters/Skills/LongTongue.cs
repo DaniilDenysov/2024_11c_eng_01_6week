@@ -1,39 +1,44 @@
 using System;
 using System.Collections.Generic;
+using Cards;
 using Characters;
 using Characters.Skills;
+using Collectibles;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterMovement)), RequireComponent(typeof(Attack))]
+[RequireComponent(typeof(Attack)), RequireComponent(typeof(Inventory))]
 public class LongTongue : Skill
 {
-    private CharacterMovement _movement;
     private Attack _attack;
-    private int _range = 2;
+    private Inventory _inventory;
+    private int _attackRange = 2;
+    private int _eatRange = 1;
 
     void Awake()
     {
-        _movement = GetComponent<CharacterMovement>();
         _attack = GetComponent<Attack>();
+        _inventory = GetComponent<Inventory>();
     }
 
     public override void Activate(Action<bool> onSetUp)
     {
         base.Activate(onSetUp);
         
-        List<Vector3> litPositions = _attack.GetAttackCells(_range);
+        List<Vector3> litPositions = _attack.GetAttackCells(_eatRange);
+        litPositions.AddRange(_inventory.GetPickUpCells(_eatRange, typeof(Human), false));
         
         TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
     }
 
     private void OnCellChosen(Vector3 chosenTile)
     {
-        _attack.TryAttack(chosenTile);
+        Card.AttackAndEatAtCell(chosenTile, _attack, _inventory);
         OnActivated();
     }
 
     public override bool IsActivatable()
     {
-        return _attack.GetAttackCells(_range).Capacity > 0;
+        return _attack.GetAttackCells(_eatRange).Count + 
+            _inventory.GetPickUpCells(_eatRange, typeof(Human), false).Count > 0;
     }
 }
