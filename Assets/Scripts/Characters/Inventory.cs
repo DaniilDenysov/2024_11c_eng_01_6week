@@ -12,13 +12,17 @@ using Validation;
 public class Inventory : NetworkBehaviour
 {
     private SyncList<HumanDTO> humanDTOs = new SyncList<HumanDTO>();
-    private CharacterMovement _movement;
     public static Action OnHumanPickedUp;
+    private string _characterGUID;
 
     public virtual void Awake()
     {
-        _movement = GetComponent<CharacterMovement>();
         humanDTOs.Callback += OnInventoryChanged;
+    }
+
+    private void Start()
+    {
+        _characterGUID = NetworkPlayer.LocalPlayerInstance.GetCharacterGUID();
     }
 
     private void OnInventoryChanged(SyncList<HumanDTO>.Operation op, int itemIndex, HumanDTO oldItem, HumanDTO newItem)
@@ -51,6 +55,14 @@ public class Inventory : NetworkBehaviour
 
                     AddHuman(humanDTO);
                     collectible.Collect();
+                    
+                    if (_characterGUID != humanDTO.CharacterGUID)
+                    {
+                        HumanDTO humanCopy = humanDTO.Copy();
+                        AddHuman(humanCopy);
+                        InventoryContainer.Instance.TryAdd(humanDTO);
+                    }
+                    
                     if (!InventoryContainer.Instance.TryAdd(humanDTO))
                     {
                         isGameEnded = true;
@@ -75,7 +87,6 @@ public class Inventory : NetworkBehaviour
         if (humanDTOs.Count > 0)
         {
             human = humanDTOs[0];
-            // if (!InventoryContainer.Instance.TryRemove()) return false;
             CmdRemoveHumanFromHud();
             RemoveHuman();
             return true;
@@ -108,7 +119,6 @@ public class Inventory : NetworkBehaviour
             return;
         }
         humanDTOs.Add(humanDTO);
-        Debug.Log("Added");
     }
 
     public void RemoveHuman()

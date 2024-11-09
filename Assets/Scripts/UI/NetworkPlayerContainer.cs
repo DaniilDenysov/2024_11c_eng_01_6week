@@ -17,7 +17,7 @@ namespace General
             {
                 foreach (var human in inventory.GetHumans())
                 {
-                    score += human.Amount * (human.CharacterGUID == player.GetCharacterGUID() ? 1 : 2);
+                    score += human.Amount;
                 }
             }
             return score;

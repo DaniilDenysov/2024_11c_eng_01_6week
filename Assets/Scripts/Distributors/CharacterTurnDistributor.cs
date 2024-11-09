@@ -60,12 +60,6 @@ namespace Distributors
             }
         }
 
-        [ClientRpc]
-        private void OnLocalTurnStart()
-        {
-            
-        }
-
         [Server]
         public void OnTurnEnd()
         {

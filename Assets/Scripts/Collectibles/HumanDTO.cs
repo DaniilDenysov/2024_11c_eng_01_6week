@@ -9,5 +9,14 @@ namespace Collectibles
     {
         public string CharacterGUID;
         public int Amount;
+
+        public HumanDTO Copy()
+        {
+            return new HumanDTO()
+            {
+                CharacterGUID = CharacterGUID,
+                Amount = Amount
+            };
+        }
     }
 }
