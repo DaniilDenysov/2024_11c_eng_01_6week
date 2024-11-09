@@ -28,7 +28,7 @@ public class PlayerLabel : NetworkBehaviour
         {
             Debug.Log("Assigned");
             LocalPlayer = this;
-
+            CmdSetPlayerName(SteamFriends.GetPersonaName());
         }
     }
 
@@ -38,11 +38,11 @@ public class PlayerLabel : NetworkBehaviour
         PlayerLabelsContainer.Instance.Add(this);
     }
 
-    public override void OnStartLocalPlayer()
+   /* public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
         CmdSetPlayerName(SteamFriends.GetPersonaName());
-    }
+    }*/
 
     public override void OnStopClient()
     {
