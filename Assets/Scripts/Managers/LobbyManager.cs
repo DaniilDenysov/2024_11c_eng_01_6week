@@ -62,7 +62,6 @@ namespace Managers
             ((CustomNetworkManager)NetworkManager.singleton).SteamID = id;
             LoadingManager.Instance.EndLoading();
             NetworkManager.singleton.StartHost();
-            LoadingManager.Instance.EndLoading();
         }
 
         private void OnLobbyEntered(LobbyEnter_t param)
@@ -73,6 +72,7 @@ namespace Managers
             NetworkManager.singleton.networkAddress = SteamMatchmaking.GetLobbyData(id, SteamMatchmaking.GetLobbyData(id, "name"));
             ((CustomNetworkManager)NetworkManager.singleton).SteamID = id;
             NetworkManager.singleton.StartClient();
+            LoadingManager.Instance.EndLoading();
         }
 
         private void OnGameLobbyJoinRequested(GameLobbyJoinRequested_t param)
