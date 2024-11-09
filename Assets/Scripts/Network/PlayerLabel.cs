@@ -48,7 +48,6 @@ public class PlayerLabel : NetworkBehaviour
     {
         base.OnStopClient();
         CharacterSelectionLabel.OnDeselected?.Invoke(Player.CharacterGUID);
-        SteamAPI.Shutdown();
     }
 
     #region commands

@@ -1,24 +1,24 @@
 {
   "data": [
     {
+      "Item1": "6c3dc35a-f089-4c7b-a2f6-bf63a4d92865",
+      "Item2": false
+    },
+    {
+      "Item1": "88ed44fa-3273-455d-933a-932367b8bec2",
+      "Item2": 0.01
+    },
+    {
       "Item1": "87173eb0-2184-4982-848a-116a907af1bd",
       "Item2": 5
     },
     {
+      "Item1": "b87493f8-e924-40ba-be4a-374903a217a3",
+      "Item2": 0.01
+    },
+    {
       "Item1": "32b18d59-b28f-432c-a983-c9117f2ec8cf",
       "Item2": 0
-    },
-    {
-      "Item1": "b87493f8-e924-40ba-be4a-374903a217a3",
-      "Item2": 0.0
-    },
-    {
-      "Item1": "88ed44fa-3273-455d-933a-932367b8bec2",
-      "Item2": 0.0
-    },
-    {
-      "Item1": "6c3dc35a-f089-4c7b-a2f6-bf63a4d92865",
-      "Item2": false
     }
   ]
 }

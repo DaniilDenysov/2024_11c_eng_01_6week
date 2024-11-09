@@ -47,6 +47,11 @@ namespace Characters
             EventManager.OnClientStartTurn += OnTurn;
         }
 
+        private void OnDestroy()
+        {
+            EventManager.OnClientStartTurn -= OnTurn;
+        }
+
         public void OnTurn()
         {
             if (_clientData.GetTurn())

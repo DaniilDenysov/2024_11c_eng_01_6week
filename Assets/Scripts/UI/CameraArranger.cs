@@ -24,6 +24,11 @@ public class CameraArranger : MonoBehaviour
         EventManager.OnScreenSizeChanged += ArrangeCamera;
     }
 
+    private void OnDestroy()
+    {
+        EventManager.OnScreenSizeChanged -= ArrangeCamera;
+    }
+
     private void ArrangeCamera()
     {
         float cameraHalfWidth = _camera.orthographicSize * _camera.aspect;

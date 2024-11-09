@@ -126,10 +126,6 @@ namespace Managers
             base.OnServerChangeScene(newSceneName);
         }
 
-        public override void OnClientSceneChanged()
-        {
-            base.OnClientSceneChanged();
-        }
 
         private void AssignOwnersForConnections ()
         {
@@ -246,12 +242,14 @@ namespace Managers
                 {
                     if (!player.IsReady)
                     {
-                        LocalPlayerLogContainer.Instance.AddLogMessage("Not all players are ready!");
+                        //LocalPlayerLogContainer.Instance.AddLogMessage("Not all players are ready!");
+                        GlobalErrorHandler.Instance.DisplayInfoError("Not all players are ready!");
                         return;
                     }
                     if (string.IsNullOrEmpty(player.CharacterGUID))
                     {
-                        LocalPlayerLogContainer.Instance.AddLogMessage("Not all players selected their character!");
+                        //LocalPlayerLogContainer.Instance.AddLogMessage("Not all players selected their character!");
+                        GlobalErrorHandler.Instance.DisplayInfoError("Not all players selected their character!");
                         return;
                     }
                 }
@@ -262,7 +260,8 @@ namespace Managers
             }
             else
             {
-                LocalPlayerLogContainer.Instance.AddLogMessage("Not enough players!");
+                //LocalPlayerLogContainer.Instance.AddLogMessage("Not enough players!");
+                GlobalErrorHandler.Instance.DisplayInfoError("Not enough players!");
             }
         }
 
@@ -276,7 +275,22 @@ namespace Managers
         public override void OnClientDisconnect()
         {
             base.OnClientDisconnect();
+            GlobalErrorHandler.Instance.DisplayInfoError("Disconnected from server!");
             OnClientDisconnected?.Invoke();
+        }
+
+        public override void OnClientChangeScene(string newSceneName, SceneOperation sceneOperation, bool customHandling)
+        {
+            if (!LoadingManager.Instance.IsLoading()) LoadingManager.Instance.StartLoading();
+            Debug.Log("Client change scene");
+            base.OnClientChangeScene(newSceneName, sceneOperation, customHandling);
+        }
+
+        public override void OnClientSceneChanged()
+        {
+            base.OnClientSceneChanged();
+            Debug.Log("Client changed scene");
+            LoadingManager.Instance.EndLoading();
         }
 
         public override void OnStopClient()
