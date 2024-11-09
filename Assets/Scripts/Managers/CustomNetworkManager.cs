@@ -158,7 +158,7 @@ namespace Managers
                 var networkPlayer = GetPlayerForConnection(conn.connectionId);
                 if (networkPlayer != null)
                 {
-                    NetworkServer.RemovePlayerForConnection(conn, networkPlayer.gameObject);
+                    NetworkServer.RemovePlayerForConnection(conn);
                     NetworkServer.connections.Remove(conn.connectionId);
                 }
             }
@@ -255,6 +255,7 @@ namespace Managers
                 }
                 isGameInProgress = true;
                 players = GetPlayersData();
+                LoadingManager.Instance.StartLoading();
                 //change to more appropriate handling
                 ServerChangeScene(mainScene);
             }
