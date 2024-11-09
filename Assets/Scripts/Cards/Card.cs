@@ -26,7 +26,10 @@ namespace Cards
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            TryActivate();
+            if (eventData.button == PointerEventData.InputButton.Left)
+                TryActivate();
+            else if (eventData.button == PointerEventData.InputButton.Right)
+                TryDiscard();
         }
 
         public abstract void OnCardActivation(GameObject arg1);
@@ -49,6 +52,23 @@ namespace Cards
                 else
                 {
                     stateManager.CmdSetCurrentState(new Idle());
+                }
+            }
+        }
+        
+        public void TryDiscard()
+        {
+            if (NetworkClient.connection.identity != null 
+                && NetworkClient.connection.identity.TryGetComponent(out ClientData clientData)
+                && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
+            {
+                if (clientData.GetTurn() && stateManager.GetCurrentState().IsCardUsable(this))
+                {
+                    stateManager.CmdSetCurrentState(new CardUsed(false));
+                    ClientDeck.Instance.Remove(this);
+                    CardDistributor.Instance.CmdDiscardCard(_initializedFromName);
+                    
+                    gameObject.SetActive(false);
                 }
             }
         }

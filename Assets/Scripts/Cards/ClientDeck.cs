@@ -16,6 +16,7 @@ namespace Cards
         public override void Add(Card item)
         {
             base.Add(item);
+            
             EventManager.FireEvent(EventManager.OnCardCountChange, items.Count);
         }
         

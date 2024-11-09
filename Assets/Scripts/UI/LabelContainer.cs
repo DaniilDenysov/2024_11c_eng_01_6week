@@ -19,7 +19,9 @@ namespace UI
 
         public virtual void Add (I item)
         {
+            Vector3 scaleBefore = item.transform.localScale;
             item.transform.SetParent(container);
+            item.transform.localScale = scaleBefore;
             items.Add(item);
         }
 
