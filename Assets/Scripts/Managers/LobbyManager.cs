@@ -17,7 +17,7 @@ namespace Managers
     public class LobbyManager : Singleton<LobbyManager>
     {
         [SerializeField] private GameObject startGameButton;
-        [SerializeField] private GameObject loadingLobbyScreen;
+        [SerializeField] private GameObject lobbyScreen;
         [SerializeField] private GameObject searchingLobbyScreen;
         [SerializeField] private string lobbyName, hostAddress;
         [SerializeField] private UnityEvent onConnectedToLobby,onDisconnectedFromLobby;
@@ -26,81 +26,24 @@ namespace Managers
         private Callback<GameLobbyJoinRequested_t> joinLobbyRequested;
         private Callback<LobbyEnter_t> lobbyEntered;
 
-    /*    private Callback<LobbyMatchList_t> lobbyMatchListCallback;
-        private bool lobbySearchInProgress = false;
-        private CSteamID firstLobbyFound;*/
-
         private void Start()
         {
             CustomNetworkManager.OnClientConnected += OnClientConnected;
             CustomNetworkManager.OnClientDisconnected += OnClientDisconnected;
             PlayerLabel.OnPartyOwnerChanged += OnPartyOwnerChanged;
-            
-            lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
-            joinLobbyRequested = Callback<GameLobbyJoinRequested_t>.Create(OnGameLobbyJoinRequested);
-            lobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
-        }
-
-
-     /*   public bool TryGetFirstAvailableLobby(out CSteamID cSteamID)
-        {
-            cSteamID = default;
-
-            if (SteamManager.Initialized && !lobbySearchInProgress)
+            if (SteamManager.Initialized)
             {
-                lobbySearchInProgress = true;
-                lobbyMatchListCallback = Callback<LobbyMatchList_t>.Create(OnLobbyMatchList);
-                SteamMatchmaking.AddRequestLobbyListStringFilter("game_id", "Labyrism", ELobbyComparison.k_ELobbyComparisonEqual);
-                SteamMatchmaking.RequestLobbyList();
-                return true; // Request initiated, will return result asynchronously
-            }
-            return false; // Return false if Steam is not initialized or a search is already in progress
-        }
-
-        private void OnLobbyMatchList(LobbyMatchList_t result)
-        {
-            lobbySearchInProgress = false;
-            if (result.m_nLobbiesMatching > 0)
-            {
-                // Get the first available lobby's ID
-                firstLobbyFound = SteamMatchmaking.GetLobbyByIndex(0);
-                Debug.Log("First available lobby found: " + firstLobbyFound);
+                lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
+                joinLobbyRequested = Callback<GameLobbyJoinRequested_t>.Create(OnGameLobbyJoinRequested);
+                lobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
+                LoadingManager.Instance.EndLoading();
+                Debug.Log("Welcome");
             }
             else
             {
-                firstLobbyFound = default; // No lobby found
-                Debug.Log("No available lobbies found.");
+                LoadingManager.Instance.StartLoading();
             }
         }
-
-        public IEnumerator LookForLobbies()
-        {
-            loadingLobbyScreen.SetActive(true);
-            CSteamID lobbyID;
-            while (true)
-            {
-                // Attempt to start looking for the first available lobby
-                if (TryGetFirstAvailableLobby(out lobbyID))
-                {
-                    // Wait until the callback assigns a valid CSteamID or confirms no lobbies were found
-                    while (lobbySearchInProgress)
-                    {
-                        yield return null; // Wait for the callback to finish
-                    }
-
-                    // Check if a valid lobby ID was found
-                    if (firstLobbyFound != default)
-                    {
-                        loadingLobbyScreen.SetActive(false);
-                        JoinLobby(firstLobbyFound);
-                        yield break; // Exit the coroutine once a lobby is found and joined
-                    }
-                }
-
-                // Optionally add a delay between retries to avoid hammering the API
-                yield return new WaitForSeconds(1f);
-            }
-        }*/
 
 
         #region SteamCallbacks
@@ -108,7 +51,7 @@ namespace Managers
         {
             if (param.m_eResult != EResult.k_EResultOK)
             {
-                loadingLobbyScreen.SetActive(false);
+                LoadingManager.Instance.EndLoading();
                 return;
             }
      
@@ -117,7 +60,9 @@ namespace Managers
             SteamMatchmaking.SetLobbyData(id, "game_id", "Labyrism");
             SteamMatchmaking.SetLobbyData(id, lobbyName, SteamUser.GetSteamID().ToString());
             ((CustomNetworkManager)NetworkManager.singleton).SteamID = id;
+            LoadingManager.Instance.EndLoading();
             NetworkManager.singleton.StartHost();
+            LoadingManager.Instance.EndLoading();
         }
 
         private void OnLobbyEntered(LobbyEnter_t param)
@@ -133,7 +78,7 @@ namespace Managers
         private void OnGameLobbyJoinRequested(GameLobbyJoinRequested_t param)
         {
             SteamMatchmaking.JoinLobby(param.m_steamIDLobby);
-            loadingLobbyScreen.SetActive(true);
+            LoadingManager.Instance.StartLoading();
         }
         #endregion
 
@@ -153,11 +98,12 @@ namespace Managers
             NetworkClient.connection.identity.GetComponent<PlayerLabel>().CmdReady();
         }
 
-        private void OnDestroy()
+        public override void OnDestroy()
         {
             CustomNetworkManager.OnClientConnected -= OnClientConnected;
             CustomNetworkManager.OnClientDisconnected -= OnClientDisconnected;
             PlayerLabel.OnPartyOwnerChanged -= OnPartyOwnerChanged;
+            base.OnDestroy();
         }
 
         public void JoinLobby()
@@ -170,7 +116,7 @@ namespace Managers
         {
             if (SteamManager.Initialized)
             {
-                loadingLobbyScreen.SetActive(true);
+                LoadingManager.Instance.StartLoading();
                 SteamMatchmaking.JoinLobby(lobbyID);
             }
             else
@@ -197,13 +143,14 @@ namespace Managers
 
         public void StartGame ()
         {
+            LoadingManager.Instance.StartLoading();
             NetworkClient.connection.identity.GetComponent<PlayerLabel>().CmdStartGame();
         }
 
         private void OnClientConnected()
         {
             onConnectedToLobby?.Invoke();
-            loadingLobbyScreen.SetActive(false);
+           // LoadingManager.Instance.EndLoading();
         }
 
         private void OnClientDisconnected()
@@ -215,7 +162,8 @@ namespace Managers
         public void CreateLobby()
         {
             SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic,4);
-            loadingLobbyScreen.SetActive(true);
+            LoadingManager.Instance.StartLoading();
+            lobbyScreen.SetActive(true);
         }
 
         public override LobbyManager GetInstance()

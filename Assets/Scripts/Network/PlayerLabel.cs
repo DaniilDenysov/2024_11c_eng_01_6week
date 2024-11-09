@@ -9,6 +9,7 @@ using UnityEngine.UI;
 using DTOs;
 using Lobby;
 using UI;
+using Steamworks;
 
 public class PlayerLabel : NetworkBehaviour
 {
@@ -27,13 +28,21 @@ public class PlayerLabel : NetworkBehaviour
         {
             Debug.Log("Assigned");
             LocalPlayer = this;
+            CmdSetPlayerName(SteamFriends.GetPersonaName());
         }
     }
+
 
     private void Start()
     {
         PlayerLabelsContainer.Instance.Add(this);
     }
+
+   /* public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        CmdSetPlayerName(SteamFriends.GetPersonaName());
+    }*/
 
     public override void OnStopClient()
     {
@@ -49,6 +58,7 @@ public class PlayerLabel : NetworkBehaviour
 
         ((CustomNetworkManager)NetworkManager.singleton).StartGame();
     }
+
  
     [Command]
     public void CmdReady()
@@ -67,8 +77,9 @@ public class PlayerLabel : NetworkBehaviour
         characterSelected.sprite = characterData.CharacterIcon;
     }
 
-    [Server]
-    public void SetPlayerName(string playerName)
+
+    [Command]
+    public void CmdSetPlayerName(string playerName)
     {
         var player = new Player(Player);
         player.Nickname = playerName;
@@ -135,6 +146,7 @@ public class PlayerLabel : NetworkBehaviour
     }
     #endregion
     #region rpcs
+
     [TargetRpc]
     public void OnValidateSelection()
     {

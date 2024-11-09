@@ -91,7 +91,6 @@ namespace Managers
                 {
                     var playerData = networkPlayer.GetPlayerData();
                     playerData.ConnectionId = conn.connectionId;
-                    playerData.ConnectionId = conn.connectionId;
                     players[players.IndexOf(players.FirstOrDefault((p)=>p.CharacterGUID== playerData.CharacterGUID))] = playerData;
                     NetworkServer.AddPlayerForConnection(conn, networkPlayer.gameObject);
                     Debug.Log($"assigned {networkPlayer.GetCharacterGUID()} for connection {conn.connectionId}");
@@ -127,10 +126,6 @@ namespace Managers
             base.OnServerChangeScene(newSceneName);
         }
 
-        public override void OnClientSceneChanged()
-        {
-            base.OnClientSceneChanged();
-        }
 
         private void AssignOwnersForConnections ()
         {
@@ -217,20 +212,23 @@ namespace Managers
 
         private void OnCreateCharacter(NetworkConnectionToClient conn,LobbyConnection lobbyConnection)
         {
-            GameObject participant = Instantiate(playerLabelPrefab);
-            PlayerLabel [] connections = PlayerLabelsContainer.Instance.GetItems().ToArray();
-            if (participant.gameObject.TryGetComponent(out PlayerLabel label))
+            if (!isGameInProgress)
             {
-                var player = new Player();
-                player.ConnectionId = conn.connectionId;
-                string name = SteamFriends.GetPersonaName();
-                /*  if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
-                  else player.Nickname = name;*/
-                player.Nickname = name;
-                player.IsPartyOwner = connections.Length == 0;
-                label.Player = player;
+                GameObject participant = Instantiate(playerLabelPrefab);
+                PlayerLabel[] connections = PlayerLabelsContainer.Instance.GetItems().ToArray();
+                PlayerLabel label;
+                if (participant.gameObject.TryGetComponent(out label))
+                {
+                    var player = new Player();
+                    player.ConnectionId = conn.connectionId;
+                    /*  if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
+                      else player.Nickname = name;*/
+                    player.Nickname = "";
+                    player.IsPartyOwner = connections.Length == 0;
+                    label.Player = player;
+                }
+                NetworkServer.AddPlayerForConnection(conn, participant);
             }
-            NetworkServer.AddPlayerForConnection(conn, participant);
         }
 
         #region Client
@@ -244,12 +242,14 @@ namespace Managers
                 {
                     if (!player.IsReady)
                     {
-                        LocalPlayerLogContainer.Instance.AddLogMessage("Not all players are ready!");
+                        //LocalPlayerLogContainer.Instance.AddLogMessage("Not all players are ready!");
+                        GlobalErrorHandler.Instance.DisplayInfoError("Not all players are ready!");
                         return;
                     }
                     if (string.IsNullOrEmpty(player.CharacterGUID))
                     {
-                        LocalPlayerLogContainer.Instance.AddLogMessage("Not all players selected their character!");
+                        //LocalPlayerLogContainer.Instance.AddLogMessage("Not all players selected their character!");
+                        GlobalErrorHandler.Instance.DisplayInfoError("Not all players selected their character!");
                         return;
                     }
                 }
@@ -260,7 +260,8 @@ namespace Managers
             }
             else
             {
-                LocalPlayerLogContainer.Instance.AddLogMessage("Not enough players!");
+                //LocalPlayerLogContainer.Instance.AddLogMessage("Not enough players!");
+                GlobalErrorHandler.Instance.DisplayInfoError("Not enough players!");
             }
         }
 
@@ -274,11 +275,27 @@ namespace Managers
         public override void OnClientDisconnect()
         {
             base.OnClientDisconnect();
+            GlobalErrorHandler.Instance.DisplayInfoError("Disconnected from server!");
             OnClientDisconnected?.Invoke();
+        }
+
+        public override void OnClientChangeScene(string newSceneName, SceneOperation sceneOperation, bool customHandling)
+        {
+            if (!LoadingManager.Instance.IsLoading()) LoadingManager.Instance.StartLoading();
+            Debug.Log("Client change scene");
+            base.OnClientChangeScene(newSceneName, sceneOperation, customHandling);
+        }
+
+        public override void OnClientSceneChanged()
+        {
+            base.OnClientSceneChanged();
+            Debug.Log("Client changed scene");
+            LoadingManager.Instance.EndLoading();
         }
 
         public override void OnStopClient()
         {
+            SteamMatchmaking.LeaveLobby(SteamID);
             OnClientDisconnected?.Invoke();
         }
         #endregion
