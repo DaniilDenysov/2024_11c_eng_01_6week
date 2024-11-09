@@ -93,7 +93,6 @@ namespace Managers
                     playerData.ConnectionId = conn.connectionId;
                     players[players.IndexOf(players.FirstOrDefault((p)=>p.CharacterGUID== playerData.CharacterGUID))] = playerData;
                     NetworkServer.AddPlayerForConnection(conn, networkPlayer.gameObject);
-                    //add cards for the player
                     Debug.Log($"assigned {networkPlayer.GetCharacterGUID()} for connection {conn.connectionId}");
                     return;
                 }
@@ -276,19 +275,16 @@ namespace Managers
         public override void OnClientDisconnect()
         {
             base.OnClientDisconnect();
-
             if (NetworkClient.active && !NetworkServer.active)
             {
                 GlobalErrorHandler.Instance.DisplayInfoError("Disconnected from server!");
             }
-
             OnClientDisconnected?.Invoke();
         }
 
-
         public override void OnClientChangeScene(string newSceneName, SceneOperation sceneOperation, bool customHandling)
         {
-            LoadingManager.Instance.StartLoading();
+            if (!LoadingManager.Instance.IsLoading()) LoadingManager.Instance.StartLoading();
             Debug.Log("Client change scene");
             base.OnClientChangeScene(newSceneName, sceneOperation, customHandling);
         }
