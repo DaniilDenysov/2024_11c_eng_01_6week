@@ -18,8 +18,9 @@ public abstract class ChannelListener<T> : Singleton<ChannelListener<T>>
         Subscribe();
     }
 
-    public void OnDestroy()
+    public override void OnDestroy()
     {
+        base.OnDestroy();
         Unsubscribe();
     }
 
