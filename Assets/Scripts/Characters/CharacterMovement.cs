@@ -22,8 +22,6 @@ namespace Characters
         [SerializeField] private GameObject sprite;
         
         [SerializeField] private PathValidator pathValidator;
-
-        [SerializeField] private UnityEvent onMove;
         public UnityEvent onMoveCancelable;
         public UnityEvent onMoveAvailable;
 
@@ -45,11 +43,6 @@ namespace Characters
 
             actionBlocker = FindObjectOfType<ActionBlockerManager>();
             EventManager.OnClientStartTurn += OnTurn;
-        }
-
-        private void OnDestroy()
-        {
-            EventManager.OnClientStartTurn -= OnTurn;
         }
 
         public void OnTurn()
@@ -142,7 +135,7 @@ namespace Characters
             for (int i = 0; i < steps; i++) {
                 MakeMovement();
             }
-            onMove?.Invoke();
+            
             _stateManager.CmdSetCurrentState(new Idle());
         }
 

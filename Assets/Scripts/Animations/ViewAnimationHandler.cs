@@ -17,11 +17,6 @@ public class ViewAnimationHandler : MonoBehaviour
         .From(Vector3.one * initialScale);
     }
 
-    public void OpenWindow()
-    {
-        gameObject.transform.parent.gameObject.SetActive(true);
-    }
-
     public void CloseWindow()
     {
         transform.DOScale(finalScale, animationDuration)
@@ -29,6 +24,4 @@ public class ViewAnimationHandler : MonoBehaviour
             .From(Vector3.one * endScale)
             .OnComplete(() => gameObject.transform.parent.gameObject.SetActive(false));
     }
-
-    public bool IsOpened() => gameObject.transform.parent.gameObject.activeInHierarchy;
 }

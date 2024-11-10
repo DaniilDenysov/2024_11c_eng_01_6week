@@ -7,8 +7,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Zenject;
-using Steamworks;
-using UnityEngine.Events;
 
 namespace Managers
 {
@@ -18,9 +16,7 @@ namespace Managers
 
         private DefaultInputActions inputActions;
 
-        [SerializeField] private ViewAnimationHandler pause, info;
-
-        private bool pauseMenuOpen, characterInfoMenuOpen;
+        [SerializeField] private GameObject pauseMenu, characterInfoMenu;
         [SerializeField] private Transform finishWindow;
 
         [Inject]
@@ -46,24 +42,12 @@ namespace Managers
 
         private void OnPause(InputAction.CallbackContext obj)
         {
-            HandleAnimation(pause);
+            pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
         }
 
         private void OnCharacterInfo(InputAction.CallbackContext obj)
         {
-            HandleAnimation(info);
-        }
-
-        private void HandleAnimation (ViewAnimationHandler handler)
-        {
-            if (handler.IsOpened())
-            {
-                handler.CloseWindow();
-            }
-            else
-            {
-                handler.OpenWindow();
-            }
+            characterInfoMenu.SetActive(!characterInfoMenu.activeInHierarchy);
         }
 
         [ClientRpc]
@@ -81,7 +65,6 @@ namespace Managers
             else
             {
                 NetworkManager.singleton.StopClient();
-
             }
         }
 

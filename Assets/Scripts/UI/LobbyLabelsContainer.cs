@@ -26,6 +26,10 @@ public class LobbyLabelsContainer : LabelContainer<LobbyLabel, LobbyLabelsContai
 
            // RequestLobbiesForGame();
         }
+        else
+        {
+            Debug.LogError("Steam is not initialized.");
+        }
     }
 
     public void RequestLobbiesForGame()
@@ -54,7 +58,6 @@ public class LobbyLabelsContainer : LabelContainer<LobbyLabel, LobbyLabelsContai
     private void OnLobbyDataUpdated(LobbyDataUpdate_t lobbyData)
     {
         ClearList();
-        Debug.Log("Updated list");
         if (lobbyData.m_bSuccess != 1 || !lobbyData.m_ulSteamIDLobby.Equals(lobbyData.m_ulSteamIDMember))
             return;
 
