@@ -12,6 +12,7 @@ using UnityEngine.Events;
 using Client;
 using Mirror;
 using UnityEngine.Serialization;
+using System.Collections;
 
 namespace Characters
 {
@@ -117,11 +118,10 @@ namespace Characters
         {
             TileSelector.Instance.SetTilesUnlit();
         }
-        
+
         public void MakeMovement(Vector3 nextPosition)
         {
-
-           /* if (actionBlocker.IsActionBlocked("Move"))
+            /* if (actionBlocker.IsActionBlocked("Move"))
             {
                 Debug.Log("Move action is blocked!");
                 return;
@@ -133,18 +133,35 @@ namespace Characters
             if (difference.x != 0 && difference.y != 0)
             {
                 Debug.LogError("Unable to move into such direction");
+                return;
             }
             else if (difference.x == 0)
             {
                 steps = (int)Math.Abs(difference.y);
             }
 
-            for (int i = 0; i < steps; i++) {
-                MakeMovement();
+            StartCoroutine(InterpolateMovement(nextPosition, 1f));
+
+            //onMove?.Invoke();
+        }
+
+        private IEnumerator InterpolateMovement(Vector3 targetPosition, float duration)
+        {
+            Vector3 startPosition = transform.position;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                onMove?.Invoke();
+                transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
             }
-            onMove?.Invoke();
+
+            transform.position = targetPosition;
             _stateManager.CmdSetCurrentState(new Idle());
         }
+
 
         public void MakeMovement()
         {

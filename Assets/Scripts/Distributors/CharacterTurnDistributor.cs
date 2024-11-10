@@ -70,7 +70,10 @@ namespace Distributors
         public void OnTurnEnd()
         {
             var player = order.Dequeue();
-            OnLocalTurn(player.connectionToClient, false);
+            if (player.connectionToClient != null)
+            {
+                OnLocalTurn(player.connectionToClient, false);
+            }
 
             if (player.TryGetComponent(out ClientData data))
             {

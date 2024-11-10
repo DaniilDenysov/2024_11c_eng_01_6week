@@ -7,9 +7,11 @@ using UI.Containers;
 using UnityEditor;
 using UnityEngine;
 using Validation;
+using UnityEngine.Events;
 
 public class Inventory : NetworkBehaviour
 {
+    [SerializeField] private UnityEvent onEat;
     private SyncList<HumanDTO> humanDTOs = new SyncList<HumanDTO>();
     private CharacterMovement _movement;
     public static Action OnHumanPickedUp;
@@ -43,9 +45,10 @@ public class Inventory : NetworkBehaviour
                 if (collectible.GetType() == typeof(Human))
                 {
                     HumanDTO humanDTO = (collectible as Human).GetData();
-
+                    
                     AddHuman(humanDTO);
                     collectible.Collect();
+                    onEat?.Invoke();
                     if (!InventoryContainer.Instance.TryAdd(humanDTO))
                     {
                         isGameEnded = true;

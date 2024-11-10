@@ -88,6 +88,66 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1853151080232906978}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Punch
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 70ba49202cd4f4663abe46db744401ba, type: 3}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882569425523204855, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1853151080232906978}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1853151080232906978}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
     m_RemovedGameObjects: []
@@ -152,6 +212,33 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0
+  onEat:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1853151080232906978}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Eat
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 68560a74fb072b14db476abf77000a0d, type: 2}
+        m_TargetAssemblyTypeName: AudioEventChannel, Assembly-CSharp
+        m_MethodName: RaiseEvent
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 077e67fc067454a58a0b914ab8c6d00d, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3293160627218807659
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -52,6 +52,34 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onEat.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onEat.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1232988209345695431}
+    - target: {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onEat.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onEat.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onEat.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Eat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onEat.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: a9bde91ab1ef19a4d9985e038f5971d3, type: 3}
+    - target: {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onEat.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5321693609869844705, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -116,10 +144,70 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1232988209345695431}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Punch
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 70ba49202cd4f4663abe46db744401ba, type: 3}
+    - target: {fileID: 7227822774217613489, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7775399526839070177, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3bfc8cdb8581a62489b282c45c3cccee, type: 2}
+    - target: {fileID: 7882569425523204855, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1232988209345695431}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1232988209345695431}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Walk
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011261558165800824, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
+      propertyPath: onMove.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

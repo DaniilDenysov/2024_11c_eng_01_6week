@@ -6,12 +6,14 @@ using Client;
 using Distributors;
 using UnityEngine;
 using Validation;
+using UnityEngine.Events;
 
 namespace Characters
 {
     [RequireComponent(typeof(Inventory)), RequireComponent(typeof(CharacterMovement))]
     public class Attack : MonoBehaviour
     {
+        [SerializeField] private UnityEvent onAttack;
         private Inventory _inventory;
         private CharacterMovement _movement;
         private Dictionary<string, List<Vector3>> _staticAttackCells;
@@ -125,6 +127,7 @@ namespace Characters
                         if (opponentsInventory.TryPopItem(out HumanDTO human))
                         {
                             _inventory.AddHuman(human);
+                            onAttack?.Invoke();
                             result = true;
                         }
                     }
