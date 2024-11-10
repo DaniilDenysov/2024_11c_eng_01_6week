@@ -6,13 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioEventListener : ChannelListener<Action<AudioClip>>
 {
-    private AudioSource audioSource;
-
-    public override void Awake()
-    {
-        base.Awake();
-        audioSource = GetComponent<AudioSource>();
-    }
+    [SerializeField] private AudioSource soundSource;
 
     public override void Subscribe()
     {
@@ -26,6 +20,7 @@ public class AudioEventListener : ChannelListener<Action<AudioClip>>
 
     private void OnEventRaised (AudioClip clip)
     {
-        audioSource.PlayOneShot(clip);
+       if (!soundSource.isPlaying) soundSource.PlayOneShot(clip);
     }
+
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 using UI;
 using General;
 using Steamworks;
+using UnityEngine.Events;
 
 namespace Managers
 {
@@ -21,6 +22,8 @@ namespace Managers
         [SerializeField] private string mainScene;
         [SerializeField] private bool isGameInProgress = false;
         public static Action OnClientConnected, OnClientDisconnected;
+
+        
 
         #region Server
 

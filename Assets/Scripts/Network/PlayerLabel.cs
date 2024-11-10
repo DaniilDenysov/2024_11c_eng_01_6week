@@ -10,11 +10,15 @@ using DTOs;
 using Lobby;
 using UI;
 using Steamworks;
+using System.Collections;
 
 public class PlayerLabel : NetworkBehaviour
 {
     public static PlayerLabel LocalPlayer;
     [SerializeField] private Sprite iconPlaceHolder;
+    [SyncVar(hook = nameof(OnAvatarChanged))] private Texture2D playerAvatar;
+
+
     [SerializeField] private TMP_Text displayName, readyDisplay;
     [SerializeField] private Image characterSelected;
     [SyncVar(hook = nameof(OnPlayerStateChanged))] public Player Player = new Player();
@@ -29,9 +33,51 @@ public class PlayerLabel : NetworkBehaviour
             Debug.Log("Assigned");
             LocalPlayer = this;
             CmdSetPlayerName(SteamFriends.GetPersonaName());
+          /*  var playerSteamID = SteamUser.GetSteamID();
+            int avatarInt = SteamFriends.GetLargeFriendAvatar(playerSteamID); 
+
+            if (avatarInt != -1)
+            {
+                StartCoroutine(LoadSteamAvatar(avatarInt));
+            }*/
         }
     }
 
+    private void OnAvatarChanged(Texture2D oldValue, Texture2D newValue)
+    {
+        if (newValue == null) return;
+        Rect spriteRect = new Rect(0, 0, newValue.width, newValue.height);
+        Vector2 pivot = new Vector2(0.5f, 0.5f);
+        iconPlaceHolder = Sprite.Create(newValue, spriteRect, pivot);
+    }
+
+    private IEnumerator LoadSteamAvatar(int avatarInt)
+    {
+        uint imageWidth, imageHeight;
+        bool success = SteamUtils.GetImageSize(avatarInt, out imageWidth, out imageHeight);
+
+        if (!success || imageWidth == 0 || imageHeight == 0)
+        {
+            Debug.LogError("Failed to get avatar image size.");
+            yield break;
+        }
+
+        byte[] imageData = new byte[imageWidth * imageHeight * 4];
+        success = SteamUtils.GetImageRGBA(avatarInt, imageData, (int)(imageWidth * imageHeight * 4));
+
+        if (!success)
+        {
+            Debug.LogError("Failed to get avatar image data.");
+            yield break;
+        }
+
+
+        var texture = new Texture2D((int)imageWidth, (int)imageHeight, TextureFormat.RGBA32, false);
+        texture.LoadRawTextureData(imageData);
+        texture.Apply();
+
+        playerAvatar = texture;
+    }
 
     private void Start()
     {
@@ -77,6 +123,11 @@ public class PlayerLabel : NetworkBehaviour
         characterSelected.sprite = characterData.CharacterIcon;
     }
 
+    [ClientRpc]
+    public void CmdSetPlayerIcon(string playerName)
+    {
+        
+    }
 
     [Command]
     public void CmdSetPlayerName(string playerName)
