@@ -3,24 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ChannelListener<T> : Singleton<ChannelListener<T>>
+public abstract class ChannelListener<T> : MonoBehaviour
 {
     [SerializeField] protected EventChannel<T> eventChannel;
 
-    public override ChannelListener<T> GetInstance()
+    public void Awake()
     {
-        return this;
-    }
-
-    public override void Awake()
-    {
-        base.Awake();
         Subscribe();
     }
 
-    public override void OnDestroy()
+    public void OnDestroy()
     {
-        base.OnDestroy();
         Unsubscribe();
     }
 

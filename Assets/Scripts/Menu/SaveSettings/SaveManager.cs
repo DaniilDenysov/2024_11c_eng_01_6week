@@ -27,7 +27,7 @@ namespace SaveSystem
             _fullPath = Path.Combine(_filePath, _fileName);
             FindAndRegisterSavableComponents();
             LoadSettings();
-            SceneManager.sceneLoaded += SaveSettings;
+           // SceneManager.sceneLoaded += SaveSettings;
         }
 
         private void FindAndRegisterSavableComponents()

@@ -25,17 +25,16 @@ namespace Managers
         private bool pauseMenuOpen, characterInfoMenuOpen;
         [SerializeField] private Transform finishWindow;
 
-        [Inject]
-        public void Construct (DefaultInputActions inputActions)
-        {
-            this.inputActions = inputActions;
-            inputActions.Player.PauseMenu.performed += OnPause;
-            inputActions.Player.CharacterInfo.performed += OnCharacterInfo;
-        }
+
+
 
         public override void Awake()
         {
             base.Awake();
+            inputActions = new DefaultInputActions();
+            inputActions.Enable();
+            inputActions.Player.PauseMenu.performed += OnPause;
+            inputActions.Player.CharacterInfo.performed += OnCharacterInfo;
             OnFinish += OnGameFinished;
         }
 

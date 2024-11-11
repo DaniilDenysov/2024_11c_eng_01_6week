@@ -10,7 +10,6 @@ namespace UI.Settings
     {
         [SerializeField] private AudioMixer audioMixer;
         [SerializeField] private TMP_Dropdown resolutionDropdown, qualityLevelsDropdown;
-
         private List<Resolution> resolutions;
 
         private void Awake()
@@ -18,6 +17,7 @@ namespace UI.Settings
             resolutions = Screen.resolutions.Reverse().Distinct().ToList();
             RefreshResolutions();
             RefreshQualityLevels();
+            Canvas.ForceUpdateCanvases();
         }
 
         private void RefreshResolutions()
