@@ -27,10 +27,8 @@ public class Inventory : NetworkBehaviour
 
     private void OnInventoryChanged(SyncList<HumanDTO>.Operation op, int itemIndex, HumanDTO oldItem, HumanDTO newItem)
     {
-        Debug.Log("Changed");
         if (op == SyncList<HumanDTO>.Operation.OP_ADD)
         {
-            Debug.Log("Picked");
             OnHumanPickedUp?.Invoke();
         }
     }
@@ -80,11 +78,11 @@ public class Inventory : NetworkBehaviour
         return result;
     }
 
-    public bool TryPopItem(out HumanDTO human)
+    public bool TryPopItem(out HumanDTO human, int countOffset = 0)
     {
         human = default;
         
-        if (humanDTOs.Count > 0)
+        if (humanDTOs.Count + countOffset > 0)
         {
             human = humanDTOs[0];
             CmdRemoveHumanFromHud();

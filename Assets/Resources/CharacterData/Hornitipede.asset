@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8eb71d9d5a16bac49a1a1ae2051ad994, type: 3}
-  m_Name: Hrnitipede
+  m_Name: Hornitipede
   m_EditorClassIdentifier: 
   CharacterGUID: b83261140f51555439a6071702aea281
   CharacterIcon: {fileID: 21300000, guid: aff7bac2abd198b449b23adae0734293, type: 3}

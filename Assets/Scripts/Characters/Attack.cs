@@ -1,9 +1,12 @@
+using System;
 using Collectibles;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Client;
 using Distributors;
+using Spawns;
+using Spawns.Data;
 using UI.Containers;
 using UnityEngine;
 using Validation;
@@ -13,9 +16,16 @@ namespace Characters
     [RequireComponent(typeof(Inventory)), RequireComponent(typeof(CharacterMovement))]
     public class Attack : MonoBehaviour
     {
+        [SerializeField] public HumanSpawner spawner;
         private Inventory _inventory;
         private CharacterMovement _movement;
         private Dictionary<string, List<Vector3>> _staticAttackCells;
+        private string _characterGUID;
+        
+        private void Start()
+        {
+            _characterGUID = NetworkPlayer.LocalPlayerInstance.GetCharacterGUID();
+        }
 
         private void Awake()
         {
@@ -120,11 +130,23 @@ namespace Characters
                         result = true;
                     } else if (entity.TryGetComponent(out Inventory opponentsInventory))
                     {
+                        SpawnArea entryArea = spawner.GetData().FirstOrDefault(entry =>
+                            entry.Key.OwnedBy.CharacterGUID == _characterGUID).Key;
+
                         if (opponentsInventory.TryPopItem(out HumanDTO human))
                         {
                             _inventory.AddHuman(human);
                             InventoryContainer.Instance.TryAdd(human);
                             result = true;
+                        }
+                        
+                        if (entryArea.IsPositionInside(cell, spawner.transform.position))
+                        {
+                            if (opponentsInventory.TryPopItem(out HumanDTO secondHuman, -1))
+                            {
+                                _inventory.AddHuman(secondHuman);
+                                InventoryContainer.Instance.TryAdd(secondHuman);
+                            }
                         }
                     }
                 }

@@ -1421,6 +1421,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6270533591248997449, guid: b4e0189f6ff444371a380526562411f4, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1258533767}
     - target: {fileID: 6344946807899233857, guid: b4e0189f6ff444371a380526562411f4, type: 3}
       propertyPath: onBecameCancelable.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -2260,6 +2264,10 @@ PrefabInstance:
       propertyPath: _onMoveCancelable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3109506239767666666, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1258533767}
     - target: {fileID: 3207422314297233109, guid: 2892712f5ef4a4e1c9004c578389106f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -8046,6 +8054,10 @@ PrefabInstance:
       propertyPath: _onMoveCancelable.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4157064860046453007, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1258533767}
     - target: {fileID: 4473480283290384432, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -12407,6 +12419,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9057916257165552988, guid: 34f0ca67c1d4542bf90923bd02c09854, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1258533767}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12637,7 +12653,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  datas:
+  data:
     _serializedList:
     - Key:
         OwnedBy: {fileID: 11400000, guid: eaeceefb4f0dfcd4794de4cfd4910965, type: 2}
