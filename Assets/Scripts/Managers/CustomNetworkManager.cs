@@ -38,24 +38,21 @@ namespace Managers
             Debug.Log("Picked UP");
             foreach (var player in NetworkPlayerContainer.Instance.GetItems())
             {
-                Debug.Log(player.name);
-                if (player.gameObject.TryGetComponent(out Inventory inv))
-                {
-                    Debug.Log("Count:"+inv.GetHumans().Count);
-                    if (inv.GetHumans().Count >= humanWinScore)
+                    if (player.gameObject.TryGetComponent(out Inventory inv))
                     {
-                        Debug.Log("Won");
-                        GameplayManager.Instance.OnGameFinished();
-                        foreach (var networkPlayer in NetworkPlayerContainer.Instance.GetItems())
+                        if (inv.GetHumans().Count >= humanWinScore)
                         {
-                            PlayerScoreLabel playerScore = Instantiate(playerScoreLabel, PlayerScoreContainer.Instance.transform);
-                            PlayerScoreContainer.Instance.Add(playerScore);
-                            var playerData = networkPlayer.GetPlayerData();
-                            playerScore.Construct(networkPlayer.GetCharacterData(), playerData.Nickname, $"{NetworkPlayerContainer.Instance.CalculateToatlScoreForPlayer(networkPlayer)} cal");
+                            GameplayManager.Instance.OnGameFinished();
+                            foreach (var networkPlayer in NetworkPlayerContainer.Instance.GetItems().OrderByDescending((p)=>NetworkPlayerContainer.Instance.CalculateToatlScoreForPlayer(p)))
+                            {
+                                PlayerScoreLabel playerScore = Instantiate(playerScoreLabel, PlayerScoreContainer.Instance.transform);
+                                PlayerScoreContainer.Instance.Add(playerScore);
+                                var playerData = networkPlayer.GetPlayerData();
+                                playerScore.Construct(networkPlayer.GetCharacterData(), playerData.Nickname, $"{NetworkPlayerContainer.Instance.CalculateToatlScoreForPlayer(networkPlayer)} cal");
+                            }
+                            break;
                         }
-                        break;
                     }
-                }
             }
             
         }
