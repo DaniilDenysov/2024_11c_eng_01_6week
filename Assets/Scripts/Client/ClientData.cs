@@ -92,5 +92,10 @@ namespace Client
         {
             return _cardCount;
         }
+
+        private void OnDestroy()
+        {
+            EventManager.OnCardCountChange -= CmdSetCardCount;
+        }
     }
 }

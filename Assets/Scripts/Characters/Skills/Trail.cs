@@ -1,19 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Managers;
 using Mirror;
 using ModestTree;
 using Traps;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Characters.Skills
 {
     public class Trail : Skill
     {
         [SerializeField] private SlimeTrail trail;
-        private readonly SyncList<SlimeTrail> _currentTrail = new ();
+        private readonly List<SlimeTrail> _currentTrail = new ();
         private const int MaxTrailSize = 5;
 
         public override void Activate(Action<bool> onSetUp)
