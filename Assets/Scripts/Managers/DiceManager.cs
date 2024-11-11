@@ -8,7 +8,7 @@ namespace Managers
     {
         public int GetDiceValue()
         {
-            return Random.Range(1, 7);
+            return Random.Range(1, 8);
         }
 
         public override void InstallBindings()

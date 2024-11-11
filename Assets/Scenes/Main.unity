@@ -15581,9 +15581,9 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   container: {fileID: 1506797982}
   items:
-  - {fileID: 345601755}
   - {fileID: 422109507}
   - {fileID: 1156211772}
+  - {fileID: 345601755}
   - {fileID: 901204188}
 --- !u!4 &1506797982
 Transform:
@@ -16211,6 +16211,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8264117350394651168, guid: a5766024853fed54094e2826db5ec643, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1565776969}
+    - targetCorrespondingSourceObject: {fileID: 8264117350394651168, guid: a5766024853fed54094e2826db5ec643, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1565776970}
   m_SourcePrefab: {fileID: 100100000, guid: a5766024853fed54094e2826db5ec643, type: 3}
 --- !u!114 &1565776956 stripped
 MonoBehaviour:
@@ -16262,6 +16265,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9eadd7939e0d4343945cc402ec40187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1565776970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003894986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d081b223cc47aea4c91a7f9872c57639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1616000845
@@ -17333,6 +17348,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   scorePerClient: 10
+  _diceManager: {fileID: 1565776970}
 --- !u!1001 &1924131196
 PrefabInstance:
   m_ObjectHideFlags: 0

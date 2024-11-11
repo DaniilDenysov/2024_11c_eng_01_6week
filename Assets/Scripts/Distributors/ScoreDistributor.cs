@@ -1,6 +1,7 @@
 using Client;
 using DesignPatterns.Singleton;
 using General;
+using Managers;
 using Mirror;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Distributors
     {
         public static ScoreDistributor Instance;
         [SerializeField] private int scorePerClient;
+        [SerializeField] private DiceManager _diceManager;
 
         public virtual void Awake()
         {
@@ -34,7 +36,7 @@ namespace Distributors
             {
                 if (client.TryGetComponent(out ClientData data))
                 {
-                    data.RpcSetScoreAmount(scorePerClient);
+                    data.RpcSetScoreAmount(_diceManager.GetDiceValue());
                 }
             }
         }
