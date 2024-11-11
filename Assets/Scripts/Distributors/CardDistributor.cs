@@ -51,6 +51,11 @@ namespace Distributors
                     
                     for (int i = 0; i < diff; i++)
                     {
+                        if (player.netIdentity == null || player.netIdentity.connectionToClient == null)
+                        {
+                            Debug.Log($"Connection to client is null {player.netId}");
+                            continue;
+                        }
                         int cardIndex = GetRandomAvailableCardIndex(false);
                         if (cardIndex == -1) return;
                         cards[cardIndex].amount -= 1;
@@ -73,13 +78,13 @@ namespace Distributors
         }
         
         [Command(requiresAuthority = false)]
-        public void CmdDiscardCard(String card)
+        public void CmdDiscardCard(string card)
         {
             RpcDiscardCard(card);
         }
         
         [ClientRpc]
-        public void RpcDiscardCard(String card)
+        public void RpcDiscardCard(string card)
         {
             for (int i = 0; i < _discardedCards.Length; i++)
             {
