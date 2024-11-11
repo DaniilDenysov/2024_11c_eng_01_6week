@@ -32,31 +32,40 @@ namespace Managers
             Inventory.OnHumanPickedUp += OnHumanPickedUp;
         }
 
-        [Server]
+
         private void OnHumanPickedUp()
         {
             Debug.Log("Picked UP");
             foreach (var player in NetworkPlayerContainer.Instance.GetItems())
             {
+                Debug.Log(player.name);
                 if (player.gameObject.TryGetComponent(out Inventory inv))
                 {
+                    Debug.Log("Count:"+inv.GetHumans().Count);
                     if (inv.GetHumans().Count >= humanWinScore)
                     {
+                        Debug.Log("Won");
                         GameplayManager.Instance.OnGameFinished();
                         foreach (var networkPlayer in NetworkPlayerContainer.Instance.GetItems())
                         {
-                            if (networkPlayer.connectionToClient != null)
-                            {
-                                PlayerScoreLabel playerScore = Instantiate(playerScoreLabel, PlayerScoreContainer.Instance.transform);
-                                PlayerScoreContainer.Instance.Add(playerScore);
-                                var playerData = networkPlayer.GetPlayerData();
-                                playerScore.Construct(player.GetCharacterData(), playerData.Nickname, $"{NetworkPlayerContainer.Instance.CalculateToatlScoreForPlayer(networkPlayer)} cal");
-                            }
+                            PlayerScoreLabel playerScore = Instantiate(playerScoreLabel, PlayerScoreContainer.Instance.transform);
+                            PlayerScoreContainer.Instance.Add(playerScore);
+                            var playerData = networkPlayer.GetPlayerData();
+                            playerScore.Construct(networkPlayer.GetCharacterData(), playerData.Nickname, $"{NetworkPlayerContainer.Instance.CalculateToatlScoreForPlayer(networkPlayer)} cal");
                         }
                         break;
                     }
                 }
             }
+            
+        }
+
+       
+        public void DisplayScoreForPlayer (CharacterData characterData, string nickname, int score)
+        {
+            PlayerScoreLabel playerScore = Instantiate(playerScoreLabel, PlayerScoreContainer.Instance.transform);
+            PlayerScoreContainer.Instance.Add(playerScore);
+            playerScore.Construct(characterData, nickname, $"{score} cal");
         }
 
 
