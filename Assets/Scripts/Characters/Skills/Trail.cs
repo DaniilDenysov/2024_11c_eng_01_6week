@@ -71,10 +71,14 @@ namespace Characters.Skills
             SlimeTrail newTrail = Instantiate(trail, position, transform.rotation);
             NetworkServer.Spawn(newTrail.gameObject);
             newTrail.RpcSetUp(gameObject);
-            _currentTrail.Add(newTrail);
+            RpcSetUpSlime(newTrail);
         }
         
-        
+        [TargetRpc]
+        private void RpcSetUpSlime(SlimeTrail trail)
+        {
+            _currentTrail.Add(trail);
+        }
 
         public override bool IsActivatable()
         {
