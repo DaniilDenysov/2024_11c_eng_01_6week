@@ -3,6 +3,7 @@ using Characters;
 using Managers;
 using Mirror;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Traps
 {
@@ -10,7 +11,7 @@ namespace Traps
     {
         private Attack _attack;
         private StaticCellInventory _collection;
-        [SerializeField] private CharacterMovement _ownerMovement;
+        [SerializeField] private CharacterMovement ownerMovement;
         private const string GroupName = "SnailTrail";
         private const int LiveTime = 9;
         private int _liveTime;
@@ -20,7 +21,7 @@ namespace Traps
         {
             _liveTime = LiveTime;
             
-            if (owner.TryGetComponent(out _ownerMovement) 
+            if (owner.TryGetComponent(out ownerMovement) 
                 && owner.TryGetComponent(out _attack) 
                 && owner.TryGetComponent(out _collection))
             {
@@ -30,7 +31,7 @@ namespace Traps
             else
             {
                 Debug.LogError(
-                    "Gameobject making trail doesn't have Movement, Attack or Collection component");
+                    "GameObject making trail doesn't have Movement, Attack or Collection component");
             }
 
             EventManager.OnCharacterMovesOut += OnPlayerMakesMove;
@@ -39,7 +40,7 @@ namespace Traps
 
         private void OnPlayerMakesMove(Vector3 cell, CharacterMovement movement)
         {
-            if (movement != _ownerMovement && transform.position == movement.transform.position)
+            if (movement != ownerMovement && transform.position == movement.transform.position)
             {
                 movement.DecreaseStep();
             }
@@ -87,7 +88,7 @@ namespace Traps
 
         public GameObject GetOwner()
         {
-            return _ownerMovement.gameObject;
+            return ownerMovement.gameObject;
         }
     }
 }

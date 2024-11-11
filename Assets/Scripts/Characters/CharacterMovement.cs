@@ -154,10 +154,10 @@ namespace Characters
 
                 if (Vector3.Distance(pointer, transform.position) > stepDistance)
                 {
-                    pointer = transform.position;
                     DecreaseStep();
-                    EventManager.FireEvent(EventManager.OnCharacterMovesOut, transform.position, this);
-                    EventManager.FireEvent(EventManager.OnCharacterMovesIn, pointer, this);
+                    EventManager.FireEvent(EventManager.OnCharacterMovesOut, pointer, this);
+                    EventManager.FireEvent(EventManager.OnCharacterMovesIn, transform.position, this);
+                    pointer = transform.position;
                 }
 
                 elapsedTime += Time.deltaTime;
@@ -167,6 +167,7 @@ namespace Characters
             if (scoreBefore - _localScoreCount < Math.Round(Vector3.Distance(startPosition, transform.position)))
             {
                 DecreaseStep();
+                EventManager.FireEvent(EventManager.OnCharacterMovesIn, transform.position, this);
             }
 
             transform.position = targetPosition;
