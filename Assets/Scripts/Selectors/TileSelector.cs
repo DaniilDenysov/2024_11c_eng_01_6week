@@ -14,7 +14,6 @@ public class TileSelector : MonoBehaviour
     [SerializeField] private TileBase arrowTile;
     
     private Action<Vector3> _onChosen;
-    private List<Vector3> _litPositions;
 
     void Awake()
     {
@@ -39,11 +38,8 @@ public class TileSelector : MonoBehaviour
         
         if (tile)
         {
-            if (_litPositions.Contains(tilePosition + cellUnit))
-            {
-                SetTilesUnlit();
-                _onChosen.Invoke(tilePosition + cellUnit);
-            }
+            SetTilesUnlit();
+            _onChosen.Invoke(tilePosition + cellUnit);
         }
     }
 
@@ -85,7 +81,6 @@ public class TileSelector : MonoBehaviour
         }
 
         _onChosen = onChosen;
-        _litPositions = positions;
     }
 
     public void SetDirectionsTilesLit(Vector3 position, Action<Vector3> onChosen, 
