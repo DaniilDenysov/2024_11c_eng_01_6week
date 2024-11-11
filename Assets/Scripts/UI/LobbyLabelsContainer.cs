@@ -30,11 +30,8 @@ public class LobbyLabelsContainer : LabelContainer<LobbyLabel, LobbyLabelsContai
 
     public void RequestLobbiesForGame()
     {
-        // Add a filter to only find lobbies with a specific game key (e.g., "game_id" or "game_name")
         ClearList();
         SteamMatchmaking.AddRequestLobbyListStringFilter("game_id", "Labyrism", ELobbyComparison.k_ELobbyComparisonEqual);
-
-        // Request the list of lobbies
         SteamMatchmaking.RequestLobbyList();
     }
 
@@ -45,8 +42,6 @@ public class LobbyLabelsContainer : LabelContainer<LobbyLabel, LobbyLabelsContai
         for (int i = 0; i < result.m_nLobbiesMatching; i++)
         {
             CSteamID lobbyID = SteamMatchmaking.GetLobbyByIndex(i);
-
-            // Request lobby data for each lobby found
             SteamMatchmaking.RequestLobbyData(lobbyID);
         }
     }

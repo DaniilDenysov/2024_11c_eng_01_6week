@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
       propertyPath: onEat.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 8300000, guid: 077e67fc067454a58a0b914ab8c6d00d, type: 3}
+      objectReference: {fileID: 8300000, guid: a9bde91ab1ef19a4d9985e038f5971d3, type: 3}
     - target: {fileID: 4484523131089315455, guid: 1d8d0c4f464b64eeca6773c16cb355d5, type: 3}
       propertyPath: onEat.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine

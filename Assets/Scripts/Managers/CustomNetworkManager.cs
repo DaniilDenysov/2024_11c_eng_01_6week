@@ -22,8 +22,7 @@ namespace Managers
         [SerializeField] private string mainScene;
         [SerializeField] private bool isGameInProgress = false;
         public static Action OnClientConnected, OnClientDisconnected;
-
-        
+        [SerializeField] private List<string> allowedIPs = new List<string>();
 
         #region Server
 
@@ -82,18 +81,13 @@ namespace Managers
             {
                 ValidatePlayersSelections();
             }
-            if (isGameInProgress && NetworkServer.connections.Count <= NetworkServer.maxConnections)
+            if (isGameInProgress && allowedIPs.Contains(conn.address))
             {
-                var networkPlayer = GetPlayerForConnection(conn.connectionId);
-                if (networkPlayer == null)
-                {
-                    networkPlayer = NetworkPlayerContainer.Instance.GetItems().FirstOrDefault((p) => !NetworkServer.connections.Keys.Contains(p.GetPlayerData().ConnectionId));
-                }
+                var networkPlayer = GetPlayerForIP(conn.address);
                 //refactor with try functions
                 if (networkPlayer != null)
                 {
                     var playerData = networkPlayer.GetPlayerData();
-                    playerData.ConnectionId = conn.connectionId;
                     players[players.IndexOf(players.FirstOrDefault((p)=>p.CharacterGUID== playerData.CharacterGUID))] = playerData;
                     NetworkServer.AddPlayerForConnection(conn, networkPlayer.gameObject);
                     Debug.Log($"assigned {networkPlayer.GetCharacterGUID()} for connection {conn.connectionId}");
@@ -104,12 +98,12 @@ namespace Managers
   
         }
 
-        public NetworkPlayer GetPlayerForConnection(int connectionId)
+        public NetworkPlayer GetPlayerForIP(string address)
         {
-            var playerData = players.FirstOrDefault((p) => p.ConnectionId == connectionId);
+            var playerData = players.FirstOrDefault((p) => p.IP == address);
             if (playerData != null)
             {
-                var networkPlayer = NetworkPlayerContainer.Instance.GetItems().FirstOrDefault((p) => p.GetPlayerData().ConnectionId == connectionId);
+                var networkPlayer = NetworkPlayerContainer.Instance.GetItems().FirstOrDefault((p) => p.GetPlayerData().IP == address);
                 return networkPlayer;
             }
             return null;
@@ -155,19 +149,19 @@ namespace Managers
             if (!isGameInProgress)
             {
                 ValidatePlayersSelections();
+                allowedIPs.Remove(conn.address);
             }
             else
             {
-                var networkPlayer = GetPlayerForConnection(conn.connectionId);
+                var networkPlayer = GetPlayerForIP(conn.address);
                 if (networkPlayer != null)
                 {
                     NetworkServer.RemovePlayerForConnection(conn);
-                    NetworkServer.connections.Remove(conn.connectionId);
                 }
             }
            /* else
             {
-                StopServer();
+                StopServer();                                                                                                                                               
             }*/
         }
 
@@ -198,12 +192,14 @@ namespace Managers
         {
             SteamMatchmaking.LeaveLobby(SteamID);
             OnClientDisconnected?.Invoke();
+            allowedIPs.Clear();
         }
 
         public override void OnStopHost()
         {
             SteamMatchmaking.LeaveLobby(SteamID);
             OnClientDisconnected?.Invoke();
+            allowedIPs.Clear();
         }
 
         #endregion
@@ -218,15 +214,14 @@ namespace Managers
             if (!isGameInProgress)
             {
                 GameObject participant = Instantiate(playerLabelPrefab);
+                allowedIPs.Add(conn.address);
                 PlayerLabel[] connections = PlayerLabelsContainer.Instance.GetItems().ToArray();
                 PlayerLabel label;
                 if (participant.gameObject.TryGetComponent(out label))
                 {
                     var player = new Player();
                     player.ConnectionId = conn.connectionId;
-                    /*  if (string.IsNullOrEmpty(name)) player.Nickname = "Player" + connections.Length;
-                      else player.Nickname = name;*/
-                    player.Nickname = "";
+                    player.IP = conn.address;
                     player.IsPartyOwner = connections.Length == 0;
                     label.Player = player;
                 }
@@ -236,7 +231,7 @@ namespace Managers
 
         #region Client
 
-        public void StartGame ()
+        public bool CanStartGame ()
         {
             var connections = FindObjectsOfType<PlayerLabel>();
             if (connections.Length >= minimalLobbySize && isGameInProgress == false)
@@ -247,26 +242,30 @@ namespace Managers
                     {
                         //LocalPlayerLogContainer.Instance.AddLogMessage("Not all players are ready!");
                         GlobalErrorHandler.Instance.DisplayInfoError("Not all players are ready!");
-                        return;
+                        return false;
                     }
                     if (string.IsNullOrEmpty(player.CharacterGUID))
                     {
                         //LocalPlayerLogContainer.Instance.AddLogMessage("Not all players selected their character!");
                         GlobalErrorHandler.Instance.DisplayInfoError("Not all players selected their character!");
-                        return;
+                        return false;
                     }
                 }
-                isGameInProgress = true;
-                players = GetPlayersData();
-                LoadingManager.Instance.StartLoading();
-                //change to more appropriate handling
-                ServerChangeScene(mainScene);
+                return true;
             }
             else
             {
                 //LocalPlayerLogContainer.Instance.AddLogMessage("Not enough players!");
                 GlobalErrorHandler.Instance.DisplayInfoError("Not enough players!");
+                return false;
             }
+        }
+
+        public void StartGame ()
+        {
+            isGameInProgress = true;
+            players = GetPlayersData();
+            ServerChangeScene(mainScene);
         }
 
         public override void OnClientConnect()

@@ -33,6 +33,7 @@ namespace Managers
             PlayerLabel.OnPartyOwnerChanged += OnPartyOwnerChanged;
             if (SteamManager.Initialized)
             {
+                Debug.Log(SteamUser.GetSteamID());
                 lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
                 joinLobbyRequested = Callback<GameLobbyJoinRequested_t>.Create(OnGameLobbyJoinRequested);
                 lobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);

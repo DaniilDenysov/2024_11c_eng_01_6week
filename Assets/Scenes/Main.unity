@@ -14455,6 +14455,8 @@ MonoBehaviour:
   syncInterval: 0
   pause: {fileID: 329158922}
   info: {fileID: 143672488}
+  gameFinishedSound: {fileID: 8300000, guid: fcfc92b3d1fccc041b053a802020d8db, type: 3}
+  eventChannel: {fileID: 11400000, guid: 68560a74fb072b14db476abf77000a0d, type: 2}
   finishWindow: {fileID: 561067762}
 --- !u!4 &1368822374
 Transform:

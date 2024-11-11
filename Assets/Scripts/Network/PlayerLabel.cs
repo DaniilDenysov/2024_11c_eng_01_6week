@@ -23,7 +23,8 @@ public class PlayerLabel : NetworkBehaviour
     [SerializeField] private Image characterSelected;
     [SyncVar(hook = nameof(OnPlayerStateChanged))] public Player Player = new Player();
     [SerializeField] private List<CharacterData> characters = new List<CharacterData>();
-
+    [SerializeField] private AudioClip startGameSound;
+    [SerializeField] private AudioEventChannel eventChannel;
     public static event Action<bool> OnPartyOwnerChanged;
 
     public override void OnStartClient()
@@ -33,6 +34,7 @@ public class PlayerLabel : NetworkBehaviour
             Debug.Log("Assigned");
             LocalPlayer = this;
             CmdSetPlayerName(SteamFriends.GetPersonaName());
+            var playerSteamID = SteamUser.GetSteamID();
           /*  var playerSteamID = SteamUser.GetSteamID();
             int avatarInt = SteamFriends.GetLargeFriendAvatar(playerSteamID); 
 
@@ -101,10 +103,18 @@ public class PlayerLabel : NetworkBehaviour
     public void CmdStartGame ()
     {
         if (!Player.IsPartyOwner) return;
+        CustomNetworkManager networkManager = ((CustomNetworkManager)NetworkManager.singleton);
+        if (!networkManager.CanStartGame()) return;
 
-        ((CustomNetworkManager)NetworkManager.singleton).StartGame();
+        OnGameStarted();
+        networkManager.StartGame();
     }
 
+    [ClientRpc]
+    public void OnGameStarted ()
+    {
+        eventChannel.RaiseEvent(startGameSound);
+    }
  
     [Command]
     public void CmdReady()

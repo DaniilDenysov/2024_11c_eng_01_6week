@@ -19,6 +19,8 @@ namespace Managers
         private DefaultInputActions inputActions;
 
         [SerializeField] private ViewAnimationHandler pause, info;
+        [SerializeField] private AudioClip gameFinishedSound;
+        [SerializeField] private AudioEventChannel eventChannel;
 
         private bool pauseMenuOpen, characterInfoMenuOpen;
         [SerializeField] private Transform finishWindow;
@@ -69,6 +71,7 @@ namespace Managers
         [ClientRpc]
         public void OnGameFinished()
         {
+            eventChannel.RaiseEvent(gameFinishedSound);
             finishWindow.gameObject.SetActive(true);
         }
 
