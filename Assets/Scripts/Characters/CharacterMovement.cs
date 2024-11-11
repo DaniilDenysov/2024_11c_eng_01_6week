@@ -52,6 +52,10 @@ namespace Characters
                 _stateManager.OnTurn();
                 ChooseNewDirection(() => { }, null);
             }
+            else
+            {
+                onMoveAvailable.Invoke();
+            }
         }
 
         private void OnStateChanged(CharacterState newState)
@@ -112,13 +116,6 @@ namespace Characters
         
         public void MakeMovement(Vector3 nextPosition)
         {
-
-           /* if (actionBlocker.IsActionBlocked("Move"))
-            {
-                Debug.Log("Move action is blocked!");
-                return;
-            }*/
-
             Vector3 difference = nextPosition - transform.position;
             int steps = (int)Math.Abs(difference.x);
 

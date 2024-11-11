@@ -21,6 +21,7 @@ namespace Characters.Skills
     {
         [SerializeField] private HorntipedeBody bodyPrefab;
         [SerializeField] private UnityEvent<Action> onBecameCancelable;
+        [SerializeField] private UnityEvent OnDiscarded;
         
         private CharacterMovement _movement;
         private CharacterStateManager _stateManager;
@@ -202,6 +203,8 @@ namespace Characters.Skills
             {
                 _usedCard.OnCardSetUp(false);
             }
+            
+            OnDiscarded.Invoke();
             
             ClearBody();
         }

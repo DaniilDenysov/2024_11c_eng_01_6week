@@ -31,5 +31,13 @@ namespace Cards
 
             return result;
         }
+
+        public void DiscardCards()
+        {
+            foreach (var item in items) 
+            {
+                item.DiscardMove();
+            }
+        }
     }
 }
