@@ -31,7 +31,7 @@ namespace Characters.Skills
         private Card _usedCard;
         private Card _currentCard;
         
-        private readonly SyncList<HorntipedeBody> _body = new();
+        private readonly List<HorntipedeBody> _body = new();
         private const int BodyLength = 2;
         
         private void Awake()
@@ -68,17 +68,17 @@ namespace Characters.Skills
         [Command(requiresAuthority = false)]
         private void CmdSpawnBody(Vector3 position)
         {
-            RpcSpawnBody(position);
+            HorntipedeBody body = Instantiate(bodyPrefab, position, transform.rotation);
+            NetworkServer.Spawn(body.gameObject);
+            RpcSpawnBody(body);
         }
 
         [TargetRpc]
-        private void RpcSpawnBody(Vector3 position)
+        private void RpcSpawnBody(HorntipedeBody bodyCell)
         {
-            HorntipedeBody newTrail = Instantiate(bodyPrefab);
-            _body.Add(newTrail);
-            newTrail.SetUp(position, gameObject);
-            NetworkServer.Spawn(newTrail.gameObject);
-
+            _body.Add(bodyCell);
+            bodyCell.SetUp(gameObject);
+            
             if (_body.Count < BodyLength)
             {
                 if (_body.Count < 2)

@@ -14,7 +14,7 @@ namespace Characters.Skills
         
         private CharacterMovement _movement;
         
-        private  readonly SyncList<HorntipedeBody> _body = new ();
+        private readonly List<HorntipedeBody> _body = new ();
         private const int BodyLength = 3;
         private const int AvailableTurns = 1;
         private List<List<Vector3>> _paths;
@@ -41,16 +41,16 @@ namespace Characters.Skills
         [Command(requiresAuthority = false)]
         private void CmdSpawnBody(Vector3 position)
         {
-            RpcSpawnBody(position);
+            HorntipedeBody body = Instantiate(_bodyPrefab, position, transform.rotation);
+            NetworkServer.Spawn(body.gameObject);
+            RpcSpawnBody(body);
         }
 
         [TargetRpc]
-        private void RpcSpawnBody(Vector3 position)
+        private void RpcSpawnBody(HorntipedeBody bodyCell)
         {
-            HorntipedeBody body = Instantiate(_bodyPrefab);
-            _body.Add(body);
-            body.SetUp(position, gameObject);
-            NetworkServer.Spawn(body.gameObject);
+            _body.Add(bodyCell);
+            bodyCell.SetUp(gameObject);
             
             _paths.RemoveAll(list =>
             {

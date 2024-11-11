@@ -11,10 +11,8 @@ namespace Traps
         private Attack _attack;
         private Inventory _collector;
 
-        public void SetUp(Vector3 position, GameObject owner)
+        public void SetUp(GameObject owner)
         {
-            transform.position = position;
-            
             if (!owner.TryGetComponent(out _attack) || !owner.TryGetComponent(out _collector))
             {
                 Debug.LogError(
