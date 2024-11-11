@@ -21,6 +21,7 @@ namespace Characters.Skills
     {
         [SerializeField] private HorntipedeBody bodyPrefab;
         [SerializeField] private UnityEvent<Action> onBecameCancelable;
+        [SerializeField] private UnityEvent OnDiscarded;
         
         private CharacterMovement _movement;
         private CharacterStateManager _stateManager;
@@ -28,8 +29,9 @@ namespace Characters.Skills
         private Inventory _collector;
 
         private Card _usedCard;
+        private Card _currentCard;
         
-        private readonly SyncList<HorntipedeBody> _body = new ();
+        private readonly SyncList<HorntipedeBody> _body = new();
         private const int BodyLength = 2;
         
         private void Awake()
@@ -43,6 +45,18 @@ namespace Characters.Skills
         public override void Activate(Action<bool> onSetUp)
         {
             base.Activate(onSetUp);
+
+            if (_stateManager.GetCurrentState().GetType() == typeof(CardSettingUp))
+            {
+                CardSettingUp state = (CardSettingUp)_stateManager.GetCurrentState();
+                
+                _currentCard = state.GetCard();
+            }
+            else
+            {
+                Debug.LogError("Flexibility not set up correctly");
+            }
+
             HighlightAvailableTiles(transform.position);
         }
 
@@ -79,7 +93,7 @@ namespace Characters.Skills
             else
             {
                 onBecameCancelable.Invoke(ApplyMove);
-                _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
+                _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed, _currentCard));
             }
         }
 
@@ -99,13 +113,13 @@ namespace Characters.Skills
                     }
                 }
             
-                _stateManager.CmdSetCurrentState(new CardSettingUp());
+                _stateManager.CmdSetCurrentState(new CardSettingUp(_currentCard));
                 _usedCard = card;
 
                 if (litPositions.Count < 1)
                 {
                     card.OnCardSetUp(false);
-                    _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
+                    _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed, _currentCard));
                     return;
                 }
                 
@@ -113,6 +127,7 @@ namespace Characters.Skills
             }
             else
             {
+                card.OnCardSetUp(false);
                 Debug.Log("Wrong card was used");
             }
         }
@@ -132,7 +147,7 @@ namespace Characters.Skills
                 Debug.Log("Behaviour for card: " + _usedCard.name + " is not written");
             }
             
-            _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed));
+            _stateManager.CmdSetCurrentState(new MultiCard(OnCardUsed, _currentCard));
         }
 
         public void ApplyMove()
@@ -152,7 +167,7 @@ namespace Characters.Skills
             _movement.ChooseNewDirection(() =>
             {
                 OnActivated();
-            });
+            }, _currentCard);
         }
 
         private void ClearBody()
@@ -168,6 +183,7 @@ namespace Characters.Skills
         {
             Vector3 currentCell = _body.Count > 0 ? _body.Last().transform.position : transform.position;
             List<Vector3> litPositions = _movement.GetPathValidator().GetAvailableCells(currentCell, 1);
+            
             litPositions.Remove(previousPos);
 
             TileSelector.Instance.SetTilesLit(litPositions, OnCellChosen);
@@ -175,7 +191,22 @@ namespace Characters.Skills
 
         public override bool IsActivatable()
         {
+            
             return true;
+        }
+
+        public override void OnDiscard()
+        {
+            base.OnDiscard();
+            
+            if (_usedCard != null)
+            {
+                _usedCard.OnCardSetUp(false);
+            }
+            
+            OnDiscarded.Invoke();
+            
+            ClearBody();
         }
     }
 }

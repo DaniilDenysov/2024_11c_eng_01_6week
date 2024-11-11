@@ -14,6 +14,7 @@ namespace Managers
         public static Action OnTick;
         public static Action OnTurnFinished;
         public static Action OnScreenSizeChanged;
+        public static Action<int> OnCardCountChange;
 
         public static Action<Vector3, CharacterMovement> OnCharacterMovesOut;
 

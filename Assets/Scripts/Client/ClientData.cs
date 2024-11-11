@@ -15,12 +15,21 @@ namespace Client
         [SerializeField, SyncVar] private int score;
         [SerializeField, SyncVar] private int harmAmount;
         [SerializeField, SyncVar] private bool myTurn;
+        [SerializeField, SyncVar] private int _cardCount;
         [SerializeField] private UnityEvent<String> onScoreChanged;
 
         [Command(requiresAuthority = false)]
         public void CmdChangeHarmAmount(bool isAdded)
         {
             RpcChangeHarmAmount(isAdded);
+        }
+        
+        private void Start()
+        {
+            if (isOwned)
+            {
+                EventManager.OnCardCountChange += CmdSetCardCount;
+            }
         }
         
         [ClientRpc]
@@ -66,5 +75,22 @@ namespace Client
         }
     
         public bool GetTurn() => myTurn;
+
+        [Command(requiresAuthority = false)]
+        public void CmdSetCardCount(int newCount)
+        {
+            RpcSetCardCount(newCount);
+        }
+
+        [ClientRpc]
+        private void RpcSetCardCount(int newCount)
+        {
+            _cardCount = newCount;
+        }
+        
+        public int GetCardCount()
+        {
+            return _cardCount;
+        }
     }
 }

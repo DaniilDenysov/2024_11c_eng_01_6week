@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace Collectibles
 {
+    [RequireComponent(typeof(Animator))]
     public class Human : ICollectible
     {
         [SerializeField, SyncVar] private string ownedBy;
@@ -26,12 +27,7 @@ namespace Collectibles
 
         private void Awake()
         {
-            Debug.Log("Human Awake started");
             animator = GetComponent<Animator>();
-            if (animator == null)
-            {
-                Debug.LogError("Animator component is missing on Human GameObject");
-            }
 
             FindObjectOfType<HumanReactionManager>()?.RegisterHuman(this);
         }
@@ -88,7 +84,6 @@ namespace Collectibles
             {
                 isPanicking = true;
                 animator.SetTrigger("Panic");
-                Debug.Log("Human is panicking!");
             }
         }
 
@@ -98,7 +93,6 @@ namespace Collectibles
             {
                 isPanicking = false;
                 animator.SetTrigger("Calm");
-                Debug.Log("Human is calm.");
             }
         }
 

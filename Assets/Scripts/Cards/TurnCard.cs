@@ -12,7 +12,7 @@ namespace Cards
             turnAction.ChooseNewDirection(() =>
             {
                 OnCardSetUp(true);
-            });
+            }, this);
         }
     }
 }

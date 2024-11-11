@@ -59,7 +59,11 @@ namespace Characters
             {
                 _localScoreCount = _clientData.GetScoreAmount();
                 _stateManager.OnTurn();
-                ChooseNewDirection(() => { });
+                ChooseNewDirection(() => { }, null);
+            }
+            else
+            {
+                onMoveAvailable.Invoke();
             }
         }
 
@@ -121,12 +125,6 @@ namespace Characters
 
         public void MakeMovement(Vector3 nextPosition)
         {
-            /* if (actionBlocker.IsActionBlocked("Move"))
-            {
-                Debug.Log("Move action is blocked!");
-                return;
-            }*/
-
             Vector3 difference = nextPosition - transform.position;
             int steps = (int)Math.Abs(difference.x);
 
@@ -181,10 +179,10 @@ namespace Characters
             }
         }
 
-        public void ChooseNewDirection(Action onDirectionChosen)
+        public void ChooseNewDirection(Action onDirectionChosen, Card card)
         {
             CharacterState previousState = _stateManager.GetCurrentState();
-            _stateManager.CmdSetCurrentState(new CardSettingUp());
+            _stateManager.CmdSetCurrentState(new CardSettingUp(card));
             
             TileSelector.Instance.SetDirectionsTilesLit(transform.position, cell =>
             {
@@ -195,12 +193,6 @@ namespace Characters
         private void OnDirectionChosen(Vector3 position, CharacterState previousState, Action onDirectionChosen)
         {
             directionNormalized = position - transform.position;
-            
-            float angle = Vector3.Angle(Vector3.up, directionNormalized);
-            
-            sprite.transform.Rotate(
-                new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle), Space.World);
-            
             _stateManager.CmdSetCurrentState(previousState);
             onDirectionChosen.Invoke();
         }

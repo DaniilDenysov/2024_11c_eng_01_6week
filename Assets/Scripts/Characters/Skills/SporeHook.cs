@@ -30,7 +30,7 @@ public class SporeHook : Skill
         {
             for (int distance = 1; distance < _range + 1; distance++)
             {
-                Vector3 currentCell = characterPosition + direction * (distance);
+                Vector3 currentCell = characterPosition + direction * distance;
                 Vector3 nextCell = characterPosition + direction * (distance + 1);
 
                 if (!pathValidator.CanMoveTo(characterPosition, currentCell))

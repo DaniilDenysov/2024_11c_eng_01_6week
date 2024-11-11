@@ -7,12 +7,13 @@ using AYellowpaper.SerializedCollections;
 using General;
 using System.Linq;
 using Collectibles;
+using UnityEngine.Serialization;
 
 namespace Spawns
 {
     public class HumanSpawner : NetworkBehaviour
     {
-        [SerializeField] private SerializedDictionary<SpawnArea, List<SpawnData>> datas = new SerializedDictionary<SpawnArea, List<SpawnData>>();
+        [SerializeField] private SerializedDictionary<SpawnArea, List<SpawnData>> data = new SerializedDictionary<SpawnArea, List<SpawnData>>();
 
         [Header("Grid")]
         [SerializeField] private Tilemap grid;
@@ -28,7 +29,7 @@ namespace Spawns
         {
             Gizmos.color = Color.green;
 
-            foreach (var area in datas.Keys)
+            foreach (var area in data.Keys)
             {
                 var size = new Vector3(area.SizeX, area.SizeY, 0f);
                 Vector3 position = transform.position + area.Pivot + (size / 2);
@@ -36,6 +37,10 @@ namespace Spawns
             }
         }
 #endif
+        public SerializedDictionary<SpawnArea, List<SpawnData>> GetData()
+        {
+            return data;
+        }
 
         [Server]
         public void Spawn()
@@ -45,7 +50,7 @@ namespace Spawns
             {
                 usedCells.Add(grid.WorldToCell(player.transform.position));
             }
-            foreach (var entry in datas)
+            foreach (var entry in data)
             {
                 var area = entry.Key;
                 var spawnDataList = entry.Value;

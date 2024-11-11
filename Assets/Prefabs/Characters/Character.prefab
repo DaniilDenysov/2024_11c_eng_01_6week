@@ -561,11 +561,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
-  syncMode: 0
+  syncMode: 1
   syncInterval: 0
   score: 0
   harmAmount: 0
   myTurn: 0
+  _cardCount: 0
   onScoreChanged:
     m_PersistentCalls:
       m_Calls: []

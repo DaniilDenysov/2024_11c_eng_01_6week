@@ -248,5 +248,11 @@ namespace Characters.Skills
             
             TileSelector.Instance.SetTilesLit(litPositions, BuildBody);
         }
+        
+        public override void OnDiscard()
+        {
+            base.OnDiscard();
+            ClearBody();
+        }
     }
 }

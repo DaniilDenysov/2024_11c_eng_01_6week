@@ -24,6 +24,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+using UnityEngine.Events;
+using UnityEngine.Serialization;
+
 namespace UnityEngine.UI.Extensions
 {
     public class RadialLayout : LayoutGroup
@@ -41,14 +44,17 @@ namespace UnityEngine.UI.Extensions
         public override void SetLayoutVertical()
         {
         }
+        
         public override void CalculateLayoutInputVertical()
         {
             CalculateRadial();
         }
+        
         public override void CalculateLayoutInputHorizontal()
         {
             CalculateRadial();
         }
+        
 #if UNITY_EDITOR
         protected override void OnValidate()
         {
@@ -70,6 +76,7 @@ namespace UnityEngine.UI.Extensions
                 return;
 
             int ChildrenToFormat = 0;
+            
             if (OnlyLayoutVisible)
             {
                 for (int i = 0; i < transform.childCount; i++)
@@ -87,6 +94,7 @@ namespace UnityEngine.UI.Extensions
             float fOffsetAngle = AngleBetween;
             
             float fAngle = StartAngle - AngleBetween * (ChildrenToFormat - 1) / 2;
+            
             for (int i = 0; i < transform.childCount; i++)
             {
                 RectTransform child = (RectTransform)transform.GetChild(i);

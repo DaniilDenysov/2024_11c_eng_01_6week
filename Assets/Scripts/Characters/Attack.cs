@@ -1,9 +1,13 @@
+using System;
 using Collectibles;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Client;
 using Distributors;
+using Spawns;
+using Spawns.Data;
+using UI.Containers;
 using UnityEngine;
 using Validation;
 using UnityEngine.Events;
@@ -14,9 +18,16 @@ namespace Characters
     public class Attack : MonoBehaviour
     {
         [SerializeField] private UnityEvent onAttack;
+        [SerializeField] public HumanSpawner spawner;
         private Inventory _inventory;
         private CharacterMovement _movement;
         private Dictionary<string, List<Vector3>> _staticAttackCells;
+        private string _characterGUID;
+        
+        private void Start()
+        {
+            _characterGUID = NetworkPlayer.LocalPlayerInstance.GetCharacterGUID();
+        }
 
         private void Awake()
         {
@@ -78,12 +89,9 @@ namespace Characters
                 {
                     foreach (var cell in group.Value)
                     {
-                        if (!result.Contains(cell))
+                        if (!result.Contains(cell) && IsCellAttackable(cell))
                         {
-                            if (IsCellAttackable(cell))
-                            {
-                                result.Add(cell);
-                            }
+                            result.Add(cell);
                         }
                     }
                 }
@@ -124,11 +132,24 @@ namespace Characters
                         result = true;
                     } else if (entity.TryGetComponent(out Inventory opponentsInventory))
                     {
+                        SpawnArea entryArea = spawner.GetData().FirstOrDefault(entry =>
+                            entry.Key.OwnedBy.CharacterGUID == _characterGUID).Key;
+
                         if (opponentsInventory.TryPopItem(out HumanDTO human))
                         {
                             _inventory.AddHuman(human);
                             onAttack?.Invoke();
+                            InventoryContainer.Instance.TryAdd(human);
                             result = true;
+                        }
+                        
+                        if (entryArea.IsPositionInside(cell, spawner.transform.position))
+                        {
+                            if (opponentsInventory.TryPopItem(out HumanDTO secondHuman, -1))
+                            {
+                                _inventory.AddHuman(secondHuman);
+                                InventoryContainer.Instance.TryAdd(secondHuman);
+                            }
                         }
                     }
                 }

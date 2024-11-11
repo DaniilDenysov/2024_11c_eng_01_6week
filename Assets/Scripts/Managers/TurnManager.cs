@@ -3,6 +3,7 @@ using Mirror;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Managers
 {
@@ -11,6 +12,7 @@ namespace Managers
 
         [SerializeField,Range(0,600)] private float turnTimeLimit = 180f, turnDelay = 30f;
         private Coroutine currentTurn;
+        [SerializeField] private UnityEvent OnNextTurnStart;
 
         private void Start()
         {
@@ -22,6 +24,13 @@ namespace Managers
         public void SetTurnChanged()
         {
             StartNextTurn();
+        }
+
+        [ClientRpc]
+        public void RPCOnTurnEnd()
+        {
+            OnNextTurnStart.Invoke();
+            TileSelector.Instance.SetTilesUnlit();
         }
 
         private void OnTurnStart()
@@ -68,6 +77,8 @@ namespace Managers
 
         private void EndTurn()
         {
+            RPCOnTurnEnd();
+            
             CharacterTurnDistributor.Instance.OnTurnEnd();
             SyncedClock.Instance.DeleteTimer();
             OnTurnEnd();

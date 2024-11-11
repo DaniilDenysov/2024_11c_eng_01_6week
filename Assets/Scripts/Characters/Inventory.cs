@@ -2,6 +2,7 @@ using System;
 using Characters;
 using Collectibles;
 using System.Collections.Generic;
+using General;
 using Mirror;
 using UI.Containers;
 using UnityEditor;
@@ -15,13 +16,19 @@ public class Inventory : NetworkBehaviour
     private SyncList<HumanDTO> humanDTOs = new SyncList<HumanDTO>();
     private CharacterMovement _movement;
     public static Action OnHumanPickedUp;
+    private string _characterGUID;
 
     public virtual void Awake()
     {
         _movement = GetComponent<CharacterMovement>();
         humanDTOs.OnAdd += OnInventoryChanged;
     }
-
+    
+    private void Start()
+    {
+        _characterGUID = NetworkPlayer.LocalPlayerInstance.GetCharacterGUID();
+    }
+    
     private void OnInventoryChanged(int itemIndex)
     {
         Debug.Log("Picked");
@@ -48,7 +55,16 @@ public class Inventory : NetworkBehaviour
                     
                     AddHuman(humanDTO);
                     collectible.Collect();
+                    
+                    if (_characterGUID != humanDTO.CharacterGUID)
+                    {
+                        HumanDTO humanCopy = humanDTO.Copy();
+                        AddHuman(humanCopy);
+                        InventoryContainer.Instance.TryAdd(humanDTO);
+                    }
+                    
                     onEat?.Invoke();
+                    
                     if (!InventoryContainer.Instance.TryAdd(humanDTO))
                     {
                         isGameEnded = true;
@@ -66,18 +82,35 @@ public class Inventory : NetworkBehaviour
         return result;
     }
 
-    public bool TryPopItem(out HumanDTO human)
+    public bool TryPopItem(out HumanDTO human, int countOffset = 0)
     {
         human = default;
-        if (humanDTOs.Count > 0)
+        
+        if (humanDTOs.Count + countOffset > 0)
         {
             human = humanDTOs[0];
-            if (!InventoryContainer.Instance.TryRemove()) return false;
+            CmdRemoveHumanFromHud();
             RemoveHuman();
             return true;
         }
 
         return false;
+    }
+
+    [Command(requiresAuthority = false)]
+    private void CmdRemoveHumanFromHud()
+    {
+        NetworkPlayer owner = NetworkPlayerContainer.Instance.GetOwner(this);
+        if (owner != null)
+        {
+            RpcRemoveHumanFromHudInventory(owner.connectionToClient);
+        }
+    }
+    
+    [TargetRpc]
+    private void RpcRemoveHumanFromHudInventory(NetworkConnection connection)
+    {
+        InventoryContainer.Instance.TryRemove();
     }
 
     public void AddHuman(HumanDTO humanDTO)
@@ -88,7 +121,6 @@ public class Inventory : NetworkBehaviour
             return;
         }
         humanDTOs.Add(humanDTO);
-        Debug.Log("Added");
     }
 
     public void RemoveHuman()

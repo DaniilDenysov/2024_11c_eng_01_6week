@@ -47,7 +47,7 @@ namespace Distributors
             {
                 if (player.connectionToClient != null && player.TryGetComponent(out ClientData clientData))
                 {
-                    int diff = cardsLimit - ClientDeck.Instance.GetAmount() - clientData.GetHarmAmount();
+                    int diff = cardsLimit - clientData.GetCardCount() - clientData.GetHarmAmount();
                     
                     for (int i = 0; i < diff; i++)
                     {
@@ -73,19 +73,20 @@ namespace Distributors
         }
         
         [Command(requiresAuthority = false)]
-        public void CmdDiscardCard(Card card)
+        public void CmdDiscardCard(String card)
         {
             RpcDiscardCard(card);
         }
         
         [ClientRpc]
-        public void RpcDiscardCard(Card card)
+        public void RpcDiscardCard(String card)
         {
             for (int i = 0; i < _discardedCards.Length; i++)
             {
-                if (_discardedCards[i].card == card)
+                if (_discardedCards[i].card.gameObject.name == card)
                 {
                     _discardedCards[i].amount += 1;
+                    return;
                 }
             }
         }
@@ -96,6 +97,7 @@ namespace Distributors
         public bool TryGetCard(int i, out Card card)
         {
             card = Instantiate(cards[i].card);
+            card.SetInitializedFrom(cards[i].card.gameObject.name);
             return true;
         }
 
@@ -122,7 +124,7 @@ namespace Distributors
                 
                 if (!isStoppable)
                 {
-                    GetRandomAvailableCardIndex();
+                    return GetRandomAvailableCardIndex();
                 }
 
                 return -1;
