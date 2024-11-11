@@ -2,15 +2,18 @@ using Collectibles;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Client;
 using Distributors;
 using UnityEngine;
 using Validation;
+using UnityEngine.Events;
 
 namespace Characters
 {
     [RequireComponent(typeof(Inventory)), RequireComponent(typeof(CharacterMovement))]
     public class Attack : MonoBehaviour
     {
+        [SerializeField] private UnityEvent onAttack;
         private Inventory _inventory;
         private CharacterMovement _movement;
         private Dictionary<string, List<Vector3>> _staticAttackCells;
@@ -113,17 +116,18 @@ namespace Characters
             
             foreach (GameObject entity in CharacterMovement.GetEntities(cell))
             {
-                if (entity.TryGetComponent(out NetworkPlayer player))
+                if (entity.TryGetComponent(out ClientData player))
                 {
-                    if (CardDistributor.Instance.GetHarmCount(player) > 0)
+                    if (player.GetHarmAmount() > 0)
                     {
-                        CardDistributor.Instance.CmdDecreaseHarmCount(player);
+                        player.CmdChangeHarmAmount(false);
                         result = true;
                     } else if (entity.TryGetComponent(out Inventory opponentsInventory))
                     {
                         if (opponentsInventory.TryPopItem(out HumanDTO human))
                         {
-                            _inventory.Add(human);
+                            _inventory.AddHuman(human);
+                            onAttack?.Invoke();
                             result = true;
                         }
                     }

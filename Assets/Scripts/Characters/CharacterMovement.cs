@@ -11,31 +11,36 @@ using Traps;
 using UnityEngine.Events;
 using Client;
 using Mirror;
+using UnityEngine.Serialization;
+using System.Collections;
 
 namespace Characters
 {
     [RequireComponent(typeof(CharacterStateManager),typeof(ClientData))]
     public class CharacterMovement : MonoBehaviour, ITurnAction
     {
-        [SerializeField, ReadOnly] private Vector3 directionNormalized;
-        [SerializeField] private GameObject _sprite;
+        [SerializeField, CustomTools.ReadOnly] private Vector3 directionNormalized;
+        [SerializeField] private GameObject sprite;
         
-        [SerializeField] private GameObject HUD_display;
         [SerializeField] private PathValidator pathValidator;
-        public UnityEvent _onMoveCancelable;
-        public UnityEvent _onMoveAvailable;
+
+        [SerializeField] private UnityEvent onMove;
+        public UnityEvent onMoveCancelable;
+        public UnityEvent onMoveAvailable;
 
         private CharacterStateManager _stateManager;
         private const int StepCost = 1;
-        private ClientData clientData;
+        private ClientData _clientData;
+        private int _localScoreCount;
 
         private ActionBlockerManager actionBlocker;
 
         private void Awake()
         {
+            _localScoreCount = 0;
             _stateManager = GetComponent<CharacterStateManager>();
             directionNormalized = Vector3.left;
-            clientData = GetComponent<ClientData>();
+            _clientData = GetComponent<ClientData>();
             
             _stateManager._onStateChanged += OnStateChanged;
 
@@ -43,11 +48,17 @@ namespace Characters
             EventManager.OnClientStartTurn += OnTurn;
         }
 
+        private void OnDestroy()
+        {
+            EventManager.OnClientStartTurn -= OnTurn;
+        }
+
         public void OnTurn()
         {
-            if (clientData.GetTurn())
+            if (_clientData.GetTurn())
             {
-                _stateManager.CmdSetCurrentState(new Idle());
+                _localScoreCount = _clientData.GetScoreAmount();
+                _stateManager.OnTurn();
                 ChooseNewDirection(() => { });
             }
         }
@@ -70,7 +81,7 @@ namespace Characters
             List<Vector3> litPositions = new List<Vector3>();
             int distance = 1;
             
-            for (int availableSteps = 1; availableSteps < clientData.GetScoreAmount() + 1; availableSteps++)
+            for (int availableSteps = 1; availableSteps < _localScoreCount + 1; availableSteps++)
             {
                 Vector3 nextPosition = transform.position + directionNormalized * distance;
                 
@@ -78,7 +89,7 @@ namespace Characters
                 {
                     availableSteps++;
 
-                    if (availableSteps >= clientData.GetScoreAmount() + 1)
+                    if (availableSteps >= _localScoreCount + 1)
                     {
                         break;
                     }
@@ -94,12 +105,12 @@ namespace Characters
 
             if (litPositions.Count > 0)
             {
-                _onMoveAvailable.Invoke();
+                onMoveAvailable.Invoke();
                 TileSelector.Instance.SetTilesLit(litPositions, MakeMovement);
             }
-            else if (clientData.GetTurn())
+            else if (_clientData.GetTurn())
             {
-                _onMoveCancelable.Invoke();
+                onMoveCancelable.Invoke();
             }
         }
 
@@ -107,15 +118,14 @@ namespace Characters
         {
             TileSelector.Instance.SetTilesUnlit();
         }
-        
+
         public void MakeMovement(Vector3 nextPosition)
         {
-
-            if (actionBlocker.IsActionBlocked("Move"))
+            /* if (actionBlocker.IsActionBlocked("Move"))
             {
                 Debug.Log("Move action is blocked!");
                 return;
-            }
+            }*/
 
             Vector3 difference = nextPosition - transform.position;
             int steps = (int)Math.Abs(difference.x);
@@ -123,24 +133,42 @@ namespace Characters
             if (difference.x != 0 && difference.y != 0)
             {
                 Debug.LogError("Unable to move into such direction");
+                return;
             }
             else if (difference.x == 0)
             {
                 steps = (int)Math.Abs(difference.y);
             }
 
-            for (int i = 0; i < steps; i++) {
-                MakeMovement();
+            StartCoroutine(InterpolateMovement(nextPosition, 1f));
+
+            //onMove?.Invoke();
+        }
+
+        private IEnumerator InterpolateMovement(Vector3 targetPosition, float duration)
+        {
+            Vector3 startPosition = transform.position;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                onMove?.Invoke();
+                transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
             }
-            
+
+            transform.position = targetPosition;
             _stateManager.CmdSetCurrentState(new Idle());
         }
 
+
         public void MakeMovement()
         {
-            if (IsStepsEnough() && _stateManager.GetCurrentState().IsMovable())
+            if (_stateManager.GetCurrentState().IsMovable())
             {
                 Vector3 nextPosition = transform.position + directionNormalized;
+                
                 if (pathValidator.CanMoveTo(nextPosition,
                     -new Vector3Int((int)directionNormalized.x, (int)directionNormalized.y, (int)directionNormalized.z)))
                 {
@@ -170,8 +198,9 @@ namespace Characters
             
             float angle = Vector3.Angle(Vector3.up, directionNormalized);
             
-            _sprite.transform.Rotate(
+            sprite.transform.Rotate(
                 new Vector3(0, 0, directionNormalized.x > 0 ? -angle : angle), Space.World);
+            
             _stateManager.CmdSetCurrentState(previousState);
             onDirectionChosen.Invoke();
         }
@@ -186,15 +215,12 @@ namespace Characters
             EventManager.FireEvent(EventManager.OnCharacterMovesIn, nextPosition, this);
         }
 
-        private bool IsStepsEnough()
-        {
-            return clientData.GetScoreAmount() - StepCost >= 0;
-        }
-
         public void DecreaseStep()
         {
-            clientData.CmdSetScoreAmount(clientData.GetScoreAmount() - StepCost);
-            if (clientData.GetScoreAmount() == 0)
+            _localScoreCount -= StepCost;
+            _clientData.CmdSetScoreAmount(_localScoreCount);
+            
+            if (_localScoreCount <= 0)
             {
                 EventManager.FireEvent(EventManager.OnTurnFinished);
             }
@@ -219,7 +245,7 @@ namespace Characters
             return result;
         }
 
-        public bool IsSlimed(Vector3 position)
+        private bool IsSlimed(Vector3 position)
         {
             foreach (SlimeTrail slimeGameObject in GetEntityOfType<SlimeTrail>(position))
             {

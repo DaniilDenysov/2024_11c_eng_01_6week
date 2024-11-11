@@ -9,35 +9,81 @@ using System;
 using Lobby;
 using System.Threading.Tasks;
 using UI;
+using DesignPatterns.Singleton;
+using Steamworks;
 
 namespace Managers
 {
-    public class LobbyManager : MonoBehaviour
+    public class LobbyManager : Singleton<LobbyManager>
     {
-        public static LobbyManager Instance;
         [SerializeField] private GameObject startGameButton;
-        [SerializeField] private string lobbyName;
+        [SerializeField] private GameObject lobbyScreen;
+        [SerializeField] private GameObject searchingLobbyScreen;
+        [SerializeField] private string lobbyName, hostAddress;
         [SerializeField] private UnityEvent onConnectedToLobby,onDisconnectedFromLobby;
 
+        private Callback<LobbyCreated_t> lobbyCreated;
+        private Callback<GameLobbyJoinRequested_t> joinLobbyRequested;
+        private Callback<LobbyEnter_t> lobbyEntered;
 
-        private void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(this);
-            }
-        }
-
-        private void OnEnable()
+        private void Start()
         {
             CustomNetworkManager.OnClientConnected += OnClientConnected;
             CustomNetworkManager.OnClientDisconnected += OnClientDisconnected;
-            PlayerLabel.OnPartyOwnerChanged += OnPartyOwnerChanged; 
+            PlayerLabel.OnPartyOwnerChanged += OnPartyOwnerChanged;
+            if (SteamManager.Initialized)
+            {
+                Debug.Log(SteamUser.GetSteamID());
+                lobbyCreated = Callback<LobbyCreated_t>.Create(OnLobbyCreated);
+                joinLobbyRequested = Callback<GameLobbyJoinRequested_t>.Create(OnGameLobbyJoinRequested);
+                lobbyEntered = Callback<LobbyEnter_t>.Create(OnLobbyEntered);
+                LoadingManager.Instance.EndLoading();
+                Debug.Log("Welcome");
+            }
+            else
+            {
+                LoadingManager.Instance.StartLoading();
+            }
         }
+
+
+        #region SteamCallbacks
+        private void OnLobbyCreated(LobbyCreated_t param)
+        {
+            if (param.m_eResult != EResult.k_EResultOK)
+            {
+                LoadingManager.Instance.EndLoading();
+                return;
+            }
+     
+            var id = new CSteamID(param.m_ulSteamIDLobby);
+            SteamMatchmaking.SetLobbyData(id, "name", lobbyName);
+            SteamMatchmaking.SetLobbyData(id, "game_id", "Labyrism");
+            SteamMatchmaking.SetLobbyData(id, lobbyName, SteamUser.GetSteamID().ToString());
+            ((CustomNetworkManager)NetworkManager.singleton).SteamID = id;
+            LoadingManager.Instance.EndLoading();
+            NetworkManager.singleton.StartHost();
+            LoadingManager.Instance.EndLoading();
+        }
+
+        private void OnLobbyEntered(LobbyEnter_t param)
+        {
+            if (NetworkServer.active) return;
+            var id = new CSteamID(param.m_ulSteamIDLobby);
+
+            NetworkManager.singleton.networkAddress = SteamMatchmaking.GetLobbyData(id, SteamMatchmaking.GetLobbyData(id, "name"));
+            ((CustomNetworkManager)NetworkManager.singleton).SteamID = id;
+            NetworkManager.singleton.StartClient();
+            LoadingManager.Instance.EndLoading();
+        }
+
+        private void OnGameLobbyJoinRequested(GameLobbyJoinRequested_t param)
+        {
+            SteamMatchmaking.JoinLobby(param.m_steamIDLobby);
+            LoadingManager.Instance.StartLoading();
+        }
+        #endregion
+
 
         public void SetLobbyName (string lobbyName)
         {
@@ -54,17 +100,31 @@ namespace Managers
             NetworkClient.connection.identity.GetComponent<PlayerLabel>().CmdReady();
         }
 
-        private void OnDisable()
+        public override void OnDestroy()
         {
             CustomNetworkManager.OnClientConnected -= OnClientConnected;
             CustomNetworkManager.OnClientDisconnected -= OnClientDisconnected;
             PlayerLabel.OnPartyOwnerChanged -= OnPartyOwnerChanged;
+            base.OnDestroy();
         }
 
         public void JoinLobby()
         {
             NetworkManager.singleton.networkAddress = lobbyName;
             NetworkManager.singleton.StartClient();
+        }
+
+        public void JoinLobby(CSteamID lobbyID)
+        {
+            if (SteamManager.Initialized)
+            {
+                LoadingManager.Instance.StartLoading();
+                SteamMatchmaking.JoinLobby(lobbyID);
+            }
+            else
+            {
+                Debug.LogError("Steam not initialized. Ensure Steamworks is properly set up.");
+            }
         }
 
         public  void LeaveLobby ()
@@ -91,6 +151,7 @@ namespace Managers
         private void OnClientConnected()
         {
             onConnectedToLobby?.Invoke();
+           // LoadingManager.Instance.EndLoading();
         }
 
         private void OnClientDisconnected()
@@ -101,8 +162,14 @@ namespace Managers
 
         public void CreateLobby()
         {
-            NetworkManager.singleton.networkAddress = lobbyName;
-            NetworkManager.singleton.StartHost();
+            SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypePublic,4);
+            LoadingManager.Instance.StartLoading();
+            lobbyScreen.SetActive(true);
+        }
+
+        public override LobbyManager GetInstance()
+        {
+            return this;
         }
     }
 }

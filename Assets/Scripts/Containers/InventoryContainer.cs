@@ -20,7 +20,7 @@ namespace UI.Containers
             inventoryCells = GetComponentsInChildren<InventoryCell>();
         }
 
-        public bool TryAdd (HumanDTO human)
+        public bool TryAdd(HumanDTO human)
         {
             foreach (var cell in inventoryCells)
             {

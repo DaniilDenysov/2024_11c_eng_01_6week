@@ -9,7 +9,7 @@ namespace SaveSystem
     /// </summary>
     public abstract class Saver : MonoBehaviour
     {
-        [ReadOnly] public string id;
+        [SerializeField] public string id;
 
         [PreCompilationConstructor]
         public virtual void Construct()

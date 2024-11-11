@@ -9,16 +9,22 @@ using UnityEngine.UI;
 using DTOs;
 using Lobby;
 using UI;
+using Steamworks;
+using System.Collections;
 
 public class PlayerLabel : NetworkBehaviour
 {
     public static PlayerLabel LocalPlayer;
     [SerializeField] private Sprite iconPlaceHolder;
+    [SyncVar(hook = nameof(OnAvatarChanged))] private Texture2D playerAvatar;
+
+
     [SerializeField] private TMP_Text displayName, readyDisplay;
     [SerializeField] private Image characterSelected;
     [SyncVar(hook = nameof(OnPlayerStateChanged))] public Player Player = new Player();
     [SerializeField] private List<CharacterData> characters = new List<CharacterData>();
-
+    [SerializeField] private AudioClip startGameSound;
+    [SerializeField] private AudioEventChannel eventChannel;
     public static event Action<bool> OnPartyOwnerChanged;
 
     public override void OnStartClient()
@@ -27,7 +33,52 @@ public class PlayerLabel : NetworkBehaviour
         {
             Debug.Log("Assigned");
             LocalPlayer = this;
+            CmdSetPlayerName(SteamFriends.GetPersonaName());
+            var playerSteamID = SteamUser.GetSteamID();
+          /*  var playerSteamID = SteamUser.GetSteamID();
+            int avatarInt = SteamFriends.GetLargeFriendAvatar(playerSteamID); 
+
+            if (avatarInt != -1)
+            {
+                StartCoroutine(LoadSteamAvatar(avatarInt));
+            }*/
         }
+    }
+
+    private void OnAvatarChanged(Texture2D oldValue, Texture2D newValue)
+    {
+        if (newValue == null) return;
+        Rect spriteRect = new Rect(0, 0, newValue.width, newValue.height);
+        Vector2 pivot = new Vector2(0.5f, 0.5f);
+        iconPlaceHolder = Sprite.Create(newValue, spriteRect, pivot);
+    }
+
+    private IEnumerator LoadSteamAvatar(int avatarInt)
+    {
+        uint imageWidth, imageHeight;
+        bool success = SteamUtils.GetImageSize(avatarInt, out imageWidth, out imageHeight);
+
+        if (!success || imageWidth == 0 || imageHeight == 0)
+        {
+            Debug.LogError("Failed to get avatar image size.");
+            yield break;
+        }
+
+        byte[] imageData = new byte[imageWidth * imageHeight * 4];
+        success = SteamUtils.GetImageRGBA(avatarInt, imageData, (int)(imageWidth * imageHeight * 4));
+
+        if (!success)
+        {
+            Debug.LogError("Failed to get avatar image data.");
+            yield break;
+        }
+
+
+        var texture = new Texture2D((int)imageWidth, (int)imageHeight, TextureFormat.RGBA32, false);
+        texture.LoadRawTextureData(imageData);
+        texture.Apply();
+
+        playerAvatar = texture;
     }
 
     private void Start()
@@ -35,13 +86,34 @@ public class PlayerLabel : NetworkBehaviour
         PlayerLabelsContainer.Instance.Add(this);
     }
 
+   /* public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        CmdSetPlayerName(SteamFriends.GetPersonaName());
+    }*/
+
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        CharacterSelectionLabel.OnDeselected?.Invoke(Player.CharacterGUID);
+    }
+
     #region commands
     [Command]
     public void CmdStartGame ()
     {
         if (!Player.IsPartyOwner) return;
+        CustomNetworkManager networkManager = ((CustomNetworkManager)NetworkManager.singleton);
+        if (!networkManager.CanStartGame()) return;
 
-        ((CustomNetworkManager)NetworkManager.singleton).StartGame();
+        OnGameStarted();
+        networkManager.StartGame();
+    }
+
+    [ClientRpc]
+    public void OnGameStarted ()
+    {
+        eventChannel.RaiseEvent(startGameSound);
     }
  
     [Command]
@@ -61,8 +133,14 @@ public class PlayerLabel : NetworkBehaviour
         characterSelected.sprite = characterData.CharacterIcon;
     }
 
-    [Server]
-    public void SetPlayerName(string playerName)
+    [ClientRpc]
+    public void CmdSetPlayerIcon(string playerName)
+    {
+        
+    }
+
+    [Command]
+    public void CmdSetPlayerName(string playerName)
     {
         var player = new Player(Player);
         player.Nickname = playerName;
@@ -111,11 +189,17 @@ public class PlayerLabel : NetworkBehaviour
         if (characterData != null)
         {
             CharacterSelectionLabel.OnDeselected?.Invoke(oldState.CharacterGUID);
-            CharacterSelectionLabel.OnSelected?.Invoke(characterData.CharacterGUID);
+            // bool isLocal = false;
+            /* if (oldState == null)
+             {
+                 isLocal = newState.ConnectionId == connectionToClient.connectionId; newState.ConnectionId == connectionToClient.connectionId
+             }*/
+            CharacterSelectionLabel.OnSelected?.Invoke(characterData.CharacterGUID, isLocalPlayer);
             characterSelected.sprite = characterData.CharacterIcon;
         }
         else
         {
+            CharacterSelectionLabel.OnDeselected?.Invoke(oldState.CharacterGUID);
             characterSelected.sprite = iconPlaceHolder;
         }
         if (!isOwned) return;
@@ -123,6 +207,7 @@ public class PlayerLabel : NetworkBehaviour
     }
     #endregion
     #region rpcs
+
     [TargetRpc]
     public void OnValidateSelection()
     {
@@ -132,7 +217,7 @@ public class PlayerLabel : NetworkBehaviour
     [ClientRpc]
     public void ValidateSelection()
     {
-        CharacterSelectionLabel.OnSelected?.Invoke(Player.CharacterGUID);
+      if (LocalPlayer != null && Player != null && LocalPlayer.connectionToClient != null)  CharacterSelectionLabel.OnSelected?.Invoke(Player.CharacterGUID, Player.ConnectionId == LocalPlayer.connectionToClient.connectionId);
     }
 
     [ClientRpc]

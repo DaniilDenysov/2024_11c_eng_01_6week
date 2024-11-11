@@ -3,6 +3,7 @@ using General;
 using Managers;
 using Selectors;
 using System.Collections.Generic;
+using Client;
 using Distributors;
 using TMPro;
 using UnityEngine;
@@ -48,9 +49,14 @@ namespace Cards
             {
                 Destroy(child.gameObject);
             }
+
+            if (selectedCharacter.TryGetComponent(out ClientData data))
+            {
+                data.CmdChangeHarmAmount(true);
+                OnCardSetUp(true);
+            }
             
-            CardDistributor.Instance.CmdIncreaseHarmCount(selectedCharacter);
-            OnCardSetUp(true);
+            OnCardSetUp(false);
         }
     }
 }

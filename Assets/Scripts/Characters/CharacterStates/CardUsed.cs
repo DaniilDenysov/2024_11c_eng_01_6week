@@ -4,11 +4,18 @@ using Cards;
 
 namespace Characters.CharacterStates
 {
-    public class CardUsed : CharacterState
+    public class  CardUsed : CharacterState
     {
+        private bool _isCardTransforms;
+
+        public CardUsed(bool isCardTransforms)
+        {
+            _isCardTransforms = isCardTransforms;
+        }
+        
         public override bool IsCardUsable(Card card)
         {
-            return false;
+            return _isCardTransforms;
         }
         
         public override bool IsMovable()

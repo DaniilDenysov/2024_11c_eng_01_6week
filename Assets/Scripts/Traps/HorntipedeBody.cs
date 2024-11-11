@@ -18,7 +18,7 @@ namespace Traps
             if (!owner.TryGetComponent(out _attack) || !owner.TryGetComponent(out _collector))
             {
                 Debug.LogError(
-                    "Gameobject making trail doesn't have Attack or Collection component");
+                    "GameObject making trail doesn't have Attack or Collection component");
             }
         }
 
