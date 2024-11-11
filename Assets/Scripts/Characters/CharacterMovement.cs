@@ -50,7 +50,7 @@ namespace Characters
             {
                 _localScoreCount = _clientData.GetScoreAmount();
                 _stateManager.OnTurn();
-                ChooseNewDirection(() => { });
+                ChooseNewDirection(() => { }, null);
             }
         }
 
@@ -156,10 +156,10 @@ namespace Characters
             }
         }
 
-        public void ChooseNewDirection(Action onDirectionChosen)
+        public void ChooseNewDirection(Action onDirectionChosen, Card card)
         {
             CharacterState previousState = _stateManager.GetCurrentState();
-            _stateManager.CmdSetCurrentState(new CardSettingUp());
+            _stateManager.CmdSetCurrentState(new CardSettingUp(card));
             
             TileSelector.Instance.SetDirectionsTilesLit(transform.position, cell =>
             {

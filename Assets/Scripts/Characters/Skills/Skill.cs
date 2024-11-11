@@ -20,5 +20,9 @@ namespace Characters.Skills
         public void OnActivated(bool isSuccessful = true) {
             _onSetUp.Invoke(isSuccessful);
         }
+
+        public virtual void OnDiscard()
+        {
+        }
     }
 }

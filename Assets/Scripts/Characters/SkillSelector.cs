@@ -15,6 +15,7 @@ namespace Characters.Skills
         [SerializeField] private Skill[] skills;
         private String[] _skillNames;
         private Action<bool> _onSetUp;
+        private int _chosenSkillIndex = 0;
         
         public void Awake()
         {
@@ -23,7 +24,7 @@ namespace Characters.Skills
             selectSkill_HUD.SetButtonTexts(_skillNames);
         }
 
-        public void Select (Action<bool> onSetUp)
+        public void Select(Action<bool> onSetUp)
         {
             selectSkill_HUD.gameObject.SetActive(true);
             _onSetUp = onSetUp;
@@ -33,12 +34,18 @@ namespace Characters.Skills
         {
             if (skills[i].IsActivatable())
             {
+                _chosenSkillIndex = i;
                 skills[i].Activate(_onSetUp);
             }
             else
             {
                 _onSetUp.Invoke(false);
             }
+        }
+
+        public void DiscardSkill()
+        {
+            skills[_chosenSkillIndex].OnDiscard();
         }
     }
 }

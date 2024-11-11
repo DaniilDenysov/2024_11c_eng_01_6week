@@ -27,9 +27,22 @@ namespace Cards
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
-                TryActivate();
+            {
+                if (NetworkClient.connection.identity != null 
+                    && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
+                {
+                    if (!stateManager.GetCurrentState().IsCardDiscardable(this))
+                    {
+                        TryActivate();
+                    }
+                    else
+                    {
+                        DiscardMove();
+                    }
+                }
+            } 
             else if (eventData.button == PointerEventData.InputButton.Right)
-                TryDiscard();
+                TryDiscardCard();
         }
 
         public abstract void OnCardActivation(GameObject arg1);
@@ -37,7 +50,9 @@ namespace Cards
         public void OnCardSetUp(bool successfully)
         {
             _canvasGroup.alpha = 1f;
-            if (NetworkClient.connection.identity != null && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
+            
+            if (NetworkClient.connection.identity != null 
+                && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
             {
                 if (successfully)
                 {
@@ -56,7 +71,7 @@ namespace Cards
             }
         }
         
-        public void TryDiscard()
+        public void TryDiscardCard()
         {
             if (NetworkClient.connection.identity != null 
                 && NetworkClient.connection.identity.TryGetComponent(out ClientData clientData)
@@ -81,20 +96,24 @@ namespace Cards
             {
                 if (clientData.GetTurn())
                 {
-                    if (stateManager.GetCurrentState().IsCardUsable(this) ||
-                        stateManager.GetCurrentState().GetType() == typeof(MultiCard))
+                    if (stateManager.GetCurrentState().IsCardUsable(this))
                     {
                         _canvasGroup.alpha = 0.5f;
                         _activationPosition = stateManager.gameObject.transform.position;
 
-                        if (stateManager.GetCurrentState().IsCardUsable(this))
-                        {
-                            stateManager.CmdSetCurrentState(new CardSettingUp());
-                            OnCardActivation(stateManager.gameObject);
-                            return;
-                        }
+                        stateManager.CmdSetCurrentState(new CardSettingUp(this));
+                        OnCardActivation(stateManager.gameObject);
+                        return;
+                    }
 
-                        stateManager.CmdSetCurrentState(new CardSettingUp());
+                    if (stateManager.GetCurrentState().GetType() == typeof(MultiCard))
+                    {
+                        MultiCard state = (MultiCard)stateManager.GetCurrentState();
+                        
+                        _canvasGroup.alpha = 0.5f;
+                        _activationPosition = stateManager.gameObject.transform.position;
+                        
+                        state.OnCardActivation(this);
                     }
                 }
             }
@@ -127,6 +146,18 @@ namespace Cards
         public void SetInitializedFrom(String origin)
         {
             _initializedFromName = origin;
+        }
+
+        public virtual void DiscardMove()
+        {
+            _canvasGroup.alpha = 1f;
+            TileSelector.Instance.DiscardSelection();
+            
+            if (NetworkClient.connection.identity != null 
+                && NetworkClient.connection.identity.TryGetComponent(out CharacterStateManager stateManager))
+            {
+                stateManager.CmdSetCurrentState(new Idle());
+            }
         }
     }
 }

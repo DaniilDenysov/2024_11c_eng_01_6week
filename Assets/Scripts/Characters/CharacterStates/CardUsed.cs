@@ -22,5 +22,10 @@ namespace Characters.CharacterStates
         {
             return true;
         }
+
+        public override bool IsCardDiscardable(Card card)
+        {
+            return false;
+        }
     }
 }
