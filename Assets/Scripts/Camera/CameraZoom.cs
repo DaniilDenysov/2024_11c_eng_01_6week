@@ -1,19 +1,32 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraZoom : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera camera;
-    [SerializeField, Range(0, 100)] private float zoomSpeed = 10f;
-    [SerializeField,Range(0,100)] private float minZoom = 5f;       
+    [SerializeField, Range(0, 100)] private float zoomSpeed = 2f;
+    [SerializeField, Range(0, 100)] private float minZoom = 5f;
     [SerializeField, Range(0, 100)] private float maxZoom = 30f;
+    [SerializeField] private float zoomSmoothTime = 0.1f;
+
+    private float targetZoom;
+    private float zoomVelocity;
+
+    void Start()
+    {
+        targetZoom = camera.m_Lens.OrthographicSize;
+    }
 
     void Update()
     {
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        float newSize = camera.m_Lens.OrthographicSize - scrollInput * zoomSpeed;
-        camera.m_Lens.OrthographicSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+
+        if (Mathf.Abs(scrollInput) > 0.01f)
+        {
+            targetZoom -= scrollInput * zoomSpeed;
+            targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
+        }
+
+        camera.m_Lens.OrthographicSize = Mathf.SmoothDamp(camera.m_Lens.OrthographicSize, targetZoom, ref zoomVelocity, zoomSmoothTime);
     }
 }

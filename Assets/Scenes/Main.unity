@@ -15650,6 +15650,7 @@ MonoBehaviour:
   zoomSpeed: 10
   minZoom: 5
   maxZoom: 30
+  zoomSmoothTime: 0.1
 --- !u!1 &1530278455
 GameObject:
   m_ObjectHideFlags: 0
@@ -16699,9 +16700,9 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 1.3
+  m_YDamping: 1.3
+  m_ZDamping: 0.5
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
