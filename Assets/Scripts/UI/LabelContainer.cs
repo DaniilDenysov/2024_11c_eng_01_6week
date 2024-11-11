@@ -41,10 +41,5 @@ namespace UI
         {
             return items.Count;
         }
-
-        public int GetAmount()
-        {
-            return items.Count;
-        }
     }
 }
