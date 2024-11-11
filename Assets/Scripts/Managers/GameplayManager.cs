@@ -39,8 +39,9 @@ namespace Managers
             OnFinish += OnGameFinished;
         }
 
-        private void OnDestroy()
+        public override void OnDestroy()
         {
+            base.OnDestroy();
             OnFinish -= OnGameFinished;
             inputActions.Player.PauseMenu.performed -= OnPause;
             inputActions.Player.CharacterInfo.performed -= OnCharacterInfo;
@@ -68,7 +69,6 @@ namespace Managers
             }
         }
 
-        [ClientRpc]
         public void OnGameFinished()
         {
             eventChannel.RaiseEvent(gameFinishedSound);
