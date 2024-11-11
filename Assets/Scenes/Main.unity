@@ -14670,13 +14670,13 @@ MonoBehaviour:
   syncInterval: 0
   cards:
   - card: {fileID: 3713896265231458271, guid: de80efeed02f62f4cae923059f5d3039, type: 3}
-    amount: 0
+    amount: 14
   - card: {fileID: 350858826076241073, guid: 118a4e9ca1d30ef4bba2c2b484ee68f6, type: 3}
-    amount: 0
+    amount: 14
   - card: {fileID: 7620733589844510567, guid: 9cd205fa071d31046a4be42c8dfdd14c, type: 3}
     amount: 10
   - card: {fileID: 5119913302006528522, guid: 184da955ad2fbea41b19aa106197e5eb, type: 3}
-    amount: 0
+    amount: 8
   - card: {fileID: 3648956849637883068, guid: 45df8d1660bf8f54b9ca17966540c266, type: 3}
     amount: 0
   cardsLimit: 4
