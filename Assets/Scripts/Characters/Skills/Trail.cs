@@ -73,6 +73,8 @@ namespace Characters.Skills
             newTrail.RpcSetUp(gameObject);
             _currentTrail.Add(newTrail);
         }
+        
+        
 
         public override bool IsActivatable()
         {

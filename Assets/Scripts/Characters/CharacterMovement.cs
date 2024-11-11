@@ -33,8 +33,6 @@ namespace Characters
         private ClientData _clientData;
         private int _localScoreCount;
 
-        private ActionBlockerManager actionBlocker;
-
         private void Awake()
         {
             _localScoreCount = 0;
@@ -44,7 +42,6 @@ namespace Characters
             
             _stateManager._onStateChanged += OnStateChanged;
 
-            actionBlocker = FindObjectOfType<ActionBlockerManager>();
             EventManager.OnClientStartTurn += OnTurn;
         }
 
@@ -133,33 +130,48 @@ namespace Characters
                 Debug.LogError("Unable to move into such direction");
                 return;
             }
-            else if (difference.x == 0)
+            
+            if (difference.x == 0)
             {
                 steps = (int)Math.Abs(difference.y);
             }
 
             StartCoroutine(InterpolateMovement(nextPosition, 1f));
-
-            //onMove?.Invoke();
         }
 
         private IEnumerator InterpolateMovement(Vector3 targetPosition, float duration)
         {
             Vector3 startPosition = transform.position;
             float elapsedTime = 0f;
+            Vector3 pointer = transform.position;
+            float stepDistance = 1;
+            int scoreBefore = _localScoreCount;
 
             while (elapsedTime < duration)
             {
                 onMove?.Invoke();
                 transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / duration);
+
+                if (Vector3.Distance(pointer, transform.position) > stepDistance)
+                {
+                    pointer = transform.position;
+                    DecreaseStep();
+                    EventManager.FireEvent(EventManager.OnCharacterMovesOut, transform.position, this);
+                    EventManager.FireEvent(EventManager.OnCharacterMovesIn, pointer, this);
+                }
+
                 elapsedTime += Time.deltaTime;
                 yield return null;
+            }
+
+            if (scoreBefore - _localScoreCount < Math.Round(Vector3.Distance(startPosition, transform.position)))
+            {
+                DecreaseStep();
             }
 
             transform.position = targetPosition;
             _stateManager.CmdSetCurrentState(new Idle());
         }
-
 
         public void MakeMovement()
         {
