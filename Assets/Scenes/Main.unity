@@ -9141,7 +9141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3279683263992550588, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
       propertyPath: onSkillActivated.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3279683263992550588, guid: 2b7219422546d452da3ca9dd654d096b, type: 3}
       propertyPath: onSkillActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
