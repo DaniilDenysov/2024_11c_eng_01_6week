@@ -30,6 +30,7 @@ namespace Managers
 
         public void TryPlayClip(AudioClip clip)
         {
+            return;
             if (!NetworkServer.active && !NetworkClient.active) return;
             int index = registeredClips.IndexOf(clip);
             if (index == -1)
